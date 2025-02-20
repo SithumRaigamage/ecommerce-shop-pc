@@ -7,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrl: './main-navbar.component.css'
 })
 export class MainNavbarComponent {
+isDropdownOpen: boolean = false;
+
+toggleDropdown() {
+  this.isDropdownOpen = !this.isDropdownOpen;
+}
 
 }
+
