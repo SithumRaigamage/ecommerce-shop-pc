@@ -2,7 +2,7 @@
   <ul class="sidenav__list">
     @for (item of navItems; track item.id) {
       <li class="sidenav__item">
-        <a [href]="item.link" class="sidenav__link" [attr.aria-current]="item.current ? 'page' : null">
+        <a [href]="item.link" class="sidenav__link">
           @if (item.logo) {
             <img [src]="item.logo" [alt]="item.text" class="sidenav__logo">
           }
