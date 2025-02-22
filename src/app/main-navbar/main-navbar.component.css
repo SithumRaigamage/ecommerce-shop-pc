@@ -41,6 +41,10 @@ Usage: codyhouse.co/license
   display: block;
 }
 
+.header-logo-text:hover {
+  @apply text-indigo-500;
+}
+
 .header__nav {
   position: absolute;
   z-index: 1;
@@ -90,7 +94,7 @@ Usage: codyhouse.co/license
   text-decoration: none;
 }
 .header__link:hover, .header__link[aria-current] {
-  @apply text-indigo-700;
+  @apply text-indigo-500;
 }
 
 .header__nav-btn {
