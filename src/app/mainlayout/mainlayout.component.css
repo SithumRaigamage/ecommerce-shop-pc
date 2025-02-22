@@ -16,7 +16,6 @@
 }
 .left {
   grid-area: left;
-  background-color: aqua;
   padding: 20px;
 }
 .main {

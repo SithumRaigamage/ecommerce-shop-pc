@@ -1,23 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --sidenav-list-item-padding-x: 12px;
   --sidenav-icon-size: 12px;
   --sidenav-icon-text-gap: 8px;
-}
-
-.sidenav__list .sidenav__list {
-  display: none;
-}
-
-.sidenav__item--expanded .sidenav__list {
-  display: block;
 }
 
 .sidenav__link {
   display: flex;
   align-items: center;
-  padding: 0.75rem var(--sidenav-list-item-padding-x);
   text-decoration: none;
   @apply text-gray-700;
   transition: 0.2s;
@@ -27,15 +17,8 @@
   @apply bg-gray-900/5;
 }
 
-.sidenav__link[aria-current=page],
-.sidenav__link--current {
+.sidenav__link[aria-current=page] {
   @apply bg-indigo-700/10 text-indigo-700;
-}
-
-.sidenav__icon {
-  width: var(--sidenav-icon-size);
-  height: var(--sidenav-icon-size);
-  margin-right: var(--sidenav-icon-text-gap);
 }
 
 .sidenav__text {
@@ -44,20 +27,10 @@
   text-overflow: ellipsis;
 }
 
-.sidenav__divider {
-  width: 100%;
-  height: 1px;
-  @apply bg-gray-300;
-}
-
 .sidenav--minified .sidenav__link {
   flex-direction: column;
   @apply py-3;
   text-align: center;
-}
-
-.sidenav--minified .sidenav__icon {
-  margin: 0 0 var(--sidenav-icon-text-gap);
 }
 
 .sidenav--minified .sidenav__text {
