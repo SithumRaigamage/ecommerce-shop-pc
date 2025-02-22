@@ -1,0 +1,188 @@
+<!-- Hero Banner -->
+<div class="banner" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
+  <div class="banner__layout">
+    @for (banner of banners; track banner.id; let i = $index) {
+      <div
+        class="banner__image-container"
+        [style.opacity]="i === currentBannerIndex ? 1 : 0"
+        [style.visibility]="i === currentBannerIndex ? 'visible' : 'hidden'"
+        [style.position]="i === currentBannerIndex ? 'relative' : 'absolute'"
+      >
+        <figure
+          class="banner__figure"
+          [style.backgroundImage]="'url(' + banner.image + ')'"
+          [class]="banner.backgroundColor"
+        ></figure>
+
+        <div class="banner__content">
+          <h2>{{ banner.title }}</h2>
+          <p>{{ banner.subtitle }}</p>
+          <a [routerLink]="[banner.buttonLink]" class="banner__link">
+            <i>{{ banner.buttonText }}</i>
+          </a>
+        </div>
+      </div>
+    }
+
+    <!-- Navigation Controls -->
+    <button
+      class="banner__nav banner__nav--prev"
+      (click)="prevBanner(); onManualChange()"
+      aria-label="Previous slide"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    <button
+      class="banner__nav banner__nav--next"
+      (click)="nextBanner(); onManualChange()"
+      aria-label="Next slide"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+
+    <!-- Dots Navigation -->
+    <div class="banner__dots">
+      @for (banner of banners; track banner.id; let i = $index) {
+        <button
+          class="banner__dot"
+          [class.banner__dot--active]="i === currentBannerIndex"
+          (click)="selectBanner(i); onManualChange()"
+          [attr.aria-label]="'Go to slide ' + (i + 1)"
+        ></button>
+      }
+    </div>
+  </div>
+</div>
+
+<!-- Categories Overview -->
+<section class="categories-overview py-16 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold mb-8 text-center">Shop by Category</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <a [routerLink]="['/category/laptops']" class="category-item group">
+        <div class="bg-white p-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-xl text-center">
+          <i class="fas fa-laptop text-4xl text-blue-600 mb-4"></i>
+          <h3 class="text-lg font-semibold">Laptops</h3>
+          <span class="text-sm text-gray-500">Starting from $699</span>
+        </div>
+      </a>
+      <a [routerLink]="['/category/processors']" class="category-item group">
+        <div class="bg-white p-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-xl text-center">
+          <i class="fas fa-microchip text-4xl text-blue-600 mb-4"></i>
+          <h3 class="text-lg font-semibold">Processors</h3>
+          <span class="text-sm text-gray-500">Starting from $199</span>
+        </div>
+      </a>
+      <a [routerLink]="['/category/graphics-cards']" class="category-item group">
+        <div class="bg-white p-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-xl text-center">
+          <i class="fas fa-tv text-4xl text-blue-600 mb-4"></i>
+          <h3 class="text-lg font-semibold">Graphics Cards</h3>
+          <span class="text-sm text-gray-500">Starting from $299</span>
+        </div>
+      </a>
+      <a [routerLink]="['/category/accessories']" class="category-item group">
+        <div class="bg-white p-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-xl text-center">
+          <i class="fas fa-keyboard text-4xl text-blue-600 mb-4"></i>
+          <h3 class="text-lg font-semibold">Accessories</h3>
+          <span class="text-sm text-gray-500">Starting from $29</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Products -->
+<section
+  class="featured-products py-16"
+  (mouseenter)="onMouseEnter()"
+  (mouseleave)="onMouseLeave()"
+>
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold mb-8">Featured Products</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      @for (product of visibleProducts; track product.id) {
+        <div class="product-card bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-300 hover:scale-105">
+          <div class="relative">
+            <img [src]="product.image" [alt]="product.name" class="w-full h-64 object-cover">
+            @if (product.badge) {
+              <span class="absolute top-4 right-4 {{product.badge.color}} text-white px-2 py-1 rounded">
+                {{product.badge.text}}
+              </span>
+            }
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">{{product.name}}</h3>
+            <p class="text-gray-600 mb-4">{{product.description}}</p>
+            <div class="flex justify-between items-center">
+              <div>
+                <span class="text-2xl font-bold text-blue-600">${{product.price}}</span>
+                @if (product.oldPrice) {
+                  <span class="text-sm text-gray-500 line-through ml-2">${{product.oldPrice}}</span>
+                }
+              </div>
+              <a [routerLink]="['/category/product', product.id]" class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-300">
+                Learn More
+              </a>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="why-choose-us py-16 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold mb-12 text-center">Why Choose Us</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="feature-card text-center">
+        <div class="inline-block p-4 bg-blue-100 rounded-full mb-4">
+          <i class="fas fa-shipping-fast text-3xl text-blue-600"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Fast Shipping</h3>
+        <p class="text-gray-600">Free delivery for orders over $500</p>
+      </div>
+      <div class="feature-card text-center">
+        <div class="inline-block p-4 bg-blue-100 rounded-full mb-4">
+          <i class="fas fa-shield-alt text-3xl text-blue-600"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Secure Payments</h3>
+        <p class="text-gray-600">100% secure payment methods</p>
+      </div>
+      <div class="feature-card text-center">
+        <div class="inline-block p-4 bg-blue-100 rounded-full mb-4">
+          <i class="fas fa-headset text-3xl text-blue-600"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">24/7 Support</h3>
+        <p class="text-gray-600">Dedicated support anytime</p>
+      </div>
+      <div class="feature-card text-center">
+        <div class="inline-block p-4 bg-blue-100 rounded-full mb-4">
+          <i class="fas fa-undo text-3xl text-blue-600"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Easy Returns</h3>
+        <p class="text-gray-600">30-day return policy</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="newsletter py-16 bg-blue-600 text-white">
+  <div class="container mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold mb-4">Stay Updated</h2>
+    <p class="mb-8 text-blue-100">Subscribe to our newsletter for the latest products and exclusive offers</p>
+    <form class="max-w-md mx-auto flex gap-4">
+      <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-2 rounded text-gray-900 dark:text-white bg-white dark:bg-gray-800 border border-blue-300 dark:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition duration-300 placeholder-blue-600 dark:placeholder-blue-200">
+      <button type="submit" class="bg-white text-blue-600 px-6 py-2 rounded font-semibold hover:bg-blue-50 transition duration-300">
+        Subscribe
+      </button>
+    </form>
+  </div>
+</section>

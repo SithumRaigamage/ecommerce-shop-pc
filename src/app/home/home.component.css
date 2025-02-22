@@ -1,0 +1,380 @@
+@import "tailwindcss";
+
+.banner {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  background: #ffffff;
+  height: 80vh;
+  width: 100%;
+}
+
+.banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.banner__layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.banner__image-container {
+  position: relative;
+  flex: 1;
+  min-height: 60%;
+  width: 100%;
+}
+
+.banner__figure {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: transform 0.6s ease-out;
+}
+
+.banner:hover .banner__figure {
+  transform: scale(1.05);
+}
+
+.banner__content {
+  padding: 3rem 4rem;
+  text-align: center;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.9), #ffffff);
+}
+
+.banner h2 {
+  margin: 0;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.2;
+}
+
+.banner p {
+  margin-top: 1.5rem;
+  font-size: 1.25rem;
+  color: #4a5568;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.banner__link {
+  position: absolute;
+  top: 70%;
+  left: 2rem;
+  transform: translateY(-50%);
+  display: inline-block;
+  color: #4f46e5;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.25rem;
+  padding: 1rem 2.5rem;
+  margin: 1rem 0;
+  transition: all 0.3s ease-out;
+  border: 2px solid #4f46e5;
+  border-radius: 4px;
+  z-index: 10;
+}
+
+.banner__link:hover {
+  background: #4f46e5;
+  color: white;
+  transform: translate(2px, -50%);
+}
+
+.banner__link i {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  transition: transform 0.3s ease-out;
+  font-style: normal;
+  padding: 0 0.5rem;
+}
+
+@media (min-width: 1024px) {
+  .banner__layout {
+    flex-direction: row;
+  }
+
+  .banner__image-container {
+    width: 60%;
+    min-height: 100%;
+  }
+
+  .banner__content {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    background: white;
+  }
+
+  .banner h2 {
+    font-size: 4rem;
+  }
+
+  .banner p {
+    margin-left: 0;
+    font-size: 1.5rem;
+  }
+}
+
+/* Layout specific styles */
+.banner__layout {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+  .banner__layout {
+    flex-direction: row;
+  }
+
+  .banner__layout > div {
+    width: 50%;
+    min-width: 0;
+  }
+}
+
+/* Image container specific styles */
+.banner__image-container {
+  position: relative;
+  padding-bottom: 50%;
+  height: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .banner__image-container {
+    padding-bottom: 0;
+    height: 100%;
+  }
+}
+
+/* Featured Products Styles */
+.featured-products {
+  overflow: hidden;
+  position: relative;
+}
+
+.product-card {
+  animation: fadeIn 0.5s ease-in-out;
+  transition: all 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.grid {
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Product card specific styles */
+.product-card img {
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover img {
+  transform: scale(1.05);
+}
+
+.product-card h3 {
+  transition: color 0.3s ease;
+}
+
+.product-card:hover h3 {
+  color: #4f46e5;
+}
+
+/* Badge styles */
+.product-card span.badge {
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover span.badge {
+  transform: translateY(-2px);
+}
+
+/* Banner Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+
+/* Banner Navigation */
+button {
+  transition: all 0.3s ease;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+/* Banner Content */
+.banner-content {
+  position: relative;
+  z-index: 10;
+}
+
+/* Ensure images don't overflow */
+.banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Gradient Overlay */
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
+  z-index: 1;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .banner-container {
+    height: 400px;
+  }
+
+  .banner-title {
+    font-size: 2.5rem;
+  }
+
+  .banner-description {
+    font-size: 1.125rem;
+  }
+
+  .max-width {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .banner-container {
+    height: 350px;
+  }
+
+  .banner-title {
+    font-size: 2rem;
+  }
+
+  .banner-description {
+    font-size: 1rem;
+  }
+
+  .inline-block-padding {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* Navigation Controls */
+.banner__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.2);
+  border: none;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 10;
+}
+
+.banner__nav:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+.banner__nav--prev {
+  left: 1rem;
+}
+
+.banner__nav--next {
+  right: 1rem;
+}
+
+.banner__nav svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: white;
+}
+
+/* Dots Navigation */
+.banner__dots {
+  position: absolute;
+  bottom: 2rem;
+  left: 70%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.banner__dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border: 2px solid white;
+  border-radius: 50%;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.banner__dot--active {
+  background: white;
+}
