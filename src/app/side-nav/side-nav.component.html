@@ -1,0 +1,60 @@
+<div class="sidenav-container" [style.width]="isExpanded ? '250px' : '70px'">
+  <button class="toggle-btn" (click)="toggleSidenav()">
+    <i class="fas" [class.fa-chevron-right]="!isExpanded" [class.fa-chevron-left]="isExpanded"></i>
+  </button>
+
+  <nav class="sidenav sidenav--basic">
+    <ul class="sidenav__list">
+      @for (item of mainNavItems; track item) {
+        <li class="sidenav__item" [class.sidenav__item--expanded]="item.isExpanded">
+          <div class="sidenav__link-wrapper" [class.has-subitems]="hasSubItems(item)">
+            <a class="sidenav__link"
+               [routerLink]="hasSubItems(item) ? null : [item.link]"
+               routerLinkActive="sidenav__link--active"
+               [title]="item.text"
+               (click)="toggleItem(item, $event)">
+              <img [src]="item.icon" [alt]="item.text" class="sidenav__icon">
+              <span class="sidenav__text">{{ item.text }}</span>
+              @if (item.counter && isExpanded) {
+                <span class="sidenav__counter">{{ item.counter }}</span>
+              }
+              @if (hasSubItems(item) && isExpanded) {
+                <i class="fas fa-chevron-down sidenav__arrow"
+                   [class.sidenav__arrow--expanded]="item.isExpanded"></i>
+              }
+            </a>
+          </div>
+          @if (hasSubItems(item) && isExpanded && item.isExpanded) {
+            <ul class="sidenav__list sidenav__sublist">
+              @for (subItem of item.subItems; track subItem) {
+                <li class="sidenav__item">
+                  <a [routerLink]="[subItem.link]"
+                     routerLinkActive="sidenav__link--active"
+                     class="sidenav__link"
+                     [title]="subItem.text">
+                    <span class="sidenav__text">{{ subItem.text }}</span>
+                  </a>
+                </li>
+              }
+            </ul>
+          }
+        </li>
+      }
+    </ul>
+
+    <div class="sidenav__label" *ngIf="isExpanded">
+      <span class="text-sm text-gray-500 lg:text-xs">Other</span>
+    </div>
+
+    <ul class="sidenav__list">
+      @for (item of settingsNavItems; track item) {
+        <li class="sidenav__item">
+          <a [routerLink]="[item.link]" routerLinkActive="sidenav__link--active" class="sidenav__link">
+            <img [src]="item.icon" [alt]="item.text" class="sidenav__icon">
+            <span class="sidenav__text">{{ item.text }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </nav>
+</div>
