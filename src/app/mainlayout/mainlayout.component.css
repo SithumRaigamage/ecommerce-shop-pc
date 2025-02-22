@@ -11,15 +11,17 @@
 .container > div {
 
 }
-
 .header {
   grid-area: header;
 }
 .left {
   grid-area: left;
+  background-color: aqua;
+  padding: 20px;
 }
 .main {
   grid-area: main;
+  padding-left: 20px;
 }
 .footer {
   grid-area: footer;

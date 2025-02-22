@@ -1,60 +1,42 @@
-<div class="sidenav-container" [style.width]="isExpanded ? '250px' : '70px'">
-  <button class="toggle-btn" (click)="toggleSidenav()">
-    <i class="fas" [class.fa-chevron-right]="!isExpanded" [class.fa-chevron-left]="isExpanded"></i>
-  </button>
+<nav class="sidenav sidenav--minified">
+  <ul class="sidenav__list">
+    <li class="sidenav__item">
+      <a href="#0" class="sidenav__link">
+        <svg class="icon h-[16px] w-[16px] inline-block text-inherit fill-current leading-none shrink-0 sidenav__icon" aria-hidden="true" viewBox="0 0 16 16"><g><path d="M6,0H1C0.4,0,0,0.4,0,1v5c0,0.6,0.4,1,1,1h5c0.6,0,1-0.4,1-1V1C7,0.4,6.6,0,6,0z M5,5H2V2h3V5z"></path><path d="M15,0h-5C9.4,0,9,0.4,9,1v5c0,0.6,0.4,1,1,1h5c0.6,0,1-0.4,1-1V1C16,0.4,15.6,0,15,0z M14,5h-3V2h3V5z"></path><path d="M6,9H1c-0.6,0-1,0.4-1,1v5c0,0.6,0.4,1,1,1h5c0.6,0,1-0.4,1-1v-5C7,9.4,6.6,9,6,9z M5,14H2v-3h3V14z"></path><path d="M15,9h-5c-0.6,0-1,0.4-1,1v5c0,0.6,0.4,1,1,1h5c0.6,0,1-0.4,1-1v-5C16,9.4,15.6,9,15,9z M14,14h-3v-3h3V14z"></path></g></svg>
+        <span class="sidenav__text text-xs">Dashboard</span>
+      </a>
+    </li>
 
-  <nav class="sidenav sidenav--basic">
-    <ul class="sidenav__list">
-      @for (item of mainNavItems; track item) {
-        <li class="sidenav__item" [class.sidenav__item--expanded]="item.isExpanded">
-          <div class="sidenav__link-wrapper" [class.has-subitems]="hasSubItems(item)">
-            <a class="sidenav__link"
-               [routerLink]="hasSubItems(item) ? null : [item.link]"
-               routerLinkActive="sidenav__link--active"
-               [title]="item.text"
-               (click)="toggleItem(item, $event)">
-              <img [src]="item.icon" [alt]="item.text" class="sidenav__icon">
-              <span class="sidenav__text">{{ item.text }}</span>
-              @if (item.counter && isExpanded) {
-                <span class="sidenav__counter">{{ item.counter }}</span>
-              }
-              @if (hasSubItems(item) && isExpanded) {
-                <i class="fas fa-chevron-down sidenav__arrow"
-                   [class.sidenav__arrow--expanded]="item.isExpanded"></i>
-              }
-            </a>
-          </div>
-          @if (hasSubItems(item) && isExpanded && item.isExpanded) {
-            <ul class="sidenav__list sidenav__sublist">
-              @for (subItem of item.subItems; track subItem) {
-                <li class="sidenav__item">
-                  <a [routerLink]="[subItem.link]"
-                     routerLinkActive="sidenav__link--active"
-                     class="sidenav__link"
-                     [title]="subItem.text">
-                    <span class="sidenav__text">{{ subItem.text }}</span>
-                  </a>
-                </li>
-              }
-            </ul>
-          }
-        </li>
-      }
-    </ul>
+    <li class="sidenav__item sidenav__item--expanded">
+      <a href="#0" class="sidenav__link" aria-current="page">
+        <svg class="icon h-[16px] w-[16px] inline-block text-inherit fill-current leading-none shrink-0 sidenav__icon" aria-hidden="true" viewBox="0 0 16 16"><g><path d="M14,7H2v7c0,0.6,0.4,1,1,1h10c0.6,0,1-0.4,1-1V7z"></path><rect y="1" width="16" height="4"></rect></g></svg>
+        <span class="sidenav__text text-xs">Products</span>
+      </a>
+    </li>
 
-    <div class="sidenav__label" *ngIf="isExpanded">
-      <span class="text-sm text-gray-500 lg:text-xs">Other</span>
-    </div>
+    <li class="sidenav__item">
+      <a href="#0" class="sidenav__link">
+        <svg class="icon h-[16px] w-[16px] inline-block text-inherit fill-current leading-none shrink-0 sidenav__icon" aria-hidden="true" viewBox="0 0 16 16"><g><path d="M14,6.883V13H2V6.82L0,5.695V14c0,0.553,0.448,1,1,1h14c0.552,0,1-0.447,1-1V5.783L14,6.883z"></path><path d="M15,1H1C0.4,1,0,1.4,0,2v1.4l8,4.5l8-4.4V2C16,1.4,15.6,1,15,1z"></path></g></svg>
+        <span class="sidenav__text text-xs">Messages</span>
+      </a>
+    </li>
+  </ul>
 
-    <ul class="sidenav__list">
-      @for (item of settingsNavItems; track item) {
-        <li class="sidenav__item">
-          <a [routerLink]="[item.link]" routerLinkActive="sidenav__link--active" class="sidenav__link">
-            <img [src]="item.icon" [alt]="item.text" class="sidenav__icon">
-            <span class="sidenav__text">{{ item.text }}</span>
-          </a>
-        </li>
-      }
-    </ul>
-  </nav>
-</div>
+  <div class="sidenav__divider my-2 lg:my-3" role="presentation"></div>
+
+  <ul class="sidenav__list">
+    <li class="sidenav__item">
+      <a href="#0" class="sidenav__link">
+        <svg class="icon h-[16px] w-[16px] inline-block text-inherit fill-current leading-none shrink-0 sidenav__icon" aria-hidden="true" viewBox="0 0 16 16"><g><circle cx="6" cy="8" r="2"></circle><path d="M10,2H6C2.7,2,0,4.7,0,8s2.7,6,6,6h4c3.3,0,6-2.7,6-6S13.3,2,10,2z M10,12H6c-2.2,0-4-1.8-4-4s1.8-4,4-4h4 c2.2,0,4,1.8,4,4S12.2,12,10,12z"></path></g></svg>
+        <span class="sidenav__text text-xs">Settings</span>
+      </a>
+    </li>
+
+    <li class="sidenav__item sidenav__item--expanded">
+      <a href="#0" class="sidenav__link">
+        <svg class="icon h-[16px] w-[16px] inline-block text-inherit fill-current leading-none shrink-0 sidenav__icon" aria-hidden="true" viewBox="0 0 16 16"><g><path d="M12.25,8.231C11.163,9.323,9.659,10,8,10S4.837,9.323,3.75,8.231C1.5,9.646,0,12.145,0,15v1h16 v-1C16,12.145,14.5,9.646,12.25,8.231z"></path><circle cx="8" cy="4" r="4"></circle></g></svg>
+        <span class="sidenav__text text-xs">Account</span>
+      </a>
+    </li>
+  </ul>
+</nav>
