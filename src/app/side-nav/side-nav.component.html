@@ -1,13 +1,9 @@
 <nav class="sidenav sidenav--minified">
   <ul class="sidenav__list">
     @for (item of navItems; track item.id) {
-      <li class="sidenav__item">
-        <a [href]="item.link" class="sidenav__link">
-          @if (item.logo) {
-            <i [class]="item.logo"></i>
-          }
-          <span class="sidenav__text text-xs">{{item.text}}</span>
-        </a>
+      <li *ngFor="let item of navItems" (click)="onCategorySelect(item.link)" class="sidenav__item">
+        <i [class]="item.logo"></i>
+        <span class="sidenav__text text-xs">{{ item.text }}</span>
       </li>
     }
   </ul>

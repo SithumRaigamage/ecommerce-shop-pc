@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SideNavModule } from '../models/SideNavModule';
 
@@ -12,11 +12,13 @@ import { SideNavModule } from '../models/SideNavModule';
 })
 export class SideNavComponent {
 
+  @Output() categorySelected = new EventEmitter<string>();
+
   navItems: SideNavModule[] = [
     {
       "id": 1,
       "logo": "fas fa-gamepad fa-3x",
-      "link": "/category/gaming",
+      "link": "gaming",
       "text": "Console & Handheld Gaming"
     },
     {
@@ -28,7 +30,7 @@ export class SideNavComponent {
     {
       "id": 3,
       "logo": "fas fa-laptop fa-3x",
-      "link": "/category/laptop",
+      "link": "laptop",
       "text": "Laptop"
     },
     {
@@ -134,5 +136,9 @@ export class SideNavComponent {
       "text": "Desktop PCs"
     }
   ];
+
+  onCategorySelect(link: string) {
+    this.categorySelected.emit(link);
+  }
 
 }
