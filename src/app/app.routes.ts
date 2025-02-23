@@ -12,8 +12,7 @@ export const routes: Routes = [
     path: 'support',
     component: SupportComponent,
   },
-  {
-    path: 'category/:category',
+  { path: 'product-grid',
     component: ProductGridComponent
-  }
+  },
 ];
