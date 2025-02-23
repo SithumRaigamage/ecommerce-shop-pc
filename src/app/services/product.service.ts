@@ -22,7 +22,7 @@ export class ProductService {
         'https://cdn.easyfrontend.com/pictures/courses/courses_3_2.png',
         'https://cdn.easyfrontend.com/pictures/courses/courses_3_2.png',
       ],
-      category: 'laptops',
+      category: 'laptop',
       colors: ['Black', 'Silver', 'Gray'],
       sizes: [
         { name: 'Small', description: 'Small size for comfort' },
@@ -164,6 +164,18 @@ export class ProductService {
       reviewCount: 120,
       orderCount: 250,
     },
+    {
+      id: '12',
+      title: 'HyperX Fury RGB 16GB',
+      price: 89.99,
+      image: 'https://cdn.easyfrontend.com/pictures/memory/hyperx-rgb.jpg',
+      category: 'memory',
+      description: '16GB (2x8GB) DDR4 3200MHz Desktop Memory',
+      colors: ['Black', 'Silver', 'Red'],
+      rating: 4.7,
+      reviewCount: 200,
+      orderCount: 400,
+    }
   ];
 
   constructor() { }
@@ -186,54 +198,5 @@ export class ProductService {
   // Get all products
   getAllProducts(): Observable<ProductModel[]> {
     return of(this.products);
-  }
-
-  // Filter products by multiple criteria
-  filterProducts(filters: {
-    category?: string;
-    minPrice?: number;
-    maxPrice?: number;
-    colors?: string[];
-    search?: string;
-  }): Observable<ProductModel[]> {
-    let filteredProducts = [...this.products];
-
-    if (filters.category) {
-      const categoryLower = filters.category.toLowerCase();
-      filteredProducts = filteredProducts.filter(product =>
-        product.category?.toLowerCase() === categoryLower
-      );
-      console.log('Filtering by category:', categoryLower, 'Results:', filteredProducts.length);
-    }
-
-    if (filters.minPrice !== undefined) {
-      filteredProducts = filteredProducts.filter(product =>
-        product.price >= filters.minPrice!
-      );
-    }
-
-    if (filters.maxPrice !== undefined) {
-      filteredProducts = filteredProducts.filter(product =>
-        product.price <= filters.maxPrice!
-      );
-    }
-
-    if (filters.colors && filters.colors.length > 0) {
-      filteredProducts = filteredProducts.filter(product =>
-        product.colors?.some(color =>
-          filters.colors!.includes(color)
-        ) ?? false
-      );
-    }
-
-    if (filters.search) {
-      const searchLower = filters.search.toLowerCase();
-      filteredProducts = filteredProducts.filter(product =>
-        product.title.toLowerCase().includes(searchLower) ||
-        (product.description?.toLowerCase().includes(searchLower) ?? false)
-      );
-    }
-
-    return of(filteredProducts);
   }
 }
