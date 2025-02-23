@@ -1,8 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --sidenav-icon-size: 12px;
-  --sidenav-icon-text-gap: 8px;
+  --sidenav-icon-size: 16px; /* Increased icon size */
+  --sidenav-icon-text-gap: 10px;
+}
+
+.sidenav {
+  @apply bg-white border border-indigo-700 rounded-lg p-6 w-50; /* Increased padding and width */
+}
+
+.sidenav__list {
+  @apply space-y-3; /* Increased spacing between items */
+}
+
+.sidenav__item {
+  @apply p-2 cursor-pointer border border-gray-300 rounded-md flex flex-col items-center gap-1 w-full; /* Ensures full width */
+}
+
+.sidenav__item i {
+  @apply text-indigo-700 text-lg;
 }
 
 .sidenav__link {
@@ -22,17 +38,19 @@
 }
 
 .sidenav__text {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  @apply text-xs text-center break-words truncate w-full; /* Prevent overflow */
+}
+
+.sidenav--minified {
+  @apply w-20; /* Adjusted width for minified state */
 }
 
 .sidenav--minified .sidenav__link {
   flex-direction: column;
-  @apply py-3;
+  @apply py-4;
   text-align: center;
 }
 
 .sidenav--minified .sidenav__text {
-  font-size: 11px;
+  font-size: 12px;
 }
