@@ -13,8 +13,13 @@ import { ProductService } from '../services/product.service';
   styleUrls: ['./product-grid.component.css']
 })
 export class ProductGridComponent {
+searchTerm: any;
+filterProducts() {
+throw new Error('Method not implemented.');
+}
 
   filteredProducts: ProductModel[] = [];
+selectedCategory: any;
 
   constructor(private productService: ProductService, private route: ActivatedRoute) { }
 

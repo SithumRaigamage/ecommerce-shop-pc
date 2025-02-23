@@ -24,7 +24,7 @@ export class SideNavComponent {
     {
       "id": 2,
       "logo": "fas fa-hdd fa-3x",
-      "link": "/category/storage",
+      "link": "storage",
       "text": "Storage"
     },
     {
@@ -36,19 +36,19 @@ export class SideNavComponent {
     {
       "id": 4,
       "logo": "fas fa-desktop fa-3x",
-      "link": "/category/accessories",
+      "link": "accessories",
       "text": "Laptop & Monitor Accessories"
     },
     {
       "id": 5,
       "logo": "fas fa-microchip fa-3x",
-      "link": "/category/processor",
+      "link": "processor",
       "text": "Processor"
     },
     {
       "id": 6,
       "logo": "fas fa-server fa-3x",
-      "link": "/category/motherboards",
+      "link": "motherboards",
       "text": "Motherboards"
     },
     {
@@ -60,79 +60,79 @@ export class SideNavComponent {
     {
       "id": 8,
       "logo": "fas fa-video fa-3x",
-      "link": "/category/graphics",
+      "link": "graphics",
       "text": "Graphics Card"
     },
     {
       "id": 9,
       "logo": "fas fa-plug fa-3x",
-      "link": "/category/power",
+      "link": "power",
       "text": "Power Supply, UPS & Surge Protectors"
     },
     {
       "id": 10,
       "logo": "fas fa-fan fa-3x",
-      "link": "/category/cooling",
+      "link": "cooling",
       "text": "Cooling & Lighting"
     },
     {
       "id": 11,
       "logo": "fas fa-box fa-3x",
-      "link": "/category/cases",
+      "link": "cases",
       "text": "PC Cases"
     },
     {
       "id": 12,
       "logo": "fas fa-tv fa-3x",
-      "link": "/category/monitors",
+      "link": "monitors",
       "text": "Monitors"
     },
     {
       "id": 13,
       "logo": "fas fa-headphones fa-3x",
-      "link": "/category/audio",
+      "link": "audio",
       "text": "Speakers & Headsets"
     },
     {
       "id": 14,
       "logo": "fas fa-keyboard fa-3x",
-      "link": "/category/peripherals",
+      "link": "peripherals",
       "text": "Keyboard & Mouse"
     },
     {
       "id": 15,
       "logo": "fas fa-chair fa-3x",
-      "link": "/category/chairs",
+      "link": "chairs",
       "text": "Gaming Chairs"
     },
     {
       "id": 16,
       "logo": "fas fa-plug fa-3x",
-      "link": "/category/cables",
+      "link": "cables",
       "text": "Cables & Adapters"
     },
     {
       "id": 17,
       "logo": "fas fa-usb fa-3x",
-      "link": "/category/external-storage",
+      "link": "external-storage",
       "text": "External Storage"
     },
     {
       "id": 18,
       "logo": "fas fa-network-wired fa-3x",
-      "link": "/category/networking",
+      "link": "networking",
       "text": "Networking"
     },
     {
       "id": 19,
       "logo": "fas fa-dice fa-3x",
-      "link": "/category/software",
+      "link": "software",
       "text": "Gaming Software"
     },
     {
       "id": 20,
       "logo": "fas fa-desktop fa-3x",
-      "link": "/category/desktops",
+      "link": "desktops",
       "text": "Desktop PCs"
     }
   ];
