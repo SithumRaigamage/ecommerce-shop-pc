@@ -16,11 +16,10 @@
 }
 .left {
   grid-area: left;
-  padding: 20px;
 }
 .main {
   grid-area: main;
-  padding-left: 20px;
+  padding-left: 100px;
 }
 .footer {
   grid-area: footer;
