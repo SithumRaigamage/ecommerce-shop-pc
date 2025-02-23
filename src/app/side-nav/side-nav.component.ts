@@ -54,7 +54,7 @@ export class SideNavComponent {
     {
       "id": 7,
       "logo": "fas fa-memory fa-3x",
-      "link": "/category/memory",
+      "link": "memory",
       "text": "Memory (RAM)"
     },
     {

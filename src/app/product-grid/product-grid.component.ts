@@ -16,16 +16,15 @@ export class ProductGridComponent {
 
   filteredProducts: ProductModel[] = [];
 
-  constructor(private productService: ProductService,private route: ActivatedRoute) { }
+  constructor(private productService: ProductService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-
     this.route.queryParams.subscribe(params => {
-      //console.log('Params:', params);
       const category = params['category'];
-      //console.log('Category:', category);
+      console.log('Category:', category);
       this.productService.getProductsByCategory(category).subscribe(products => {
         this.filteredProducts = products;
+        console.log('Filtered Products:', this.filteredProducts);
       });
     });
   }
