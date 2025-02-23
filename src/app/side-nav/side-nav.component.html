@@ -1,7 +1,7 @@
 <nav class="sidenav sidenav--minified">
   <ul class="sidenav__list">
     @for (item of navItems; track item.id) {
-      <li *ngFor="let item of navItems" (click)="onCategorySelect(item.link)" class="sidenav__item">
+      <li (click)="onCategorySelect(item.link)" class="sidenav__item">
         <i [class]="item.logo"></i>
         <span class="sidenav__text text-xs">{{ item.text }}</span>
       </li>
