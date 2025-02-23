@@ -6,7 +6,7 @@
 }
 
 .sidenav {
-  @apply bg-white border border-indigo-700 rounded-lg p-6 w-50; /* Increased padding and width */
+  @apply bg-white border-3 border-indigo-700 rounded-lg p-6 w-50; /* Increased padding and width */
 }
 
 .sidenav__list {
