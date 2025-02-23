@@ -14,21 +14,20 @@ import { ProductService } from '../services/product.service';
 })
 export class ProductGridComponent {
 
-  products: ProductModel[] = [];
+  filteredProducts: ProductModel[] = [];
 
   constructor(private productService: ProductService,private route: ActivatedRoute) { }
 
-  ngOnInit() {
-    this.productService.getAllProducts().subscribe((data) => {
-      this.products = data;
-    });
+  ngOnInit(): void {
 
-    // Subscribe to route params changes
-    this.route.params.subscribe(params => {
+    this.route.queryParams.subscribe(params => {
+      //console.log('Params:', params);
       const category = params['category'];
-      console.log('Category:', category);
+      //console.log('Category:', category);
+      this.productService.getProductsByCategory(category).subscribe(products => {
+        this.filteredProducts = products;
+      });
     });
-
   }
 
 
