@@ -9,13 +9,11 @@ export interface ProductModel {
   price: number;
   image: string;
   images?: string[];
-  format?: string;
   category: string;
-  description?: string;
+  colors?: string[];
+  sizes?: Size[];
   rating?: number;
   reviewCount?: number;
   orderCount?: number;
-  colors?: string[];
-  sizes?: Size[];
-  
+  description?: string;
 }
