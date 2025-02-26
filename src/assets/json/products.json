@@ -1,14 +1,57 @@
 [
   {
     "id": "1",
-    "title": "Nintendo Switch",
-    "price": 299.99,
-    "image": "switch-image.jpg",
-    "category": "gaming",
-    "description": "Portable gaming console with a variety of games available.",
-    "rating": 4.8,
-    "reviewCount": 5000,
-    "orderCount": 1000
+    "title": "High-Performance Gaming Laptop",
+    "price": 1499.99,
+    "image": "https://cdn.easyfrontend.com/pictures/courses/courses_3_2.png",
+    "images": [
+      "https://cdn.easyfrontend.com/pictures/courses/courses_3_2.png",
+      "https://cdn.easyfrontend.com/pictures/courses/courses_3_2.png",
+      "https://cdn.easyfrontend.com/pictures/courses/courses_3_2.png"
+    ],
+    "category": "laptop",
+    "colors": ["Black", "Silver", "Gray"],
+    "sizes": [
+      { "name": "Small", "description": "Small size for comfort" },
+      { "name": "Medium", "description": "Medium size for everyday use" },
+      { "name": "Large", "description": "Large size for extended use" }
+    ],
+    "rating": 4.5,
+    "reviewCount": 100,
+    "orderCount": 200,
+    "description": "High-performance gaming laptop with an AMD Ryzen 9 processor, 16GB RAM, and 512GB SSD storage",
+    "faqs": [
+      {
+        "question": "What is the warranty period?",
+        "answer": "This laptop comes with a 1-year manufacturer warranty"
+      },
+      {
+        "question": "Does it include pre-installed software?",
+        "answer": "Yes, it comes with Windows 11 pre-installed"
+      }
+    ],
+    "specifications": [
+      {
+        "name": "Processor",
+        "value": "AMD Ryzen 9 5900HX"
+      },
+      {
+        "name": "RAM",
+        "value": "16GB DDR4"
+      },
+      {
+        "name": "Storage",
+        "value": "512GB NVMe SSD"
+      },
+      {
+        "name": "Display",
+        "value": "15.6-inch Full HD 144Hz"
+      },
+      {
+        "name": "Graphics",
+        "value": "NVIDIA RTX 3070"
+      }
+    ]
   },
   {
     "id": "2",
