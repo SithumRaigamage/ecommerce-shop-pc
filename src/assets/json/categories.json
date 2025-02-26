@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "name": "Laptops",
+    "description": "High-performance computers for work and gaming",
+    "icon": "fas fa-laptop",
+    "slug": "laptops",
+    "startingPrice": 500
+  },
+  {
+    "id": 2,
+    "name": "Desktop PCs",
+    "description": "Custom built desktop computers",
+    "icon": "fas fa-desktop",
+    "slug": "desktops",
+    "startingPrice": 800
+  },
+  {
+    "id": 3,
+    "name": "Components",
+    "description": "PC parts and hardware components",
+    "icon": "fas fa-microchip",
+    "slug": "components",
+    "startingPrice": 50
+  },
+  {
+    "id": 4,
+    "name": "Peripherals",
+    "description": "Keyboards, mice, and accessories",
+    "icon": "fas fa-keyboard",
+    "slug": "peripherals",
+    "startingPrice": 20
+  },
+  {
+    "id": 5,
+    "name": "Networking",
+    "description": "Routers, switches, and network equipment",
+    "icon": "fas fa-network-wired",
+    "slug": "networking",
+    "startingPrice": 50
+  },
+  {
+    "id": 6,
+    "name": "Storage",
+    "description": "Hard drives, SSDs, and storage solutions",
+    "icon": "fas fa-hdd",
+    "slug": "storage",
+    "startingPrice": 50
+  },
+  {
+    "id": 7,
+    "name": "Software",
+    "description": "Operating systems and productivity software",
+    "icon": "fas fa-file-code",
+    "slug": "software",
+    "startingPrice": 50
+  },
+  {
+    "id": 8,
+    "name": "Accessories",
+    "description": "Cables, adapters, and other accessories",
+    "icon": "fas fa-headphones",
+    "slug": "accessories",
+    "startingPrice": 10
+  }
+]

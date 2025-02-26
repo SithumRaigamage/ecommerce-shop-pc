@@ -9,9 +9,8 @@
   grid-template-rows: 160px 1fr 80px;
 }
 .container > div {
-  
-}
 
+}
 .header {
   grid-area: header;
 }
@@ -20,6 +19,7 @@
 }
 .main {
   grid-area: main;
+  padding-left: 100px;
 }
 .footer {
   grid-area: footer;

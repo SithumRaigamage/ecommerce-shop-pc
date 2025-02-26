@@ -1,0 +1,83 @@
+<section
+  class="ezy__contact7 light py-0 md:py-1 bg-white dark:bg-[#0b1727] text-zinc-900 dark:text-white overflow-hidden">
+  <div class="container px-4">
+    <div class="grid grid-cols-12 py-6">
+      <div class="col-span-12 lg:col-span-6 lg:col-start-7 order-2 mb-4 lg:mb-0">
+        <div class="bg-center bg-no-repeat bg-cover min-h[150px] w-full lg:w-[50vw] h-full" style="
+        background-image: url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80');
+          "></div>
+      </div>
+
+      <div class="col-span-12 lg:col-span-5">
+        <div class="">
+          <div class="p-6 md:p-12">
+            <h2 class="text-6xl leading-none md:text-[45px] font-bold mb-4 text-black">
+              Technical Support
+            </h2>
+            <p class="text-xl mb-12 text-black">
+              Get help with your technical issues. We're here to assist you.
+            </p>
+            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="bg-white p-8 shadow-lg rounded-xl">
+              <div class="mb-5">
+                <input type="text" formControlName="name"
+                  class="h-[56px] border border-gray-300 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-500 w-full px-6 py-4 bg-white text-gray-900 placeholder-gray-500 text-lg"
+                  placeholder="Full Name" />
+              </div>
+              <div class="mb-5">
+                <input type="email" formControlName="email"
+                  class="h-[56px] border border-gray-300 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-500 w-full px-6 py-4 bg-white text-gray-900 placeholder-gray-500 text-lg"
+                  placeholder="Email Address" />
+              </div>
+              <div class="mb-5">
+                <select formControlName="issueType"
+                  class="h-[56px] border border-gray-300 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-500 w-full px-6 py-4 bg-white text-gray-900 text-lg">
+                  <option value="">Select Issue Type</option>
+                  <option value="hardware">Hardware Problem</option>
+                  <option value="software">Software Issue</option>
+                  <option value="network">Network Connection</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="mb-5">
+                <input type="text" formControlName="productModel"
+                  class="h-[56px] border border-gray-300 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-500 w-full px-6 py-4 bg-white text-gray-900 placeholder-gray-500 text-lg"
+                  placeholder="Product Model Number" />
+              </div>
+              <div class="mb-5">
+                <select formControlName="priority"
+                  class="h-[56px] border border-gray-300 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-500 w-full px-6 py-4 bg-white text-gray-900 text-lg">
+                  <option value="">Select Priority Level</option>
+                  <option value="low">Low</option>
+                  <option value="medium">Medium</option>
+                  <option value="high">High</option>
+                  <option value="critical">Critical</option>
+                </select>
+              </div>
+              <div class="mb-5">
+                <textarea formControlName="description"
+                  class="border border-gray-300 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-500 w-full px-6 py-4 bg-white text-gray-900 placeholder-gray-500 text-lg"
+                  placeholder="Detailed Description of the Issue" rows="4"></textarea>
+              </div>
+              <div class="mb-5">
+                <label class="block text-gray-700 mb-2">Upload Screenshots</label>
+                <input type="file" formControlName="screenshots" multiple accept="image/*"
+                  class="w-full border border-gray-300 rounded-xl p-2" />
+              </div>
+              <div class="mb-5">
+                <label class="block text-gray-700 mb-2">Upload Related Documents</label>
+                <input type="file" formControlName="documents" multiple accept=".pdf,.doc,.docx"
+                  class="w-full border border-gray-300 rounded-xl p-2" />
+              </div>
+              <div class="text-end">
+                <button type="submit"
+                  class="bg-blue-600 hover:bg-blue-500 text-white px-10 py-4 rounded-xl shadow-md transition-all duration-300 text-lg">
+                  Submit Ticket
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

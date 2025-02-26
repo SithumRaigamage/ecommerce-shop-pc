@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "title": "Build Your Dream Gaming PC",
+    "subtitle": "Customize your perfect gaming rig with our premium components",
+    "buttonText": "Start Building",
+    "buttonLink": "/build",
+    "image": "https://images.unsplash.com/photo-1587202372616-b43abea06c2a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    "backgroundColor": "bg-gradient-to-r from-purple-900 to-indigo-800"
+  },
+  {
+    "id": 2,
+    "title": "Latest RTX 4000 Series",
+    "subtitle": "Experience next-gen gaming with NVIDIA's most powerful GPUs",
+    "buttonText": "Shop GPUs",
+    "buttonLink": "/category/graphics-cards",
+    "image": "https://images.unsplash.com/photo-1591405351990-4726e331f141?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    "backgroundColor": "bg-gradient-to-r from-green-900 to-emerald-800"
+  },
+  {
+    "id": 3,
+    "title": "Pro Creator Workstations",
+    "subtitle": "Purpose-built PCs for content creation and 3D rendering",
+    "buttonText": "Explore Workstations",
+    "buttonLink": "/category/workstations",
+    "image": "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1442&q=80",
+    "backgroundColor": "bg-gradient-to-r from-blue-900 to-cyan-800"
+  },
+  {
+    "id": 4,
+    "title": "Summer Gaming Sale",
+    "subtitle": "Save up to 30% on selected gaming peripherals",
+    "buttonText": "View Deals",
+    "buttonLink": "/deals",
+    "image": "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    "backgroundColor": "bg-gradient-to-r from-red-900 to-orange-800"
+  },
+  {
+    "id": 5,
+    "title": "New Arrivals",
+    "subtitle": "Discover the latest products from top brands",
+    "buttonText": "Shop Now",
+    "buttonLink": "/category/new-arrivals",
+    "image": "https://images.unsplash.com/photo-1616763355603-9755a640a287?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    "backgroundColor": "bg-gradient-to-r from-yellow-900 to-amber-800"
+  },
+  {
+    "id": 6,
+    "title": "Back to School",
+    "subtitle": "Get ready for the new school year with our top tech picks",
+    "buttonText": "Shop School Tech",
+    "buttonLink": "/category/back-to-school",
+    "image": "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1442&q=80",
+    "backgroundColor": "bg-gradient-to-r from-blue-900 to-cyan-800"
+  },
+  {
+    "id": 7,
+    "title": "Gaming Peripherals",
+    "subtitle": "Upgrade your setup with the latest gaming accessories",
+    "buttonText": "Shop Now",
+    "buttonLink": "/category/gaming-peripherals",
+    "image": "https://images.unsplash.com/photo-1615655406736-b37c4fabf923?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    "backgroundColor": "bg-gradient-to-r from-purple-900 to-indigo-800"
+  }
+]

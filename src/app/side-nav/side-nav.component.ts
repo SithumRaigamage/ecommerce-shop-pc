@@ -1,27 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
-interface SubNavItem {
-  text: string;
-  link: string;
-}
-
-interface NavItem {
-  text: string;
-  link: string;
-  icon: string;
-  isExpanded: boolean;
-  width: string;
-  height: string;
-  counter?: string;
-  subItems?: SubNavItem[];
-}
-
-const ICON_SIZE = {
-  width: '40px',
-  height: '40px'
-} as const;
+import { SideNavModule } from '../models/SideNavModule';
 
 @Component({
   selector: 'app-side-nav',
@@ -31,164 +11,135 @@ const ICON_SIZE = {
   styleUrls: ['./side-nav.component.css']
 })
 export class SideNavComponent {
-  isExpanded = false;
 
-  toggleSidenav() {
-    this.isExpanded = !this.isExpanded;
-    // When collapsing sidenav, collapse all expanded items
-    if (!this.isExpanded) {
-      this.mainNavItems.forEach(item => item.isExpanded = false);
-    }
-  }
+  @Output() categorySelected = new EventEmitter<string>();
 
-  toggleItem(item: NavItem, event: Event) {
-    event.preventDefault();
-    event.stopPropagation();
-
-    if (item.subItems?.length) {
-      // If sidebar is collapsed, expand it first
-      if (!this.isExpanded) {
-        this.isExpanded = true;
-        // Wait for sidebar expansion before expanding item
-        setTimeout(() => {
-          item.isExpanded = !item.isExpanded;
-        }, 100);
-      } else {
-        item.isExpanded = !item.isExpanded;
-      }
-    }
-  }
-
-  // Helper method to check if item has subitems
-  hasSubItems(item: NavItem): boolean {
-    return item.subItems !== undefined && item.subItems.length > 0;
-  }
-
-  mainNavItems: NavItem[] = [
+  navItems: SideNavModule[] = [
     {
-      text: 'Laptops',
-      link: '/category/laptops',
-      icon: '/assets/icons/laptop.svg',
-      isExpanded: false,
-      width: ICON_SIZE.width,
-      height: ICON_SIZE.height,
-      counter: '18',
-      subItems: [
-        { text: 'Gaming Laptops', link: '/category/laptops/gaming' },
-        { text: 'Business Laptops', link: '/category/laptops/business' },
-        { text: 'Student Laptops', link: '/category/laptops/student' }
-      ]
+      "id": 1,
+      "logo": "fas fa-gamepad fa-3x",
+      "link": "gaming",
+      "text": "Console & Handheld Gaming"
     },
     {
-      text: 'Laptop & Monitor Accessories',
-      link: '/category/accessories',
-      icon: '/assets/icons/monitor.svg',
-      isExpanded: false,
-      width: ICON_SIZE.width,
-      height: ICON_SIZE.height,
-      counter: '4'
+      "id": 2,
+      "logo": "fas fa-hdd fa-3x",
+      "link": "storage",
+      "text": "Storage"
     },
     {
-      text: 'Processors',
-      link: '/category/processors',
-      icon: '/assets/icons/processor.svg',
-      isExpanded: false,
-      width: ICON_SIZE.width,
-      height: ICON_SIZE.height,
-      counter: '18'
+      "id": 3,
+      "logo": "fas fa-laptop fa-3x",
+      "link": "laptop",
+      "text": "Laptop"
     },
     {
-      text: 'Motherboards',
-      link: '/category/motherboards',
-      icon: '/assets/icons/motherboard.svg',
-      isExpanded: false,
-      width: ICON_SIZE.width,
-      height: ICON_SIZE.height,
-      counter: '18'
+      "id": 4,
+      "logo": "fas fa-desktop fa-3x",
+      "link": "accessories",
+      "text": "Laptop & Monitor Accessories"
     },
     {
-      text: 'Memory (RAM)',
-      link: '/category/memory',
-      icon: '/assets/icons/ram.svg',
-      isExpanded: false,
-      width: ICON_SIZE.width,
-      height: ICON_SIZE.height,
-      counter: '18'
+      "id": 5,
+      "logo": "fas fa-microchip fa-3x",
+      "link": "processor",
+      "text": "Processor"
     },
     {
-      text: 'Graphics Cards',
-      link: '/category/graphics-cards',
-      icon: '/assets/icons/gpu.svg',
-      isExpanded: false,
-      width: ICON_SIZE.width,
-      height: ICON_SIZE.height,
-      counter: '18'
+      "id": 6,
+      "logo": "fas fa-server fa-3x",
+      "link": "motherboards",
+      "text": "Motherboards"
     },
     {
-      text: 'Power Supplies',
-      link: '/category/power-supplies',
-      icon: '/assets/icons/psu.svg',
-      isExpanded: false,
-      width: ICON_SIZE.width,
-      height: ICON_SIZE.height,
-      counter: '4'
+      "id": 7,
+      "logo": "fas fa-memory fa-3x",
+      "link": "memory",
+      "text": "Memory (RAM)"
     },
     {
-      text: 'Cooling & Lighting',
-      link: '/category/cooling',
-      icon: '/assets/icons/cooling.svg',
-      isExpanded: false,
-      width: ICON_SIZE.width,
-      height: ICON_SIZE.height,
-      counter: '4'
+      "id": 8,
+      "logo": "fas fa-video fa-3x",
+      "link": "graphics",
+      "text": "Graphics Card"
     },
     {
-      text: 'Storage & NAS',
-      link: '/category/storage',
-      icon: '/assets/icons/storage.svg',
-      isExpanded: false,
-      width: ICON_SIZE.width,
-      height: ICON_SIZE.height,
-      counter: '4'
+      "id": 9,
+      "logo": "fas fa-plug fa-3x",
+      "link": "power",
+      "text": "Power Supply, UPS & Surge Protectors"
     },
     {
-      text: 'Cases',
-      link: '/category/cases',
-      icon: '/assets/icons/case.svg',
-      isExpanded: false,
-      width: ICON_SIZE.width,
-      height: ICON_SIZE.height,
-      counter: '4'
+      "id": 10,
+      "logo": "fas fa-fan fa-3x",
+      "link": "cooling",
+      "text": "Cooling & Lighting"
     },
     {
-      text: 'Monitors',
-      link: '/category/monitors',
-      icon: '/assets/icons/monitor.svg',
-      isExpanded: false,
-      width: ICON_SIZE.width,
-      height: ICON_SIZE.height,
-      counter: '4'
+      "id": 11,
+      "logo": "fas fa-box fa-3x",
+      "link": "cases",
+      "text": "PC Cases"
+    },
+    {
+      "id": 12,
+      "logo": "fas fa-tv fa-3x",
+      "link": "monitors",
+      "text": "Monitors"
+    },
+    {
+      "id": 13,
+      "logo": "fas fa-headphones fa-3x",
+      "link": "audio",
+      "text": "Speakers & Headsets"
+    },
+    {
+      "id": 14,
+      "logo": "fas fa-keyboard fa-3x",
+      "link": "peripherals",
+      "text": "Keyboard & Mouse"
+    },
+    {
+      "id": 15,
+      "logo": "fas fa-chair fa-3x",
+      "link": "chairs",
+      "text": "Gaming Chairs"
+    },
+    {
+      "id": 16,
+      "logo": "fas fa-plug fa-3x",
+      "link": "cables",
+      "text": "Cables & Adapters"
+    },
+    {
+      "id": 17,
+      "logo": "fas fa-usb fa-3x",
+      "link": "external-storage",
+      "text": "External Storage"
+    },
+    {
+      "id": 18,
+      "logo": "fas fa-network-wired fa-3x",
+      "link": "networking",
+      "text": "Networking"
+    },
+    {
+      "id": 19,
+      "logo": "fas fa-dice fa-3x",
+      "link": "software",
+      "text": "Gaming Software"
+    },
+    {
+      "id": 20,
+      "logo": "fas fa-desktop fa-3x",
+      "link": "desktops",
+      "text": "Desktop PCs"
     }
   ];
 
-  readonly settingsNavItems: ReadonlyArray<NavItem> = [
-    {
-      text: 'Settings',
-      link: '/category/settings',
-      icon: '/assets/icons/gear.svg',
-      isExpanded: false,
-      width: ICON_SIZE.width,
-      height: ICON_SIZE.height,
-      counter: '4'
-    },
-    {
-      text: 'Account',
-      link: '/category/account',
-      icon: '/assets/icons/user.svg',
-      isExpanded: false,
-      width: ICON_SIZE.width,
-      height: ICON_SIZE.height,
-      counter: '4'
-    }
-  ];
+  onCategorySelect(link: string) {
+    this.categorySelected.emit(link);
+    //console.log('pressed link',link);
+  }
+
 }
