@@ -1,6 +1,9 @@
 <div class="container">
   <div class="header">
-    <app-main-navbar></app-main-navbar>
+    <app-main-navbar (cartClicked)="toggleCart()"></app-main-navbar>
+  </div>
+  <div class="right" [class.open]="isCartOpen">
+    <app-cart (closeCart)="toggleCart()"></app-cart>
   </div>
   <div class="left">
     <app-side-nav (categorySelected)="onCategorySelected($event)"></app-side-nav>

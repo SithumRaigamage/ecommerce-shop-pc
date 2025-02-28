@@ -1,17 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-main-navbar',
-  imports: [],
   templateUrl: './main-navbar.component.html',
-  styleUrl: './main-navbar.component.css'
+  styleUrls: ['./main-navbar.component.css']
 })
 export class MainNavbarComponent {
-isDropdownOpen: boolean = false;
+  @Output() cartClicked = new EventEmitter<void>();
+  isDropdownOpen: boolean = false;
 
-toggleDropdown() {
-  this.isDropdownOpen = !this.isDropdownOpen;
-}
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
 
+  onCartClick() {
+    this.cartClicked.emit();
+  }
 }
 
