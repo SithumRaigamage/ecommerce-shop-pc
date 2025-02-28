@@ -22,8 +22,8 @@
   grid-area: right;
   position: fixed;
   top: 0;
-  right: -350px; /* Initially hidden */
-  width: 300px;
+  right: -450px; /* Initially hidden */
+  width: 400px;
   height: 100%;
   z-index: 1000;
   background: white;
