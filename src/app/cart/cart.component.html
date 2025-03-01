@@ -5,7 +5,7 @@
       <div class="container mx-auto">
         <div class="flex flex-col lg:flex-row gap-3">
           <!-- products -->
-          <div class="w-full">
+          <div class="w-full max-h-96 overflow-y-auto">
             <!-- item 1 -->
             <div class="bg-blue-50 rounded-xl flex flex-col md:flex-row items-start md:p-6 mb-4 relative">
 
@@ -55,7 +55,6 @@
 
             <!-- item 2 -->
             <div class="bg-blue-50 rounded-xl flex flex-col md:flex-row items-start md:p-6 mb-4 relative">
-
               <div class="w-full lg:max-w-[150px] rounded-xl mr-4 md:mr-6 mb-4 lg:mb-0">
                 <a href="#!">
                   <img src="https://cdn.easyfrontend.com/pictures/portfolio/portfolio7.jpg" alt="Stainless Steel Coffee Spoon"
@@ -100,14 +99,61 @@
                 </div>
               </div>
             </div>
+
+            <!-- item 3 (added item) -->
+            <div class="bg-blue-50 rounded-xl flex flex-col md:flex-row items-start md:p-6 mb-4 relative">
+              <div class="w-full lg:max-w-[150px] rounded-xl mr-4 md:mr-6 mb-4 lg:mb-0">
+                <a href="#!">
+                  <img src="https://cdn.easyfrontend.com/pictures/portfolio/portfolio9.jpg" alt="Classic Silver Spoon"
+                    class="max-w-full h-auto rounded-xl mx-auto" />
+                </a>
+              </div>
+
+              <div class="flex-1">
+                <!-- product details -->
+                <div>
+                  <div class="text-base md:text-lg hover:text-blue-600 mb-4">
+                    <a href="#!">
+                      Classic Silver Spoon
+                    </a>
+                  </div>
+                  <div>
+                    <h3 class="text-xl font-bold text-blue-600">Rs. 1,200</h3>
+                    <div class="h-10 border dark:border-slate-700 rounded-full flex w-36 relative mt-4 overflow-hidden">
+                      <button
+                        class="px-4 py-1 inline-flex justify-center border-r dark:border-slate-700 text-blue-600 hover:bg-blue-600 hover:bg-opacity-10"
+                        type="button">
+                        -
+                      </button>
+                      <input type="number"
+                        class="px-4 py-1 inline-flex justify-center text-center bg-transparent focus:outline-none w-full"
+                        value="1" />
+                      <button
+                        class="px-4 py-1 inline-flex justify-center border-l dark:border-slate-700 text-blue-600 hover:bg-blue-600 hover:bg-opacity-10"
+                        type="button">
+                        +
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- delete button -->
+                <div>
+                  <button
+                    class="w-10 h-10 text-blue-600 inline-flex justify-center items-center rounded-full absolute top-0 right-5 transform translate-x-4 translate-y-4">
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
+
         <!-- Order Summary Section -->
-        <div class="flex flex-col bg-blue-100  dark:bg-opacity-50 rounded-xl p-3">
+        <div class="flex flex-col bg-blue-100 dark:bg-opacity-50 rounded-xl p-3">
           <div class="flex justify-between items-center mb-1">
             <h5 class="text-xl font-medium">Order Summary</h5>
           </div>
-
           <div class="flex justify-between items-center">
             <span>Shipping Fee</span>
             <span class="text-xl font-bold">$234</span>
