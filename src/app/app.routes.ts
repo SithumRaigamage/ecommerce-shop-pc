@@ -3,6 +3,7 @@ import { HomeComponent } from './home/home.component';
 import {SupportComponent} from './support/support.component';
 import {ProductGridComponent} from './product-grid/product-grid.component';
 import { ProductOverviewComponent } from './product-overview/product-overview.component';
+import { ProductorderComponent } from './productorder/productorder.component';
 
 export const routes: Routes = [
   {
@@ -19,5 +20,9 @@ export const routes: Routes = [
   {
     path: 'product-overview/:id',
     component: ProductOverviewComponent
+  },
+  {
+    path: 'product-order',
+    component: ProductorderComponent
   }
 ];
