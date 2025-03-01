@@ -28,18 +28,17 @@ export const routes: Routes = [
   {
     path: 'settings',
     component: ProfileComponent
-
   },
   {
-  path: 'login',
-  component: SignComponent
+    path: 'login',
+    component: SignComponent
   },
   {
     path: 'logout',
     component: SignComponent
   },
-
-  { path: 'product-grid',
+  {
+    path: 'product-grid',
     component: ProductGridComponent
   },
   {
@@ -50,6 +49,32 @@ export const routes: Routes = [
     path: 'product-order',
     component: ProductorderComponent
   },
-
-
+  {
+    path: 'warranty',
+    component: ComingSoonComponent
+  },
+  {
+    path: 'installation',
+    component: ComingSoonComponent
+  },
+  {
+    path: 'contact',
+    component: ComingSoonComponent
+  },
+  {
+    path: 'faq',
+    component: ComingSoonComponent
+  },
+  {
+    path: 'shipping',
+    component: ComingSoonComponent
+  },
+  {
+    path: 'returns',
+    component: ComingSoonComponent
+  },
+  {
+    path: 'track-order',
+    component: ComingSoonComponent
+  }
 ];
