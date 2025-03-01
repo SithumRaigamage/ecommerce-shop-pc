@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../services/product.service';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-product-overview',
@@ -26,7 +27,8 @@ export class ProductOverviewComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductService
+    private productService: ProductService,
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
@@ -79,7 +81,10 @@ export class ProductOverviewComponent implements OnInit {
   toggleFavorite() {
     this.isFavorite = !this.isFavorite;
   }
+
   addToCart() {
-    throw new Error('Method not implemented.');
+    if (this.product) {
+      this.cartService.addToCart(this.product);
+    }
   }
 }

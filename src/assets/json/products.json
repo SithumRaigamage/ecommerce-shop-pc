@@ -2,7 +2,7 @@
   {
     "id": "1",
     "title": "High-Performance Gaming Laptop",
-    "price": 1499.99,
+    "price": 1500,
     "image": "https://cdn.easyfrontend.com/pictures/courses/courses_3_2.png",
     "images": [
       "https://cdn.easyfrontend.com/pictures/courses/courses_3_2.png",
@@ -134,7 +134,7 @@
     "id": "9",
     "title": "Dell XPS 13",
     "price": 999.99,
-    "image": "dell-xps-13.jpg",
+    "image": "https://cdn.easyfrontend.com/pictures/portfolio/portfolio8.jpg",
     "category": "laptop",
     "description": "Premium laptop with powerful performance and sleek design.",
     "rating": 4.9,
