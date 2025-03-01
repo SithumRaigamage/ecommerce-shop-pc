@@ -7,7 +7,7 @@ import { ProductService } from '../services/product.service';
 @Component({
   selector: 'app-product-grid',
   standalone: true,
-  imports: [CommonModule, RouterModule,],
+  imports: [CommonModule, RouterModule],
   providers: [ProductService],
   templateUrl: './product-grid.component.html',
   styleUrls: ['./product-grid.component.css']
