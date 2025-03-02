@@ -32,12 +32,14 @@ export class ProductOverviewComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.Math = Math;
     this.route.params.subscribe(params => {
       const id = params['id'];
       this.productService.getProductById(id).subscribe(product => {
-        this.product = product;
-        console.log('Fetched product:', product);
+        if (product) {
+          this.product = product;
+          this.selectedImage = product.image;
+          console.log('Fetched product:', product);
+        }
       });
     });
   }
@@ -65,10 +67,10 @@ export class ProductOverviewComponent implements OnInit {
     // Here you would typically call a service to process the order
   }
 
-  share() {
+  share(): void {
     const url = window.location.href;
     navigator.clipboard.writeText(url).then(() => {
-      console.log('URL copied to clipboard');
+      alert('Product URL copied to clipboard!');
     }).catch(err => {
       console.error('Failed to copy URL: ', err);
     });
@@ -82,9 +84,35 @@ export class ProductOverviewComponent implements OnInit {
     this.isFavorite = !this.isFavorite;
   }
 
-  addToCart() {
-    if (this.product) {
-      this.cartService.addToCart(this.product);
+  addToCart(): void {
+    if (!this.product) {
+      //alert('Product data is missing.');
+      return;
     }
+
+    if (!this.selectedColor) {
+      //alert('Please select a color.');
+      return;
+    }
+
+    if (!this.selectedSize) {
+      //alert('Please select a size.');
+      return;
+    }
+
+    if (this.quantity <= 0) {
+      //alert('Please select a valid quantity.');
+      return;
+    }
+
+    const cartItem = {
+      product: this.product,
+      color: this.selectedColor,
+      size: this.selectedSize,
+      quantity: this.quantity
+    };
+
+    this.cartService.addToCart(cartItem);
+    //alert('Product added to cart successfully!');
   }
 }

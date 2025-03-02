@@ -21,15 +21,15 @@
                   <div>
                     <h3 class="text-xl font-bold text-blue-600">{{ item.product.price | currency:'LKR' }}</h3>
                     <div class="h-10 border dark:border-slate-700 rounded-full flex w-36 relative mt-4 overflow-hidden">
-                      <button class="px-4 py-1 inline-flex justify-center border-r dark:border-slate-700 text-blue-600 hover:bg-blue-600 hover:bg-opacity-10" type="button" (click)="decreaseQuantity(item.product)">-</button>
+                      <button class="px-4 py-1 inline-flex justify-center border-r dark:border-slate-700 text-blue-600 hover:bg-blue-600 hover:bg-opacity-10" type="button" (click)="decreaseQuantity(item)">-</button>
                       <input type="number" class="px-4 py-1 inline-flex justify-center text-center bg-transparent focus:outline-none w-full" [value]="item.quantity" readonly />
-                      <button class="px-4 py-1 inline-flex justify-center border-l dark:border-slate-700 text-blue-600 hover:bg-blue-600 hover:bg-opacity-10" type="button" (click)="increaseQuantity(item.product)">+</button>
+                      <button class="px-4 py-1 inline-flex justify-center border-l dark:border-slate-700 text-blue-600 hover:bg-blue-600 hover:bg-opacity-10" type="button" (click)="increaseQuantity(item)">+</button>
                     </div>
                   </div>
                 </div>
                 <!-- delete button -->
                 <div>
-                  <button class="w-10 h-10 text-blue-600 inline-flex justify-center items-center rounded-full absolute top-0 right-5 transform translate-x-4 translate-y-4" (click)="removeFromCart(item.product)">
+                  <button class="w-10 h-10 text-blue-600 inline-flex justify-center items-center rounded-full absolute top-0 right-5 transform translate-x-4 translate-y-4" (click)="removeFromCart(item)">
                     <i class="fas fa-trash-alt"></i>
                   </button>
                 </div>
@@ -66,7 +66,7 @@
             <span class="text-xl font-bold">{{ getTotal() | currency:'LKR' }}</span>
           </div>
           <div class="mt-6">
-            <button [routerLink]="['/product-order']" class="w-full bg-blue-600 rounded-md text-white hover:bg-opacity-90 py-2.5">
+            <button [routerLink]="['/checkout']" class="w-full bg-blue-600 rounded-md text-white hover:bg-opacity-90 py-2.5">
               BUY ({{ cartItems.length }})
             </button>
           </div>
