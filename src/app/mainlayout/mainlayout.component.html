@@ -5,7 +5,7 @@
   <div class="right" [class.open]="isCartOpen">
     <app-cart (closeCart)="toggleCart()"></app-cart>
   </div>
-  <div class="left">
+  <div class="left" *ngIf="isLeftVisible">
     <app-side-nav (categorySelected)="onCategorySelected($event)"></app-side-nav>
   </div>
   <div class="main">

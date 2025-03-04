@@ -46,7 +46,7 @@ export const routes: Routes = [
     component: ProductOverviewComponent
   },
   {
-    path: 'product-order',
+    path: 'checkout',
     component: ProductorderComponent
   },
   {
