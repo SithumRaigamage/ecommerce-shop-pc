@@ -18,6 +18,14 @@
   grid-area: left;
   position: relative;
 }
+/* When sidebar is hidden */
+.container.sidebar-hidden {
+  grid-template-areas:
+    "header header"
+    "main main"
+    "footer footer";
+  grid-template-columns: 1fr; /* Full width for main content */
+}
 .right {
   grid-area: right;
   position: fixed;
