@@ -8,6 +8,7 @@ import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SignComponent } from './sign/sign.component';
 import { BillingComponent } from './billing/billing.component';
+import { OrderMessageComponent } from './order-message/order-message.component';
 
 export const routes: Routes = [
   {
@@ -53,6 +54,10 @@ export const routes: Routes = [
   {
     path: 'billing',
     component: BillingComponent
+  },
+  {
+    path: 'thankyou',
+    component: OrderMessageComponent
   },
   {
     path: 'warranty',
