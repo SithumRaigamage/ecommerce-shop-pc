@@ -58,11 +58,33 @@
     "title": "PlayStation 5",
     "price": 499.99,
     "image": "ps5-image.jpg",
-    "category": "gaming",
-    "description": "Next-gen gaming console with enhanced graphics and gameplay.",
+    "images": [
+      "https://cdn.easyfrontend.com/pictures/courses/courses_3_2.png",
+      "https://cdn.easyfrontend.com/pictures/courses/courses_3_2.png",
+      "https://cdn.easyfrontend.com/pictures/courses/courses_3_2.png"
+    ],
+    "category": "laptop",
+    "colors": ["Black", "Silver", "Gray"],
+    "sizes": [
+      { "name": "Small", "description": "Small size for comfort" },
+      { "name": "Medium", "description": "Medium size for everyday use" },
+      { "name": "Large", "description": "Large size for extended use" }
+    ],
     "rating": 4.9,
     "reviewCount": 7000,
-    "orderCount": 1500
+    "orderCount": 1500,
+    "description": "Next-gen gaming console with enhanced graphics and gameplay.",
+    "faqs": [
+      {
+        "question": "What is the warranty period?",
+        "answer": "This laptop comes with a 1-year manufacturer warranty"
+      },
+      {
+        "question": "Does it include pre-installed software?",
+        "answer": "Yes, it comes with Windows 11 pre-installed"
+      }
+    ]
+
   },
   {
     "id": "3",

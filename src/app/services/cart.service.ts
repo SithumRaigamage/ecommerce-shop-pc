@@ -3,9 +3,18 @@ import { BehaviorSubject } from 'rxjs';
 import { ProductModel } from '../models/ProductModel';
 
 export interface CartItemModel {
-  product: ProductModel;
+  product: {
+    id: string;
+    title: string;
+    price: number;
+    image: string;
+    // ...other properties...
+  };
   color: string;
-  size: string;
+  size: {
+    name: string;
+    description: string;
+  };
   quantity: number;
 }
 
