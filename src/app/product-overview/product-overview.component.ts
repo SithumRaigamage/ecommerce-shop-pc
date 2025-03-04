@@ -38,7 +38,7 @@ export class ProductOverviewComponent implements OnInit {
         if (product) {
           this.product = product;
           this.selectedImage = product.image;
-          console.log('Fetched product:', product);
+          //console.log('Fetched product:', product);
         }
       });
     });
@@ -63,7 +63,7 @@ export class ProductOverviewComponent implements OnInit {
       size: this.selectedSize,
       quantity: this.quantity
     };
-    console.log('Submitting order:', orderDetails);
+    //console.log('Submitting order:', orderDetails);
     // Here you would typically call a service to process the order
   }
 

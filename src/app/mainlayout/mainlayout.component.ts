@@ -36,7 +36,7 @@ export class MainlayoutComponent implements OnInit {
   }
 
   onCategorySelected(category: string): void {
-    console.log('category selected: ', category);
+    //console.log('category selected: ', category);
     this.router.navigate(['/product-grid'], { queryParams: { category } });
   }
 }

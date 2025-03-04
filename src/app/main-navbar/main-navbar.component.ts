@@ -17,7 +17,7 @@ export class MainNavbarComponent implements OnInit {
   }];
 
   ngOnInit() {
-    console.log('MainNavbarComponent initialized');
+    //console.log('MainNavbarComponent initialized');
 
     // Check if the user credentials are valid (dummy authentication)
     if (this.user.length > 0 && this.user[0].email === 'test@gmail.com' && this.user[0].password === 'test123') {

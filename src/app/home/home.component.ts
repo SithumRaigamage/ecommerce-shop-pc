@@ -27,16 +27,16 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.homeService.getBanners().subscribe(data => {
-      console.log('Banners fetched:', data);
+      //console.log('Banners fetched:', data);
       this.banners = data || [];  // Fallback to an empty array if data is null/undefined
     });
     this.homeService.getFeaturedProducts().subscribe(data => {
       this.products = data || [];  // Fallback to an empty array if data is null/undefined
-      console.log('Products:', this.products);
+      //console.log('Products:', this.products);
     });
     this.homeService.getCategories().subscribe(data => {
       this.categories = data || [];  // Fallback to an empty array if data is null/undefined
-      console.log('Catergories:', this.categories);
+      //console.log('Catergories:', this.categories);
     });
 
 
