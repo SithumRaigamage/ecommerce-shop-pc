@@ -19,7 +19,7 @@
           <!-- form -->
           <div class="col-span-12 lg:col-span-5">
             <form action="">
-              <h4 class="font-medium text-2xl text-black">Your Billing Details</h4>
+              <h4 class="font-medium text-2xl text-black">Your Order</h4>
               <div class="flex flex-col gap-2 mt-6">
                 <label for="name" class="font-medium text-black">Full Name <span class="text-blue-600">*</span></label>
                 <input type="text"
@@ -68,19 +68,11 @@
                   <div class="col-span-2">
                     <h6 class="font-medium text-black">Product</h6>
                   </div>
-                  <div class="col-span-1">
-                    <h6 class="font-medium text-black">Price</h6>
-                  </div>
 
                   <hr class="col-span-3 my-0 dark:border-slate-700" />
 
-                  <div class="col-span-2">
-                    <h6 class="font-medium text-black">
-                      How to Improve Your Personal Skills (PDF)
-                    </h6>
-                  </div>
-                  <div class="col-span-1">
-                    <h6 class="font-medium text-black">£15.00</h6>
+                  <div *ngFor="let item of items" class="col-span-2">
+                    <h6 class="font-medium text-black">{{ item.product.title }}</h6>
                   </div>
 
                   <hr class="col-span-3 my-0 dark:border-slate-700" />
@@ -89,7 +81,7 @@
                     <h6 class="font-medium text-black">Total</h6>
                   </div>
                   <div class="col-span-1">
-                    <h6 class="font-medium text-black">£35.00</h6>
+                    <h6 class="font-medium text-black">£{{ total }}</h6>
                   </div>
                 </div>
               </div>

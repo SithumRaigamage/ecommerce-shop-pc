@@ -109,7 +109,7 @@
               </div>
             </form>
             <div class="col-span-3 mt-4">
-              <button type="submit" [routerLink]="['/billing']"
+              <button type="submit" [routerLink]="['/billing']" [state]="{ total: (totalAmount + tax).toFixed(2), items: orderItems }"
                 class="text-white bg-blue-600 hover:bg-opacity-90 p-5 px-9 flex justify-center items-center leading-none h-full rounded-md w-full">
                 Proceed To Checkout
               </button>
