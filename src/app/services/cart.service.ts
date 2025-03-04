@@ -16,6 +16,9 @@ export class CartService {
   private cartItems = new BehaviorSubject<CartItemModel[]>([]);
   cartItems$ = this.cartItems.asObservable();
 
+  private checkoutCart = new BehaviorSubject<CartItemModel[]>([]); // NEW: Stores cart items at checkout
+  checkoutCart$ = this.checkoutCart.asObservable();
+
   private readonly shippingFee = 300;
   private readonly taxRate = 0.08;
 
@@ -72,5 +75,15 @@ export class CartService {
 
   getTotal() {
     return this.getSubtotal() + this.getShippingFee() + this.getTax();
+  }
+
+  // NEW: Store cart items for order processing
+  storeCheckoutCart(items: CartItemModel[]) {
+    this.checkoutCart.next(items);
+  }
+
+  // NEW: Retrieve stored checkout cart items
+  getCheckoutCartItems() {
+    return this.checkoutCart.value;
   }
 }
