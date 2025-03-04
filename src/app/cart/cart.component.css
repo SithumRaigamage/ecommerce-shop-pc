@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+.close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 1.5rem;
+
+
+
+}

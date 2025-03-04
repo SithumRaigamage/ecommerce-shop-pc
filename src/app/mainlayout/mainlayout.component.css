@@ -16,6 +16,32 @@
 }
 .left {
   grid-area: left;
+  position: relative;
+}
+.right {
+  grid-area: right;
+  position: fixed;
+  top: 0;
+  right: -450px; /* Initially hidden */
+  width: 400px;
+  height: 100%;
+  z-index: 1000;
+  background: white;
+  padding: 1rem;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease;
+}
+.right.open {
+  right: 0; /* Slide in */
+}
+.right .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 .main {
   grid-area: main;

@@ -1,1 +1,120 @@
-<p>product-overview works!</p>
+<section class="ezy__epoverview16 dark py-14 md:py-0 bg-white dark:bg-[#0b1727] text-zinc-900 dark:text-white relative overflow-hidden z-10">
+  <div class="container px-4 mx-auto">
+    <div class="grid grid-cols-2 gap-6">
+      <div class="col-span-2 lg:col-span-1">
+        <div class="lg:mr-6">
+          <div class="text-center rounded-xl overflow-hidden m-2">
+            <img [src]="selectedImage || product?.image" [alt]="product?.title" class="max-w-full max-h-[450px] object-cover h-auto w-full" />
+          </div>
+          <ul class="flex flex-nowrap gap-3">
+            <a *ngFor="let image of product?.images" href="#!" class="rounded-3 overflow-hidden m-2" (click)="selectImage(image); $event.preventDefault()">
+              <li>
+                <img [src]="image" [alt]="product?.title" [class.border-2]="selectedImage === image" [class.border-blue-600]="selectedImage === image" class="max-w-[120px] object-cover h-auto rounded-xl" />
+              </li>
+            </a>
+          </ul>
+        </div>
+      </div>
+      <div class="col-span-2 lg:col-span-1">
+        <div class="mb-6 lg:mb-12">
+          <h1 class="text-2xl text-blue-600 leading-none md:text-4xl font-medium mb-4">{{ product?.title }}</h1>
+          <p class="opacity-70 mb-6">
+            <span class="text-blue-600">{{ product?.rating }}</span>
+            <i class="fas fa-star mx-2 text-yellow-500"></i>
+            <a href="#!" class="text-blue-600 font-medium ml-1">{{ product?.reviewCount }} Reviews</a>
+            <span class="ml-2 text-blue-600">{{ product?.orderCount }} Orders</span>
+          </p>
+          <h3 class="text-2xl text-blue-600 font-medium"> {{ product?.price | currency:' LKR ' }}</h3>
+        </div>
+        <form (ngSubmit)="onSubmit()">
+          <div class="mb-6">
+            <h5 class="font-medium mb-2 text-blue-600">Color</h5>
+            <div class="flex flex-wrap gap-2 mb-2">
+              <ng-container *ngFor="let color of product?.colors; let i = index">
+                <input type="radio" [id]="'color-' + i" name="color" [value]="color" class="absolute hidden" [(ngModel)]="selectedColor" />
+                <label [for]="'color-' + i" [style.background-color]="color" class="w-8 h-8 rounded-full border-2 border-white dark:border-[#0b1727] outline outline-transparent cursor-pointer mt-1" [ngClass]="{'outline-1 outline-yellow-500': selectedColor === color}"></label>
+              </ng-container>
+            </div>
+          </div>
+          <div class="mb-6">
+            <h5 class="font-medium mb-2">Size: <span class="opacity-50">{{ selectedSize?.name }}</span></h5>
+            <div class="flex gap-2 mb-2">
+              <ng-container *ngFor="let size of product?.sizes; let i = index">
+                <input type="radio" [id]="'size-' + i" name="size" [value]="size" class="absolute hidden" [(ngModel)]="selectedSize" />
+                <label [for]="'size-' + i" class="bg-gray-100 dark:bg-slate-800 cursor-pointer rounded-md flex flex-col overflow-hidden text-start border-2 border-white dark:border-[#0b1727] outline outline-1 px-4 py-3" [ngClass]="{'outline-blue-600': selectedSize === size, 'outline-white dark:outline-[#0b1727] hover:outline-blue-600': selectedSize !== size}">
+                  <b class="mb-2">{{ size.name }}</b>
+                  <span class="opacity-75 mb-2">{{ size.description }}</span>
+                </label>
+              </ng-container>
+            </div>
+          </div>
+          <div class="mb-6">
+            <h5 class="font-medium mb-2 text-blue-600">QTY</h5>
+            <div class="h-11 border dark:border-slate-700 rounded-full flex w-36 relative mt-4 overflow-hidden">
+              <button type="button" (click)="decreaseQuantity()" class="w-1/3 pb-1 inline-flex justify-center items-center cursor-pointer text-2xl font-medium border-r dark:border-slate-700 text-blue-600 hover:bg-opacity-20">-</button>
+              <input type="number" [(ngModel)]="quantity" name="quantity" class="w-1/3 text-lg font-bold px-2 py-1 text-center bg-transparent text-blue-600 focus:outline-none" />
+              <button type="button" (click)="increaseQuantity()" class="w-1/3 pb-1 inline-flex justify-center items-center cursor-pointer text-2xl font-medium border-l dark:border-slate-700 text-blue-600 hover:bg-opacity-10">+</button>
+            </div>
+          </div>
+          <div class="flex items-center my-7">
+            <button type="submit" class="bg-blue-600 border border-blue-600 text-white text-sm rounded uppercase cursor-pointer hover:bg-opacity-90 px-10 py-2.5 mr-2">BUY NOW</button>
+            <button type="button" (click)="addToCart()" class="border border-blue-600 text-blue-600 hover:bg-blue-600 cursor-pointer hover:text-white text-sm rounded uppercase px-6 py-2.5 mr-2">Add to cart</button>
+            <button type="button" (click)="toggleFavorite()" class=" hover:transform hover:scale-120 text-blue-600 mr-2 px-3 py-2 text-lg font-bold">
+              <i class="far" [ngClass]="{'fa-heart': !isFavorite, 'fas fa-heart': isFavorite}"></i>
+            </button>
+            <button type="button" (click)="share()" class=" rounded cursor-pointer hover:transform hover:scale-120 text-blue-600 mr-2 px-3 py-2 text-lg font-bold">
+              <i class="fas fa-share-alt mr-1 text-sm"></i>
+            </button>
+          </div>
+          <p class="opacity-70 lg:mr-56 xl:mr-80 text-blue-600">{{ product?.description }}</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Collapsible Section with Tabs -->
+<section class="mt-10">
+  <div class="container mx-auto">
+    <div class="bg-white dark:bg-[#0b1727] rounded-lg shadow-lg">
+      <div class="flex justify-around border-b dark:border-gray-700">
+        <button (click)="selectedTab = 'details'" [ngClass]="{'border-b-2 border-blue-600': selectedTab === 'details'}" class="py-4 px-6 text-blue-600">Product Details</button>
+        <button (click)="selectedTab = 'specifications'" [ngClass]="{'border-b-2 border-blue-600': selectedTab === 'specifications'}" class="py-4 px-6 text-blue-600">Specifications</button>
+        <button (click)="selectedTab = 'comments'" [ngClass]="{'border-b-2 border-blue-600': selectedTab === 'comments'}" class="py-4 px-6 text-blue-600">Comments</button>
+        <button (click)="selectedTab = 'files'" [ngClass]="{'border-b-2 border-blue-600': selectedTab === 'files'}" class="py-4 px-6 text-blue-600">Files</button>
+        <button (click)="selectedTab = 'faq'" [ngClass]="{'border-b-2 border-blue-600': selectedTab === 'faq'}" class="py-4 px-6 text-blue-600">FAQ</button>
+        <button (click)="selectedTab = 'related'" [ngClass]="{'border-b-2 border-blue-600': selectedTab === 'related'}" class="py-4 px-6 text-blue-600">Related Products</button>
+      </div>
+      <div class="p-6">
+        <div *ngIf="selectedTab === 'details'">
+          <h2 class="text-xl font-semibold mb-4">Product Details</h2>
+          <p>{{ product?.description }}</p>
+        </div>
+        <div *ngIf="selectedTab === 'comments'">
+          <h2 class="text-xl font-semibold mb-4">Comments</h2>
+          <!-- Add comments section here -->
+        </div>
+        <div *ngIf="selectedTab === 'files'">
+          <h2 class="text-xl font-semibold mb-4">Files</h2>
+          <!-- Add files section here -->
+        </div>
+        <div *ngIf="selectedTab === 'specifications'">
+          <h2 class="text-xl font-semibold mb-4">Specifications</h2>
+          <ul>
+            <li *ngFor="let spec of product?.specifications">
+              <strong>{{ spec.name }}:</strong> {{ spec.value }}
+            </li>
+          </ul>
+        </div>
+        <div *ngIf="selectedTab === 'faq'">
+          <h2 class="text-xl font-semibold mb-4">Frequently Asked Questions</h2>
+          <div *ngFor="let faq of product?.faqs" class="mb-4">
+            <h3 class="font-semibold">{{ faq.question }}</h3>
+            <p>{{ faq.answer }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

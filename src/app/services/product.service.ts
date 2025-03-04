@@ -48,4 +48,15 @@ export class ProductService {
     );
   }
 
+  getProductById(id: string): Observable<ProductModel | undefined> {
+    return this.http.get<ProductModel[]>(this.productsUrl).pipe(
+      map(products => {
+        console.log('Fetched products for ID filtering:', products);
+        const product = products.find(product => product.id === id);
+        console.log(`Filtered products for ID "${id}":`, product);
+        return product;
+      })
+    );
+  }
+
 }

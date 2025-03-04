@@ -1,0 +1,77 @@
+<div class="flex justify-center max-w-6xl mx-auto">
+  <div class="rounded w-full relative">
+    <button class="close-btn w-6 h-6 absolute top-2 right-2 z-20" (click)="toggleCart()">X</button>
+    <div class="ezy__epcart1 light py-10 md:py-15 bg-white dark:text-black relative">
+      <div class="container mx-auto">
+        <div class="flex flex-col lg:flex-row gap-3">
+          <!-- products -->
+          <div class="w-full max-h-96 overflow-y-auto">
+            <div *ngFor="let item of cartItems" class="bg-blue-50 rounded-xl flex flex-col md:flex-row items-start md:p-6 mb-4 relative">
+              <div class="w-full lg:max-w-[150px] rounded-xl mr-4 md:mr-6 mb-4 lg:mb-0">
+                <a href="#!">
+                  <img [src]="item.product.image" [alt]="item.product.title" class="max-w-full h-auto rounded-xl mx-auto" />
+                </a>
+              </div>
+              <div class="flex-1">
+                <!-- product details -->
+                <div>
+                  <div class="text-base md:text-lg hover:text-blue-600 mb-4">
+                    <a href="#!">{{ item.product.title }}</a>
+                  </div>
+                  <div>
+                    <h3 class="text-xl font-bold text-blue-600">{{ item.product.price | currency:'LKR' }}</h3>
+                    <div class="h-10 border dark:border-slate-700 rounded-full flex w-36 relative mt-4 overflow-hidden">
+                      <button class="px-4 py-1 inline-flex justify-center border-r dark:border-slate-700 text-blue-600 hover:bg-blue-600 hover:bg-opacity-10" type="button" (click)="decreaseQuantity(item)">-</button>
+                      <input type="number" class="px-4 py-1 inline-flex justify-center text-center bg-transparent focus:outline-none w-full" [value]="item.quantity" readonly />
+                      <button class="px-4 py-1 inline-flex justify-center border-l dark:border-slate-700 text-blue-600 hover:bg-blue-600 hover:bg-opacity-10" type="button" (click)="increaseQuantity(item)">+</button>
+                    </div>
+                  </div>
+                </div>
+                <!-- delete button -->
+                <div>
+                  <button class="w-10 h-10 text-blue-600 inline-flex justify-center items-center rounded-full absolute top-0 right-5 transform translate-x-4 translate-y-4" (click)="removeFromCart(item)">
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Order Summary Section -->
+        <div class="flex flex-col bg-blue-100 dark:bg-opacity-50 rounded-xl p-3">
+          <div class="flex justify-between items-center mb-1">
+            <h5 class="text-xl font-medium">Order Summary</h5>
+          </div>
+          <div class="flex justify-between items-center">
+            <span>Shipping Fee</span>
+            <span class="text-xl font-bold">{{ getShippingFee() | currency:'LKR' }}</span>
+          </div>
+          <hr class="my-4 border-slate-300 dark:border-blue-400 dark:border-opacity-20 block md:hidden" />
+
+          <div class="flex justify-between items-center">
+            <span>Sub total</span>
+            <span class="text-xl font-bold">{{ getSubtotal() | currency:'LKR' }}</span>
+          </div>
+          <hr class="my-4 border-slate-300 dark:border-blue-400 dark:border-opacity-20" />
+
+          <div class="flex justify-between items-center">
+            <span>Tax</span>
+            <span class="text-xl font-bold">{{ getTax() | currency:'LKR' }}</span>
+          </div>
+          <hr class="my-4 border-slate-300 dark:border-blue-400 dark:border-opacity-20" />
+
+          <div class="flex justify-between items-center">
+            <span class="fs-5 font-bold">Total</span>
+            <span class="text-xl font-bold">{{ getTotal() | currency:'LKR' }}</span>
+          </div>
+          <div class="mt-6">
+            <button [routerLink]="['/checkout']" class="w-full bg-blue-600 rounded-md text-white hover:bg-opacity-90 py-2.5">
+              BUY ({{ cartItems.length }})
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
