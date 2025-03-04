@@ -66,7 +66,7 @@
             <span class="text-xl font-bold">{{ getTotal() | currency:'LKR' }}</span>
           </div>
           <div class="mt-6">
-            <button [routerLink]="['/checkout']" class="w-full bg-blue-600 rounded-md text-white hover:bg-opacity-90 py-2.5">
+            <button (click)="checkout()" [routerLink]="['/checkout']" class="w-full bg-blue-600 rounded-md text-white hover:bg-opacity-90 py-2.5">
               BUY ({{ cartItems.length }})
             </button>
           </div>

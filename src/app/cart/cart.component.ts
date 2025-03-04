@@ -56,4 +56,8 @@ export class CartComponent implements OnInit {
   getTotal() {
     return this.cartService.getTotal();
   }
+
+  checkout() {
+    this.cartService.storeCheckoutCart(this.cartItems); // ✅ Store cart items in service
+  }
 }
