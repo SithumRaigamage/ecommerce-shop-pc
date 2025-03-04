@@ -17,10 +17,10 @@ export class ProductService {
   getCategories(): Observable<string[]> {
     return this.http.get<ProductModel[]>(this.productsUrl).pipe(
       map(products => {
-        console.log('Fetched products for categories:', products);
+        //console.log('Fetched products for categories:', products);
         const categories = new Set(products.map(product => product.category));
         const categoriesArray = Array.from(categories);
-        console.log('Extracted categories:', categoriesArray);
+        //console.log('Extracted categories:', categoriesArray);
         return categoriesArray;
       })
     );
@@ -30,9 +30,9 @@ export class ProductService {
   getProductsByCategory(category: string): Observable<ProductModel[]> {
     return this.http.get<ProductModel[]>(this.productsUrl).pipe(
       map(products => {
-        console.log('Fetched products for category filtering:', products);
+        //console.log('Fetched products for category filtering:', products);
         const filteredProducts = products.filter(product => product.category?.toLowerCase() === category.toLowerCase());
-        console.log(`Filtered products for category "${category}":`, filteredProducts);
+        //console.log(`Filtered products for category "${category}":`, filteredProducts);
         return filteredProducts;
       })
     );
@@ -42,7 +42,7 @@ export class ProductService {
   getAllProducts(): Observable<ProductModel[]> {
     return this.http.get<ProductModel[]>(this.productsUrl).pipe(
       map(products => {
-        console.log('Fetched all products:', products);
+        //console.log('Fetched all products:', products);
         return products;
       })
     );
@@ -51,9 +51,9 @@ export class ProductService {
   getProductById(id: string): Observable<ProductModel | undefined> {
     return this.http.get<ProductModel[]>(this.productsUrl).pipe(
       map(products => {
-        console.log('Fetched products for ID filtering:', products);
+        //console.log('Fetched products for ID filtering:', products);
         const product = products.find(product => product.id === id);
-        console.log(`Filtered products for ID "${id}":`, product);
+        //console.log(`Filtered products for ID "${id}":`, product);
         return product;
       })
     );
