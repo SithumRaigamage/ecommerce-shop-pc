@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-billing',
@@ -18,7 +19,7 @@ export class BillingComponent implements OnInit {
   billingForm!: FormGroup;
   paymentForm!: FormGroup;
 
-  constructor(private route: ActivatedRoute, private fb: FormBuilder) {}
+  constructor(private route: ActivatedRoute, private fb: FormBuilder, private toastr: ToastrService, private router: Router) {}
 
   ngOnInit() {
     const state = history.state;
@@ -46,14 +47,16 @@ export class BillingComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.billingForm.valid && (this.selectedPaymentMethod !== 'card' || this.paymentForm.valid)) {
+    if (this.billingForm.valid && this.selectedPaymentMethod && (this.selectedPaymentMethod !== 'card' || this.paymentForm.valid)) {
       // Handle form submission
       console.log('Billing Form:', this.billingForm.value);
       console.log('Payment Form:', this.paymentForm.value);
       console.log('Selected Payment Method:', this.selectedPaymentMethod);
       console.log('Form submitted successfully');
+      this.router.navigate(['/thankyou']);
     } else {
       console.log('Form validation failed');
+      this.toastr.error('Please fill in all required fields correctly and select a payment method', 'Validation Error');
     }
   }
 }

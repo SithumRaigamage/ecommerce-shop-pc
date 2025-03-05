@@ -38,6 +38,12 @@ export class ProductOverviewComponent implements OnInit {
         if (product) {
           this.product = product;
           this.selectedImage = product.image;
+          if (this.product?.colors && this.product.colors.length > 0) {
+            this.selectedColor = this.product.colors[0];
+          }
+          if (this.product?.sizes && this.product.sizes.length > 0) {
+            this.selectedSize = this.product.sizes[0];
+          }
           //console.log('Fetched product:', product);
         }
       });

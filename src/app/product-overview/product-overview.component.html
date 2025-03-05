@@ -31,7 +31,7 @@
             <h5 class="font-medium mb-2 text-blue-600">Color</h5>
             <div class="flex flex-wrap gap-2 mb-2">
               <ng-container *ngFor="let color of product?.colors; let i = index">
-                <input type="radio" [id]="'color-' + i" name="color" [value]="color" class="absolute hidden" [(ngModel)]="selectedColor" />
+                <input type="radio" [id]="'color-' + i" name="color" [value]="color" class="absolute hidden" [(ngModel)]="selectedColor" [checked]="i === 0" />
                 <label [for]="'color-' + i" [style.background-color]="color" class="w-8 h-8 rounded-full border-2 border-white dark:border-[#0b1727] outline outline-transparent cursor-pointer mt-1" [ngClass]="{'outline-1 outline-yellow-500': selectedColor === color}"></label>
               </ng-container>
             </div>
@@ -40,7 +40,7 @@
             <h5 class="font-medium mb-2">Size: <span class="opacity-50">{{ selectedSize?.name }}</span></h5>
             <div class="flex gap-2 mb-2">
               <ng-container *ngFor="let size of product?.sizes; let i = index">
-                <input type="radio" [id]="'size-' + i" name="size" [value]="size" class="absolute hidden" [(ngModel)]="selectedSize" />
+                <input type="radio" [id]="'size-' + i" name="size" [value]="size" class="absolute hidden" [(ngModel)]="selectedSize" [checked]="i === 0" />
                 <label [for]="'size-' + i" class="bg-gray-100 dark:bg-slate-800 cursor-pointer rounded-md flex flex-col overflow-hidden text-start border-2 border-white dark:border-[#0b1727] outline outline-1 px-4 py-3" [ngClass]="{'outline-blue-600': selectedSize === size, 'outline-white dark:outline-[#0b1727] hover:outline-blue-600': selectedSize !== size}">
                   <b class="mb-2">{{ size.name }}</b>
                   <span class="opacity-75 mb-2">{{ size.description }}</span>
