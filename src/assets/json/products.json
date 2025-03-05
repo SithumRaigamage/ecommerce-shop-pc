@@ -1,5 +1,38 @@
 [
   {
+    "id": "2",
+    "title": "PlayStation 5",
+    "price": 499.99,
+    "image": "ps5-image.jpg",
+    "images": [
+      "https://cdn.easyfrontend.com/pictures/courses/courses_3_2.png",
+      "https://cdn.easyfrontend.com/pictures/courses/courses_3_2.png",
+      "https://cdn.easyfrontend.com/pictures/courses/courses_3_2.png"
+    ],
+    "category": "laptop",
+    "colors": ["Black", "Silver", "Gray"],
+    "sizes": [
+      { "name": "Small", "description": "Small size for comfort" },
+      { "name": "Medium", "description": "Medium size for everyday use" },
+      { "name": "Large", "description": "Large size for extended use" }
+    ],
+    "rating": 4.9,
+    "reviewCount": 7000,
+    "orderCount": 1500,
+    "description": "Next-gen gaming console with enhanced graphics and gameplay.",
+    "faqs": [
+      {
+        "question": "What is the warranty period?",
+        "answer": "This laptop comes with a 1-year manufacturer warranty"
+      },
+      {
+        "question": "Does it include pre-installed software?",
+        "answer": "Yes, it comes with Windows 11 pre-installed"
+      }
+    ]
+
+  },
+  {
     "id": "1",
     "title": "Lenovo LOQ 15IRX9 i7 14th GEN HX + RTX 4060 8GB",
     "price": 467000,
@@ -48,40 +81,17 @@
         "name": "Graphics",
         "value": "NVIDIA® GeForce RTX™ 4060 8GB GDDR6 TGP 115W"
       }
-    ]
-  },
-  {
-    "id": "2",
-    "title": "PlayStation 5",
-    "price": 499.99,
-    "image": "ps5-image.jpg",
-    "images": [
-      "https://cdn.easyfrontend.com/pictures/courses/courses_3_2.png",
-      "https://cdn.easyfrontend.com/pictures/courses/courses_3_2.png",
-      "https://cdn.easyfrontend.com/pictures/courses/courses_3_2.png"
     ],
-    "category": "laptop",
-    "colors": ["Black", "Silver", "Gray"],
-    "sizes": [
-      { "name": "Small", "description": "Small size for comfort" },
-      { "name": "Medium", "description": "Medium size for everyday use" },
-      { "name": "Large", "description": "Large size for extended use" }
-    ],
-    "rating": 4.9,
-    "reviewCount": 7000,
-    "orderCount": 1500,
-    "description": "Next-gen gaming console with enhanced graphics and gameplay.",
-    "faqs": [
+    "files": [
       {
-        "question": "What is the warranty period?",
-        "answer": "This laptop comes with a 1-year manufacturer warranty"
+        "name": "User Manual",
+        "url": "assets/files/lenovo-user-manual.pdf"
       },
       {
-        "question": "Does it include pre-installed software?",
-        "answer": "Yes, it comes with Windows 11 pre-installed"
+        "name": "Warranty Information",
+        "url": "assets/files/lenovo-warranty.pdf"
       }
     ]
-
   },
   {
     "id": "3",

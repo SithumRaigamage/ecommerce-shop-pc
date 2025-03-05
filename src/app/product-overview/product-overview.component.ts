@@ -23,6 +23,7 @@ export class ProductOverviewComponent implements OnInit {
   isFavorite: boolean = true;
   selectedImage: string | undefined;
   selectedTab: string = 'details';
+  faqs: { question: string, answer: string, open: boolean }[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -43,6 +44,9 @@ export class ProductOverviewComponent implements OnInit {
           }
           if (this.product?.sizes && this.product.sizes.length > 0) {
             this.selectedSize = this.product.sizes[0];
+          }
+          if (this.product?.faqs) {
+            this.faqs = this.product.faqs.map(faq => ({ ...faq, open: false }));
           }
           //console.log('Fetched product:', product);
         }
@@ -119,5 +123,9 @@ export class ProductOverviewComponent implements OnInit {
 
     this.cartService.addToCart(cartItem);
     this.toastr.success('Product added to cart successfully!', 'Success');
+  }
+
+  toggleFaq(index: number): void {
+    this.faqs[index].open = !this.faqs[index].open;
   }
 }
