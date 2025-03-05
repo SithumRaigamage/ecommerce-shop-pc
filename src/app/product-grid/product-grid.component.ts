@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, ActivatedRoute } from '@angular/router';
 import { ProductService } from '../services/product.service';
+import { FilterSectionComponent } from '../filter-section/filter-section.component';
 
 @Component({
   selector: 'app-product-grid',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule,FilterSectionComponent],
   providers: [ProductService],
   templateUrl: './product-grid.component.html',
   styleUrls: ['./product-grid.component.css']

@@ -324,6 +324,133 @@
         "url": "assets/files/asus_rog_strix_x670e_a_manual.pdf"
       }
     ]
+  },
+  {
+    "id": "7",
+    "title": "CORSAIR DOMINATOR TITANIUM RGB 32GB (2X16GB) DDR5 6400MHZ - Intel XMP Memory",
+    "price": 108000,
+    "image": "assets/products/corsair_dominator_titanium_rgb_32gb.png",
+    "images": [
+      "assets/products/corsair_dominator_titanium_rgb_32gb.png",
+      "assets/products/corsair_dominator_titanium_rgb_32gb.png"
+    ],
+    "category": "memory",
+    "sizes": [
+      { "name": "32GB", "description": "CMP32GX5M2B6400C32" },
+      { "name": "64GB", "description": "CMP64GX5M2B6400C32" }
+    ],
+    "rating": 4.8,
+    "reviewCount": 85,
+    "orderCount": 40,
+    "description": "High-performance DDR5 memory with XMP 3.0 profile, RGB lighting, and an aluminum heat spreader.",
+    "faqs": [
+      { "question": "What is the warranty period?", "answer": "3 Years Warranty." }
+    ],
+    "specifications": [
+      { "name": "Memory Type", "value": "DDR5" },
+      { "name": "Tested Speed", "value": "6400 MHz" },
+      { "name": "Tested Latency", "value": "32-40-40-84" },
+      { "name": "SPD Speed", "value": "4800 MHz" },
+      { "name": "SPD Voltage", "value": "1.1V" },
+      { "name": "Tested Voltage", "value": "1.40V" }
+    ]
+  },
+  {
+    "id": "8",
+    "title": "ASUS ROG RTX 5090 Astral 32GB GDDR7 Graphics Card",
+    "price": 1499000,
+    "image": "assets/products/asus_rog_rtx_5090.png",
+    "images": [
+      "assets/products/asus_rog_rtx_5090.png",
+      "assets/products/asus_rog_rtx_5090.png"
+    ],
+    "category": "graphics",
+    "rating": 5.0,
+    "reviewCount": 200,
+    "orderCount": 120,
+    "description": "Powerful NVIDIA RTX 5090 graphics card with 32GB GDDR7, PCIe 5.0, and AI performance of 3593 TOPs.",
+    "faqs": [
+      { "question": "What is the warranty period?", "answer": "3 Years Warranty." }
+    ],
+    "specifications": [
+      { "name": "Video Memory", "value": "32GB GDDR7" },
+      { "name": "Memory Speed", "value": "28 Gbps" },
+      { "name": "CUDA Cores", "value": "21760" },
+      { "name": "Resolution", "value": "7680 x 4320" },
+      { "name": "Interface", "value": "2 x HDMI 2.1b, 3 x DisplayPort 2.1b" }
+    ]
+  },
+  {
+    "id": "9",
+    "title": "ASUS ROG STRIX 1000W 80+ PLATINUM POWER SUPPLY",
+    "price": 85500,
+    "image": "assets/products/asus_rog_strix_1000w.png",
+    "images": [
+      "assets/products/asus_rog_strix_1000w.png",
+      "assets/products/asus_rog_strix_1000w.png"
+    ],
+    "category": "power",
+    "rating": 4.7,
+    "reviewCount": 95,
+    "orderCount": 55,
+    "description": "1000W high-efficiency PSU with 80+ Platinum certification, active PFC, and premium protection features.",
+    "faqs": [
+      { "question": "What is the warranty period?", "answer": "3 Years Warranty." }
+    ],
+    "specifications": [
+      { "name": "Efficiency", "value": "80Plus Platinum" },
+      { "name": "Total Output", "value": "1000W" },
+      { "name": "Protection Features", "value": "OPP/OVP/UVP/SCP/OCP/OTP" },
+      { "name": "ATX Standard", "value": "ATX 3.1" }
+    ]
+  },
+  {
+    "id": "10",
+    "title": "ASUS ROG STRIX LC III 360 ARGB Liquid Cooler",
+    "price": 99000,
+    "image": "assets/products/asus_rog_strix_lc_iii_360.png",
+    "images": [
+      "assets/products/asus_rog_strix_lc_iii_360.png",
+      "assets/products/asus_rog_strix_lc_iii_360.png"
+    ],
+    "category": "cooling",
+    "rating": 4.8,
+    "reviewCount": 80,
+    "orderCount": 45,
+    "description": "High-performance liquid cooler with AURA Sync support and 7th Gen Asetek pump.",
+    "faqs": [
+      { "question": "What is the warranty period?", "answer": "3 Years Warranty." }
+    ],
+    "specifications": [
+      { "name": "Radiator Size", "value": "360mm" },
+      { "name": "Fan Speed", "value": "800 - 2200 RPM" },
+      { "name": "Noise Level", "value": "36 dB(A)" },
+      { "name": "Compatibility", "value": "Intel LGA 1700, 1200, AMD AM5, AM4" }
+    ]
+  },
+  {
+    "id": "11",
+    "title": "CORSAIR 3500X ARGB Black / White Case",
+    "price": 34500,
+    "image": "assets/products/corsair_3500x_argb.png",
+    "images": [
+      "assets/products/corsair_3500x_argb.png",
+      "assets/products/corsair_3500x_argb.png"
+    ],
+    "category": "cases",
+    "rating": 4.6,
+    "reviewCount": 70,
+    "orderCount": 30,
+    "description": "Premium ATX case with tempered glass panel and ARGB lighting, supporting multiple cooling configurations.",
+    "faqs": [
+      { "question": "What is the warranty period?", "answer": "1 Year Warranty." }
+    ],
+    "specifications": [
+      { "name": "Motherboard Support", "value": "Mini-ITX, Micro-ATX, ATX, E-ATX" },
+      { "name": "Maximum GPU Length", "value": "410mm" },
+      { "name": "Radiator Compatibility", "value": "120mm, 140mm, 240mm, 280mm, 360mm" },
+      { "name": "Front IO Ports", "value": "USB 3.2 Gen 2 Type-C, USB 3.2 Gen 1 Type-A, Audio in/out" }
+    ]
   }
 
 

@@ -4,12 +4,12 @@
       <div class="col-span-2 lg:col-span-1">
         <div class="lg:mr-6">
           <div class="text-center rounded-xl overflow-hidden m-2">
-            <img [src]="selectedImage || product?.image" [alt]="product?.title" class="max-w-full max-h-[450px] object-cover h-auto w-full" />
+            <img [src]="selectedImage || product?.image" [alt]="product?.title" class="max-w-full max-h-[450px] object-cover h-auto w-full" style="height: 450px; width: 100%;" />
           </div>
           <ul class="flex flex-nowrap gap-3">
             <a *ngFor="let image of product?.images" href="#!" class="rounded-3 overflow-hidden m-2" (click)="selectImage(image); $event.preventDefault()">
               <li>
-                <img [src]="image" [alt]="product?.title" [class.border-2]="selectedImage === image" [class.border-blue-600]="selectedImage === image" class="max-w-[120px] object-cover h-auto rounded-xl" />
+                <img [src]="image" [alt]="product?.title" [class.border-2]="selectedImage === image" [class.border-blue-600]="selectedImage === image" class="max-w-[120px] object-cover h-auto rounded-xl" style="height: 120px; width: 120px;" />
               </li>
             </a>
           </ul>
