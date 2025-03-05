@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class ProductService {
 
   private productsUrl = 'assets/json/products.json';
+  private filtersUrl = 'assets/json/filters.json';
 
   constructor(private http: HttpClient) { }
 
@@ -55,6 +56,23 @@ export class ProductService {
         const product = products.find(product => product.id === id);
         //console.log(`Filtered products for ID "${id}":`, product);
         return product;
+      })
+    );
+  }
+
+  // Get filter options
+  getFilterOptions(category: string): Observable<any[]> {
+    console.log('Requesting filters for category:', category);
+    return this.http.get<any>(this.filtersUrl).pipe(
+      map(filters => {
+        console.log('Fetched filters data:', filters);
+        if (filters.category === category) {
+          console.log('Found matching filters for category:', filters.filters);
+          return filters.filters;
+        } else {
+          console.log('No matching filters found for category:', category);
+          return [];
+        }
       })
     );
   }

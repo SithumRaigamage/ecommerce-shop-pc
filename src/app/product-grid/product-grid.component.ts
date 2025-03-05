@@ -13,14 +13,11 @@ import { FilterSectionComponent } from '../filter-section/filter-section.compone
   templateUrl: './product-grid.component.html',
   styleUrls: ['./product-grid.component.css']
 })
-export class ProductGridComponent {
-searchTerm: any;
-filterProducts() {
-throw new Error('Method not implemented.');
-}
-
+export class ProductGridComponent implements OnInit {
+  searchTerm: any;
   filteredProducts: ProductModel[] = [];
-selectedCategory: any;
+  selectedCategory: any;
+  filterOptions: any;
 
   constructor(private productService: ProductService, private route: ActivatedRoute) { }
 
@@ -32,8 +29,12 @@ selectedCategory: any;
         this.filteredProducts = products;
         //console.log('Filtered Products:', this.filteredProducts);
       });
+
+      this.productService.getFilterOptions(category).subscribe(options => {
+        console.log('Filter Options:', options);
+        this.filterOptions = options;
+      });
     });
   }
-
 
 }

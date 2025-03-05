@@ -133,7 +133,7 @@ export class SideNavComponent {
 
   onCategorySelect(link: string) {
     this.categorySelected.emit(link);
-    //console.log('pressed link',link);
+    //console.log('pressed link :',link);
   }
 
 }
