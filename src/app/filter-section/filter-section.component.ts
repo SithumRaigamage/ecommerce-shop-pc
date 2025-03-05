@@ -9,4 +9,12 @@ import { Component, Input } from '@angular/core';
 })
 export class FilterSectionComponent {
   @Input() filterOptions: any;
+
+  ngOnInit() {
+    console.log('Filter options:', this.filterOptions);
+  }
+
+  ngOnChanges() {
+    //console.log('Filter options updated:', this.filterOptions);
+  }
 }
