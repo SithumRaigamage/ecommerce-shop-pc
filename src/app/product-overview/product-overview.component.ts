@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../services/product.service';
 import { CartService } from '../services/cart.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-overview',
@@ -14,8 +15,6 @@ import { CartService } from '../services/cart.service';
   styleUrls: ['./product-overview.component.css']
 })
 export class ProductOverviewComponent implements OnInit {
-  Math: any;
-
 
   product: ProductModel | undefined;
   selectedColor: string | undefined;
@@ -28,7 +27,8 @@ export class ProductOverviewComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
-    private cartService: CartService
+    private cartService: CartService,
+    private toastr: ToastrService // Inject ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -63,15 +63,14 @@ export class ProductOverviewComponent implements OnInit {
       size: this.selectedSize,
       quantity: this.quantity
     };
-    //console.log('Submitting order:', orderDetails);
-    // Here you would typically call a service to process the order
   }
 
   share(): void {
     const url = window.location.href;
     navigator.clipboard.writeText(url).then(() => {
-      alert('Product URL copied to clipboard!');
+      this.toastr.success('Product URL copied to clipboard!', 'Success');
     }).catch(err => {
+      this.toastr.error('Failed to copy URL.', 'Error');
       console.error('Failed to copy URL: ', err);
     });
   }
@@ -86,22 +85,22 @@ export class ProductOverviewComponent implements OnInit {
 
   addToCart(): void {
     if (!this.product) {
-      //alert('Product data is missing.');
+      this.toastr.error('Product data is missing.', 'Error');
       return;
     }
 
     if (!this.selectedColor) {
-      //alert('Please select a color.');
+      this.toastr.warning('Please select a color.', 'Warning');
       return;
     }
 
     if (!this.selectedSize) {
-      //alert('Please select a size.');
+      this.toastr.warning('Please select a size.', 'Warning');
       return;
     }
 
     if (this.quantity <= 0) {
-      //alert('Please select a valid quantity.');
+      this.toastr.warning('Please select a valid quantity.', 'Warning');
       return;
     }
 
@@ -113,6 +112,6 @@ export class ProductOverviewComponent implements OnInit {
     };
 
     this.cartService.addToCart(cartItem);
-    //alert('Product added to cart successfully!');
+    this.toastr.success('Product added to cart successfully!', 'Success');
   }
 }

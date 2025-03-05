@@ -1,25 +1,22 @@
 [
   {
     "id": "1",
-    "title": "High-Performance Gaming Laptop",
-    "price": 1500,
-    "image": "https://cdn.easyfrontend.com/pictures/courses/courses_3_2.png",
+    "title": "Lenovo LOQ 15IRX9 i7 14th GEN HX + RTX 4060 8GB",
+    "price": 467000,
+    "image": "assets/products/lenovoLap.png",
     "images": [
-      "https://cdn.easyfrontend.com/pictures/courses/courses_3_2.png",
-      "https://cdn.easyfrontend.com/pictures/courses/courses_3_2.png",
-      "https://cdn.easyfrontend.com/pictures/courses/courses_3_2.png"
+      "assets/products/lenovo1.png",
+      "assets/products/lenovo2.png"
     ],
     "category": "laptop",
-    "colors": ["Black", "Silver", "Gray"],
+    "colors": ["Black"],
     "sizes": [
-      { "name": "Small", "description": "Small size for comfort" },
-      { "name": "Medium", "description": "Medium size for everyday use" },
-      { "name": "Large", "description": "Large size for extended use" }
+      { "name": "15.6", "description": "Ideal size" }
     ],
     "rating": 4.5,
     "reviewCount": 100,
     "orderCount": 200,
-    "description": "High-performance gaming laptop with an AMD Ryzen 9 processor, 16GB RAM, and 512GB SSD storage",
+    "description": "High-performance gaming laptop with an Intel® Core™ i7 processor , 16GB RAM, and 1TB SSD storage",
     "faqs": [
       {
         "question": "What is the warranty period?",
@@ -33,23 +30,23 @@
     "specifications": [
       {
         "name": "Processor",
-        "value": "AMD Ryzen 9 5900HX"
+        "value": "Intel® Core™ i7 "
       },
       {
         "name": "RAM",
-        "value": "16GB DDR4"
+        "value": "6GB DDR5 4800Mhz (16GB X 1)"
       },
       {
         "name": "Storage",
-        "value": "512GB NVMe SSD"
+        "value": "1TB NVMe SSD"
       },
       {
         "name": "Display",
-        "value": "15.6-inch Full HD 144Hz"
+        "value": "15.6 FHD (1920x1080) IPS 300nits Anti-glare, 100% sRGB, 144Hz, G-SYNC®"
       },
       {
         "name": "Graphics",
-        "value": "NVIDIA RTX 3070"
+        "value": "NVIDIA® GeForce RTX™ 4060 8GB GDDR6 TGP 115W"
       }
     ]
   },
