@@ -9,9 +9,14 @@ import { Component, Input } from '@angular/core';
 })
 export class FilterSectionComponent {
   @Input() filterOptions: any;
+  filterKeys: string[] = [];
 
   ngOnInit() {
     console.log('Filter options:', this.filterOptions);
+    if (this.filterOptions) {
+      // Exclude priceRange since it's not a list
+      this.filterKeys = Object.keys(this.filterOptions).filter(key => key !== 'priceRange');
+    }
   }
 
   ngOnChanges() {
