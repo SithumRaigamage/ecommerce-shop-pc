@@ -61,20 +61,8 @@ export class ProductService {
   }
 
   // Get filter options
-  getFilterOptions(category: string): Observable<any[]> {
-    console.log('Requesting filters for category:', category);
-    return this.http.get<any>(this.filtersUrl).pipe(
-      map(filters => {
-        console.log('Fetched filters data:', filters);
-        if (filters.category === category) {
-          console.log('Found matching filters for category:', filters.filters);
-          return filters.filters;
-        } else {
-          console.log('No matching filters found for category:', category);
-          return [];
-        }
-      })
-    );
+  getFilterOptions(): Observable<any> {
+    return this.http.get<any>(this.filtersUrl);
   }
 
 }
