@@ -1,3 +1,4 @@
+import { filter } from 'rxjs/operators';
 import { ProductModel } from '../models/ProductModel';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -30,9 +31,10 @@ export class ProductGridComponent implements OnInit {
         //console.log('Filtered Products:', this.filteredProducts);
       });
 
-      this.productService.getFilterOptions(category).subscribe(options => {
-        console.log('Filter Options:', options);
-        this.filterOptions = options;
+      this.productService.getFilterOptions().subscribe((data) => {
+        console.log('Received filter options:', data);  // Check the data received
+        this.filterOptions = data?.filters;
+        console.log('Assigned filterOptions:', this.filterOptions);  // Log after assignment
       });
     });
   }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { map, Observable, of } from 'rxjs';
+import { map, Observable, of, tap } from 'rxjs';
 
 import { ProductModel } from '../models/ProductModel';
 import { HttpClient } from '@angular/common/http';
@@ -62,7 +62,11 @@ export class ProductService {
 
   // Get filter options
   getFilterOptions(): Observable<any> {
-    return this.http.get<any>(this.filtersUrl);
+    return this.http.get<any>(this.filtersUrl).pipe(
+      tap(data => {
+        //console.log('Received filter options:', data); // Log the data received
+      })
+    );
   }
 
 }
