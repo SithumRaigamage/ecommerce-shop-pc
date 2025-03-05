@@ -31,7 +31,7 @@ export class MainNavbarComponent implements OnInit {
 
     this.cartService.cartItems$.subscribe(items => {
       this.cartItemCount = items.length;
-      console.log('cart items in navbar: ', items);
+      //console.log('cart items in navbar: ', items);
     });
   }
 

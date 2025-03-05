@@ -19,7 +19,7 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.cartService.cartItems$.subscribe(items => {
       this.cartItems = items; // ✅ Directly assign the correct type
-      console.log('Cart items:', this.cartItems);
+      //console.log('Cart items:', this.cartItems);
     });
   }
 
