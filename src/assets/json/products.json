@@ -1,39 +1,68 @@
 [
   {
-    "id": "2",
-    "title": "PlayStation 5",
-    "price": 499.99,
-    "image": "ps5-image.jpg",
+    "id": "1",
+    "title": "PLAYSTATION 5 SLIM DISK EDITION CONSOLE 1TB - CFI-2016A01Y",
+    "price": 180000,
+    "image": "assets/products/ps5.png",
     "images": [
-      "https://cdn.easyfrontend.com/pictures/courses/courses_3_2.png",
-      "https://cdn.easyfrontend.com/pictures/courses/courses_3_2.png",
-      "https://cdn.easyfrontend.com/pictures/courses/courses_3_2.png"
+      "assets/products/ps5.png",
+      "assets/products/ps5.png"
     ],
-    "category": "laptop",
-    "colors": ["Black", "Silver", "Gray"],
+    "category": "gaming",
+    "colors": ["White"],
     "sizes": [
-      { "name": "Small", "description": "Small size for comfort" },
-      { "name": "Medium", "description": "Medium size for everyday use" },
-      { "name": "Large", "description": "Large size for extended use" }
+      { "name": "SLIM", "description": "Small size for comfort" }
+
     ],
     "rating": 4.9,
-    "reviewCount": 7000,
-    "orderCount": 1500,
+    "reviewCount": 70,
+    "orderCount": 100,
     "description": "Next-gen gaming console with enhanced graphics and gameplay.",
     "faqs": [
       {
         "question": "What is the warranty period?",
-        "answer": "This laptop comes with a 1-year manufacturer warranty"
+        "answer": "This console comes with a 1-year manufacturer warranty"
       },
       {
-        "question": "Does it include pre-installed software?",
-        "answer": "Yes, it comes with Windows 11 pre-installed"
+        "question": "Does it include the console",
+        "answer": "Yes, it comes with console"
+      }
+    ],
+    "specifications": [
+      {
+        "name": "Ray Tracing",
+        "value": "Immerse yourself in worlds with a new level of realism as rays of light are individually simulated, creating true-to-life shadows and reflections in supported PS5® games. "
+      },
+      {
+        "name": "4K-TV Gaming",
+        "value": "Play your favorite PS5® games on your stunning 4K TV."
+      },
+      {
+        "name": "Up to 120fps with 120Hz output",
+        "value": "Enjoy smooth and fluid high frame rate gameplay at up to 120fps for compatible games, with support for 120Hz output on 4K displays."
+      },
+      {
+        "name": "HDR Technology",
+        "value": "With an HDR TV, supported PS5® games display an unbelievably vibrant and lifelike range of colors."
+      },
+      {
+        "name": "Tempest 3D AudioTech",
+        "value": "Immerse yourself in soundscapes where it feels as if the sound comes from every direction. Your surroundings truly come alive with Tempest 3D AudioTech** in supported games."
+      }
+    ],
+    "files": [
+      {
+        "name": "User Manual",
+        "url": "assets/files/ps5.pdf"
+      },
+      {
+        "name": "Warranty Information",
+        "url": "assets/files/ps5.pdf"
       }
     ]
-
   },
   {
-    "id": "1",
+    "id": "2",
     "title": "Lenovo LOQ 15IRX9 i7 14th GEN HX + RTX 4060 8GB",
     "price": 467000,
     "image": "assets/products/lenovoLap.png",
@@ -95,244 +124,209 @@
   },
   {
     "id": "3",
-    "title": "Xbox Series X",
-    "price": 499.99,
-    "image": "xbox-series-x.jpg",
-    "category": "gaming",
-    "description": "Powerful gaming console with a large library of exclusive games.",
+    "title": "TEAM TFORCE VULCAN Z SATA SSD 256GB - 1TB",
+    "price": 12000,
+    "image": "assets/products/tforce_vulcan_z.png",
+    "images": [
+      "assets/products/tforce_vulcan_z.png",
+      "assets/products/tforce_vulcan_z.png"
+    ],
+    "category": "storage",
+    "colors": ["Black"],
+    "sizes": [
+      { "name": "256GB", "description": "Sequential Read: up to 520 MB/s, Sequential Write: up to 450 MB/s, Terabyte Written: 80TBW" },
+      { "name": "512GB", "description": "Sequential Read: up to 540 MB/s, Sequential Write: up to 470 MB/s, Terabyte Written: 120TBW" },
+      { "name": "1TB", "description": "Sequential Read: up to 550 MB/s, Sequential Write: up to 500 MB/s, Terabyte Written: 200TBW" }
+    ],
     "rating": 4.7,
-    "reviewCount": 4000,
-    "orderCount": 800
+    "reviewCount": 50,
+    "orderCount": 120,
+    "description": "TEAM TFORCE VULCAN Z SATA SSD offers high-speed performance with a durable build, perfect for gaming and professional use.",
+    "faqs": [
+      {
+        "question": "What is the warranty period?",
+        "answer": "This SSD comes with a 3-year manufacturer warranty."
+      },
+      {
+        "question": "Does it have a DRAM cache?",
+        "answer": "No, this SSD does not have a DRAM cache."
+      }
+    ],
+    "specifications": [
+      { "name": "Model", "value": "VULCAN Z SSD" },
+      { "name": "Capacity", "value": "256GB / 512GB / 1TB" },
+      { "name": "Sequential Read", "value": "Up to 550 MB/s" },
+      { "name": "Sequential Write", "value": "Up to 500 MB/s" },
+      { "name": "Terabyte Written", "value": "80TBW / 120TBW / 200TBW" },
+      { "name": "DRAM Cache", "value": "No" },
+      { "name": "Dimensions", "value": "100(L)x69.9(W)x7(H)mm" },
+      { "name": "Heat Sink", "value": "N/A" }
+    ],
+    "files": [
+      {
+        "name": "User Manual",
+        "url": "assets/files/tforce_vulcan_z_manual.pdf"
+      },
+      {
+        "name": "Warranty Information",
+        "url": "assets/files/tforce_vulcan_z_warranty.pdf"
+      }
+    ]
   },
   {
     "id": "4",
-    "title": "Nintendo Switch Lite",
-    "price": 199.99,
-    "image": "switch-lite.jpg",
-    "category": "gaming",
-    "description": "Compact and lightweight version of the Nintendo Switch.",
-    "rating": 4.6,
-    "reviewCount": 3000,
-    "orderCount": 600
+    "title": "MSI MAG 27CQ6F 27\" WQHD 180Hz 0.5ms AMD FreeSync Curved Gaming Monitor",
+    "price": 85000,
+    "image": "assets/products/msi_mag_27cq6f.png",
+    "images": [
+      "assets/products/msi_mag_27cq6f.png",
+      "assets/products/msi_mag_27cq6f_side.png"
+    ],
+    "category": "monitor",
+    "colors": ["Black"],
+    "sizes": [
+      { "name": "27-inch", "description": "WQHD (2560x1440), 180Hz, 0.5ms, 1500R Curved" }
+    ],
+    "rating": 4.8,
+    "reviewCount": 60,
+    "orderCount": 90,
+    "description": "MSI MAG 27CQ6F is a high-performance gaming monitor with a 27-inch WQHD curved display, 180Hz refresh rate, and ultra-fast 0.5ms response time for an immersive gaming experience.",
+    "faqs": [
+      {
+        "question": "What is the warranty period?",
+        "answer": "This monitor comes with a 3-year manufacturer warranty."
+      },
+      {
+        "question": "Does it support AMD FreeSync?",
+        "answer": "Yes, this monitor supports AMD FreeSync technology."
+      }
+    ],
+    "specifications": [
+      { "name": "Panel Size", "value": "27\" (69 cm)" },
+      { "name": "Resolution", "value": "2560 x 1440 (WQHD)" },
+      { "name": "Curvature", "value": "1500R" },
+      { "name": "Panel Type", "value": "Rapid VA" },
+      { "name": "Brightness", "value": "300 nits (Typ.)" },
+      { "name": "Contrast Ratio", "value": "5000:1 (Typ.), DCR 100000000:1" },
+      { "name": "Refresh Rate", "value": "180Hz" },
+      { "name": "Response Time", "value": "0.5ms (GtG, Min.)" },
+      { "name": "Dynamic Refresh Rate Technology", "value": "AMD FreeSync" },
+      { "name": "HDR Support", "value": "HDR Ready" },
+      { "name": "Viewing Angle", "value": "178° (H) / 178° (V)" },
+      { "name": "Video Ports", "value": "1 x DisplayPort (1.4), 2 x HDMI™ (2.0b)" },
+      { "name": "Audio Ports", "value": "1 x Headphone Out" },
+      { "name": "Power Input", "value": "100 ~ 240V, 50/60Hz" },
+      { "name": "Adjustments", "value": "Tilt: -5° ~ 20°, Swivel: N/A, Pivot: N/A, Height: N/A" },
+      { "name": "Kensington Lock", "value": "Yes" },
+      { "name": "Dimensions", "value": "610 x 250 x 451.6 mm (with stand)" },
+      { "name": "Frameless Design", "value": "Yes" }
+    ],
+    "files": [
+      {
+        "name": "User Manual",
+        "url": "assets/files/msi_mag_27cq6f_manual.pdf"
+      },
+      {
+        "name": "Warranty Information",
+        "url": "assets/files/msi_mag_27cq6f_warranty.pdf"
+      }
+    ]
   },
   {
     "id": "5",
-    "title": "Samsung 1TB SSD",
-    "price": 109.99,
-    "image": "samsung-ssd.jpg",
-    "category": "storage",
-    "description": "Fast and reliable solid-state drive for storing games and files.",
-    "rating": 4.8,
-    "reviewCount": 4000,
-    "orderCount": 1200
+    "title": "AMD Ryzen 7 9800X3D Processor (Up to 5.2 GHz, 8-Cores, 16-Threads)",
+    "price": 197000,
+    "image": "assets/products/amd_ryzen_7_9800x3d.png",
+    "images": [
+      "assets/products/amd_ryzen_7_9800x3d.png",
+      "assets/products/amd_ryzen_7_9800x3d_side.png"
+    ],
+    "category": "processor",
+    "colors": ["Black"],
+    "sizes": [
+      { "name": "8 Cores, 16 Threads", "description": "Max Boost Clock: 5.2 GHz" }
+    ],
+    "rating": 4.9,
+    "reviewCount": 110,
+    "orderCount": 45,
+    "description": "The AMD Ryzen 7 9800X3D offers exceptional performance with 8 cores, 16 threads, and up to 5.2 GHz boost clock, ideal for gaming and multitasking.",
+    "faqs": [
+      {
+        "question": "What is the warranty period?",
+        "answer": "This processor comes with a 3-year manufacturer warranty."
+      },
+      {
+        "question": "Is it unlocked for overclocking?",
+        "answer": "Yes, the AMD Ryzen 7 9800X3D is unlocked for overclocking."
+      }
+    ],
+    "specifications": [
+      { "name": "Architecture", "value": "Zen 5" },
+      { "name": "Base Clock", "value": "4.7 GHz" },
+      { "name": "Max Boost Clock", "value": "Up to 5.2 GHz" },
+      { "name": "Cache", "value": "L1 Cache: 640 KB, L2 Cache: 8 MB, L3 Cache: 96 MB" },
+      { "name": "TDP", "value": "120W" },
+      { "name": "Socket", "value": "AM5" },
+      { "name": "Max Operating Temperature", "value": "95°C" },
+      { "name": "Recommended Cooler", "value": "Liquid cooler recommended" },
+      { "name": "Supported OS", "value": "Windows 10/11, Ubuntu x86-64, RHEL x86-64" }
+    ],
+    "files": [
+      {
+        "name": "User Manual",
+        "url": "assets/files/amd_ryzen_7_9800x3d_manual.pdf"
+      }
+    ]
   },
   {
     "id": "6",
-    "title": "WD 2TB External HDD",
-    "price": 79.99,
-    "image": "wd-external-hdd.jpg",
-    "category": "storage",
-    "description": "Affordable external hard drive for massive storage needs.",
-    "rating": 4.5,
-    "reviewCount": 2500,
-    "orderCount": 1000
-  },
-  {
-    "id": "7",
-    "title": "Seagate 4TB External HDD",
-    "price": 99.99,
-    "image": "seagate-external-hdd.jpg",
-    "category": "storage",
-    "description": "High-capacity external hard drive with fast data transfer.",
-    "rating": 4.7,
-    "reviewCount": 3000,
-    "orderCount": 1500
-  },
-  {
-    "id": "8",
-    "title": "SanDisk 512GB Flash Drive",
-    "price": 19.99,
-    "image": "sandisk-flash.jpg",
-    "category": "storage",
-    "description": "Portable flash drive for easy data transfer and backup.",
-    "rating": 4.6,
-    "reviewCount": 3500,
-    "orderCount": 1800
-  },
-  {
-    "id": "9",
-    "title": "Dell XPS 13",
-    "price": 999.99,
-    "image": "https://cdn.easyfrontend.com/pictures/portfolio/portfolio8.jpg",
-    "category": "laptop",
-    "description": "Premium laptop with powerful performance and sleek design.",
-    "rating": 4.9,
-    "reviewCount": 6000,
-    "orderCount": 800
-  },
-  {
-    "id": "10",
-    "title": "Apple MacBook Air",
-    "price": 999.99,
-    "image": "macbook-air.jpg",
-    "category": "laptop",
-    "description": "Lightweight and portable laptop with long battery life.",
-    "rating": 4.8,
-    "reviewCount": 5000,
-    "orderCount": 1200
-  },
-  {
-    "id": "11",
-    "title": "HP Spectre x360",
-    "price": 1099.99,
-    "image": "hp-spectre.jpg",
-    "category": "laptop",
-    "description": "Convertible laptop with a stunning 4K display.",
-    "rating": 4.7,
-    "reviewCount": 4000,
-    "orderCount": 1000
-  },
-  {
-    "id": "12",
-    "title": "Lenovo ThinkPad X1 Carbon",
-    "price": 1399.99,
-    "image": "lenovo-x1-carbon.jpg",
-    "category": "laptop",
-    "description": "Business laptop with exceptional performance and durability.",
-    "rating": 4.8,
-    "reviewCount": 4500,
-    "orderCount": 900
-  },
-  {
-    "id": "13",
-    "title": "Logitech MX Master 3 Mouse",
-    "price": 99.99,
-    "image": "logitech-mx-master3.jpg",
-    "category": "accessories",
-    "description": "Ergonomic mouse for improved productivity and comfort.",
-    "rating": 4.9,
-    "reviewCount": 5000,
-    "orderCount": 1200
-  },
-  {
-    "id": "14",
-    "title": "Dell Ultrasharp Monitor",
-    "price": 399.99,
-    "image": "dell-ultrasharp.jpg",
-    "category": "accessories",
-    "description": "Professional-grade monitor with color accuracy.",
-    "rating": 4.8,
-    "reviewCount": 3500,
-    "orderCount": 800
-  },
-  {
-    "id": "15",
-    "title": "ErgoChair 2",
-    "price": 399.99,
-    "image": "ergochair-2.jpg",
-    "category": "accessories",
-    "description": "Ergonomic chair designed for long hours of work.",
-    "rating": 4.7,
-    "reviewCount": 2000,
-    "orderCount": 600
-  },
-  {
-    "id": "16",
-    "title": "Razer BlackWidow V3 Keyboard",
-    "price": 129.99,
-    "image": "razer-blackwidow-v3.jpg",
-    "category": "accessories",
-    "description": "Mechanical keyboard with customizable RGB lighting.",
-    "rating": 4.7,
-    "reviewCount": 3000,
-    "orderCount": 1200
-  },
-  {
-    "id": "17",
-    "title": "Intel Core i7-12700K",
-    "price": 379.99,
-    "image": "intel-i7.jpg",
-    "category": "processor",
-    "description": "High-performance processor for gaming and content creation.",
-    "rating": 4.9,
-    "reviewCount": 4000,
-    "orderCount": 1200
-  },
-  {
-    "id": "18",
-    "title": "AMD Ryzen 9 5900X",
-    "price": 699.99,
-    "image": "amd-ryzen-9.jpg",
-    "category": "processor",
-    "description": "Powerful processor with 12 cores and 24 threads.",
-    "rating": 4.8,
-    "reviewCount": 3500,
-    "orderCount": 1100
-  },
-  {
-    "id": "19",
-    "title": "Intel Core i5-11600K",
-    "price": 299.99,
-    "image": "intel-i5.jpg",
-    "category": "processor",
-    "description": "Mid-range processor offering solid performance for gaming.",
-    "rating": 4.7,
-    "reviewCount": 2500,
-    "orderCount": 800
-  },
-  {
-    "id": "20",
-    "title": "AMD Ryzen 7 5800X",
-    "price": 449.99,
-    "image": "amd-ryzen-7.jpg",
-    "category": "processor",
-    "description": "High-performance processor for gaming and multitasking.",
-    "rating": 4.7,
-    "reviewCount": 3000,
-    "orderCount": 900
-  },
-  {
-    "id": "21",
-    "title": "ASUS ROG Strix Z590-E",
-    "price": 249.99,
-    "image": "asus-z590.jpg",
+    "title": "ASUS ROG STRIX X670E-A GAMING WIFI Motherboard",
+    "price": 129000,
+    "image": "assets/products/asus_rog_strix_x670e_a_gaming_wifi.png",
+    "images": [
+      "assets/products/asus_rog_strix_x670e_a_gaming_wifi.png",
+      "assets/products/asus_rog_strix_x670e_a_gaming_wifi_side.png"
+    ],
     "category": "motherboards",
-    "description": "Feature-packed motherboard for high-end gaming setups.",
-    "rating": 4.8,
-    "reviewCount": 3000,
-    "orderCount": 900
-  },
-  {
-    "id": "22",
-    "title": "MSI MAG B550 TOMAHAWK",
-    "price": 169.99,
-    "image": "msi-b550.jpg",
-    "category": "motherboards",
-    "description": "Solid mid-range motherboard for gaming and content creation.",
+    "colors": ["White"],
+    "sizes": [
+      { "name": "ATX", "description": "Dimensions: 12 x 9.6 inches" }
+    ],
     "rating": 4.7,
-    "reviewCount": 2500,
-    "orderCount": 700
-  },
-  {
-    "id": "23",
-    "title": "Gigabyte AORUS Z390 MASTER",
-    "price": 299.99,
-    "image": "gigabyte-z390.jpg",
-    "category": "motherboards",
-    "description": "High-performance motherboard with excellent overclocking support.",
-    "rating": 4.9,
-    "reviewCount": 4000,
-    "orderCount": 1100
-  },
-  {
-    "id": "24",
-    "title": "ASRock B550 Phantom Gaming 4",
-    "price": 129.99,
-    "image": "asrock-b550.jpg",
-    "category": "motherboards",
-    "description": "Budget-friendly motherboard with great performance for gaming.",
-    "rating": 4.6,
-    "reviewCount": 2000,
-    "orderCount": 600
+    "reviewCount": 80,
+    "orderCount": 55,
+    "description": "ASUS ROG STRIX X670E-A GAMING WIFI motherboard supports AMD Ryzen 9000, 8000, and 7000 series processors, offering premium features and overclocking support.",
+    "faqs": [
+      {
+        "question": "What is the warranty period?",
+        "answer": "This motherboard comes with a 3-year manufacturer warranty."
+      },
+      {
+        "question": "Does it support Wi-Fi 6E?",
+        "answer": "Yes, it supports Wi-Fi 6E with dual-band 2.4/5/6GHz frequency."
+      }
+    ],
+    "specifications": [
+      { "name": "Socket", "value": "AM5" },
+      { "name": "Chipset", "value": "AMD X670" },
+      { "name": "Memory", "value": "Supports DDR5 up to 192GB" },
+      { "name": "Graphics", "value": "1 x DisplayPort, 1 x HDMI® port" },
+      { "name": "Storage", "value": "4 x M.2 slots, 4 x SATA 6Gb/s ports" },
+      { "name": "Ethernet", "value": "1 x Intel® 2.5Gb Ethernet" },
+      { "name": "Wireless & Bluetooth", "value": "Wi-Fi 6E, Bluetooth v5.2" },
+      { "name": "USB Ports", "value": "12 x USB (7 x Type-A, 2 x Type-C)" },
+      { "name": "Audio", "value": "ROG SupremeFX 7.1 Surround Sound" },
+      { "name": "Special Features", "value": "AURA Sync, PCIe 5.0 support, ASUS Thermal Solution" }
+    ],
+    "files": [
+      {
+        "name": "User Manual",
+        "url": "assets/files/asus_rog_strix_x670e_a_manual.pdf"
+      }
+    ]
   }
+
+
+
+
 ]

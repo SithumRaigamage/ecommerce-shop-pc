@@ -36,8 +36,8 @@ export class SideNavComponent {
     {
       "id": 4,
       "logo": "fas fa-desktop fa-3x",
-      "link": "accessories",
-      "text": "Laptop & Monitor Accessories"
+      "link": "monitor",
+      "text": "Monitors"
     },
     {
       "id": 5,
