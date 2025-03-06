@@ -479,6 +479,31 @@
     ]
   },
   {
+    "id": "asus-rog-thor-1000w-platinum-ii",
+    "title": "Asus ROG-THOR 1000 PLATINUM II 1000W 80+ Platinum Full Modular",
+    "price": 132000,
+    "image": "https://www.nanotek.lk/storage/products/171/UfwjdAxrurS2dfkFl79hf5G9Lyu0AQ0RVz5oeaWo.png",
+    "category": "power",
+    "specifications": [
+      { "name": "Wattage", "value": "1000W" },
+      { "name": "Efficiency", "value": "80+ Platinum" },
+      { "name": "Modular", "value": "Full Modular" }
+    ]
+  },
+  {
+    "id": "asus-rog-loki-sfx-l-1000w",
+    "title": "ASUS ROG LOKI SFX-L 850W Platinum ATX 3.0 Quiet Compact Form Factor Power Supply",
+    "price": 85000,
+    "image": "https://www.nanotek.lk/storage/products/173/i4HSChzkMq33m6sTGORnQO5btdBoh4AmJoWCu09H.png",
+    "category": "power",
+    "specifications": [
+      { "name": "Wattage", "value": "1000W" },
+      { "name": "Efficiency", "value": "80+ Platinum" },
+      { "name": "Form Factor", "value": "SFX-L" },
+      { "name": "ATX Version", "value": "3.0" }
+    ]
+  },
+  {
     "id": "10",
     "title": "ASUS ROG STRIX LC III 360 ARGB Liquid Cooler",
     "price": 99000,
