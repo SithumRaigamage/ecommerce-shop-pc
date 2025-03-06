@@ -534,6 +534,44 @@
     ]
   },
   {
+    "id": "team-t-create-expert-64gb-96gb-kit-6400mhz",
+    "title": "TEAM T-CREATE EXPERT (64GB-96GB) KIT 6400Mhz",
+    "price": 79000,
+    "image": "https://www.nanotek.lk/storage/products/910/bva1MU0qLHUUTXDciNAsGfxAFp8lT3JItDKYiZGL.png",
+    "category": "memory",
+    "specifications": [
+      { "name": "Capacity", "value": "64GB-96GB Kit" },
+      { "name": "Type", "value": "DDR5" },
+      { "name": "Speed", "value": "6400MHz" }
+    ]
+  },
+  {
+    "id": "adata-xpg-gammix-16gb-ddr4-3200mhz-d35",
+    "title": "Adata XPG Gammix 16GB DDR4 3200Mhz D35",
+    "price": 11500,
+    "image": "https://www.nanotek.lk/storage/products/956/fR1oZ07lDOaO9y6s1eh6iXm1jTrsjAAMPFg39Prz.png",
+    "category": "memory",
+    "specifications": [
+      { "name": "Capacity", "value": "16GB" },
+      { "name": "Type", "value": "DDR4" },
+      { "name": "Speed", "value": "3200MHz" }
+    ]
+  },
+  {
+    "id": "team-tforce-delta-rgb-5600mhz-intel-16gb-32gb-kit",
+    "title": "TEAM TFORCE DELTA RGB 5600MHZ - INTEL (16GB-32GB) KIT",
+    "price": 40000,
+    "image": "https://www.nanotek.lk/storage/products/958/zmq3yAsFpg06WUBBfOJ13Xd1zIMqcR3qhRu6Jpeg.png",
+    "category": "memory",
+    "specifications": [
+      { "name": "Capacity", "value": "16GB-32GB Kit" },
+      { "name": "Type", "value": "DDR5" },
+      { "name": "Speed", "value": "5600MHz" },
+      { "name": "LED Lighting", "value": "RGB" },
+      { "name": "Compatibility", "value": "Intel" }
+    ]
+  },
+  {
     "id": "8",
     "title": "ASUS ROG RTX 5090 Astral 32GB GDDR7 Graphics Card",
     "price": 1499000,
