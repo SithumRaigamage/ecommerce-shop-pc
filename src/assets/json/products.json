@@ -528,6 +528,29 @@
     ]
   },
   {
+    "id": "asus-rog-strix-lc-ii-360-argb-white",
+    "title": "ASUS ROG STRIX LC II 360 ARGB WHITE EDITION",
+    "price": 89000,
+    "image": "https://www.nanotek.lk/storage/products/288/TFCfcjDnor3xk3GABXRmuiJ5JNmnz7FTeyHxh245.png",
+    "category": "cooling",
+    "specifications": [
+      { "name": "Radiator Size", "value": "360mm" },
+      { "name": "ARGB", "value": "Yes" },
+      { "name": "Color", "value": "White" }
+    ]
+  },
+  {
+    "id": "msi-mag-coreliquid-c240",
+    "title": "MSI MAG CORELIQUID C240",
+    "price": 33000,
+    "image": "https://www.nanotek.lk/storage/products/1019/M4mnBjch31hfXEqpJktpMFsfuvaI3xpRK5s1ojVF.png",
+    "category": "cooling",
+    "specifications": [
+      { "name": "Radiator Size", "value": "240mm" },
+      { "name": "ARGB", "value": "Yes" }
+    ]
+  },
+  {
     "id": "11",
     "title": "CORSAIR 3500X ARGB Black / White Case",
     "price": 34500,
@@ -550,7 +573,24 @@
       { "name": "Radiator Compatibility", "value": "120mm, 140mm, 240mm, 280mm, 360mm" },
       { "name": "Front IO Ports", "value": "USB 3.2 Gen 2 Type-C, USB 3.2 Gen 1 Type-A, Audio in/out" }
     ]
+  },
+  {
+    "id": "antec-cx600m-rgb-black",
+    "title": "ANTEC CX600M RGB BLACK",
+    "price": 185000,
+    "image": "https://www.nanotek.lk/storage/products/556/F7XjD0vWYyzOhXY7xFijJTPf5mbhddJeNZsSErkE.png",
+    "category": "cases",
+    "description": "The ANTEC CX600M RGB BLACK is a mini tower case featuring a tempered glass side panel and support for Micro-ATX and ITX motherboards. It includes multiple RGB fans for enhanced aesthetics.",
+    "specifications": [
+      {"name": "Form Factor", "value": "Mini Tower"},
+      {"name": "Dimensions", "value": "436 x 290 x 370mm"},
+      {"name": "Motherboard Support", "value": "Micro-ATX, ITX"},
+      {"name": "Side Panel", "value": "4mm Tempered Glass"},
+      {"name": "Included Fans", "value": "3 x 120mm RGB Fans"},
+      {"name": "Warranty", "value": "1 Year"}
+    ]
   }
+
 
 
 
