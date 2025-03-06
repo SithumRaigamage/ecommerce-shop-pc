@@ -1,5 +1,7 @@
 [
+
   {
+    "_comment": "Gaming",
     "id": "1",
     "title": "PLAYSTATION 5 SLIM DISK EDITION CONSOLE 1TB - CFI-2016A01Y",
     "price": 180000,
@@ -63,6 +65,58 @@
   },
   {
     "id": "2",
+    "title": "TEAM TFORCE VULCAN Z SATA SSD 256GB - 1TB",
+    "price": 12000,
+    "image": "assets/products/tforce_vulcan_z.png",
+    "images": [
+      "assets/products/tforce_vulcan_z.png",
+      "assets/products/tforce_vulcan_z.png"
+    ],
+    "category": "storage",
+    "colors": ["Black"],
+    "sizes": [
+      { "name": "256GB", "description": "Sequential Read: up to 520 MB/s, Sequential Write: up to 450 MB/s, Terabyte Written: 80TBW" },
+      { "name": "512GB", "description": "Sequential Read: up to 540 MB/s, Sequential Write: up to 470 MB/s, Terabyte Written: 120TBW" },
+      { "name": "1TB", "description": "Sequential Read: up to 550 MB/s, Sequential Write: up to 500 MB/s, Terabyte Written: 200TBW" }
+    ],
+    "rating": 4.7,
+    "reviewCount": 50,
+    "orderCount": 120,
+    "description": "TEAM TFORCE VULCAN Z SATA SSD offers high-speed performance with a durable build, perfect for gaming and professional use.",
+    "faqs": [
+      {
+        "question": "What is the warranty period?",
+        "answer": "This SSD comes with a 3-year manufacturer warranty."
+      },
+      {
+        "question": "Does it have a DRAM cache?",
+        "answer": "No, this SSD does not have a DRAM cache."
+      }
+    ],
+    "specifications": [
+      { "name": "Model", "value": "VULCAN Z SSD" },
+      { "name": "Capacity", "value": "256GB / 512GB / 1TB" },
+      { "name": "Sequential Read", "value": "Up to 550 MB/s" },
+      { "name": "Sequential Write", "value": "Up to 500 MB/s" },
+      { "name": "Terabyte Written", "value": "80TBW / 120TBW / 200TBW" },
+      { "name": "DRAM Cache", "value": "No" },
+      { "name": "Dimensions", "value": "100(L)x69.9(W)x7(H)mm" },
+      { "name": "Heat Sink", "value": "N/A" }
+    ],
+    "files": [
+      {
+        "name": "User Manual",
+        "url": "assets/files/tforce_vulcan_z_manual.pdf"
+      },
+      {
+        "name": "Warranty Information",
+        "url": "assets/files/tforce_vulcan_z_warranty.pdf"
+      }
+    ]
+  },
+  {
+    "_comment": "Laptops",
+    "id": "2",
     "title": "Lenovo LOQ 15IRX9 i7 14th GEN HX + RTX 4060 8GB",
     "price": 467000,
     "image": "assets/products/lenovoLap.png",
@@ -124,57 +178,77 @@
   },
   {
     "id": "3",
-    "title": "TEAM TFORCE VULCAN Z SATA SSD 256GB - 1TB",
-    "price": 12000,
-    "image": "assets/products/tforce_vulcan_z.png",
-    "images": [
-      "assets/products/tforce_vulcan_z.png",
-      "assets/products/tforce_vulcan_z.png"
-    ],
-    "category": "storage",
-    "colors": ["Black"],
-    "sizes": [
-      { "name": "256GB", "description": "Sequential Read: up to 520 MB/s, Sequential Write: up to 450 MB/s, Terabyte Written: 80TBW" },
-      { "name": "512GB", "description": "Sequential Read: up to 540 MB/s, Sequential Write: up to 470 MB/s, Terabyte Written: 120TBW" },
-      { "name": "1TB", "description": "Sequential Read: up to 550 MB/s, Sequential Write: up to 500 MB/s, Terabyte Written: 200TBW" }
-    ],
-    "rating": 4.7,
-    "reviewCount": 50,
-    "orderCount": 120,
-    "description": "TEAM TFORCE VULCAN Z SATA SSD offers high-speed performance with a durable build, perfect for gaming and professional use.",
-    "faqs": [
-      {
-        "question": "What is the warranty period?",
-        "answer": "This SSD comes with a 3-year manufacturer warranty."
-      },
-      {
-        "question": "Does it have a DRAM cache?",
-        "answer": "No, this SSD does not have a DRAM cache."
-      }
-    ],
+    "title": "MSI Modern 15 H AI C1MG 14th Gen Ultra 5+ ARC Graphics Laptop",
+    "price": 269000,
+    "image": "https://www.nanotek.lk/storage/products/709/oiMdctWBLu29S2NJN6a3dMifY9s2KHWlJbmeNDpJ.png",
+    "category": "Laptop",
+    "description": "MSI Modern 15 H AI C1MG with 14th Gen Ultra 5 processor and ARC Graphics.",
     "specifications": [
-      { "name": "Model", "value": "VULCAN Z SSD" },
-      { "name": "Capacity", "value": "256GB / 512GB / 1TB" },
-      { "name": "Sequential Read", "value": "Up to 550 MB/s" },
-      { "name": "Sequential Write", "value": "Up to 500 MB/s" },
-      { "name": "Terabyte Written", "value": "80TBW / 120TBW / 200TBW" },
-      { "name": "DRAM Cache", "value": "No" },
-      { "name": "Dimensions", "value": "100(L)x69.9(W)x7(H)mm" },
-      { "name": "Heat Sink", "value": "N/A" }
-    ],
-    "files": [
-      {
-        "name": "User Manual",
-        "url": "assets/files/tforce_vulcan_z_manual.pdf"
-      },
-      {
-        "name": "Warranty Information",
-        "url": "assets/files/tforce_vulcan_z_warranty.pdf"
-      }
+      { "name": "Processor", "value": "14th Gen Ultra 5" },
+      { "name": "Graphics", "value": "ARC Graphics" }
     ]
   },
   {
     "id": "4",
+    "title": "MSI Modern 15 H AI C1MG 14th Gen Ultra 7+ ARC Graphics Laptop",
+    "price": 303000,
+    "image": "https://www.nanotek.lk/storage/products/872/FTTintTLRjHdTJ210uuZNGllWpN0VawsdY8HLUws.png",
+    "category": "Laptop",
+    "description": "MSI Modern 15 H AI C1MG with 14th Gen Ultra 7 processor and ARC Graphics.",
+    "specifications": [
+      { "name": "Processor", "value": "14th Gen Ultra 7" },
+      { "name": "Graphics", "value": "ARC Graphics" }
+    ]
+  },
+  {
+    "id": "5",
+    "title": "MSI Cyborg 14 A13UDX I7 13TH GEN RTX 3050 6GB Laptop",
+    "price": 320000,
+    "image": "https://www.nanotek.lk/storage/products/878/bp73Ykzg2dELVMYbTlold4BgiDPGE3A533ZhPRK9.png",
+    "category": "Laptop",
+    "description": "MSI Cyborg 14 A13UDX with Intel i7 13th Gen processor and RTX 3050 6GB graphics.",
+    "specifications": [
+      { "name": "Processor", "value": "Intel i7 13th Gen" },
+      { "name": "Graphics", "value": "RTX 3050 6GB" }
+    ]
+  },
+  {
+    "id": "6",
+    "title": "HP LAPTOP 15-FD0333TU CORE i5 13th GEN",
+    "price": 196000,
+    "image": "https://www.nanotek.lk/storage/products/966/2kEmBQcevO8PK8B9CZVsB6pbhZ1ny8HKVNXt3mA7.png",
+    "category": "Laptop",
+    "description": "HP Laptop 15-FD0333TU with Intel Core i5 13th Gen processor.",
+    "specifications": [
+      { "name": "Processor", "value": "Intel Core i5 13th Gen" }
+    ]
+  },
+  {
+    "id": "7",
+    "title": "Asus Vivobook 16X K3605 i5 12TH GEN RTX 3050 Laptop",
+    "price": 289000,
+    "image": "https://www.nanotek.lk/storage/products/725/zJh626XzqFM7tOf7PQSTxHfZrFYAPvV5pFNAaLMU.png",
+    "category": "Laptop",
+    "description": "Asus Vivobook 16X K3605 with Intel i5 12th Gen processor and RTX 3050 graphics.",
+    "specifications": [
+      { "name": "Processor", "value": "Intel i5 12th Gen" },
+      { "name": "Graphics", "value": "RTX 3050" }
+    ]
+  },
+  {
+    "id": "8",
+    "title": "MSI Modern 15 B13M i5 13th GEN 8GB Laptop",
+    "price": 170000,
+    "image": "https://www.nanotek.lk/storage/products/714/qsOikhsHUYfRxyLhlKEqymAAmkCGVPbjYkv4v0bS.png",
+    "category": "Laptop",
+    "description": "MSI Modern 15 B13M with Intel i5 13th Gen processor and 8GB RAM.",
+    "specifications": [
+      { "name": "Processor", "value": "Intel i5 13th Gen" },
+      { "name": "RAM", "value": "8GB" }
+    ]
+  },
+  {
+    "id": "9",
     "title": "MSI MAG 27CQ6F 27\" WQHD 180Hz 0.5ms AMD FreeSync Curved Gaming Monitor",
     "price": 85000,
     "image": "assets/products/msi_mag_27cq6f.png",

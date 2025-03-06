@@ -1,3 +1,24 @@
 <div class="bg-white dark:bg-[#1f2d3b] p-6 rounded-lg shadow-md">
   <h2 class="text-xl font-semibold text-black text-center">Filters</h2>
+
+  <div class="mt-4">
+    <label for="priceRange" class="block text-sm font-medium text-gray-700">Price Range (LKR)</label>
+
+    <!-- Container to align the spans with the range slider -->
+    <div class="w-1/2">
+      <div class="flex justify-between">
+        <span class="text-sm text-gray-700">Min: {{ filterOptions?.priceRange?.min }} LKR</span>
+        <span class="text-sm text-gray-700">Max: {{ filterOptions?.priceRange?.max }} LKR</span>
+      </div>
+      <!-- Range slider -->
+      <input
+        type="range"
+        id="priceRange"
+        min="{{ filterOptions?.priceRange?.min }}"
+        max="{{ filterOptions?.priceRange?.max }}"
+        value="{{ filterOptions?.priceRange?.min }}"
+        class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer mt-2"
+      />
+    </div>
+  </div>
 </div>
