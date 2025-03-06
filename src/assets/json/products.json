@@ -597,6 +597,39 @@
     ]
   },
   {
+    "id": "zotac-gaming-rtx-3050-eco-8gb",
+    "title": "ZOTAC GAMING RTX 3050 ECO 8GB",
+    "price": 83000,
+    "image": "https://www.nanotek.lk/storage/products/777/zQhI4uVW1ZhvJSvllvDv0eFNWIzFUtIj8bLdPi1C.png",
+    "category": "graphics-card",
+    "specifications": [
+      { "name": "GPU Chipset", "value": "RTX 3050" },
+      { "name": "Memory", "value": "8GB GDDR6" }
+    ]
+  },
+  {
+    "id": "msi-rtx-3060-ventus-2x-12gb",
+    "title": "MSI RTX 3060 VENTUS 2X 12GB",
+    "price": 111000,
+    "image": "https://www.nanotek.lk/storage/products/158/8Epatvckn1RZM4magxJmDR3MZdHBK1sSeOlzBsy9.png",
+    "category": "graphics-card",
+    "specifications": [
+      { "name": "GPU Chipset", "value": "RTX 3060" },
+      { "name": "Memory", "value": "12GB GDDR6" }
+    ]
+  },
+  {
+    "id": "zotac-gaming-geforce-rtx-4070-ti-super-trinity-black-edition-16gb-gddr6x",
+    "title": "ZOTAC GAMING GEFORCE RTX 4070 TI SUPER TRINITY BLACK EDITION 16GB GDDR6X",
+    "price": 340000,
+    "image": "https://www.nanotek.lk/storage/products/167/aYM6FLZhbcVBEJd6BDvs4Ebx1vWh9QkCeKRhO30d.png",
+    "category": "graphics-card",
+    "specifications": [
+      { "name": "GPU Chipset", "value": "RTX 4070 TI SUPER" },
+      { "name": "Memory", "value": "16GB GDDR6X" }
+    ]
+  },
+  {
     "id": "9",
     "title": "ASUS ROG STRIX 1000W 80+ PLATINUM POWER SUPPLY",
     "price": 85500,
