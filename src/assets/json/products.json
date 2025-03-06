@@ -353,6 +353,66 @@
     ]
   },
   {
+    "id": "amd-ryzen-9-7900x",
+    "title": "AMD RYZEN 9 7900X (UP TO 5.6GHZ 12-CORES 24-THREADS) 76M CACHE",
+    "price": 125000,
+    "image": "https://www.nanotek.lk/storage/products/60/KWUU9AfjyjYPW9cbrV6KiDKBPx0kqDcIGx3MhFBk.png",
+    "category": "processor",
+    "specifications": [
+      { "name": "Cores", "value": "12" },
+      { "name": "Threads", "value": "24" },
+      { "name": "Base Clock", "value": "4.7GHz" },
+      { "name": "Max Boost Clock", "value": "5.6GHz" },
+      { "name": "Cache", "value": "76MB" },
+      { "name": "TDP", "value": "170W" }
+    ]
+  },
+  {
+    "id": "intel-core-i7-14700f",
+    "title": "INTEL CORE I7 14700F (33M CACHE, UP TO 5.40 GHZ)",
+    "price": 99500,
+    "image": "https://www.nanotek.lk/storage/products/78/dyWlv2w2m0MieGgspFUbRqkKlAvKlwJBHPY8mohk.png",
+    "category": "processor",
+    "specifications": [
+      { "name": "Cores", "value": "20" },
+      { "name": "Threads", "value": "28" },
+      { "name": "Base Clock", "value": "2.1GHz" },
+      { "name": "Max Turbo Frequency", "value": "5.4GHz" },
+      { "name": "Cache", "value": "33MB" },
+      { "name": "TDP", "value": "125W" }
+    ]
+  },
+  {
+    "id": "intel-core-i7-14700k",
+    "title": "INTEL CORE I7 14700K (33M CACHE, UP TO 5.60 GHZ)",
+    "price": 123500,
+    "image": "https://www.nanotek.lk/storage/products/58/y022zuJlr2CZzqp48LeLMsyzlGSPRFD9P0LxigJh.png",
+    "category": "processor",
+    "specifications": [
+      { "name": "Cores", "value": "20" },
+      { "name": "Threads", "value": "28" },
+      { "name": "Base Clock", "value": "3.4GHz" },
+      { "name": "Max Turbo Frequency", "value": "5.6GHz" },
+      { "name": "Cache", "value": "33MB" },
+      { "name": "TDP", "value": "125W" }
+    ]
+  },
+  {
+    "id": "amd-ryzen-5-7600x",
+    "title": "AMD Ryzen 5 7600X (up to 5.3Ghz 6-cores 12-threads) 32M Cache",
+    "price": 65500,
+    "image": "https://www.nanotek.lk/storage/products/307/uz9nJ6hjeEotbHfiKNysO2ETGYy8Ic7e5MiRQeCE.png",
+    "category": "processor",
+    "specifications": [
+      { "name": "Cores", "value": "6" },
+      { "name": "Threads", "value": "12" },
+      { "name": "Base Clock", "value": "4.7GHz" },
+      { "name": "Max Boost Clock", "value": "5.3GHz" },
+      { "name": "Cache", "value": "32MB" },
+      { "name": "TDP", "value": "105W" }
+    ]
+  },
+  {
     "id": "6",
     "title": "ASUS ROG STRIX X670E-A GAMING WIFI Motherboard",
     "price": 129000,
