@@ -460,6 +460,50 @@
     ]
   },
   {
+    "id": "asus-rog-strix-b760-g-wifi",
+    "title": "ASUS ROG STRIX B760-G WIFI",
+    "price": 88000,
+    "image": "https://www.nanotek.lk/storage/products/901/Rs5vzVd6UQLgVTw1b4p9LX5lLKFiOlO95DssxkSa.png",
+    "category": "motherboards",
+    "specifications": [
+      { "name": "Chipset", "value": "Intel B760" },
+      { "name": "Form Factor", "value": "Micro-ATX" },
+      { "name": "Memory Support", "value": "DDR5" },
+      { "name": "Max Memory", "value": "128GB" },
+      { "name": "PCIe Slots", "value": "2 x PCIe 4.0 x16" },
+      { "name": "Storage", "value": "4 x M.2, 4 x SATA 6Gb/s" }
+    ]
+  },
+  {
+    "id": "asus-prime-b760m-a-ddr5",
+    "title": "Asus Prime B760M-A DDR5",
+    "price": 50000,
+    "image": "https://www.nanotek.lk/storage/products/361/CSN9B4BYlBru9Skgvu9tivGVdONu6w6pdL7usOXq.png",
+    "category": "motherboards",
+    "specifications": [
+      { "name": "Chipset", "value": "Intel B760" },
+      { "name": "Form Factor", "value": "Micro-ATX" },
+      { "name": "Memory Support", "value": "DDR5" },
+      { "name": "Max Memory", "value": "128GB" },
+      { "name": "PCIe Slots", "value": "1 x PCIe 5.0 x16, 1 x PCIe 4.0 x16" },
+      { "name": "Storage", "value": "3 x M.2, 4 x SATA 6Gb/s" }
+    ]
+  },
+  {
+    "id": "msi-mag-b760-tomahawk-wifi-ddr5",
+    "title": "MSI MAG B760 TOMAHAWK WIFI DDR5",
+    "price": 82000,
+    "image": "https://www.nanotek.lk/storage/products/1141/ic6gPUmBZgFa1mE31lnA1hSIMOJ0hlp8Fk1ese0O.png",
+    "category": "motherboards",
+    "specifications": [
+      { "name": "Chipset", "value": "Intel B760" },
+      { "name": "Form Factor", "value": "ATX" },
+      { "name": "Memory Support", "value": "DDR5" },
+      { "name": "Max Memory", "value": "128GB" },
+      { "name": "PCIe Slots", "value": "1 x PCIe 5.0 x16, 2 x PCIe 4.0 x16" }
+    ]
+  },
+  {
     "id": "7",
     "title": "CORSAIR DOMINATOR TITANIUM RGB 32GB (2X16GB) DDR5 6400MHZ - Intel XMP Memory",
     "price": 108000,
