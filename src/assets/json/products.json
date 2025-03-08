@@ -1262,7 +1262,162 @@
       {"name": "Armrests", "value": "4D adjustable"}
     ],
     "files": []
+  },
+  {
+    "_comment": "Gaming Desktops",
+    "id": "24",
+    "title": "ASUS ROG NUC 760 ULTRA 7 RTX 4060 MINI GAMING PC",
+    "price": 549000,
+    "image": "https://www.nanotek.lk/storage/products/763/oLfFGGVm6vnwTRvkOJxgJG03BjcrbyAMarD8M5dC.png",
+    "images": [
+      "assets/products/asusRogMiniPC1.png",
+      "assets/products/asusRogMiniPC2.png"
+    ],
+    "category": "desktops",
+    "colors": ["Black"],
+    "sizes": [
+      {
+        "name": "Mini",
+        "description": "Compact size for space-saving"
+      }
+    ],
+    "rating": 4.7,
+    "reviewCount": 150,
+    "orderCount": 300,
+    "description": "High-performance mini gaming PC powered by Intel® Core™ Ultra 7, 16GB RAM, and NVIDIA® GeForce RTX 4060, perfect for intense gaming and multitasking.",
+    "faqs": [
+      {
+        "question": "What is the warranty period?",
+        "answer": "This product comes with a 3-year manufacturer warranty."
+      },
+      {
+        "question": "Does it include pre-installed software?",
+        "answer": "Yes, it comes with Windows 11 Home 64Bit pre-installed."
+      }
+    ],
+    "specifications": [
+      {
+        "name": "Processor",
+        "value": "Intel® Core™ Ultra 7 155H (24M Cache, up to 4.80Hz)"
+      },
+      {
+        "name": "RAM",
+        "value": "16GB DDR5 4800MHz (8GB x2)"
+      },
+      {
+        "name": "Storage",
+        "value": "512GB NVMe GEN4 M.2 SSD"
+      },
+      {
+        "name": "Graphics",
+        "value": "NVIDIA® GeForce RTX 4060 8GB GDDR6 (110W+25W Dynamic Boost)"
+      },
+      {
+        "name": "Operating System",
+        "value": "Genuine Windows 11 Home 64Bit Pre-installed"
+      }
+    ],
+    "files": [
+      {
+        "name": "User Manual",
+        "url": "assets/files/asus-user-manual.pdf"
+      },
+      {
+        "name": "Warranty Information",
+        "url": "assets/files/asus-warranty.pdf"
+      }
+    ],
+    "ports": {
+      "front": [
+        "1x card reader (SD) (UHS-I)",
+        "2x USB 3.2 Gen2 Type-A",
+        "1x 3.5mm Headset Jack"
+      ],
+      "back": [
+        "1x Thunderbolt 4 Type-C w/ DisplayPort 2.1",
+        "2x USB 3.2 Gen 2 Type-A",
+        "2x USB 2.0 Type-A",
+        "1x HDMI 2.1 FRL",
+        "2x DP 1.4a",
+        "1x RJ45 LAN",
+        "1x DC-in",
+        "1x Kensington Lock"
+      ]
+    },
+    "availability": "In Stock"
+  },
+  {
+    "_comment": "Desktop Workstation",
+    "id": "15",
+    "title": "Lenovo IdeaCentre AIO (All In One) 24IRH9 i5H 13th GEN",
+    "price": 269000,
+    "image": "https://www.nanotek.lk/storage/products/1143/jaSPuWW0qBgEPq1Vyz6WfgcpF5uQ0eFhEbeDoVsU.png",
+    "images": [
+      "assets/products/lenovoAio1.png",
+      "assets/products/lenovoAio2.png"
+    ],
+    "category": "desktops",
+    "colors": ["Black"],
+    "sizes": [
+      { "name": "24\"", "description": "All-in-one desktop with 24-inch screen" }
+    ],
+    "rating": 4.6,
+    "reviewCount": 80,
+    "orderCount": 150,
+    "description": "A powerful all-in-one desktop featuring Intel® Core™ i5-13420H processor, 16GB RAM, 1TB SSD, and 24-inch Full HD display with integrated Intel® UHD Graphics.",
+    "faqs": [
+      {
+        "question": "What is the warranty period?",
+        "answer": "This desktop comes with a 1-year manufacturer warranty."
+      },
+      {
+        "question": "Does it include an operating system?",
+        "answer": "No, this desktop does not come with an operating system pre-installed."
+      }
+    ],
+    "specifications": [
+      {
+        "name": "Processor",
+        "value": "Intel® Core™ i5-13420H, 8C up to 4.6GHz 12MB"
+      },
+      {
+        "name": "RAM",
+        "value": "16GB DDR5 5200MHZ"
+      },
+      {
+        "name": "Storage",
+        "value": "1TB M.2 GEN4 NVME SSD"
+      },
+      {
+        "name": "Display",
+        "value": "24\" (1920x1080) IPS Anti-glare 250nits, 100Hz, 99% sRGB"
+      },
+      {
+        "name": "Graphics",
+        "value": "Integrated Intel® UHD Graphics"
+      },
+      {
+        "name": "Connectivity",
+        "value": "Wi-Fi® 6, 802.11ax 2x2 + BT5.2"
+      }
+    ],
+    "files": [
+      {
+        "name": "User Manual",
+        "url": "assets/files/lenovo-aio-user-manual.pdf"
+      },
+      {
+        "name": "Warranty Information",
+        "url": "assets/files/lenovo-aio-warranty.pdf"
+      }
+    ],
+    "availability": "In Stock",
+    "accessories": [
+      "Lenovo Keyboard & Mouse"
+    ]
   }
+
+
 
 
 
