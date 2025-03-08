@@ -27,7 +27,7 @@ export class MainlayoutComponent implements OnInit {
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
       // Check for specific routes where you want to hide or show the left div
-      this.isLeftVisible = !['/checkout', '/billing','/thankyou'].some(path => event.url.includes(path));
+      this.isLeftVisible = !['/checkout', '/billing','/thankyou','/login','/settings'].some(path => event.url.includes(path));
     });
   }
 
