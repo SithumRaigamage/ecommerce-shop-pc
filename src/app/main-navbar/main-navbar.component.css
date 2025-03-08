@@ -41,6 +41,10 @@ Usage: codyhouse.co/license
   display: block;
 }
 
+.custom-size {
+  font-size: 40px; /* Adjust to your desired size */
+}
+
 .header-logo-text:hover {
   @apply text-indigo-500;
 }
