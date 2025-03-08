@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
     this.homeService.getFeaturedProducts().subscribe(data => {
       this.featuredProducts = data || [];  // Fallback to an empty array if data is null/undefined
-      //console.log('Products:', this.products);
+      console.log('FeaturedProducts:', this.featuredProducts);
     });
     this.homeService.getCategories().subscribe(data => {
       this.categories = data || [];  // Fallback to an empty array if data is null/undefined
