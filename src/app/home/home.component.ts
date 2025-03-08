@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   currentBannerIndex = 0;
   private autoScrollInterval: any;
   banners: Banner[] = [];
-  products: FeaturedProduct[] = [];
+  featuredProducts: FeaturedProduct[] = [];
   categories: Catergory[] = [];
 
   constructor(private homeService: HomeService) { }
@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.banners = data || [];  // Fallback to an empty array if data is null/undefined
     });
     this.homeService.getFeaturedProducts().subscribe(data => {
-      this.products = data || [];  // Fallback to an empty array if data is null/undefined
+      this.featuredProducts = data || [];  // Fallback to an empty array if data is null/undefined
       //console.log('Products:', this.products);
     });
     this.homeService.getCategories().subscribe(data => {
@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private startAutoScroll() {
     this.autoScrollInterval = setInterval(() => {
-      this.currentIndex = (this.currentIndex + 1) % this.products.length;
+      this.currentIndex = (this.currentIndex + 1) % this.featuredProducts.length;
       this.nextBanner();
     }, 5000); // Scroll every 2 minutes
   }

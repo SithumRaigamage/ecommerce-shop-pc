@@ -87,7 +87,7 @@
   <div class="container mx-auto px-4">
     <h2 class="text-3xl font-bold mb-8">Featured Products</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      @for (product of products; track product.id) {
+      @for (product of featuredProducts; track product.id) {
         <div class="product-card bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-300 hover:scale-105">
           <div class="relative">
             <img [src]="product.image" [alt]="product.name" class="w-full h-64 object-cover">
