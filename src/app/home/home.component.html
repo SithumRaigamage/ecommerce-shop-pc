@@ -61,7 +61,7 @@
 <!-- Categories Overview -->
 <section class="categories-overview py-16 bg-gray-50">
   <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold mb-8 text-center">Shop by Category</h2>
+    <h2 class="text-3xl font-bold mb-8 text-center">Shop by Featured Categories</h2>
 
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       @for (catergory of categories; track catergory.id) {
@@ -69,7 +69,7 @@
           <div class="bg-white p-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-xl text-center">
             <i [class]="catergory.icon + ' text-4xl text-blue-600 mb-4'"></i>
             <h3 class="text-lg font-semibold">{{catergory.name}}</h3>
-            <span class="text-sm text-gray-500">Starting from ${{catergory.startingPrice}}</span>
+            <span class="text-sm text-gray-500">Starting from LKR {{catergory.startingPrice}}</span>
           </div>
         </a>
       }

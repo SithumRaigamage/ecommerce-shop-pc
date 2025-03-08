@@ -5,7 +5,7 @@
     "description": "High-performance computers for work and gaming",
     "icon": "fas fa-laptop",
     "slug": "laptops",
-    "startingPrice": 500
+    "startingPrice": 75000
   },
   {
     "id": 2,
@@ -13,15 +13,15 @@
     "description": "Custom built desktop computers",
     "icon": "fas fa-desktop",
     "slug": "desktops",
-    "startingPrice": 800
+    "startingPrice": 90000
   },
   {
     "id": 3,
-    "name": "Components",
+    "name": "Processors",
     "description": "PC parts and hardware components",
     "icon": "fas fa-microchip",
-    "slug": "components",
-    "startingPrice": 50
+    "slug": "Processors",
+    "startingPrice": 50000
   },
   {
     "id": 4,
@@ -29,7 +29,7 @@
     "description": "Keyboards, mice, and accessories",
     "icon": "fas fa-keyboard",
     "slug": "peripherals",
-    "startingPrice": 20
+    "startingPrice": 2500
   },
   {
     "id": 5,
@@ -37,7 +37,7 @@
     "description": "Routers, switches, and network equipment",
     "icon": "fas fa-network-wired",
     "slug": "networking",
-    "startingPrice": 50
+    "startingPrice": 5000
   },
   {
     "id": 6,
@@ -45,22 +45,22 @@
     "description": "Hard drives, SSDs, and storage solutions",
     "icon": "fas fa-hdd",
     "slug": "storage",
-    "startingPrice": 50
+    "startingPrice": 6500
   },
   {
     "id": 7,
-    "name": "Software",
-    "description": "Operating systems and productivity software",
-    "icon": "fas fa-file-code",
-    "slug": "software",
-    "startingPrice": 50
-  },
-  {
-    "id": 8,
     "name": "Accessories",
     "description": "Cables, adapters, and other accessories",
     "icon": "fas fa-headphones",
     "slug": "accessories",
-    "startingPrice": 10
+    "startingPrice": 10000
+  },
+  {
+    "id":8,
+    "name": "Cases",
+    "description": "Keyboards, mice, and accessories",
+    "icon": "fas fa-box",
+    "slug": "Cases",
+    "startingPrice": "35000"
   }
 ]
