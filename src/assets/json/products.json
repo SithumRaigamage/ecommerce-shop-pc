@@ -115,6 +115,62 @@
     ]
   },
   {
+    "id": "ASUSTOR-LOCKERSTOR-2-AS6602T",
+    "title": "ASUSTOR LOCKERSTOR 2 (AS6602T) 2-Bay NAS with 2 M.2 Slots",
+    "price": 189000,
+    "image": "https://www.nanotek.lk/storage/products/438/eETd7WjWpr3x0qc7QzMS05vZT0zGg0edTlmf1Fhx.png",
+    "category": "storage",
+    "specifications": [
+      { "name": "Bays", "value": "2" },
+      { "name": "M.2 Slots", "value": "2" },
+      { "name": "Processor", "value": "Intel Celeron Quad-Core" },
+      { "name": "Memory", "value": "4GB DDR4 (expandable up to 8GB)" },
+      { "name": "Network", "value": "2 x 2.5GbE ports" }
+    ]
+  },
+  {
+    "id": "Team-T-Force-CARDEA-Z540-2TB",
+    "title": "Team T-Force CARDEA Z540 2TB PCIe Gen5x4 NVMe SSD",
+    "price": 84000,
+    "image": "https://www.nanotek.lk/storage/products/629/yMJItrpaN6QHA4Nus2lBUCnGL6D9QLFBggHXTyIc.png",
+    "category": "storage",
+    "specifications": [
+      { "name": "Capacity", "value": "2TB" },
+      { "name": "Interface", "value": "PCIe Gen5x4 NVMe" },
+      { "name": "Sequential Read Speed", "value": "Up to 12,000 MB/s" },
+      { "name": "Sequential Write Speed", "value": "Up to 10,000 MB/s" },
+      { "name": "Form Factor", "value": "M.2 2280" }
+    ]
+  },
+  {
+    "id": "SAMSUNG-990-PRO-SSD-2TB",
+    "title": "SAMSUNG 990 PRO SSD 2TB PCIe 4.0 NVMe",
+    "price": 59500,
+    "image": "https://www.nanotek.lk/storage/products/8/8Z2dwMrwIFpbMHSdrGbdOSq411UQWWlVFz5buWeg.png",
+    "category": "storage",
+    "specifications": [
+      { "name": "Capacity", "value": "2TB" },
+      { "name": "Interface", "value": "PCIe 4.0 NVMe" },
+      { "name": "Sequential Read Speed", "value": "Up to 7,450 MB/s" },
+      { "name": "Sequential Write Speed", "value": "Up to 6,900 MB/s" },
+      { "name": "Form Factor", "value": "M.2 2280" }
+    ]
+  },
+  {
+    "id": "ASUSTOR-DRIVESTOR-4-AS1104T",
+    "title": "ASUSTOR DRIVESTOR 4 (AS1104T) 4-Bay NAS",
+    "price": 165000,
+    "image": "https://www.nanotek.lk/storage/products/440/QPhefCxWnBvxeW3g8HVomlGbnAC4vENkTdOszL5H.png",
+    "category": "storage",
+    "specifications": [
+      { "name": "Bays", "value": "4" },
+      { "name": "Processor", "value": "Realtek RTD1296 Quad-Core" },
+      { "name": "Memory", "value": "1GB DDR4" },
+      { "name": "Network", "value": "1 x 2.5GbE port" },
+      { "name": "Maximum Capacity", "value": "Up to 72TB" }
+    ]
+  },
+  {
     "_comment": "Laptops",
     "id": "2",
     "title": "Lenovo LOQ 15IRX9 i7 14th GEN HX + RTX 4060 8GB",
@@ -256,7 +312,7 @@
       "assets/products/msi_mag_27cq6f.png",
       "assets/products/msi_mag_27cq6f_side.png"
     ],
-    "category": "monitor",
+    "category": "monitors",
     "colors": ["Black"],
     "sizes": [
       { "name": "27-inch", "description": "WQHD (2560x1440), 180Hz, 0.5ms, 1500R Curved" }
@@ -304,6 +360,63 @@
         "name": "Warranty Information",
         "url": "assets/files/msi_mag_27cq6f_warranty.pdf"
       }
+    ]
+  },
+  {
+    "id": "ASUS-ROG-Strix-XG49WCR",
+    "title": "ASUS ROG Strix XG49WCR 49\" Double QHD (5120 x 1440) USB-C 165Hz OC Monitor",
+    "price": 429000,
+    "image": "https://www.nanotek.lk/storage/products/1000/LVKlUmMtmZbMkDRmZHDu6DqNRRsFJOeXZzZkMFQc.png",
+    "category": "monitors",
+    "specifications": [
+      { "name": "Screen Size", "value": "49 inch" },
+      { "name": "Resolution", "value": "5120 x 1440" },
+      { "name": "Refresh Rate", "value": "165Hz (Overclocked)" },
+      { "name": "Panel Type", "value": "IPS" },
+      { "name": "Connectivity", "value": "USB-C, HDMI, DisplayPort" }
+    ]
+  },
+  {
+    "id": "ASUS-ProArt-PA278CGV",
+    "title": "ASUS ProArt PA278CGV 27\" IPS 2560 x 1440 144Hz Calman Verified, USB-C Monitor",
+    "price": 174000,
+    "image": "https://www.nanotek.lk/storage/products/766/43jeB4AWGa95ogUucHQ3CFfkGTiF9iKQ7TfRMEoW.png",
+    "category": "monitors",
+    "specifications": [
+      { "name": "Screen Size", "value": "27 inch" },
+      { "name": "Resolution", "value": "2560 x 1440" },
+      { "name": "Refresh Rate", "value": "144Hz" },
+      { "name": "Panel Type", "value": "IPS" },
+      { "name": "Color Accuracy", "value": "Calman Verified" },
+      { "name": "Connectivity", "value": "USB-C, HDMI, DisplayPort" }
+    ]
+  },
+  {
+    "id": "Lenovo-Legion-R45w-30",
+    "title": "Lenovo Legion 45\" R45w-30 5120 x 1440 170Hz DQHD Monitor",
+    "price": 299000,
+    "image": "https://www.nanotek.lk/storage/products/221/5QbZ2NlYdmWTmCjy8PO5IuaKsQBriOEFY6r0MhWY.png",
+    "category": "monitors",
+    "specifications": [
+      { "name": "Screen Size", "value": "45 inch" },
+      { "name": "Resolution", "value": "5120 x 1440" },
+      { "name": "Refresh Rate", "value": "170Hz" },
+      { "name": "Panel Type", "value": "VA" },
+      { "name": "Connectivity", "value": "HDMI, DisplayPort" }
+    ]
+  },
+  {
+    "id": "Koorui-S01-S22N1",
+    "title": "Koorui S01-S22N1 22\" FHD VA 100Hz sRGB 99%",
+    "price": 0,
+    "image": "https://www.nanotek.lk/storage/products/257/Tn6gIZ1j97FVu78HSPIt67xETcQrPkoa2zQ7UFsa.png",
+    "category": "monitors",
+    "specifications": [
+      { "name": "Screen Size", "value": "21.5 inch" },
+      { "name": "Resolution", "value": "1920 x 1080" },
+      { "name": "Refresh Rate", "value": "100Hz" },
+      { "name": "Panel Type", "value": "VA" },
+      { "name": "Color Coverage", "value": "99% sRGB" }
     ]
   },
   {
@@ -601,7 +714,7 @@
     "title": "ZOTAC GAMING RTX 3050 ECO 8GB",
     "price": 83000,
     "image": "https://www.nanotek.lk/storage/products/777/zQhI4uVW1ZhvJSvllvDv0eFNWIzFUtIj8bLdPi1C.png",
-    "category": "graphics-card",
+    "category": "graphics",
     "specifications": [
       { "name": "GPU Chipset", "value": "RTX 3050" },
       { "name": "Memory", "value": "8GB GDDR6" }
@@ -612,7 +725,7 @@
     "title": "MSI RTX 3060 VENTUS 2X 12GB",
     "price": 111000,
     "image": "https://www.nanotek.lk/storage/products/158/8Epatvckn1RZM4magxJmDR3MZdHBK1sSeOlzBsy9.png",
-    "category": "graphics-card",
+    "category": "graphics",
     "specifications": [
       { "name": "GPU Chipset", "value": "RTX 3060" },
       { "name": "Memory", "value": "12GB GDDR6" }
@@ -623,7 +736,7 @@
     "title": "ZOTAC GAMING GEFORCE RTX 4070 TI SUPER TRINITY BLACK EDITION 16GB GDDR6X",
     "price": 340000,
     "image": "https://www.nanotek.lk/storage/products/167/aYM6FLZhbcVBEJd6BDvs4Ebx1vWh9QkCeKRhO30d.png",
-    "category": "graphics-card",
+    "category": "graphics",
     "specifications": [
       { "name": "GPU Chipset", "value": "RTX 4070 TI SUPER" },
       { "name": "Memory", "value": "16GB GDDR6X" }
@@ -764,6 +877,391 @@
       {"name": "Included Fans", "value": "3 x 120mm RGB Fans"},
       {"name": "Warranty", "value": "1 Year"}
     ]
+  },
+  {
+    "id": "ANTEC-C5-ARGB-BLACK-CASING",
+    "title": "ANTEC C5 ARGB BLACK CASING",
+    "price": null,
+    "image": "https://www.nanotek.lk/storage/products/548/W66Z0nDTFqOp01bUpdjvjLSJC2ZUecVuq4XbgGua.png",
+    "category": "cases",
+    "specifications": [
+      { "name": "Dimensions", "value": "469 x 285 x 400mm" },
+      { "name": "Form Factor", "value": "Mid Tower" },
+      { "name": "Materials", "value": "Steel + Plastic + Glass" },
+      { "name": "Motherboard Support", "value": "ATX, Micro-ATX, ITX" },
+      { "name": "Expansion Slots", "value": "7" },
+      { "name": "Drive Bays", "value": "1 x 3.5\", 2 x 2.5\"" },
+      { "name": "Fan Support", "value": "Top: 3 x 120mm / 2 x 140mm; Side: 3 x 120mm / 2 x 140mm; Bottom: 3 x 120mm; Rear: 1 x 120mm" },
+      { "name": "Included Fans", "value": "3 x 120mm PWM ARGB reverse fans at bottom, 3 x 120mm PWM ARGB reverse fans on right side, 1 x 120mm PWM ARGB fan in rear" },
+      { "name": "Radiator Support", "value": "Top: 120 / 140 / 240 / 280 / 360mm; Side: 120 / 140 / 240 / 280mm; Bottom: 120 / 240 / 360mm; Rear: 120mm" },
+      { "name": "Max GPU Length", "value": "≤ 410mm" },
+      { "name": "Max CPU Cooler Height", "value": "≤ 160mm" },
+      { "name": "Max PSU Length", "value": "≤ 240mm (Including cable)" },
+      { "name": "Dust Filters", "value": "Top / Bottom" },
+      { "name": "Net Weight", "value": "7.6 kg" },
+      { "name": "Gross Weight", "value": "9.2 kg" }
+    ],
+    "description": "The ANTEC C5 ARGB BLACK CASING is a mid-tower case supporting ATX, Micro-ATX, and ITX motherboards. It features extensive interior space, supporting RTX 40 Series Graphics Cards, and comes with multiple pre-installed ARGB fans for enhanced cooling and aesthetics."
+  },
+  {
+    "id": "LIAN-LI-O11-DYNAMIC-EVO-XL-BLACK-WHITE",
+    "title": "LIAN LI O11 DYNAMIC EVO XL BLACK/WHITE",
+    "price": null,
+    "image": "https://www.nanotek.lk/storage/products/466/BxG8sTxzGGLutE1Z6eFBn6Q8CJkPo7ZLqHkX2nOs.png",
+    "category": "cases",
+    "specifications": [
+      { "name": "Dimensions", "value": "471 x 285 x 513 mm" },
+      { "name": "Motherboard Support", "value": "E-ATX/ATX/M-ATX/ITX" },
+      { "name": "PSU Support", "value": "Up to 280mm" },
+      { "name": "Materials", "value": "1.0 mm Aluminum Exterior, 4.0 mm Tempered Glass Panels, 1.0 mm SPCC Interior" },
+      { "name": "Fan Support", "value": "Side: 3 x 120mm; Rear: 1 x 120mm; Base: 3 x 120mm/2 x 140mm; Top: 3 x 120mm/2 x 140mm" },
+      { "name": "GPU Length Clearance", "value": "Up to 446mm" },
+      { "name": "CPU Cooler Height Clearance", "value": "Up to 167mm" },
+      { "name": "Drive Bays", "value": "10 x 2.5” SSD or 6 x 2.5” SSD + 4 x 3.5” HDD" },
+      { "name": "Expansion Slots", "value": "8" },
+      { "name": "I/O Ports", "value": "4 x USB 3.0, 1 x USB 3.1 Type-C, 1 x HD Audio" },
+      { "name": "Dust Filters", "value": "Top, Bottom, Side" }
+    ],
+    "description": "The LIAN LI O11 DYNAMIC EVO XL is a spacious and versatile case designed for high-performance builds. It supports a variety of motherboard sizes and offers extensive cooling options, making it ideal for enthusiasts seeking both form and function."
+  },
+  {
+    "id": "1",
+    "title": "NZXT RELAY SPEAKERS Premium 80W HDR Gaming PC Speakers",
+    "price": 94500,
+    "image": "https://www.nanotek.lk/storage/products/474/5GQkUJBDOylfvoSaOawOS6kJjcAcN2JEsq8byrBy.png",
+    "category": "audio",
+    "colors": ["Black"],
+    "rating": null,
+    "reviewCount": null,
+    "orderCount": null,
+    "description": "Immerse yourself in in-game soundscapes with 80W power, silk dome tweeters, and glass fiber woofers, delivering natural highs and rich lows.",
+    "specifications": [
+      {"name": "Total Power", "value": "80W"},
+      {"name": "Tweeter Size", "value": "0.79 in (20 mm)"},
+      {"name": "Woofer Size", "value": "3 in (76.2 mm)"},
+      {"name": "Frequency Response", "value": "70 Hz - 20 kHz"},
+      {"name": "Dimensions", "value": "7.32 x 4.53 x 6.26 in"}
+    ],
+    "files": []
+  },
+  {
+    "id": "2",
+    "title": "LOGITECH H390 USB Noise Cancelling Headset",
+    "price": 14500,
+    "image": "https://www.nanotek.lk/storage/products/467/cgxti83WxS4UhALPr1oRJNQKZwyPtNqpXdPNw16C.png",
+    "category": "audio",
+    "colors": ["Black"],
+    "rating": null,
+    "reviewCount": null,
+    "orderCount": null,
+    "description": "Fine-tuned 30 mm audio drivers deliver enhanced digital audio for meetings, music, and more. The rigid, left-sided mic minimizes unwanted background noise for clear conversations.",
+    "specifications": [
+      {"name": "Connectivity", "value": "USB-A"},
+      {"name": "Frequency Response (Headset)", "value": "20 Hz - 20 KHz"},
+      {"name": "Frequency Response (Microphone)", "value": "100 Hz - 10 KHz"},
+      {"name": "Cable Length", "value": "6.23 ft (1.9 m)"},
+      {"name": "Weight", "value": "6.9 oz (197 g)"}
+    ],
+    "files": []
+  },
+  {
+    "id": "3",
+    "title": "CORSAIR HS55 Stereo Wired Headset",
+    "price": 22000,
+    "image": "https://www.nanotek.lk/storage/products/404/xsphRtCuGoxuX5jx9UIENuNhMT2YooqgeCvHMtlz.png",
+    "category": "audio",
+    "colors": ["Carbon", "White"],
+    "rating": null,
+    "reviewCount": null,
+    "orderCount": null,
+    "description": "The CORSAIR HS55 STEREO Wired Headset offers high-quality audio with 50mm drivers and a comfortable design for extended gaming sessions.",
+    "specifications": [
+      {"name": "Audio Compatibility", "value": "PC, MAC, PlayStation, Xbox, Mobile"},
+      {"name": "Frequency Response", "value": "20Hz - 20 kHz"},
+      {"name": "Sensitivity", "value": "114dB (+/-3dB)"},
+      {"name": "Impedance", "value": "32k Ohms @ 1 kHz"},
+      {"name": "Cable Length", "value": "1.8m"}
+    ],
+    "files": []
+  },
+  {
+    "id": "4",
+    "title": "ASUS ROG Delta S Lightweight Wireless Gaming Headset",
+    "price": 52000,
+    "image": "https://www.nanotek.lk/storage/products/1189/t4v6FlHMFs8QN3L3RUy0bGBHrrb0t3zjdUc2UYA4.png",
+    "category": "audio",
+    "colors": ["Black"],
+    "rating": null,
+    "reviewCount": null,
+    "orderCount": null,
+    "description": "The ASUS ROG Delta S offers wireless freedom with high-fidelity audio, ensuring an immersive gaming experience.",
+    "specifications": [
+      {"name": "Connectivity", "value": "Wireless"},
+      {"name": "Sound Channel", "value": "7.1 surround"},
+      {"name": "Manufacturer", "value": "ASUS"},
+      {"name": "Type", "value": "Headset"}
+    ],
+    "files": []
+  },
+  {
+    "id": "5",
+    "title": "Logitech G733 LIGHTSPEED Wireless RGB Gaming Headset",
+    "price": 43500,
+    "image": "https://www.nanotek.lk/storage/products/920/getg70xFkqX0GB7RJvW58weHgonVAH9kEqGmY7u6.png",
+    "category": "audio",
+    "colors": ["Black"],
+    "rating": null,
+    "reviewCount": null,
+    "orderCount": null,
+    "description": "Experience the freedom of wireless gaming with the Logitech G733, featuring LIGHTSPEED technology and customizable RGB lighting.",
+    "specifications": [
+      {"name": "Connectivity", "value": "Wireless"},
+      {"name": "Sound Channel", "value": "7.1 surround"},
+      {"name": "Manufacturer", "value": "Logitech"},
+      {"name": "Type", "value": "Headset"}
+    ],
+    "files": []
+  },
+  {
+    "id": "6",
+    "title": "FANTECH GS202 SONAR Speakers",
+    "price": 3500,
+    "image": "https://www.nanotek.lk/storage/products/445/oE2C0USQbgdy12Hmwo10P1fCnaF5fI4l1cQSxRUc.png,",
+    "category": "audio",
+    "colors": ["Black"],
+    "rating": null,
+    "reviewCount": null,
+    "orderCount": null,
+    "description": "Compact and powerful, the FANTECH GS202 SONAR speakers deliver clear audio for your desktop setup.",
+    "specifications": [
+      {"name": "Sound Channel", "value": "2.0"},
+      {"name": "Connectivity", "value": "Wired"},
+      {"name": "Manufacturer", "value": "FANTECH"},
+      {"name": "Type", "value": "Speakers"}
+    ],
+    "files": []
+  },
+  {
+    "id": "ASUS-ROG-Claymore-II",
+    "title": "ASUS ROG Claymore II Wireless Modular Mechanical Gaming Keyboard",
+    "price": 85000,
+    "image": "https://www.nanotek.lk/storage/products/273/D17MRoDPpDwznpF4jNKlhPZQaBk6kWyju9yqOKDt.png",
+    "category": "peripherals",
+    "colors": ["Black"],
+    "rating": null,
+    "reviewCount": null,
+    "orderCount": null,
+    "description": "A wireless modular mechanical gaming keyboard offering versatility and performance for gamers.",
+    "specifications": [
+      {"name": "Connectivity", "value": "Wireless"},
+      {"name": "Mechanical", "value": "Yes"},
+      {"name": "Manufacturer", "value": "ASUS"}
+    ],
+    "files": []
+  },
+  {
+    "id": "ASUS-TUF-Gaming-K1-RGB",
+    "title": "Asus TUF Gaming K1 RGB Gaming Keyboard",
+    "price": 15500,
+    "image": "https://www.nanotek.lk/storage/products/523/1SXatBcpCz2IsRsGyEnxdVreMlsUgpkFKD8ZT6fA.png",
+    "category": "peripherals",
+    "colors": ["Black"],
+    "rating": null,
+    "reviewCount": null,
+    "orderCount": null,
+    "description": "A durable RGB gaming keyboard from ASUS's TUF series, designed for reliability.",
+    "specifications": [
+      {"name": "Connectivity", "value": "Wired"},
+      {"name": "Mechanical", "value": "No"},
+      {"name": "Manufacturer", "value": "ASUS"}
+    ],
+    "files": []
+  },
+  {
+    "id": "FANTECH-ATOM63-MK912",
+    "title": "FANTECH ATOM63 MK912 Mechanical Wired/Wireless Keyboard",
+    "price": null,
+    "image": "https://www.nanotek.lk/storage/products/531/drAWbufVPpyCO5nlaUmn59sMPkFStnLGnollEIHS.png",
+    "category": "peripherals",
+    "colors": ["Black"],
+    "rating": null,
+    "reviewCount": null,
+    "orderCount": null,
+    "description": "A versatile mechanical keyboard offering both wired and wireless connectivity options.",
+    "specifications": [
+      {"name": "Connectivity", "value": "Wired/Wireless"},
+      {"name": "Mechanical", "value": "Yes"},
+      {"name": "Manufacturer", "value": "FANTECH"}
+    ],
+    "files": []
+  },
+  {
+    "id": "Fantech-GO-K211",
+    "title": "Fantech GO K211 Office Multimedia Keyboard",
+    "price": null,
+    "image": "https://www.nanotek.lk/storage/products/793/HMxf9wUpxmXnYftjYkWEvgH9FgvizZgbVGownSPN.png",
+    "category": "peripherals",
+    "colors": ["Black"],
+    "rating": null,
+    "reviewCount": null,
+    "orderCount": null,
+    "description": "An office multimedia keyboard designed for comfort and efficiency.",
+    "specifications": [
+      {"name": "Connectivity", "value": "Wired"},
+      {"name": "Mechanical", "value": "No"},
+      {"name": "Manufacturer", "value": "Fantech"}
+    ],
+    "files": []
+  },
+  {
+    "id": "ASUS-ROG-Strix-Impact-III",
+    "title": "ASUS ROG Strix Impact III Lightweight RGB Gaming Mouse",
+    "price": 17500,
+    "image": "https://www.nanotek.lk/storage/products/586/hbFmlbfXM6gHfvnpZJWliwS8FtG9Yw4CNEZTe0pj.png",
+    "category": "peripherals",
+    "colors": ["Black"],
+    "rating": null,
+    "reviewCount": null,
+    "orderCount": null,
+    "description": "A lightweight RGB gaming mouse designed for precision and comfort.",
+    "specifications": [
+      {"name": "Connectivity", "value": "Wired"},
+      {"name": "DPI", "value": "Up to 12,000"},
+      {"name": "Manufacturer", "value": "ASUS"}
+    ],
+    "files": []
+  },
+  {
+    "id": "ASUS-TUF-Gaming-M4-Air",
+    "title": "ASUS TUF Gaming M4 Air Lightweight Gaming Mouse",
+    "price": 14500,
+    "image": "https://www.nanotek.lk/storage/products/587/WbI6opE3DcF5UdWOLlwqCzLvVMuJZldTQsPptWy3.png",
+    "category": "peripherals",
+    "colors": ["Black"],
+    "rating": null,
+    "reviewCount": null,
+    "orderCount": null,
+    "description": "A lightweight gaming mouse from ASUS's TUF series, built for durability.",
+    "specifications": [
+      {"name": "Connectivity", "value": "Wired"},
+      {"name": "DPI", "value": "Up to 16,000"},
+      {"name": "Manufacturer", "value": "ASUS"}
+    ],
+    "files": []
+  },
+  {
+    "id": "Logitech-M240-Silent",
+    "title": "Logitech M240 Silent Bluetooth Mouse",
+    "price": 6000,
+    "image": "https://www.nanotek.lk/storage/products/591/aKZUS7XPTVVZTy04G9lBOJ3JRhIro2TOwz9jZxfL.png",
+    "category": "peripherals",
+    "colors": ["Black"],
+    "rating": null,
+    "reviewCount": null,
+    "orderCount": null,
+    "description": "A silent Bluetooth mouse offering a quiet and smooth experience.",
+    "specifications": [
+      {"name": "Connectivity", "value": "Bluetooth"},
+      {"name": "DPI", "value": "Up to 1,000"},
+      {"name": "Manufacturer", "value": "Logitech"}
+    ],
+    "files": []
+  },
+  {
+    "id": "ASUS-ROG-SL400-Destrier-Ergo",
+    "title": "ASUS ROG SL400 Destrier Ergo Gaming Chair",
+    "price": 349000,
+    "image": "https://www.nanotek.lk/storage/products/918/cz3jHBngSaOweIt3EOzgh4s0wDGRpNQlXiZoHIfQ.png",
+    "category": "chairs",
+    "colors": ["Black"],
+    "rating": null,
+    "reviewCount": null,
+    "orderCount": null,
+    "description": "Cyborg-inspired design with extreme adjustability, ideal for immersive gaming experiences.",
+    "specifications": [
+      {"name": "Design", "value": "Cyborg-inspired exoskeletal"},
+      {"name": "Adjustability", "value": "Extreme adjustability for optimal support"},
+      {"name": "Mobile Gaming Mode", "value": "Armrests raise up to 14 cm and rotate 360°"},
+      {"name": "Acoustic Panel", "value": "Detachable panel reduces distractions"},
+      {"name": "Materials", "value": "Aluminum frame, breathable mesh, PU foam"}
+    ],
+    "files": []
+  },
+  {
+    "id": "Asus-SL301C-ROG-Chariot-X",
+    "title": "Asus SL301C ROG Chariot X Gaming Chair",
+    "price": 225000,
+    "image": "https://www.nanotek.lk/storage/products/751/RaCz0XvQu3scRlVf4w33gAkTIyc04m6BrkqBOSfE.png",
+    "category": "chairs",
+    "colors": ["Black"],
+    "rating": null,
+    "reviewCount": null,
+    "orderCount": null,
+    "description": "Ergonomic gaming chair with customizable RGB lighting and high-density foam cushions.",
+    "specifications": [
+      {"name": "Lighting", "value": "Customizable RGB"},
+      {"name": "Cushions", "value": "High-density foam"},
+      {"name": "Frame", "value": "Steel frame for durability"},
+      {"name": "Adjustability", "value": "4D armrests, tilt, and height adjustments"}
+    ],
+    "files": []
+  },
+  {
+    "id": "Asus-SL301C-ROG-Chariot-X-Core",
+    "title": "Asus SL301C ROG Chariot X Core Gaming Chair",
+    "price": 165000,
+    "image": "https://www.nanotek.lk/storage/products/750/nuRhc9Yt79WIjpSdcMNwkYx6aNwzAqjxVOB3tHhM.png",
+    "category": "chairs",
+    "colors": ["Black"],
+    "rating": null,
+    "reviewCount": null,
+    "orderCount": null,
+    "description": "Core version of the ROG Chariot X, offering ergonomic design and essential features for gamers.",
+    "specifications": [
+      {"name": "Design", "value": "Ergonomic with adjustable backrest"},
+      {"name": "Cushions", "value": "High-density foam"},
+      {"name": "Frame", "value": "Durable steel construction"},
+      {"name": "Adjustability", "value": "3D armrests, tilt, and height adjustments"}
+    ],
+    "files": []
+  },
+  {
+    "id": "CORSAIR-T3-RUSH-Charcoal-Gray",
+    "title": "CORSAIR T3 RUSH GAMING CHAIR Charcoal & Gray",
+    "price": 126500,
+    "image": "https://www.nanotek.lk/storage/products/49/d6e1UnZtp31TJWGYXkbPEtbmwn2Jo2WG9GpfvR1k.png",
+    "category": "chairs",
+    "colors": ["Charcoal & Gray"],
+    "rating": null,
+    "reviewCount": null,
+    "orderCount": null,
+    "description": "Comfort-focused gaming chair with breathable fabric and adjustable neck and lumbar pillows.",
+    "specifications": [
+      {"name": "Material", "value": "Breathable soft fabric"},
+      {"name": "Pillows", "value": "Adjustable neck and lumbar support"},
+      {"name": "Adjustability", "value": "4D armrests, reclining backrest"},
+      {"name": "Base", "value": "Durable steel frame with caster wheels"}
+    ],
+    "files": []
+  },
+  {
+    "id": "MSI-MAG-CH120-X",
+    "title": "MSI MAG CH120 X GAMING CHAIR",
+    "price": 86000,
+    "image": "https://www.nanotek.lk/storage/products/52/VVPsKi0ZFox8hjnDfxluNYnvywH9CWXqUhcM2Vch.png",
+    "category": "chairs",
+    "colors": ["Black & Red"],
+    "rating": null,
+    "reviewCount": null,
+    "orderCount": null,
+    "description": "High-quality gaming chair with steel frame and adjustable backrest up to 180 degrees.",
+    "specifications": [
+      {"name": "Frame", "value": "High-quality steel"},
+      {"name": "Backrest", "value": "Adjustable up to 180°"},
+      {"name": "Seat", "value": "High-density foam for comfort"},
+      {"name": "Armrests", "value": "4D adjustable"}
+    ],
+    "files": []
   }
 
 
