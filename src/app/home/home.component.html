@@ -17,13 +17,12 @@
         <div class="banner__content">
           <h2>{{ banner.title }}</h2>
           <p>{{ banner.subtitle }}</p>
-          <a [routerLink]="[banner.buttonLink]" class="banner__link">
+          <a [routerLink]="[banner.buttonLink]" [queryParams]="{ category: banner.category }" class="banner__link">
             <i>{{ banner.buttonText }}</i>
           </a>
         </div>
       </div>
     }
-
     <!-- Navigation Controls -->
     <button
       class="banner__nav banner__nav--prev"
