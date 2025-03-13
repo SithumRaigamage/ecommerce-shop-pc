@@ -36,8 +36,8 @@ export class SideNavComponent {
     {
       "id": 4,
       "logo": "fas fa-desktop fa-3x",
-      "link": "accessories",
-      "text": "Laptop & Monitor Accessories"
+      "link": "monitors",
+      "text": "Monitors"
     },
     {
       "id": 5,
@@ -83,54 +83,48 @@ export class SideNavComponent {
     },
     {
       "id": 12,
-      "logo": "fas fa-tv fa-3x",
-      "link": "monitors",
-      "text": "Monitors"
-    },
-    {
-      "id": 13,
       "logo": "fas fa-headphones fa-3x",
       "link": "audio",
       "text": "Speakers & Headsets"
     },
     {
-      "id": 14,
+      "id": 13,
       "logo": "fas fa-keyboard fa-3x",
       "link": "peripherals",
       "text": "Keyboard & Mouse"
     },
     {
-      "id": 15,
+      "id": 14,
       "logo": "fas fa-chair fa-3x",
       "link": "chairs",
       "text": "Gaming Chairs"
     },
     {
-      "id": 16,
+      "id": 15,
       "logo": "fas fa-plug fa-3x",
       "link": "cables",
       "text": "Cables & Adapters"
     },
     {
-      "id": 17,
+      "id": 16,
       "logo": "fas fa-usb fa-3x",
       "link": "external-storage",
       "text": "External Storage"
     },
     {
-      "id": 18,
+      "id": 17,
       "logo": "fas fa-network-wired fa-3x",
       "link": "networking",
       "text": "Networking"
     },
     {
-      "id": 19,
+      "id": 18,
       "logo": "fas fa-dice fa-3x",
       "link": "software",
       "text": "Gaming Software"
     },
     {
-      "id": 20,
+      "id": 19,
       "logo": "fas fa-desktop fa-3x",
       "link": "desktops",
       "text": "Desktop PCs"
@@ -139,7 +133,7 @@ export class SideNavComponent {
 
   onCategorySelect(link: string) {
     this.categorySelected.emit(link);
-    //console.log('pressed link',link);
+    //console.log('pressed link :',link);
   }
 
 }

@@ -1,9 +1,7 @@
 <section class="bg-white dark:bg-[#0b1727] py-8 border-4 border-indigo-700 rounded-lg h-[500px]">
   <div class="container mx-auto px-4 h-full">
     <!-- Filter Section -->
-    <div class="bg-white dark:bg-[#1f2d3b] p-6 rounded-lg shadow-md">
-      <h2 class="text-xl font-semibold text-indigo-700 text-center">Filters</h2>
-    </div>
+    <app-filter-section *ngIf="filterOptions" [filterOptions]="filterOptions"></app-filter-section>
   </div>
 </section>
 
@@ -14,14 +12,13 @@
       @for (product of filteredProducts; track $index){
         <div class="col-span-6 md:col-span-3 lg:col-span-2">
           <div class="relative">
-            <img class="w-full" src="{{product.image}}" alt="" width="800px" height="800px"/>
+            <img class="w-full transition-transform transform hover:scale-105" src="{{product.image}}" alt="" width="800px" height="800px"/>
             <div class="absolute bottom-3 left-1/2 -translate-x-1/2 text-center">
               <h4 class="text-2xl font-medium mb-2">{{ product?.title }}</h4>
-              <h5 class="font-medium text-[22px] text-blue-600 my-3">{{ product?.price }}</h5>
+              <h5 class="font-medium text-[22px] text-blue-600 my-3">LKR {{ product?.price }}</h5>
               <button [routerLink]="['/product-overview', product.id]" class="bg-blue-600 text-white px-4 py-2 rounded-half hover:bg-blue-700 transition duration-300">
                 View Details
               </button>
-              <p class="opacity-80">PDF Format</p>
             </div>
           </div>
         </div>

@@ -27,7 +27,7 @@ export class MainlayoutComponent implements OnInit {
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
       // Check for specific routes where you want to hide or show the left div
-      this.isLeftVisible = !event.url.includes('/checkout'); // Adjust condition as needed
+      this.isLeftVisible = !['/checkout', '/billing','/thankyou','/login','/settings'].some(path => event.url.includes(path));
     });
   }
 
@@ -36,7 +36,7 @@ export class MainlayoutComponent implements OnInit {
   }
 
   onCategorySelected(category: string): void {
-    console.log('category selected: ', category);
+    //console.log('category selected: ', category);
     this.router.navigate(['/product-grid'], { queryParams: { category } });
   }
 }

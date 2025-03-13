@@ -16,6 +16,7 @@ export interface ProductModel {
   reviewCount?: number;
   orderCount?: number;
   description?: string;
-  faqs?: { question: string; answer: string }[];
+  faqs?: { question: string; answer: string; open: boolean }[]; // Add open property
   specifications?: { name: string; value: string }[];
+  files?: { name: string; url: string }[];
 }

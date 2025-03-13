@@ -3,10 +3,12 @@ import { HomeComponent } from './home/home.component';
 import {SupportComponent} from './support/support.component';
 import {ProductGridComponent} from './product-grid/product-grid.component';
 import { ProductOverviewComponent } from './product-overview/product-overview.component';
-import { ProductorderComponent } from './productorder/productorder.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SignComponent } from './sign/sign.component';
+import { BillingComponent } from './billing/billing.component';
+import { OrderMessageComponent } from './order-message/order-message.component';
 
 export const routes: Routes = [
   {
@@ -47,7 +49,15 @@ export const routes: Routes = [
   },
   {
     path: 'checkout',
-    component: ProductorderComponent
+    component: CheckoutComponent
+  },
+  {
+    path: 'billing',
+    component: BillingComponent
+  },
+  {
+    path: 'thankyou',
+    component: OrderMessageComponent
   },
   {
     path: 'warranty',

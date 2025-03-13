@@ -4,12 +4,12 @@
       <div class="col-span-2 lg:col-span-1">
         <div class="lg:mr-6">
           <div class="text-center rounded-xl overflow-hidden m-2">
-            <img [src]="selectedImage || product?.image" [alt]="product?.title" class="max-w-full max-h-[450px] object-cover h-auto w-full" />
+            <img [src]="selectedImage || product?.image" [alt]="product?.title" class="max-w-full max-h-[450px] object-cover h-auto w-full" style="height: 450px; width: 100%;" />
           </div>
           <ul class="flex flex-nowrap gap-3">
             <a *ngFor="let image of product?.images" href="#!" class="rounded-3 overflow-hidden m-2" (click)="selectImage(image); $event.preventDefault()">
               <li>
-                <img [src]="image" [alt]="product?.title" [class.border-2]="selectedImage === image" [class.border-blue-600]="selectedImage === image" class="max-w-[120px] object-cover h-auto rounded-xl" />
+                <img [src]="image" [alt]="product?.title" [class.border-2]="selectedImage === image" [class.border-blue-600]="selectedImage === image" class="max-w-[120px] object-cover h-auto rounded-xl" style="height: 120px; width: 120px;" />
               </li>
             </a>
           </ul>
@@ -31,7 +31,7 @@
             <h5 class="font-medium mb-2 text-blue-600">Color</h5>
             <div class="flex flex-wrap gap-2 mb-2">
               <ng-container *ngFor="let color of product?.colors; let i = index">
-                <input type="radio" [id]="'color-' + i" name="color" [value]="color" class="absolute hidden" [(ngModel)]="selectedColor" />
+                <input type="radio" [id]="'color-' + i" name="color" [value]="color" class="absolute hidden" [(ngModel)]="selectedColor" [checked]="i === 0" />
                 <label [for]="'color-' + i" [style.background-color]="color" class="w-8 h-8 rounded-full border-2 border-white dark:border-[#0b1727] outline outline-transparent cursor-pointer mt-1" [ngClass]="{'outline-1 outline-yellow-500': selectedColor === color}"></label>
               </ng-container>
             </div>
@@ -40,7 +40,7 @@
             <h5 class="font-medium mb-2">Size: <span class="opacity-50">{{ selectedSize?.name }}</span></h5>
             <div class="flex gap-2 mb-2">
               <ng-container *ngFor="let size of product?.sizes; let i = index">
-                <input type="radio" [id]="'size-' + i" name="size" [value]="size" class="absolute hidden" [(ngModel)]="selectedSize" />
+                <input type="radio" [id]="'size-' + i" name="size" [value]="size" class="absolute hidden" [(ngModel)]="selectedSize" [checked]="i === 0" />
                 <label [for]="'size-' + i" class="bg-gray-100 dark:bg-slate-800 cursor-pointer rounded-md flex flex-col overflow-hidden text-start border-2 border-white dark:border-[#0b1727] outline outline-1 px-4 py-3" [ngClass]="{'outline-blue-600': selectedSize === size, 'outline-white dark:outline-[#0b1727] hover:outline-blue-600': selectedSize !== size}">
                   <b class="mb-2">{{ size.name }}</b>
                   <span class="opacity-75 mb-2">{{ size.description }}</span>
@@ -79,25 +79,23 @@
   <div class="container mx-auto">
     <div class="bg-white dark:bg-[#0b1727] rounded-lg shadow-lg">
       <div class="flex justify-around border-b dark:border-gray-700">
-        <button (click)="selectedTab = 'details'" [ngClass]="{'border-b-2 border-blue-600': selectedTab === 'details'}" class="py-4 px-6 text-blue-600">Product Details</button>
         <button (click)="selectedTab = 'specifications'" [ngClass]="{'border-b-2 border-blue-600': selectedTab === 'specifications'}" class="py-4 px-6 text-blue-600">Specifications</button>
         <button (click)="selectedTab = 'comments'" [ngClass]="{'border-b-2 border-blue-600': selectedTab === 'comments'}" class="py-4 px-6 text-blue-600">Comments</button>
         <button (click)="selectedTab = 'files'" [ngClass]="{'border-b-2 border-blue-600': selectedTab === 'files'}" class="py-4 px-6 text-blue-600">Files</button>
         <button (click)="selectedTab = 'faq'" [ngClass]="{'border-b-2 border-blue-600': selectedTab === 'faq'}" class="py-4 px-6 text-blue-600">FAQ</button>
-        <button (click)="selectedTab = 'related'" [ngClass]="{'border-b-2 border-blue-600': selectedTab === 'related'}" class="py-4 px-6 text-blue-600">Related Products</button>
       </div>
       <div class="p-6">
-        <div *ngIf="selectedTab === 'details'">
-          <h2 class="text-xl font-semibold mb-4">Product Details</h2>
-          <p>{{ product?.description }}</p>
-        </div>
         <div *ngIf="selectedTab === 'comments'">
           <h2 class="text-xl font-semibold mb-4">Comments</h2>
           <!-- Add comments section here -->
         </div>
         <div *ngIf="selectedTab === 'files'">
           <h2 class="text-xl font-semibold mb-4">Files</h2>
-          <!-- Add files section here -->
+          <div class="space-y-4">
+            <div *ngFor="let file of product?.files">
+              <a [href]="file.url" download class="text-blue-600 hover:underline">{{ file.name }}</a>
+            </div>
+          </div>
         </div>
         <div *ngIf="selectedTab === 'specifications'">
           <h2 class="text-xl font-semibold mb-4">Specifications</h2>
@@ -108,10 +106,18 @@
           </ul>
         </div>
         <div *ngIf="selectedTab === 'faq'">
-          <h2 class="text-xl font-semibold mb-4">Frequently Asked Questions</h2>
-          <div *ngFor="let faq of product?.faqs" class="mb-4">
-            <h3 class="font-semibold">{{ faq.question }}</h3>
-            <p>{{ faq.answer }}</p>
+          <div class="container px-16 md:px-8 lg:px-28">
+            <div class="col-span-12 md:col-span-6">
+              <div *ngFor="let faq of faqs; let i = index" class="shadow dark:shadow-none dark:bg-[#1E2735] rounded-lg mt-6">
+                <a class="btn p-4 lg:p-6 w-full text-start flex justify-between items-center cursor-pointer" (click)="toggleFaq(i)">
+                  <span>{{ faq.question }}</span>
+                  <span class="fas" [ngClass]="{'fa-chevron-up': faq.open, 'fa-chevron-down': !faq.open}"></span>
+                </a>
+                <div class="ezy__faq1-content p-4 lg:p-6 pt-0" [ngClass]="{'hidden': !faq.open}">
+                  <p class="opacity-50">{{ faq.answer }}</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

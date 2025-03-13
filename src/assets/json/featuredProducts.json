@@ -1,10 +1,10 @@
 [
   {
     "id": 1,
-    "name": "High-Performance Laptop",
+    "name": "MSI Modern 15 H AI C1MG 14th Gen Ultra 5+ ARC Graphics Laptop",
     "description": "Powerful and sleek for all your computing needs",
-    "price": 1299,
-    "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
+    "price": 269000,
+    "image": "https://www.nanotek.lk/storage/products/709/oiMdctWBLu29S2NJN6a3dMifY9s2KHWlJbmeNDpJ.png",
     "badge": {
       "text": "New",
       "color": "bg-red-500"
@@ -12,11 +12,11 @@
   },
   {
     "id": 2,
-    "name": "Wireless Gaming Mouse",
+    "name": "ASUS TUF Gaming M4 Air Lightweight Gaming Mouse",
     "description": "Precision and comfort for extended gaming sessions",
-    "price": 79,
-    "oldPrice": 99,
-    "image": "https://images.unsplash.com/photo-1527814050087-3793815479db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80",
+    "price": 14500,
+    "oldPrice": 15000,
+    "image": "https://www.nanotek.lk/storage/products/587/WbI6opE3DcF5UdWOLlwqCzLvVMuJZldTQsPptWy3.png",
     "badge": {
       "text": "Sale",
       "color": "bg-green-500"

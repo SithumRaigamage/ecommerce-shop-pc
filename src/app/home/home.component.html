@@ -17,13 +17,12 @@
         <div class="banner__content">
           <h2>{{ banner.title }}</h2>
           <p>{{ banner.subtitle }}</p>
-          <a [routerLink]="[banner.buttonLink]" class="banner__link">
+          <a [routerLink]="[banner.buttonLink]" [queryParams]="{ category: banner.category }" class="banner__link">
             <i>{{ banner.buttonText }}</i>
           </a>
         </div>
       </div>
     }
-
     <!-- Navigation Controls -->
     <button
       class="banner__nav banner__nav--prev"
@@ -62,7 +61,7 @@
 <!-- Categories Overview -->
 <section class="categories-overview py-16 bg-gray-50">
   <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold mb-8 text-center">Shop by Category</h2>
+    <h2 class="text-3xl font-bold mb-8 text-center">Shop by Featured Categories</h2>
 
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       @for (catergory of categories; track catergory.id) {
@@ -70,7 +69,7 @@
           <div class="bg-white p-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-xl text-center">
             <i [class]="catergory.icon + ' text-4xl text-blue-600 mb-4'"></i>
             <h3 class="text-lg font-semibold">{{catergory.name}}</h3>
-            <span class="text-sm text-gray-500">Starting from ${{catergory.startingPrice}}</span>
+            <span class="text-sm text-gray-500">Starting from LKR {{catergory.startingPrice}}</span>
           </div>
         </a>
       }
@@ -88,7 +87,7 @@
   <div class="container mx-auto px-4">
     <h2 class="text-3xl font-bold mb-8">Featured Products</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      @for (product of products; track product.id) {
+      @for (product of featuredProducts; track product.id) {
         <div class="product-card bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-300 hover:scale-105">
           <div class="relative">
             <img [src]="product.image" [alt]="product.name" class="w-full h-64 object-cover">
