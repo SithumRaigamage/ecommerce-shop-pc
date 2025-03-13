@@ -1,15 +1,24 @@
-import { Component } from '@angular/core';
-import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-support',
-  imports: [ReactiveFormsModule],
-  templateUrl: './support.component.html',
-  styleUrl: './support.component.css'
+  templateUrl: './support.component.html'
 })
-export class SupportComponent {
-onSubmit() {
-throw new Error('Method not implemented.');
-}
-contactForm: any;
+export class SupportComponent implements OnInit {
+  form!: FormGroup; // Using the definite assignment assertion
 
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.initForm();
+  }
+
+  private initForm(): void {
+    this.form = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      message: ['', Validators.required]
+    });
+  }
 }
