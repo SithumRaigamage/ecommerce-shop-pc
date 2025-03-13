@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-support',
-  imports:[],
   templateUrl: './support.component.html',
-  styleUrls: ['./support.component.css']
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule]
 })
 export class SupportComponent implements OnInit {
-  form!: FormGroup; // Using the definite assignment assertion
+  form!: FormGroup;
 
   constructor(private fb: FormBuilder) {}
 
