@@ -1,4 +1,4 @@
-name: CI
+name: CI/CD Pipeline
 
 on:
   push:
@@ -7,18 +7,64 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [16.x, 18.x]  # Updated Node versions
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
+
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install
-    - run: npm test
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Lint
+      run: npm run lint
+
+    - name: Build
+      run: npm run build --if-present
+
+    - name: Run tests
+      run: npm test -- --no-watch --no-progress --browsers=ChromeHeadless
+
+    - name: Code Coverage
+      run: npm run test:coverage
+
+    - name: Upload coverage reports
+      uses: codecov/codecov-action@v3
+
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Security scan
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+  deploy:
+    needs: [build-and-test, security]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Deploy to Production
+        run: |
+          echo "Add your deployment commands here"
+        # Example for Firebase deployment:
+        # - uses: FirebaseExtended/action-hosting-deploy@v0
+        # with:
+        #   repoToken: '${{ secrets.GITHUB_TOKEN }}'
+        #   firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+        #   channelId: live
