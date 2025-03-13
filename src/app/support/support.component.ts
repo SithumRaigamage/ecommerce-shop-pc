@@ -3,7 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-support',
-  templateUrl: './support.component.html'
+  imports:[],
+  templateUrl: './support.component.html',
+  styleUrls: ['./support.component.css']
 })
 export class SupportComponent implements OnInit {
   form!: FormGroup; // Using the definite assignment assertion
