@@ -9,7 +9,8 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule, ReactiveFormsModule]
 })
 export class SupportComponent implements OnInit {
-  form!: FormGroup;
+
+  contactForm!: FormGroup;
 
   constructor(private fb: FormBuilder) {}
 
@@ -18,10 +19,28 @@ export class SupportComponent implements OnInit {
   }
 
   private initForm(): void {
-    this.form = this.fb.group({
+    this.contactForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      message: ['', Validators.required]
+      issueType: ['', Validators.required],
+      productModel: ['', Validators.required],
+      priority: ['', Validators.required],
+      description: ['', Validators.required],
+      screenshots: [''],
+      documents: ['']
     });
+  }
+
+  onSubmit(): void {
+    if (this.contactForm.valid) {
+      console.log(this.contactForm.value);
+      // Handle form submission logic here
+    } else {
+      // Mark all fields as touched to trigger validation display
+      Object.keys(this.contactForm.controls).forEach(key => {
+        const control = this.contactForm.get(key);
+        control?.markAsTouched();
+      });
+    }
   }
 }
