@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { BillingComponent } from './billing.component';
+import { TestModule } from '../testing/test.module';
+import { ToastrService } from 'ngx-toastr';
 
 describe('BillingComponent', () => {
   let component: BillingComponent;
@@ -8,9 +9,9 @@ describe('BillingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BillingComponent]
-    })
-    .compileComponents();
+      imports: [BillingComponent, TestModule],
+      providers: [ToastrService]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(BillingComponent);
     component = fixture.componentInstance;

@@ -1,18 +1,28 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CheckoutComponent } from './checkout.component';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-import { ProductorderComponent } from './checkout.component';
-
-describe('ProductorderComponent', () => {
-  let component: ProductorderComponent;
-  let fixture: ComponentFixture<ProductorderComponent>;
+describe('CheckoutComponent', () => {
+  let component: CheckoutComponent;
+  let fixture: ComponentFixture<CheckoutComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ProductorderComponent]
+      imports: [
+        CheckoutComponent,
+        ToastrModule.forRoot(),
+        RouterTestingModule,
+        HttpClientTestingModule
+      ],
+      providers: [
+        ToastrService
+      ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ProductorderComponent);
+    fixture = TestBed.createComponent(CheckoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
