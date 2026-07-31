@@ -1,0 +1,354 @@
+import { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import { Heart, Minus, Plus, Share2, Star } from 'lucide-react'
+import { toast } from 'sonner'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Skeleton } from '@/components/ui/skeleton'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { ProductImage } from '@/components/ProductImage'
+import { getProductById } from '@/lib/api'
+import { formatLKR } from '@/lib/format'
+import { cn } from '@/lib/utils'
+import { useAsync } from '@/hooks/useAsync'
+import { useCartStore } from '@/store/cart'
+import type { Size } from '@/types'
+
+export default function ProductOverview() {
+  const { id } = useParams<{ id: string }>()
+  const navigate = useNavigate()
+  const addToCart = useCartStore((state) => state.addToCart)
+
+  const { data: product, loading } = useAsync(() => getProductById(id ?? ''), [id])
+
+  const [selectedImage, setSelectedImage] = useState<string>()
+  const [selectedColor, setSelectedColor] = useState<string>()
+  const [selectedSize, setSelectedSize] = useState<Size>()
+  const [quantity, setQuantity] = useState(1)
+  const [isFavorite, setIsFavorite] = useState(false)
+
+  // Seed the selections from the product once it resolves, as ngOnInit did.
+  useEffect(() => {
+    if (!product) return
+    setSelectedImage(product.image)
+    setSelectedColor(product.colors?.[0])
+    setSelectedSize(product.sizes?.[0])
+    setQuantity(1)
+  }, [product])
+
+  if (loading) {
+    return (
+      <div className="grid gap-6 lg:grid-cols-2">
+        <Skeleton className="h-[450px] rounded-xl" />
+        <div className="space-y-4">
+          <Skeleton className="h-10 w-3/4" />
+          <Skeleton className="h-6 w-1/2" />
+          <Skeleton className="h-32 w-full" />
+        </div>
+      </div>
+    )
+  }
+
+  if (!product) {
+    return (
+      <div className="py-24 text-center">
+        <h1 className="text-2xl font-bold">Product not found</h1>
+        <p className="text-muted-foreground mt-2">
+          We couldn&apos;t find a product with the id &ldquo;{id}&rdquo;.
+        </p>
+        <Button className="mt-6" onClick={() => navigate('/product-grid')}>
+          Browse products
+        </Button>
+      </div>
+    )
+  }
+
+  const share = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href)
+      toast.success('Product URL copied to clipboard!')
+    } catch {
+      toast.error('Failed to copy URL.')
+    }
+  }
+
+  const handleAddToCart = () => {
+    if (product.colors?.length && !selectedColor) {
+      toast.warning('Please select a color.')
+      return
+    }
+    if (product.sizes?.length && !selectedSize) {
+      toast.warning('Please select a size.')
+      return
+    }
+    if (quantity <= 0) {
+      toast.warning('Please select a valid quantity.')
+      return
+    }
+
+    addToCart({
+      product: {
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        image: product.image,
+      },
+      color: selectedColor ?? '',
+      size: selectedSize ?? { name: '', description: '' },
+      quantity,
+    })
+    toast.success('Product added to cart successfully!')
+  }
+
+  const gallery = product.images?.length ? product.images : [product.image]
+
+  return (
+    <div className="space-y-10">
+      <section className="grid gap-8 lg:grid-cols-2">
+        <div>
+          <div className="bg-muted/30 overflow-hidden rounded-xl border">
+            <ProductImage
+              src={selectedImage ?? product.image}
+              alt={product.title}
+              className="h-[450px] w-full object-contain"
+            />
+          </div>
+          {gallery.length > 1 && (
+            <ul className="mt-3 flex flex-wrap gap-3">
+              {gallery.map((image, i) => (
+                <li key={`${image}-${i}`}>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedImage(image)}
+                    aria-label={`View image ${i + 1}`}
+                    aria-current={selectedImage === image}
+                    className={cn(
+                      'overflow-hidden rounded-xl border-2 transition-colors',
+                      selectedImage === image ? 'border-primary' : 'border-transparent',
+                    )}
+                  >
+                    <ProductImage
+                      src={image}
+                      alt={`${product.title} thumbnail ${i + 1}`}
+                      className="size-24 object-contain"
+                    />
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+
+        <div>
+          <h1 className="text-primary mb-4 text-3xl leading-tight font-medium md:text-4xl">
+            {product.title}
+          </h1>
+
+          <div className="text-muted-foreground mb-6 flex flex-wrap items-center gap-2 text-sm">
+            {product.rating != null && (
+              <span className="flex items-center gap-1">
+                <Star className="size-4 fill-yellow-500 text-yellow-500" aria-hidden="true" />
+                {product.rating}
+              </span>
+            )}
+            {product.reviewCount != null && <span>· {product.reviewCount} Reviews</span>}
+            {product.orderCount != null && <span>· {product.orderCount} Orders</span>}
+          </div>
+
+          <p className="text-primary mb-8 text-2xl font-semibold">{formatLKR(product.price)}</p>
+
+          {product.colors?.length ? (
+            <fieldset className="mb-6">
+              <legend className="mb-2 font-medium">
+                Color: <span className="text-muted-foreground">{selectedColor}</span>
+              </legend>
+              <div className="flex flex-wrap gap-2">
+                {product.colors.map((color) => (
+                  <button
+                    key={color}
+                    type="button"
+                    onClick={() => setSelectedColor(color)}
+                    aria-pressed={selectedColor === color}
+                    className={cn(
+                      'rounded-md border-2 px-3 py-1.5 text-sm transition-colors',
+                      selectedColor === color
+                        ? 'border-primary text-primary'
+                        : 'border-input hover:border-primary/50',
+                    )}
+                  >
+                    {color}
+                  </button>
+                ))}
+              </div>
+            </fieldset>
+          ) : null}
+
+          {product.sizes?.length ? (
+            <fieldset className="mb-6">
+              <legend className="mb-2 font-medium">
+                Size: <span className="text-muted-foreground">{selectedSize?.name}</span>
+              </legend>
+              <div className="flex flex-wrap gap-2">
+                {product.sizes.map((size) => (
+                  <button
+                    key={size.name}
+                    type="button"
+                    onClick={() => setSelectedSize(size)}
+                    aria-pressed={selectedSize?.name === size.name}
+                    className={cn(
+                      'flex max-w-56 flex-col rounded-md border-2 px-4 py-3 text-left transition-colors',
+                      selectedSize?.name === size.name
+                        ? 'border-primary'
+                        : 'border-input hover:border-primary/50',
+                    )}
+                  >
+                    <b>{size.name}</b>
+                    <span className="text-muted-foreground text-sm">{size.description}</span>
+                  </button>
+                ))}
+              </div>
+            </fieldset>
+          ) : null}
+
+          <div className="mb-6">
+            <h2 className="mb-2 font-medium">Quantity</h2>
+            <div className="flex w-36 items-center rounded-full border">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="rounded-l-full"
+                onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                disabled={quantity <= 1}
+                aria-label="Decrease quantity"
+              >
+                <Minus className="size-4" />
+              </Button>
+              <Input
+                type="number"
+                min={1}
+                value={quantity}
+                onChange={(event) => setQuantity(Math.max(1, Number(event.target.value) || 1))}
+                aria-label="Quantity"
+                className="h-9 border-0 text-center shadow-none focus-visible:ring-0"
+              />
+              <Button
+                variant="ghost"
+                size="icon"
+                className="rounded-r-full"
+                onClick={() => setQuantity((q) => q + 1)}
+                aria-label="Increase quantity"
+              >
+                <Plus className="size-4" />
+              </Button>
+            </div>
+          </div>
+
+          <div className="mb-7 flex flex-wrap items-center gap-2">
+            <Button
+              onClick={() => {
+                handleAddToCart()
+                navigate('/checkout')
+              }}
+              className="uppercase"
+            >
+              Buy now
+            </Button>
+            <Button variant="outline" onClick={handleAddToCart} className="uppercase">
+              Add to cart
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsFavorite((value) => !value)}
+              aria-pressed={isFavorite}
+              aria-label={isFavorite ? 'Remove from favourites' : 'Add to favourites'}
+            >
+              <Heart className={cn('size-5', isFavorite && 'fill-primary text-primary')} />
+            </Button>
+            <Button variant="ghost" size="icon" onClick={share} aria-label="Share product">
+              <Share2 className="size-5" />
+            </Button>
+          </div>
+
+          {product.description && (
+            <p className="text-muted-foreground">{product.description}</p>
+          )}
+        </div>
+      </section>
+
+      <Card>
+        <CardContent>
+          <Tabs defaultValue="specifications">
+            <TabsList className="w-full">
+              <TabsTrigger value="specifications">Specifications</TabsTrigger>
+              <TabsTrigger value="comments">Comments</TabsTrigger>
+              <TabsTrigger value="files">Files</TabsTrigger>
+              <TabsTrigger value="faq">FAQ</TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="specifications" className="pt-6">
+              {product.specifications?.length ? (
+                <dl className="space-y-3">
+                  {product.specifications.map((spec, i) => (
+                    <div key={`${spec.name}-${i}`}>
+                      <dt className="font-semibold">{spec.name}</dt>
+                      <dd className="text-muted-foreground">{spec.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              ) : (
+                <p className="text-muted-foreground">No specifications available.</p>
+              )}
+            </TabsContent>
+
+            <TabsContent value="comments" className="pt-6">
+              <p className="text-muted-foreground">No comments yet.</p>
+            </TabsContent>
+
+            <TabsContent value="files" className="pt-6">
+              {product.files?.length ? (
+                <ul className="space-y-2">
+                  {product.files.map((file, i) => (
+                    <li key={`${file.name}-${i}`}>
+                      <a
+                        href={file.url}
+                        download
+                        className="text-primary hover:underline"
+                      >
+                        {file.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-muted-foreground">No files available.</p>
+              )}
+            </TabsContent>
+
+            <TabsContent value="faq" className="pt-6">
+              {product.faqs?.length ? (
+                <Accordion type="single" collapsible className="w-full">
+                  {product.faqs.map((faq, i) => (
+                    <AccordionItem key={`${faq.question}-${i}`} value={`faq-${i}`}>
+                      <AccordionTrigger>{faq.question}</AccordionTrigger>
+                      <AccordionContent>{faq.answer}</AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              ) : (
+                <p className="text-muted-foreground">No FAQs available.</p>
+              )}
+            </TabsContent>
+          </Tabs>
+        </CardContent>
+      </Card>
+    </div>
+  )
+}

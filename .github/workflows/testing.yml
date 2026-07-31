@@ -16,19 +16,19 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: 18.x
+        node-version: 20.x
         cache: 'npm'
 
     - name: Install dependencies
       run: npm ci
 
-    - name: Run unit tests
-      run: npm test -- --no-watch --no-progress --browsers=ChromeHeadless
+    - name: Lint
+      run: npm run lint
 
-    - name: Run e2e tests
-      run: npm run e2e -- --configuration=ci
+    - name: Typecheck and build
+      run: npm run build
 
-    - name: Generate coverage report
+    - name: Run unit tests with coverage
       run: npm run test:coverage
 
     - name: Upload coverage reports
@@ -38,3 +38,34 @@ jobs:
         path: coverage/
         retention-days: 14
         if-no-files-found: error
+
+  e2e:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20.x
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Install Playwright browsers
+      run: npx playwright install --with-deps chromium
+
+    # playwright.config.ts builds the app and serves it with `vite preview`.
+    - name: Run end-to-end tests
+      run: npm run e2e
+
+    - name: Upload Playwright report
+      if: ${{ !cancelled() }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: playwright-report
+        path: playwright-report/
+        retention-days: 14
+        if-no-files-found: ignore

@@ -1,0 +1,81 @@
+[
+  {
+    "id": 1,
+    "productId": "1",
+    "name": "PLAYSTATION 5 SLIM DISK EDITION CONSOLE 1TB - CFI-2016A01Y",
+    "description": "Next-gen console gaming with ultra-fast load times",
+    "price": 180000,
+    "image": "assets/products/ps5.png",
+    "category": "gaming",
+    "badge": {
+      "text": "Best Seller",
+      "color": "bg-yellow-500"
+    }
+  },
+  {
+    "id": 2,
+    "productId": "2-laptop",
+    "name": "Lenovo LOQ 15IRX9 i7 14th GEN HX + RTX 4060 8GB",
+    "description": "RTX 4060 muscle in a portable 15-inch chassis",
+    "price": 467000,
+    "image": "assets/products/lenovoLap.png",
+    "category": "laptop",
+    "badge": {
+      "text": "New",
+      "color": "bg-red-500"
+    }
+  },
+  {
+    "id": 3,
+    "productId": "8-graphics",
+    "name": "ASUS ROG RTX 5090 Astral 32GB GDDR7 Graphics Card",
+    "description": "Flagship 32GB GDDR7 for 4K ray-traced gaming",
+    "price": 1499000,
+    "image": "assets/products/asus_rog_rtx_5090.png",
+    "category": "graphics",
+    "badge": {
+      "text": "New",
+      "color": "bg-red-500"
+    }
+  },
+  {
+    "id": 4,
+    "productId": "9",
+    "name": "MSI MAG 27CQ6F 27\" WQHD 180Hz 0.5ms AMD FreeSync Curved Gaming Monitor",
+    "description": "Immersive visuals on a 180Hz curved WQHD panel",
+    "price": 85000,
+    "image": "assets/products/msi_mag_27cq6f.png",
+    "category": "monitors",
+    "badge": {
+      "text": "Popular",
+      "color": "bg-purple-500"
+    }
+  },
+  {
+    "id": 5,
+    "productId": "5-processor",
+    "name": "AMD Ryzen 7 9800X3D Processor (Up to 5.2 GHz, 8-Cores, 16-Threads)",
+    "description": "Eight cores tuned for the highest gaming frame rates",
+    "price": 197000,
+    "image": "assets/products/amd_ryzen_7_9800x3d.png",
+    "category": "processor",
+    "badge": {
+      "text": "Popular",
+      "color": "bg-purple-500"
+    }
+  },
+  {
+    "id": 6,
+    "productId": "2",
+    "name": "TEAM TFORCE VULCAN Z SATA SSD 256GB - 1TB",
+    "description": "Fast, reliable SATA storage from 256GB to 1TB",
+    "price": 12000,
+    "image": "assets/products/tforce_vulcan_z.png",
+    "category": "storage",
+    "badge": {
+      "text": "Sale",
+      "color": "bg-green-500"
+    },
+    "oldPrice": 14000
+  }
+]
