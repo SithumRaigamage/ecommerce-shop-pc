@@ -1,6 +1,7 @@
 import { Suspense, useEffect, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { CartSheet } from '@/components/CartSheet'
+import { ErrorBoundary } from '@/components/ErrorBoundary'
 import { SideNav } from '@/components/layout/SideNav'
 import { SiteFooter } from '@/components/layout/SiteFooter'
 import { SiteHeader } from '@/components/layout/SiteHeader'
@@ -39,9 +40,11 @@ export function MainLayout() {
           <SideNav className="sticky top-22 hidden max-h-[calc(100vh-6.5rem)] w-44 shrink-0 overflow-y-auto lg:block" />
         )}
         <main className="min-w-0 flex-1">
-          <Suspense fallback={<RouteFallback />}>
-            <Outlet />
-          </Suspense>
+          <ErrorBoundary resetKey={pathname}>
+            <Suspense fallback={<RouteFallback />}>
+              <Outlet />
+            </Suspense>
+          </ErrorBoundary>
         </main>
       </div>
 

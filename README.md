@@ -35,14 +35,15 @@ and serves it with `vite preview`, so the tests exercise the real production chu
 
 ```text
 e2e/                  Playwright specs
+scripts/              Build-time checks (catalogue validation)
 public/assets/        Static images and the JSON fixtures that back the catalogue
 src/components/ui/    shadcn/ui primitives (generated — re-add with the shadcn CLI)
-src/components/       App-level components (layout, cart sheet, filters, checkout steps)
+src/components/       App-level components (layout, cart sheet, filters, theme, error boundary)
 src/pages/            One component per route
-src/lib/              API access, catalogue normalisation, formatting, `cn` helper
+src/lib/              API access, catalogue schema, facets, theme, formatting, `cn` helper
 src/routes.ts         Route table as data, so link fixtures can be validated against it
 src/store/            Zustand cart store (persisted) + pure total calculations
-src/hooks/            `useAsync` data-fetching hook, dummy `useAuth`
+src/hooks/            `useAsync`, `useFacets`, `useTheme`, dummy `useAuth`
 src/types/            Shared domain types
 ```
 
@@ -60,27 +61,39 @@ Configuration lives in `components.json`; theme tokens are CSS variables in `src
 
 ## Data
 
-The catalogue is served from static JSON in `public/assets/json/` (banners, categories, featured
-products, price filters and ~295 sellable products). `src/lib/api.ts` is the single place that
-reads them, so swapping in a real HTTP backend means changing that one module.
+The catalogue is served from static JSON in `public/assets/json/`: 48 curated products across the
+8 categories in `CATEGORIES`, plus banners, category tiles, featured products and the price-filter
+range. `src/lib/api.ts` is the single place that reads them, so swapping in a real HTTP backend
+means changing that one module.
 
-`Web_Scraper/` holds the Python scripts that populate the product data. Because it regenerates
-`products.json`, the app **normalises the catalogue on read** rather than hand-editing the file
-(`src/lib/products.ts`, `src/lib/categories.ts`):
+Every product carries `title`, `brand`, `mpn`, `price` (LKR), `category` and a `specs` object whose
+required keys depend on the category — CPUs need `socket`/`cores`/`threads`/`tdp`, GPUs need
+`vram_gb`/`tdp`/`length_mm`, and so on. The contract lives in `src/lib/catalogue-schema.ts`.
 
-- **Category aliases** — the scraper emits `"Laptop"`/`"laptop"`, `"speakers,"`, `"casings"`,
-  `"tv"`/`"television"` and similar. `normalizeCategory` folds them onto the canonical slugs in
-  `CATEGORIES`, which is also what the sidebar renders.
-- **Duplicate ids** — ids repeat across categories (`"1"` is both a PlayStation 5 and a set of
-  speakers). `dedupeProductIds` keeps the first occurrence on its bare id and suffixes later ones
-  with their category (`1-audio`), so every product has a reachable detail page and the cart
-  cannot merge unrelated items.
-- **Unsellable rows** — a few entries carry `price: null` and are dropped, since a null price
-  sorts as free and cannot be checked out.
+`image` is `null` for every product until imagery is sourced; `ProductImage` renders a labelled
+placeholder for it.
 
-`src/lib/categories.test.ts` and `src/lib/content.test.ts` fail if the scraper introduces a
-category with no navigation entry, or if a banner/featured fixture points at a route or product
-that doesn't exist.
+### Validation
+
+```bash
+npm run validate:catalogue   # also runs as the first step of `npm test`
+```
+
+`scripts/validate-catalogue.ts` fails the build if a record is missing a required field, carries a
+non-positive price, duplicates an id, uses an unknown category, or is missing a spec its category
+requires. Alongside it, `src/lib/categories.test.ts` and `src/lib/content.test.ts` fail if a
+category has no navigation entry (or a nav entry has no products), or if a banner/featured fixture
+points at a route or product that doesn't exist.
+
+`Web_Scraper/` holds the Python scripts that produced the original catalogue. It no longer feeds
+`products.json` — the seed above is hand-curated and validated.
+
+### Filters
+
+Catalogue facets live in the URL, not component state, so they survive navigation, reload, back /
+forward and sharing. `src/lib/facets.ts` defines the codecs and `CATALOGUE_FACETS`; `useFacets`
+binds them to `useSearchParams`. Adding a facet (brand, socket, sort) means adding one entry to
+`CATALOGUE_FACETS` — no page code changes.
 
 ## Cart state
 
@@ -92,3 +105,13 @@ from it, so they cannot disagree.
 Billing reads the order from the store rather than router location state (which is lost on
 refresh) and redirects to `/checkout` if nothing is pending. Bump the `version` in the persist
 config when the stored shape changes.
+
+## Theming
+
+`ThemeProvider` (`src/components/ThemeProvider.tsx`) applies a `dark`/light class to `<html>`,
+resolving stored preference → `prefers-color-scheme` → **dark** as the default. An inline script in
+`index.html` runs the same resolution before first paint to avoid a flash of the wrong theme — keep
+the two in sync if the logic changes.
+
+There is no toggle UI yet; `useTheme().setPreference('light' | 'dark' | 'system')` is the seam one
+will use.

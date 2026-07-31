@@ -27,7 +27,7 @@ export interface FeaturedProduct {
   description: string
   price: number
   oldPrice?: number
-  image: string
+  image: string | null
   category: string
   badge?: {
     text: string
@@ -45,13 +45,20 @@ export interface Faq {
   answer: string
 }
 
+/** Category-relevant spec values; required keys per category live in `lib/catalogue-schema.ts`. */
+export type ProductSpecs = Record<string, string | number | string[] | undefined>
+
 export interface Product {
   id: string
   title: string
+  brand: string
+  mpn: string
   price: number
-  image: string
-  images?: string[]
   category: string
+  /** null until imagery is sourced; `ProductImage` renders a placeholder. */
+  image: string | null
+  specs: ProductSpecs
+  images?: string[]
   colors?: string[]
   sizes?: Size[]
   rating?: number
@@ -59,7 +66,6 @@ export interface Product {
   orderCount?: number
   description?: string
   faqs?: Faq[]
-  specifications?: { name: string; value: string }[]
   files?: { name: string; url: string }[]
 }
 

@@ -11,7 +11,7 @@ const raw: Product[] = JSON.parse(
 const catalogue = normalizeCatalogue(raw)
 
 function product(id: string, category: string, title = id): Product {
-  return { id, title, price: 1, image: '', category }
+  return { id, title, brand: 'ACME', mpn: `MPN-${id}`, price: 1, image: null, category, specs: {} }
 }
 
 describe('dedupeProductIds', () => {
@@ -45,20 +45,22 @@ describe('dedupeProductIds', () => {
 })
 
 describe('isSellable', () => {
-  it('rejects the scraped rows that carry a null price', () => {
-    const nullPriced = raw.filter((p) => p.price === null || p.price === undefined)
-    expect(nullPriced.length).toBeGreaterThan(0)
-    expect(nullPriced.every((p) => !isSellable(p))).toBe(true)
+  it('rejects a null or missing price', () => {
+    const unpriced = { ...product('a', 'processor'), price: null as unknown as number }
+    expect(isSellable(unpriced)).toBe(false)
   })
 
   it('rejects zero and negative prices', () => {
-    expect(isSellable(product('a', 'gaming'))).toBe(false)
-    expect(isSellable({ ...product('a', 'gaming'), price: 0, image: 'x.png' })).toBe(false)
-    expect(isSellable({ ...product('a', 'gaming'), price: -5, image: 'x.png' })).toBe(false)
+    expect(isSellable({ ...product('a', 'processor'), price: 0 })).toBe(false)
+    expect(isSellable({ ...product('a', 'processor'), price: -5 })).toBe(false)
   })
 
-  it('accepts a complete product', () => {
-    expect(isSellable({ ...product('a', 'gaming'), price: 100, image: 'x.png' })).toBe(true)
+  it('accepts a product whose image is null, since imagery is not sourced yet', () => {
+    expect(isSellable({ ...product('a', 'processor'), price: 100, image: null })).toBe(true)
+  })
+
+  it('keeps every product in the curated catalogue', () => {
+    expect(raw.every(isSellable)).toBe(true)
   })
 })
 
@@ -75,8 +77,10 @@ describe('catalogue integrity', () => {
     }
   })
 
-  it('gives every product a title, price and image', () => {
-    const broken = catalogue.filter((p) => !p.title || !p.image || typeof p.price !== 'number')
+  it('gives every product a title, brand, mpn and numeric price', () => {
+    const broken = catalogue.filter(
+      (p) => !p.title || !p.brand || !p.mpn || typeof p.price !== 'number',
+    )
     expect(broken.map((p) => p.id)).toEqual([])
   })
 })

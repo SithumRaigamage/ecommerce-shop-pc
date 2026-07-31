@@ -17,20 +17,15 @@ describe('normalizeCategory', () => {
     expect(normalizeCategory('  storage ')).toBe('storage')
   })
 
-  it('resolves the scraper aliases onto canonical slugs', () => {
-    expect(normalizeCategory('speakers,')).toBe('audio')
-    expect(normalizeCategory('casings')).toBe('cases')
-    expect(normalizeCategory('television')).toBe('tv')
-    expect(normalizeCategory('expansion')).toBe('networking')
-    expect(normalizeCategory('external')).toBe('external-storage')
-    expect(normalizeCategory('console')).toBe('gaming')
-    expect(normalizeCategory('apple')).toBe('laptop')
-    expect(normalizeCategory('os')).toBe('software')
-    expect(normalizeCategory('live')).toBe('streaming')
+  it('leaves an already-canonical slug untouched', () => {
+    for (const { slug } of CATEGORIES) {
+      expect(normalizeCategory(slug)).toBe(slug)
+    }
   })
 
   it('returns an empty string for missing values', () => {
     expect(normalizeCategory(undefined)).toBe('')
+    expect(normalizeCategory(null)).toBe('')
     expect(normalizeCategory('')).toBe('')
   })
 })

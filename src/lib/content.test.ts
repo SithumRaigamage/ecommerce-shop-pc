@@ -93,12 +93,13 @@ describe('featuredProducts.json', () => {
   })
 
   /**
-   * Most of the scraped catalogue hotlinks nanotek.lk URLs that now 404, so the
-   * home page — the one place broken images are most visible — is restricted to
-   * images committed to `public/`.
+   * Imagery is sourced in a later stage, so `image` is null for now. What must
+   * not happen is a hotlink to a third-party URL (the previous catalogue's
+   * images all 404'd) or a path to a file that isn't committed.
    */
-  it('only promotes products whose image is a committed local file', () => {
+  it('never hotlinks a remote image, and any local path exists', () => {
     const broken = featured.filter((f) => {
+      if (f.image === null) return false
       if (/^https?:/.test(f.image)) return true
       return !existsSync(resolve(process.cwd(), 'public', f.image.replace(/^\//, '')))
     })

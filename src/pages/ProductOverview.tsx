@@ -14,21 +14,32 @@ import { Input } from '@/components/ui/input'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { ProductImage } from '@/components/ProductImage'
+import { LoadError } from '@/components/LoadError'
 import { getProductById } from '@/lib/api'
 import { formatLKR } from '@/lib/format'
 import { cn } from '@/lib/utils'
 import { useAsync } from '@/hooks/useAsync'
 import { useCartStore } from '@/store/cart'
-import type { Size } from '@/types'
+import type { ProductSpecs, Size } from '@/types'
+
+/** `max_gpu_mm` → `Max gpu mm`. Spec keys are snake_case in the catalogue. */
+function formatSpecName(key: string): string {
+  const words = key.replace(/_/g, ' ')
+  return words.charAt(0).toUpperCase() + words.slice(1)
+}
+
+function formatSpecValue(value: ProductSpecs[string]): string {
+  return Array.isArray(value) ? value.join(', ') : String(value ?? '')
+}
 
 export default function ProductOverview() {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
   const addToCart = useCartStore((state) => state.addToCart)
 
-  const { data: product, loading } = useAsync(() => getProductById(id ?? ''), [id])
+  const { data: product, loading, error, retry } = useAsync(() => getProductById(id ?? ''), [id])
 
-  const [selectedImage, setSelectedImage] = useState<string>()
+  const [selectedImage, setSelectedImage] = useState<string | null>()
   const [selectedColor, setSelectedColor] = useState<string>()
   const [selectedSize, setSelectedSize] = useState<Size>()
   const [quantity, setQuantity] = useState(1)
@@ -42,6 +53,10 @@ export default function ProductOverview() {
     setSelectedSize(product.sizes?.[0])
     setQuantity(1)
   }, [product])
+
+  if (error) {
+    return <LoadError message="This product could not be loaded." onRetry={retry} />
+  }
 
   if (loading) {
     return (
@@ -107,7 +122,10 @@ export default function ProductOverview() {
     toast.success('Product added to cart successfully!')
   }
 
-  const gallery = product.images?.length ? product.images : [product.image]
+  const gallery = product.images?.length ? product.images : []
+  const specEntries = Object.entries(product.specs ?? {}).filter(
+    ([, value]) => value !== undefined && value !== null && value !== '',
+  )
 
   return (
     <div className="space-y-10">
@@ -152,8 +170,11 @@ export default function ProductOverview() {
           </h1>
 
           <div className="text-muted-foreground mb-6 flex flex-wrap items-center gap-2 text-sm">
+            <span>{product.brand}</span>
+            <span>· MPN {product.mpn}</span>
             {product.rating != null && (
               <span className="flex items-center gap-1">
+                ·
                 <Star className="size-4 fill-yellow-500 text-yellow-500" aria-hidden="true" />
                 {product.rating}
               </span>
@@ -294,12 +315,12 @@ export default function ProductOverview() {
             </TabsList>
 
             <TabsContent value="specifications" className="pt-6">
-              {product.specifications?.length ? (
+              {specEntries.length > 0 ? (
                 <dl className="space-y-3">
-                  {product.specifications.map((spec, i) => (
-                    <div key={`${spec.name}-${i}`}>
-                      <dt className="font-semibold">{spec.name}</dt>
-                      <dd className="text-muted-foreground">{spec.value}</dd>
+                  {specEntries.map(([name, value]) => (
+                    <div key={name}>
+                      <dt className="font-semibold">{formatSpecName(name)}</dt>
+                      <dd className="text-muted-foreground">{formatSpecValue(value)}</dd>
                     </div>
                   ))}
                 </dl>

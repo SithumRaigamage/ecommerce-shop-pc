@@ -5,7 +5,7 @@ test.describe('purchase funnel', () => {
   test('completes an order from product page to confirmation', async ({ page }) => {
     const errors = failOnPageErrors(page)
 
-    const title = await addFirstProductToCart(page, 'gaming')
+    const title = await addFirstProductToCart(page, 'processor')
     await expect(page.getByRole('button', { name: 'Open cart' })).toContainText('1')
 
     const cart = await openCart(page)
@@ -39,7 +39,7 @@ test.describe('purchase funnel', () => {
   })
 
   test('rejects an invalid coupon', async ({ page }) => {
-    await addFirstProductToCart(page, 'gaming')
+    await addFirstProductToCart(page, 'processor')
     const cart = await openCart(page)
     await cart.getByRole('button', { name: /^BUY/ }).click()
     await page.waitForURL('**/checkout')
@@ -50,7 +50,7 @@ test.describe('purchase funnel', () => {
   })
 
   test('blocks submission until billing details and payment are valid', async ({ page }) => {
-    await addFirstProductToCart(page, 'gaming')
+    await addFirstProductToCart(page, 'processor')
     const cart = await openCart(page)
     await cart.getByRole('button', { name: /^BUY/ }).click()
     await page.waitForURL('**/checkout')
@@ -66,7 +66,7 @@ test.describe('purchase funnel', () => {
   })
 
   test('requires a card number only when paying by card', async ({ page }) => {
-    await addFirstProductToCart(page, 'gaming')
+    await addFirstProductToCart(page, 'processor')
     const cart = await openCart(page)
     await cart.getByRole('button', { name: /^BUY/ }).click()
     await page.waitForURL('**/checkout')
@@ -83,7 +83,7 @@ test.describe('purchase funnel', () => {
   })
 
   test('keeps the order and coupon across a reload of checkout and billing', async ({ page }) => {
-    await addFirstProductToCart(page, 'gaming')
+    await addFirstProductToCart(page, 'processor')
     const cart = await openCart(page)
     await cart.getByRole('button', { name: /^BUY/ }).click()
     await page.waitForURL('**/checkout')
@@ -122,7 +122,7 @@ test.describe('purchase funnel', () => {
 
 test.describe('cart', () => {
   test('updates quantity and removes items', async ({ page }) => {
-    const title = await addFirstProductToCart(page, 'gaming')
+    const title = await addFirstProductToCart(page, 'processor')
     const cart = await openCart(page)
 
     await cart.getByRole('button', { name: `Increase quantity of ${title}` }).click()
@@ -133,12 +133,12 @@ test.describe('cart', () => {
     await expect(cart.getByRole('button', { name: /^BUY \(0\)/ })).toBeDisabled()
   })
 
-  test('keeps distinct products separate even when the source data reused ids', async ({
+  test('keeps distinct products on separate cart lines', async ({
     page,
   }) => {
-    // "gaming" and "audio" both begin with a product the scraper gave id "1".
-    const first = await addFirstProductToCart(page, 'gaming')
-    const second = await addFirstProductToCart(page, 'audio')
+    // Two products from different categories must occupy separate cart lines.
+    const first = await addFirstProductToCart(page, 'processor')
+    const second = await addFirstProductToCart(page, 'graphics')
     expect(second).not.toBe(first)
 
     const cart = await openCart(page)
@@ -147,7 +147,7 @@ test.describe('cart', () => {
   })
 
   test('survives a page reload', async ({ page }) => {
-    const title = await addFirstProductToCart(page, 'gaming')
+    const title = await addFirstProductToCart(page, 'processor')
 
     await page.reload()
 
@@ -157,7 +157,7 @@ test.describe('cart', () => {
   })
 
   test('an emptied cart stays empty across a reload', async ({ page }) => {
-    const title = await addFirstProductToCart(page, 'gaming')
+    const title = await addFirstProductToCart(page, 'processor')
     const cart = await openCart(page)
     await cart.getByRole('button', { name: `Remove ${title} from cart` }).click()
 

@@ -5,6 +5,27 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PC Shop</title>
+    <script>
+      // Applies the theme before first paint to avoid a flash of the wrong one.
+      // Mirrors src/lib/theme.ts: stored 'light'/'dark' wins; stored 'system'
+      // follows prefers-color-scheme; anything else defaults to dark.
+      ;(function () {
+        var theme = 'dark'
+        try {
+          var stored = localStorage.getItem('pc-shop-theme')
+          if (stored === 'light' || stored === 'dark') {
+            theme = stored
+          } else if (stored === 'system') {
+            theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+          }
+        } catch (e) {
+          // Storage blocked (private mode); keep the dark default.
+          theme = 'dark'
+        }
+        document.documentElement.classList.toggle('dark', theme === 'dark')
+        document.documentElement.style.colorScheme = theme
+      })()
+    </script>
   </head>
   <body>
     <div id="root"></div>

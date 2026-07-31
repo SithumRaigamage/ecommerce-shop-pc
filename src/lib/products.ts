@@ -40,18 +40,18 @@ export function dedupeProductIds(products: Product[]): Product[] {
 }
 
 /**
- * A handful of scraped rows carry `price: null` (the source page showed no
- * price). They can't be filtered on, priced, or added to a cart, and a null
- * price compares as 0 — so they would surface as free products at the top of
- * the price filter. Drop them rather than render something untruthful.
+ * Defensive guard against unpriced rows: a null price compares as 0, so such a
+ * record would surface as a free product at the top of the price filter.
+ *
+ * `image` is deliberately not checked — the curated catalogue ships `image: null`
+ * until imagery is sourced, and `ProductImage` renders a placeholder for it.
  */
 export function isSellable(product: Product): boolean {
   return (
     typeof product.price === 'number' &&
     Number.isFinite(product.price) &&
     product.price > 0 &&
-    Boolean(product.title) &&
-    Boolean(product.image)
+    Boolean(product.title)
   )
 }
 

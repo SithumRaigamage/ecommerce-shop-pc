@@ -1,66 +1,66 @@
 [
   {
     "id": 1,
-    "name": "Laptops",
-    "description": "High-performance computers for work and gaming",
-    "icon": "fas fa-laptop",
-    "slug": "laptop",
-    "startingPrice": 75000
+    "name": "Processors",
+    "description": "CPUs for gaming and workstation builds",
+    "icon": "fas fa-microchip",
+    "slug": "processor",
+    "startingPrice": 78000
   },
   {
     "id": 2,
-    "name": "Desktop PCs",
-    "description": "Custom built desktop computers",
-    "icon": "fas fa-desktop",
-    "slug": "desktops",
-    "startingPrice": 90000
+    "name": "Graphics Cards",
+    "description": "GPUs from entry level to flagship",
+    "icon": "fas fa-video",
+    "slug": "graphics",
+    "startingPrice": 128000
   },
   {
     "id": 3,
-    "name": "Processors",
-    "description": "PC parts and hardware components",
-    "icon": "fas fa-microchip",
-    "slug": "processor",
-    "startingPrice": 50000
+    "name": "Motherboards",
+    "description": "AM5 and LGA1700 platforms",
+    "icon": "fas fa-server",
+    "slug": "motherboards",
+    "startingPrice": 46000
   },
   {
     "id": 4,
-    "name": "Peripherals",
-    "description": "Keyboards, mice, and accessories",
-    "icon": "fas fa-keyboard",
-    "slug": "peripherals",
-    "startingPrice": 2500
+    "name": "Memory",
+    "description": "DDR4 and DDR5 kits",
+    "icon": "fas fa-memory",
+    "slug": "memory",
+    "startingPrice": 21000
   },
   {
     "id": 5,
-    "name": "Networking",
-    "description": "Routers, switches, and network equipment",
-    "icon": "fas fa-network-wired",
-    "slug": "networking",
-    "startingPrice": 5000
+    "name": "Storage",
+    "description": "NVMe, SATA SSDs and hard drives",
+    "icon": "fas fa-hdd",
+    "slug": "storage",
+    "startingPrice": 19000
   },
   {
     "id": 6,
-    "name": "Storage",
-    "description": "Hard drives, SSDs, and storage solutions",
-    "icon": "fas fa-hdd",
-    "slug": "storage",
-    "startingPrice": 6500
+    "name": "Power Supplies",
+    "description": "80+ rated power supplies",
+    "icon": "fas fa-plug",
+    "slug": "power",
+    "startingPrice": 19500
   },
   {
     "id": 7,
-    "name": "Accessories",
-    "description": "Cables, adapters, and other accessories",
-    "icon": "fas fa-headphones",
-    "slug": "cables",
-    "startingPrice": 10000
+    "name": "PC Cases",
+    "description": "Mid-tower and compact chassis",
+    "icon": "fas fa-box",
+    "slug": "cases",
+    "startingPrice": 16500
   },
   {
     "id": 8,
-    "name": "Cases",
-    "description": "Keyboards, mice, and accessories",
-    "icon": "fas fa-box",
-    "slug": "cases",
-    "startingPrice": "35000"
+    "name": "Monitors",
+    "description": "Gaming and productivity displays",
+    "icon": "fas fa-desktop",
+    "slug": "monitors",
+    "startingPrice": 85000
   }
 ]

@@ -16,7 +16,7 @@ export function formatLKR(value: number | undefined | null): string {
  * Those only resolved because Angular served from `/`; under client-side routing a
  * relative path breaks on nested routes, so normalise everything to root-absolute.
  */
-export function assetUrl(path: string | undefined): string {
+export function assetUrl(path: string | null | undefined): string {
   if (!path) return ''
   if (/^(https?:)?\/\//.test(path) || path.startsWith('/') || path.startsWith('data:')) {
     return path

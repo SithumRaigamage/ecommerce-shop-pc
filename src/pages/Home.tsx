@@ -6,6 +6,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Skeleton } from '@/components/ui/skeleton'
 import { ProductImage } from '@/components/ProductImage'
+import { LoadError } from '@/components/LoadError'
 import { getBanners, getCategories, getFeaturedProducts } from '@/lib/api'
 import { formatLKR } from '@/lib/format'
 import { iconFromFaClass } from '@/lib/icons'
@@ -41,7 +42,7 @@ const WHY_CHOOSE_US = [
 ]
 
 function HeroBanner() {
-  const { data: banners = [], loading } = useAsync(getBanners, [])
+  const { data: banners = [], loading, error, retry } = useAsync(getBanners, [])
   const [index, setIndex] = useState(0)
   const [paused, setPaused] = useState(false)
 
@@ -59,6 +60,9 @@ function HeroBanner() {
     return () => clearInterval(id)
   }, [paused, banners.length, next])
 
+  if (error) {
+    return <LoadError message="Promotions could not be loaded." onRetry={retry} />
+  }
   if (loading) {
     return <Skeleton className="h-[60vh] w-full rounded-xl" />
   }
@@ -151,11 +155,19 @@ function HeroBanner() {
 }
 
 function CategoriesOverview() {
-  const { data: categories = [] } = useAsync(getCategories, [])
+  const { data: categories = [], loading, error, retry } = useAsync(getCategories, [])
 
   return (
     <section className="py-16">
       <h2 className="mb-8 text-center text-3xl font-bold">Shop by Featured Categories</h2>
+      {error && <LoadError message="Categories could not be loaded." onRetry={retry} />}
+      {loading && (
+        <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <Skeleton key={i} className="h-32 rounded-xl" />
+          ))}
+        </div>
+      )}
       <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4">
         {categories.map((category) => {
           const Icon = iconFromFaClass(category.icon)
@@ -179,11 +191,19 @@ function CategoriesOverview() {
 }
 
 function FeaturedProducts() {
-  const { data: products = [] } = useAsync(getFeaturedProducts, [])
+  const { data: products = [], loading, error, retry } = useAsync(getFeaturedProducts, [])
 
   return (
     <section className="py-16">
       <h2 className="mb-8 text-3xl font-bold">Featured Products</h2>
+      {error && <LoadError message="Featured products could not be loaded." onRetry={retry} />}
+      {loading && (
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {Array.from({ length: 3 }).map((_, i) => (
+            <Skeleton key={i} className="h-96 rounded-xl" />
+          ))}
+        </div>
+      )}
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {products.map((product) => (
           <Card key={product.id} className="group overflow-hidden pt-0 transition-shadow hover:shadow-xl">

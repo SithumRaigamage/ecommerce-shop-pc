@@ -4,16 +4,16 @@ import { assetUrl } from '@/lib/format'
 import { cn } from '@/lib/utils'
 
 interface ProductImageProps {
-  src: string | undefined
+  src: string | null | undefined
   alt: string
   className?: string
 }
 
 /**
- * Most catalogue rows point at scraped `nanotek.lk` URLs that now return 404,
- * so a bare <img> renders as a broken-image box with alt text spilling over the
- * card. Fall back to a neutral placeholder instead; the alt text stays available
- * to assistive tech via the wrapper's label.
+ * The curated catalogue ships `image: null` until imagery is sourced, and a bare
+ * <img> with a missing or broken src renders as a broken-image box with alt text
+ * spilling over the card. Fall back to a neutral placeholder instead; the alt
+ * text stays available to assistive tech via the wrapper's label.
  */
 export function ProductImage({ src, alt, className }: ProductImageProps) {
   const resolved = assetUrl(src)
