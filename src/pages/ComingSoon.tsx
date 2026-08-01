@@ -2,7 +2,7 @@ export default function ComingSoon() {
   return (
     <section className="flex items-center py-12">
       <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
-        <div className="flex flex-col justify-center py-12 md:col-span-5">
+        <div className="flex flex-col justify-center py-12 md:col-span-7">
           <h1 className="mb-6 font-display text-3xl leading-none font-semibold text-fg-primary md:text-5xl">
             This Page is Coming Soon!
           </h1>
@@ -10,13 +10,6 @@ export default function ComingSoon() {
             We&apos;re still putting this one together. Check back soon — in the meantime, browse
             our latest components and pre-built rigs.
           </p>
-        </div>
-        <div className="md:col-span-7">
-          <img
-            src="https://cdn.easyfrontend.com/pictures/comingsoon/six.jpg"
-            alt=""
-            className="hidden min-h-88 w-full rounded-lg object-cover md:block"
-          />
         </div>
       </div>
     </section>

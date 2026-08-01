@@ -35,7 +35,9 @@ describe('banner.json', () => {
       expect(banner.title).toBeTruthy()
       expect(banner.subtitle).toBeTruthy()
       expect(banner.buttonText).toBeTruthy()
-      expect(banner.image).toBeTruthy()
+      // image is null by design: banner artwork is drawn from tokens until
+      // licensed photography is ingested. See MEDIA-SOURCES.md.
+      expect(banner.image).toBeNull()
       expect(banner.backgroundColor).toBeTruthy()
       expect(banner.category).toBeTypeOf('string')
     },
@@ -93,9 +95,8 @@ describe('featuredProducts.json', () => {
   })
 
   /**
-   * Imagery is sourced in a later stage, so `image` is null for now. What must
-   * not happen is a hotlink to a third-party URL (the previous catalogue's
-   * images all 404'd) or a path to a file that isn't committed.
+   * What must not happen is a hotlink to a third-party URL (the previous
+   * catalogue's images all 404'd) or a path to a file that isn't committed.
    */
   it('never hotlinks a remote image, and any local path exists', () => {
     const broken = featured.filter((f) => {

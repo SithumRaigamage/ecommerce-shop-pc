@@ -6,7 +6,7 @@
     "buttonText": "Start Building",
     "buttonLink": "/build",
     "category": "",
-    "image": "https://images.unsplash.com/photo-1587202372616-b43abea06c2a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    "image": null,
     "backgroundColor": "bg-gradient-to-r from-purple-900 to-indigo-800"
   },
   {
@@ -16,7 +16,7 @@
     "buttonText": "Shop GPUs",
     "buttonLink": "/product-grid",
     "category": "graphics",
-    "image": "https://images.unsplash.com/photo-1591405351990-4726e331f141?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    "image": null,
     "backgroundColor": "bg-gradient-to-r from-green-900 to-emerald-800"
   },
   {
@@ -26,7 +26,7 @@
     "buttonText": "Shop Cases",
     "buttonLink": "/product-grid",
     "category": "cases",
-    "image": "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1442&q=80",
+    "image": null,
     "backgroundColor": "bg-gradient-to-r from-blue-900 to-cyan-800"
   },
   {
@@ -36,7 +36,7 @@
     "buttonText": "View Deals",
     "buttonLink": "/deals",
     "category": "",
-    "image": "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    "image": null,
     "backgroundColor": "bg-gradient-to-r from-red-900 to-orange-800"
   },
   {
@@ -46,7 +46,7 @@
     "buttonText": "Shop Now",
     "buttonLink": "/product-grid",
     "category": "",
-    "image": "https://images.unsplash.com/photo-1616763355603-9755a640a287?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    "image": null,
     "backgroundColor": "bg-gradient-to-r from-yellow-900 to-amber-800"
   },
   {
@@ -56,7 +56,7 @@
     "buttonText": "Shop Processors",
     "buttonLink": "/product-grid",
     "category": "processor",
-    "image": "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1442&q=80",
+    "image": null,
     "backgroundColor": "bg-gradient-to-r from-blue-900 to-cyan-800"
   },
   {
@@ -66,7 +66,7 @@
     "buttonText": "Shop Memory",
     "buttonLink": "/product-grid",
     "category": "memory",
-    "image": "https://images.unsplash.com/photo-1615655406736-b37c4fabf923?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    "image": null,
     "backgroundColor": "bg-gradient-to-r from-purple-900 to-indigo-800"
   },
   {
@@ -76,7 +76,7 @@
     "buttonText": "Shop Monitors",
     "buttonLink": "/product-grid",
     "category": "monitors",
-    "image": "https://www.nanotek.lk/storage/home-slider/bWB0FInzWC0rQ3ls5foi5mGGiesstb4QBjDe2BJx.jpg",
+    "image": null,
     "backgroundColor": "bg-gradient-to-r from-blue-900 to-cyan-800"
   }
 ]

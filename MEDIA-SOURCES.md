@@ -177,13 +177,31 @@ as transparency would leave the subject floating with no ground behind it.
 
 ## Banner and interface imagery
 
-Out of scope for this stage and unchanged. Recorded here for completeness.
+### Hotlinks removed
+
+The product catalogue was cleaned first, and the guard written for it only
+checked the product grid — so eight hotlinks survived it, including one to a
+competitor. All are now gone.
+
+| Where | Was | Now |
+|---|---|---|
+| `banner.json`, 7 slides | `images.unsplash.com` | `image: null`; the carousel draws a designed panel from tokens |
+| `banner.json`, slide 8 | **`www.nanotek.lk/storage/home-slider/…`** — a competitor's CDN, live on the home page and readable by anyone with DevTools open | as above |
+| `SignIn.tsx` | `cdn.easyfrontend.com` | removed; the form is centred and alone |
+| `Support.tsx` | `images.unsplash.com` | removed |
+| `ComingSoon.tsx` | `cdn.easyfrontend.com` | removed |
+
+Two tests in `src/lib/media.test.ts` now scan the whole source tree and the JSON
+fixtures for remote image URLs and for any competitor domain, so this cannot
+come back the way it did.
+
+### Still carried from the Angular app
 
 | Asset | Source | Licence |
 |---|---|---|
-| `public/assets/Banner/7995937.jpg` | carried from the Angular app | **not established** |
-| `public/assets/Banner/pexels-max-fischer-5872177.jpg` | filename indicates Pexels | Pexels licence — free for commercial use, no attribution required; **not verified against the original upload** |
-| `public/assets/icons/profile-photo.png`, `profile-user.png` | carried from the Angular app | **not established** |
+| `public/assets/Banner/7995937.jpg` | carried from the Angular app | **not established** — unreferenced |
+| `public/assets/Banner/pexels-max-fischer-5872177.jpg` | filename indicates Pexels | Pexels licence — free for commercial use, no attribution required; **not verified against the original upload** — unreferenced |
+| `public/assets/icons/profile-photo.png`, `profile-user.png` | carried from the Angular app | **not established** — referenced by `SiteHeader.tsx` |
 
 ---
 

@@ -1,4 +1,4 @@
-import { existsSync, readFileSync, readdirSync } from 'node:fs'
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { SIZES, builtAssetIds, mediaFor } from './media'
@@ -122,5 +122,52 @@ describe('catalogue imagery', () => {
         expect(value, layout).toContain('min-width')
       }
     }
+  })
+})
+
+describe('no third-party imagery', () => {
+  const sourceFiles = (dir: string): string[] =>
+    readdirSync(dir).flatMap((entry) => {
+      const full = `${dir}/${entry}`
+      if (statSync(full).isDirectory()) return sourceFiles(full)
+      return /\.(tsx?|json)$/.test(entry) ? [full] : []
+    })
+
+  /**
+   * Stage 5 removed the catalogue's hotlinks but scoped its guard to the
+   * product grid, so eight more survived: seven Unsplash URLs and one to
+   * www.nanotek.lk — a competitor — on the home carousel, readable by anyone
+   * who opened DevTools. This checks the whole source tree instead.
+   */
+  it('hotlinks no remote image from anywhere in the source or the fixtures', () => {
+    const offenders: string[] = []
+    const roots = [resolve(root, 'src'), resolve(root, 'public/assets/json')]
+
+    for (const dir of roots) {
+      for (const file of sourceFiles(dir)) {
+        if (/\.test\.tsx?$/.test(file) || file.endsWith('media-manifest.json')) continue
+        const source = readFileSync(file, 'utf8')
+        for (const match of source.matchAll(/https?:\/\/[^\s"'`)]+/g)) {
+          if (/\.(png|jpe?g|gif|webp|avif|svg)(\?|$)/i.test(match[0]) || /unsplash|cdn\./i.test(match[0])) {
+            offenders.push(`${file.replace(`${root}/`, '')}: ${match[0].slice(0, 60)}`)
+          }
+        }
+      }
+    }
+
+    expect(offenders).toEqual([])
+  })
+
+  it('references no competitor domain anywhere', () => {
+    const offenders: string[] = []
+    for (const dir of [resolve(root, 'src'), resolve(root, 'public/assets/json')]) {
+      for (const file of sourceFiles(dir)) {
+        if (/\.test\.tsx?$/.test(file)) continue
+        if (/nanotek|chama/i.test(readFileSync(file, 'utf8'))) {
+          offenders.push(file.replace(`${root}/`, ''))
+        }
+      }
+    }
+    expect(offenders).toEqual([])
   })
 })

@@ -6,6 +6,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Skeleton } from '@/components/ui/skeleton'
 import { ProductImage } from '@/components/ProductImage'
+import { CATEGORIES } from '@/lib/categories'
 import { SIZES } from '@/lib/media'
 import { ErrorState } from '@/components/ErrorState'
 import { PriceDisplay } from '@/components/PriceDisplay'
@@ -16,6 +17,24 @@ import { useAsync } from '@/hooks/useAsync'
 import { cn } from '@/lib/utils'
 
 const AUTO_SCROLL_MS = 5000
+
+const BANNER_GLYPHS = new Map(CATEGORIES.map((category) => [category.slug, category.icon]))
+
+/**
+ * Designed banner artwork, in the same language as ProductPlaceholder: the
+ * category glyph held well back on a themed surface. It is deliberately quiet —
+ * a banner's job is the headline and the call to action beside it, and this
+ * carries the category without competing with either.
+ */
+function BannerArtwork({ category }: { category?: string }) {
+  const Glyph = (category && BANNER_GLYPHS.get(category)) ?? undefined
+
+  return (
+    <div aria-hidden="true" className="flex size-full items-center justify-center bg-surface-2">
+      {Glyph && <Glyph className="size-24 text-fg-tertiary opacity-20" strokeWidth={1} />}
+    </div>
+  )
+}
 
 /**
  * `banner.json` ships a Tailwind gradient class per slide and
@@ -82,12 +101,14 @@ function HeroBanner() {
     >
       <div className="flex flex-col lg:h-125 lg:flex-row">
         <div className="relative h-64 w-full overflow-hidden bg-surface-2 lg:h-auto lg:w-3/5">
-          <img
-            key={current.image}
-            src={current.image}
-            alt=""
-            className="size-full object-cover duration-slow ease-standard transition-transform hover:scale-105"
-          />
+          {/*
+            Banner imagery was eight hotlinks — seven to Unsplash and one to a
+            competitor's CDN, which anyone with DevTools open could read off the
+            home page. Until licensed photography is ingested through the media
+            pipeline, a banner draws the same designed panel the product cards
+            do, rather than borrowing someone else's server.
+          */}
+          <BannerArtwork category={current.category} />
           <Button
             variant="secondary"
             size="icon"
@@ -251,6 +272,12 @@ function FeaturedProducts() {
 export default function Home() {
   return (
     <div>
+      {/*
+        The home page had no h1 at all. The hero is a carousel whose headline
+        changes per slide, so a visible h1 there would rename the page every
+        five seconds; this names it once, for assistive tech and for search.
+      */}
+      <h1 className="sr-only">PC Shop — components and custom builds</h1>
       <HeroBanner />
       <CategoriesOverview />
       <FeaturedProducts />

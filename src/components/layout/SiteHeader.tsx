@@ -12,12 +12,10 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/co
 import { SideNav } from '@/components/layout/SideNav'
 import { useCartStore } from '@/store/cart'
 import { useAuth } from '@/hooks/useAuth'
+import { navRoutes } from '@/routes'
 
-const NAV_LINKS = [
-  { to: '/build', label: 'Build Your PC' },
-  { to: '/deals', label: 'Deals' },
-  { to: '/support', label: 'Support' },
-]
+/** Generated from the route table; see routes.ts. */
+const NAV_LINKS = navRoutes('primary')
 
 interface SiteHeaderProps {
   onCartClick: () => void
@@ -56,9 +54,9 @@ export function SiteHeader({ onCartClick }: SiteHeaderProps) {
         <nav aria-label="Main" className="flex items-center gap-1 sm:gap-2">
           <ul className="hidden items-center gap-1 md:flex">
             {NAV_LINKS.map((link) => (
-              <li key={link.to}>
+              <li key={link.path}>
                 <Button variant="ghost" asChild>
-                  <Link to={link.to}>{link.label}</Link>
+                  <Link to={link.path}>{link.label}</Link>
                 </Button>
               </li>
             ))}
@@ -99,13 +97,13 @@ export function SiteHeader({ onCartClick }: SiteHeaderProps) {
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild>
-                <Link to="/login">
+                <Link to="/sign-in">
                   <LogIn />
                   Sign In
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link to="/logout">
+                <Link to="/sign-out">
                   <LogOut />
                   Sign out
                 </Link>

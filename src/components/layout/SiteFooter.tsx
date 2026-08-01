@@ -1,45 +1,19 @@
 import { Link } from 'react-router-dom'
 import { Facebook, Instagram, Laptop, Twitter } from 'lucide-react'
 import { Separator } from '@/components/ui/separator'
+import { navRoutes } from '@/routes'
 
+/**
+ * Generated from the route table, so a link can no longer point at a path that
+ * does not exist. Every one of /about, /privacy, /terms and /sitemap used to be
+ * hard-coded here and declared nowhere, and /blog and /careers were promising
+ * pages this project has no intention of building.
+ */
 const FOOTER_SECTIONS = [
-  {
-    title: 'Shop',
-    links: [
-      { to: '/build', label: 'Build Your Pc' },
-      { to: '/deals', label: 'Deals' },
-      { to: '/support', label: 'Support' },
-    ],
-  },
-  {
-    title: 'Services',
-    links: [
-      { to: '/build', label: 'PC Builder' },
-      { to: '/support', label: 'Tech Support' },
-      { to: '/warranty', label: 'Warranty Info' },
-      { to: '/installation', label: 'Installation Services' },
-    ],
-  },
-  {
-    title: 'Support',
-    links: [
-      { to: '/contact', label: 'Contact Us' },
-      { to: '/faq', label: 'FAQs' },
-      { to: '/shipping', label: 'Shipping Info' },
-      { to: '/returns', label: 'Returns' },
-      { to: '/track-order', label: 'Track Order' },
-    ],
-  },
-  {
-    title: 'Company',
-    links: [
-      { to: '/about', label: 'About Us' },
-      { to: '/blog', label: 'Blog' },
-      { to: '/careers', label: 'Careers' },
-      { to: '/privacy', label: 'Privacy Policy' },
-      { to: '/terms', label: 'Terms of Service' },
-    ],
-  },
+  { title: 'Shop', links: navRoutes('shop') },
+  { title: 'Services', links: navRoutes('support') },
+  { title: 'Support', links: navRoutes('service') },
+  { title: 'Company', links: navRoutes('company') },
 ]
 
 const PAYMENT_METHODS = [
@@ -91,7 +65,7 @@ export function SiteFooter() {
                     {section.links.map((link) => (
                       <li key={`${section.title}-${link.label}`}>
                         <Link
-                          to={link.to}
+                          to={link.path}
                           className="text-fg-tertiary hover:text-fg-primary text-sm hover:underline"
                         >
                           {link.label}

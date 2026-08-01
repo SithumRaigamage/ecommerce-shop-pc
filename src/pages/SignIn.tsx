@@ -30,16 +30,11 @@ export default function SignIn() {
   }
 
   return (
-    <div className="grid items-center gap-8 py-12 lg:grid-cols-2">
-      <div className="order-2 hidden lg:block">
-        <img
-          src="https://cdn.easyfrontend.com/pictures/sign-in-up/sign3.jpg"
-          alt=""
-          className="h-140 w-full rounded-xl object-cover"
-        />
-      </div>
-
-      <Card className="order-1 mx-auto w-full max-w-md">
+    // The decorative half of this layout was a hotlink to a third-party CDN.
+    // A sign-in form does not need a stock photograph beside it; centred and
+    // alone is both honest and calmer.
+    <div className="flex items-center justify-center py-12">
+      <Card className="mx-auto w-full max-w-md">
         <CardContent>
           <h1 className="mb-3 text-3xl font-bold">Welcome to PC Shop</h1>
           <div className="text-fg-tertiary mb-8 flex items-center gap-2 text-sm">

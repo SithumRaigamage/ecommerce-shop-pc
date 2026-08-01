@@ -61,16 +61,8 @@ export default function Support() {
   }
 
   return (
-    <div className="grid items-start gap-8 py-6 lg:grid-cols-2">
-      <div className="order-2 hidden lg:block">
-        <img
-          src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1472&q=80"
-          alt=""
-          className="sticky top-24 h-150 w-full rounded-xl object-cover"
-        />
-      </div>
-
-      <div className="order-1">
+    <div className="mx-auto max-w-content py-6">
+      <div>
         <h1 className="mb-4 text-4xl leading-none font-bold md:text-5xl">Technical Support</h1>
         <p className="text-fg-tertiary mb-8 text-xl">
           Get help with your technical issues. We&apos;re here to assist you.
