@@ -23,7 +23,7 @@ export function FilterSection({ filterOptions, maxPrice, onMaxPriceChange }: Fil
           Price Range
         </Label>
         <div className="max-w-md">
-          <div className="text-muted-foreground flex justify-between text-sm">
+          <div className="text-fg-tertiary flex justify-between text-sm">
             <span>Min: {formatLKR(min)}</span>
             <span>Up to: {formatLKR(maxPrice)}</span>
           </div>

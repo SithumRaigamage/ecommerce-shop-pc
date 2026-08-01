@@ -6,15 +6,10 @@ import { z } from 'zod'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Checkbox } from '@/components/ui/checkbox'
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form'
+import { Form } from '@/components/ui/form'
+import { Field } from '@/components/Field'
 import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Separator } from '@/components/ui/separator'
 import { CheckoutSteps } from '@/components/CheckoutSteps'
@@ -110,102 +105,50 @@ export default function Billing() {
             <CardHeader>
               <CardTitle className="text-2xl">Billing Details</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>
-                      Full Name <span className="text-primary">*</span>
-                    </FormLabel>
-                    <FormControl>
-                      <Input placeholder="Jon Doe" autoComplete="name" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
+            <CardContent className="flex flex-col gap-stack">
+              <Field control={form.control} name="name" label="Full Name" required>
+                {(field) => <Input placeholder="Jon Doe" autoComplete="name" {...field} />}
+              </Field>
+              <Field control={form.control} name="email" label="Email" required>
+                {(field) => (
+                  <Input
+                    type="email"
+                    placeholder="example@gmail.com"
+                    autoComplete="email"
+                    {...field}
+                  />
                 )}
-              />
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>
-                      Email <span className="text-primary">*</span>
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        type="email"
-                        placeholder="example@gmail.com"
-                        autoComplete="email"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
+              </Field>
+              <Field control={form.control} name="country" label="Country" required>
+                {(field) => (
+                  <Input placeholder="Sri Lanka" autoComplete="country-name" {...field} />
                 )}
-              />
-              <FormField
-                control={form.control}
-                name="country"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>
-                      Country <span className="text-primary">*</span>
-                    </FormLabel>
-                    <FormControl>
-                      <Input placeholder="Sri Lanka" autoComplete="country-name" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
+              </Field>
+              <Field control={form.control} name="address" label="Street Address" required>
+                {(field) => (
+                  <Input placeholder="11 Galle Road" autoComplete="street-address" {...field} />
                 )}
-              />
-              <FormField
-                control={form.control}
-                name="address"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>
-                      Street Address <span className="text-primary">*</span>
-                    </FormLabel>
-                    <FormControl>
-                      <Input placeholder="11 Galle Road" autoComplete="street-address" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
+              </Field>
+              <Field control={form.control} name="post" label="Post Code" required>
+                {(field) => (
+                  <Input
+                    inputMode="numeric"
+                    placeholder="10100"
+                    autoComplete="postal-code"
+                    {...field}
+                  />
                 )}
-              />
-              <FormField
-                control={form.control}
-                name="post"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>
-                      Post Code <span className="text-primary">*</span>
-                    </FormLabel>
-                    <FormControl>
-                      <Input inputMode="numeric" placeholder="10100" autoComplete="postal-code" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
+              </Field>
+              <Field control={form.control} name="phone" label="Phone" required>
+                {(field) => (
+                  <Input
+                    inputMode="tel"
+                    placeholder="+94 71 234 5678"
+                    autoComplete="tel"
+                    {...field}
+                  />
                 )}
-              />
-              <FormField
-                control={form.control}
-                name="phone"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>
-                      Phone <span className="text-primary">*</span>
-                    </FormLabel>
-                    <FormControl>
-                      <Input inputMode="tel" placeholder="+94 71 234 5678" autoComplete="tel" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+              </Field>
             </CardContent>
           </Card>
 
@@ -220,7 +163,7 @@ export default function Billing() {
                     <div key={item.product.id}>
                       <div className="grid grid-cols-3 gap-3">
                         <dt className="col-span-2 line-clamp-2 font-medium">{item.product.title}</dt>
-                        <dd className="text-right font-medium">
+                        <dd className="numeric text-right font-medium" data-numeric>
                           {formatLKR(item.product.price * item.quantity)}
                         </dd>
                       </div>
@@ -229,7 +172,7 @@ export default function Billing() {
                   ))}
                   <div className="flex justify-between text-lg">
                     <dt className="font-bold">Total</dt>
-                    <dd className="font-bold">{formatLKR(total)}</dd>
+                    <dd className="numeric font-bold" data-numeric>{formatLKR(total)}</dd>
                   </div>
                 </dl>
               </CardContent>
@@ -239,82 +182,58 @@ export default function Billing() {
               <CardHeader>
                 <CardTitle className="text-xl">Payment</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-6">
-                <FormField
+              <CardContent className="flex flex-col gap-stack">
+                <Field
                   control={form.control}
                   name="paymentMethod"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <RadioGroup
-                          onValueChange={field.onChange}
-                          value={field.value}
-                          className="gap-3"
-                        >
-                          <FormItem className="flex items-center gap-3">
-                            <FormControl>
-                              <RadioGroupItem value="cod" />
-                            </FormControl>
-                            <FormLabel className="font-medium">Cash on Delivery</FormLabel>
-                          </FormItem>
-                          <FormItem className="flex items-center gap-3">
-                            <FormControl>
-                              <RadioGroupItem value="card" />
-                            </FormControl>
-                            <FormLabel className="font-medium">Debit or Credit Card</FormLabel>
-                          </FormItem>
-                        </RadioGroup>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
+                  label="Payment method"
+                  required
+                >
+                  {(field, control) => (
+                    <RadioGroup
+                      {...control}
+                      onValueChange={field.onChange}
+                      value={field.value}
+                      className="gap-stack-tight"
+                    >
+                      <span className="flex items-center gap-3">
+                        <RadioGroupItem value="cod" id="pay-cod" />
+                        <Label htmlFor="pay-cod">Cash on Delivery</Label>
+                      </span>
+                      <span className="flex items-center gap-3">
+                        <RadioGroupItem value="card" id="pay-card" />
+                        <Label htmlFor="pay-card">Debit or Credit Card</Label>
+                      </span>
+                    </RadioGroup>
                   )}
-                />
+                </Field>
 
                 {paymentMethod === 'card' && (
-                  <FormField
-                    control={form.control}
-                    name="cardNumber"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>
-                          Card Number <span className="text-primary">*</span>
-                        </FormLabel>
-                        <FormControl>
-                          <Input
-                            inputMode="numeric"
-                            autoComplete="cc-number"
-                            placeholder="1234 5678 9012 3456"
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
+                  <Field control={form.control} name="cardNumber" label="Card Number" required>
+                    {(field) => (
+                      <Input
+                        inputMode="numeric"
+                        autoComplete="cc-number"
+                        placeholder="1234 5678 9012 3456"
+                        {...field}
+                      />
                     )}
-                  />
+                  </Field>
                 )}
 
-                <FormField
+                <Field
                   control={form.control}
                   name="terms"
-                  render={({ field }) => (
-                    <FormItem>
-                      <div className="flex items-start gap-3">
-                        <FormControl>
-                          <Checkbox
-                            checked={field.value}
-                            onCheckedChange={field.onChange}
-                          />
-                        </FormControl>
-                        <FormLabel className="font-normal">
-                          I have read and agree to the website terms and conditions *
-                        </FormLabel>
-                      </div>
-                      <FormMessage />
-                    </FormItem>
+                  label="I have read and agree to the website terms and conditions"
+                  required
+                  className="flex flex-row-reverse items-start justify-end gap-3"
+                >
+                  {(field) => (
+                    <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                   )}
-                />
+                </Field>
 
-                <Button type="submit" className="w-full">
+                <Button type="submit" className="w-full" loading={form.formState.isSubmitting}>
                   Pay {total > 0 && formatLKR(total)}
                 </Button>
               </CardContent>

@@ -57,15 +57,15 @@ const SOCIALS = [
 
 export function SiteFooter() {
   return (
-    <footer className="bg-background mt-16 border-t pt-12 lg:pt-16">
+    <footer className="mt-16 border-t border-border-subtle bg-bg pt-12 lg:pt-16">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="grid grid-cols-12 gap-y-8 lg:gap-12">
           <div className="col-span-12 xl:order-2 xl:col-span-3">
             <Link to="/" className="flex items-center gap-2">
-              <Laptop className="text-primary size-7" aria-hidden="true" />
+              <Laptop className="size-7 text-fg-primary" aria-hidden="true" />
               <span className="text-xl font-bold">PC Shop</span>
             </Link>
-            <p className="text-muted-foreground mt-4 text-sm">
+            <p className="text-fg-tertiary mt-4 text-sm">
               Your one-stop destination for premium PC hardware and custom builds.
             </p>
             <div className="mt-4 flex gap-4">
@@ -74,7 +74,7 @@ export function SiteFooter() {
                   key={label}
                   href="#"
                   aria-label={label}
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="text-fg-tertiary hover:text-accent-default transition-colors"
                 >
                   <Icon className="size-5" aria-hidden="true" />
                 </a>
@@ -92,7 +92,7 @@ export function SiteFooter() {
                       <li key={`${section.title}-${link.label}`}>
                         <Link
                           to={link.to}
-                          className="text-muted-foreground hover:text-foreground text-sm hover:underline"
+                          className="text-fg-tertiary hover:text-fg-primary text-sm hover:underline"
                         >
                           {link.label}
                         </Link>
@@ -108,15 +108,15 @@ export function SiteFooter() {
         <Separator className="mt-8 lg:mt-12" />
 
         <div className="flex flex-col gap-4 py-4 lg:flex-row lg:items-center lg:justify-between lg:py-6">
-          <div className="text-muted-foreground flex flex-wrap gap-4 text-sm">
+          <div className="text-fg-tertiary flex flex-wrap gap-4 text-sm">
             <span>&copy; {new Date().getFullYear()} PC Shop. All rights reserved.</span>
-            <Link to="/privacy" className="hover:text-primary">
+            <Link to="/privacy" className="hover:text-accent-default">
               Privacy
             </Link>
-            <Link to="/terms" className="hover:text-primary">
+            <Link to="/terms" className="hover:text-accent-default">
               Terms
             </Link>
-            <Link to="/sitemap" className="hover:text-primary">
+            <Link to="/sitemap" className="hover:text-accent-default">
               Sitemap
             </Link>
           </div>

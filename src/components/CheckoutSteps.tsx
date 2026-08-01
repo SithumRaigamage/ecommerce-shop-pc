@@ -20,14 +20,14 @@ export function CheckoutSteps({ current }: CheckoutStepsProps) {
               className={cn(
                 'flex size-10 items-center justify-center rounded-full border text-lg shadow',
                 active
-                  ? 'bg-primary text-primary-foreground border-primary'
-                  : 'bg-muted text-muted-foreground',
+                  ? 'bg-accent-default text-on-accent border-accent-default'
+                  : 'bg-surface-2 text-fg-tertiary',
               )}
               aria-current={active ? 'step' : undefined}
             >
               {step}
             </span>
-            <span className="text-muted-foreground text-xs">{label}</span>
+            <span className="text-fg-tertiary text-xs">{label}</span>
           </li>
         )
       })}

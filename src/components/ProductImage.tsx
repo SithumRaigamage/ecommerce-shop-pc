@@ -30,7 +30,7 @@ export function ProductImage({ src, alt, className }: ProductImageProps) {
         role="img"
         aria-label={alt}
         className={cn(
-          'bg-muted text-muted-foreground flex items-center justify-center',
+          'bg-surface-2 text-fg-tertiary flex items-center justify-center',
           className,
         )}
       >

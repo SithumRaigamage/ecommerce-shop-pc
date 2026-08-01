@@ -20,6 +20,7 @@ const Support = lazy(() => import('@/pages/Support'))
 const ComingSoon = lazy(() => import('@/pages/ComingSoon'))
 const CategoryRedirect = lazy(() => import('@/pages/CategoryRedirect'))
 const NotFound = lazy(() => import('@/pages/NotFound'))
+const StyleGuide = lazy(() => import('@/pages/StyleGuide'))
 
 export default function App() {
   return (
@@ -46,6 +47,8 @@ export default function App() {
           <Route path="returns" element={<ComingSoon />} />
           <Route path="track-order" element={<ComingSoon />} />
           <Route path="category/:slug" element={<CategoryRedirect />} />
+          {/* Dev/reference route: every component in every state. */}
+          <Route path="styleguide" element={<StyleGuide />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

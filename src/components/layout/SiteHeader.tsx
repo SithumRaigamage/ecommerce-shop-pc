@@ -28,7 +28,7 @@ export function SiteHeader({ onCartClick }: SiteHeaderProps) {
   const { isLoggedIn } = useAuth()
 
   return (
-    <header className="bg-background sticky top-0 z-30 w-full border-b">
+    <header className="sticky top-0 z-30 w-full border-b border-border-subtle bg-bg">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-5 lg:px-8">
         <div className="flex items-center gap-2">
           <Sheet>
@@ -48,8 +48,8 @@ export function SiteHeader({ onCartClick }: SiteHeaderProps) {
           </Sheet>
 
           <Link to="/" className="flex items-center gap-2">
-            <Laptop className="text-primary size-7" aria-hidden="true" />
-            <span className="hover:text-primary text-xl font-bold transition-colors">PC Shop</span>
+            <Laptop className="size-7 text-fg-primary" aria-hidden="true" />
+            <span className="text-xl font-bold text-fg-primary duration-fast ease-standard transition-colors group-hover:text-accent-default">PC Shop</span>
           </Link>
         </div>
 
@@ -68,7 +68,7 @@ export function SiteHeader({ onCartClick }: SiteHeaderProps) {
             <ShoppingCart />
             <span className="hidden sm:inline">Cart</span>
             {cartItemCount > 0 && (
-              <span className="bg-destructive text-destructive-foreground absolute -top-1 -right-1 flex size-5 items-center justify-center rounded-full text-xs font-medium">
+              <span className="bg-danger-fg text-on-accent absolute -top-1 -right-1 flex size-5 items-center justify-center rounded-full text-xs font-medium">
                 {cartItemCount}
               </span>
             )}

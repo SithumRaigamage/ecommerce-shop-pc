@@ -6,14 +6,8 @@ import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Checkbox } from '@/components/ui/checkbox'
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form'
+import { Form } from '@/components/ui/form'
+import { Field } from '@/components/Field'
 import { Input } from '@/components/ui/input'
 
 const signInSchema = z.object({
@@ -41,70 +35,52 @@ export default function SignIn() {
         <img
           src="https://cdn.easyfrontend.com/pictures/sign-in-up/sign3.jpg"
           alt=""
-          className="h-140 w-full rounded-2xl object-cover"
+          className="h-140 w-full rounded-xl object-cover"
         />
       </div>
 
       <Card className="order-1 mx-auto w-full max-w-md">
         <CardContent>
           <h1 className="mb-3 text-3xl font-bold">Welcome to PC Shop</h1>
-          <div className="text-muted-foreground mb-8 flex items-center gap-2 text-sm">
+          <div className="text-fg-tertiary mb-8 flex items-center gap-2 text-sm">
             <span>Don&apos;t have an account?</span>
-            <a href="#" className="text-primary hover:underline">
+            <a href="#" className="focus-ring rounded-xs text-accent-default hover:underline">
               Create Account
             </a>
           </div>
 
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email Address</FormLabel>
-                    <FormControl>
-                      <Input
-                        type="email"
-                        placeholder="Enter Email Address"
-                        autoComplete="email"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
+              <Field control={form.control} name="email" label="Email Address" required>
+                {(field) => (
+                  <Input
+                    type="email"
+                    placeholder="Enter Email Address"
+                    autoComplete="email"
+                    {...field}
+                  />
                 )}
-              />
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Password</FormLabel>
-                    <FormControl>
-                      <Input
-                        type="password"
-                        placeholder="Enter Password"
-                        autoComplete="current-password"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
+              </Field>
+              <Field control={form.control} name="password" label="Password" required>
+                {(field) => (
+                  <Input
+                    type="password"
+                    placeholder="Enter Password"
+                    autoComplete="current-password"
+                    {...field}
+                  />
                 )}
-              />
-              <FormField
+              </Field>
+              <Field
                 control={form.control}
                 name="rememberMe"
-                render={({ field }) => (
-                  <FormItem className="flex items-center gap-3">
-                    <FormControl>
-                      <Checkbox checked={field.value} onCheckedChange={field.onChange} />
-                    </FormControl>
-                    <FormLabel className="font-normal">Remember me</FormLabel>
-                  </FormItem>
+                label="Remember me"
+                className="flex flex-row-reverse items-center justify-end gap-2"
+              >
+                {(field) => (
+                  <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                 )}
-              />
+              </Field>
 
               <Button type="submit" className="w-full">
                 Log In

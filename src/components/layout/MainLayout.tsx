@@ -37,7 +37,7 @@ export function MainLayout() {
 
       <div className="flex flex-1 items-start gap-6 px-5 py-6 lg:px-8">
         {showSidebar && (
-          <SideNav className="sticky top-22 hidden max-h-[calc(100vh-6.5rem)] w-44 shrink-0 overflow-y-auto lg:block" />
+          <SideNav className="sticky top-22 hidden max-h-sidebar w-44 shrink-0 overflow-y-auto lg:block" />
         )}
         <main className="min-w-0 flex-1">
           <ErrorBoundary resetKey={pathname}>

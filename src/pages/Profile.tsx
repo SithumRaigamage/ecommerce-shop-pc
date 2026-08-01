@@ -40,10 +40,10 @@ export default function Profile() {
                   onClick={() => setActiveSection(id)}
                   aria-current={activeSection === id}
                   className={cn(
-                    'w-full cursor-pointer px-2 py-6 text-center transition-colors duration-300',
+                    'focus-ring w-full cursor-pointer px-2 py-6 text-center duration-fast ease-standard transition-colors',
                     activeSection === id
-                      ? 'bg-primary text-primary-foreground'
-                      : 'hover:bg-primary/10',
+                      ? 'bg-accent-default text-on-accent'
+                      : 'hover:bg-surface-2',
                   )}
                 >
                   <Icon className="mx-auto size-7" aria-hidden="true" />
@@ -58,11 +58,11 @@ export default function Profile() {
       <div className="md:col-span-9 lg:col-span-10">
         <Card>
           <CardHeader>
-            <CardTitle className="text-primary text-3xl md:text-4xl">Account Setting</CardTitle>
+            <CardTitle className="text-3xl md:text-4xl">Account Setting</CardTitle>
           </CardHeader>
           <CardContent className="space-y-10">
             <section>
-              <h2 className="text-primary mb-4 text-lg">Change Your Password</h2>
+              <h2 className="mb-4 text-lg font-medium text-fg-primary">Change Your Password</h2>
               <div className="grid gap-4 lg:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="pEmail">Enter Email</Label>
@@ -89,7 +89,7 @@ export default function Profile() {
             <Separator />
 
             <section>
-              <h2 className="text-primary mb-4 text-lg">Change Your Email</h2>
+              <h2 className="mb-4 text-lg font-medium text-fg-primary">Change Your Email</h2>
               <div className="grid gap-4 lg:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="current-email">Enter Current Email</Label>
@@ -112,7 +112,7 @@ export default function Profile() {
             <Separator />
 
             <section>
-              <h2 className="text-primary mb-4 font-bold">Send Me Emails When:</h2>
+              <h2 className="mb-4 font-medium text-fg-primary">Send Me Emails When:</h2>
               <div className="space-y-3">
                 {EMAIL_PREFERENCES.map((pref) => (
                   <div key={pref.id} className="flex items-center gap-3">

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { Heart, Minus, Plus, Share2, Star } from 'lucide-react'
+import { Heart, Minus, PackageSearch, Plus, Share2, Star } from 'lucide-react'
 import { toast } from 'sonner'
 import {
   Accordion,
@@ -14,22 +14,29 @@ import { Input } from '@/components/ui/input'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { ProductImage } from '@/components/ProductImage'
-import { LoadError } from '@/components/LoadError'
+import { ErrorState } from '@/components/ErrorState'
+import { EmptyState } from '@/components/EmptyState'
+import { PriceDisplay } from '@/components/PriceDisplay'
+import { SpecTable } from '@/components/SpecTable'
 import { getProductById } from '@/lib/api'
-import { formatLKR } from '@/lib/format'
+import { specRowsFrom } from '@/lib/specs'
 import { cn } from '@/lib/utils'
 import { useAsync } from '@/hooks/useAsync'
 import { useCartStore } from '@/store/cart'
-import type { ProductSpecs, Size } from '@/types'
+import type { Size } from '@/types'
 
-/** `max_gpu_mm` → `Max gpu mm`. Spec keys are snake_case in the catalogue. */
-function formatSpecName(key: string): string {
-  const words = key.replace(/_/g, ' ')
-  return words.charAt(0).toUpperCase() + words.slice(1)
-}
-
-function formatSpecValue(value: ProductSpecs[string]): string {
-  return Array.isArray(value) ? value.join(', ') : String(value ?? '')
+/** Units for the catalogue's spec keys, so SpecTable can align them. */
+const SPEC_UNITS: Record<string, string> = {
+  tdp: 'W',
+  vram_gb: 'GB',
+  length_mm: 'mm',
+  wattage: 'W',
+  speed: 'MT/s',
+  read_mbs: 'MB/s',
+  size: '"',
+  refresh: 'Hz',
+  max_gpu_mm: 'mm',
+  max_cooler_mm: 'mm',
 }
 
 export default function ProductOverview() {
@@ -55,13 +62,19 @@ export default function ProductOverview() {
   }, [product])
 
   if (error) {
-    return <LoadError message="This product could not be loaded." onRetry={retry} />
+    return (
+      <ErrorState
+        headingLevel={1}
+        description="This product could not be loaded."
+        onRetry={retry}
+      />
+    )
   }
 
   if (loading) {
     return (
       <div className="grid gap-6 lg:grid-cols-2">
-        <Skeleton className="h-[450px] rounded-xl" />
+        <Skeleton className="h-112 rounded-lg" />
         <div className="space-y-4">
           <Skeleton className="h-10 w-3/4" />
           <Skeleton className="h-6 w-1/2" />
@@ -73,15 +86,13 @@ export default function ProductOverview() {
 
   if (!product) {
     return (
-      <div className="py-24 text-center">
-        <h1 className="text-2xl font-bold">Product not found</h1>
-        <p className="text-muted-foreground mt-2">
-          We couldn&apos;t find a product with the id &ldquo;{id}&rdquo;.
-        </p>
-        <Button className="mt-6" onClick={() => navigate('/product-grid')}>
-          Browse products
-        </Button>
-      </div>
+      <EmptyState
+        icon={PackageSearch}
+        headingLevel={1}
+        title="Product not found"
+        description={`We couldn't find a product with the id "${id}".`}
+        action={<Button onClick={() => navigate('/product-grid')}>Browse products</Button>}
+      />
     )
   }
 
@@ -123,19 +134,17 @@ export default function ProductOverview() {
   }
 
   const gallery = product.images?.length ? product.images : []
-  const specEntries = Object.entries(product.specs ?? {}).filter(
-    ([, value]) => value !== undefined && value !== null && value !== '',
-  )
+  const specRows = specRowsFrom(product.specs ?? {}, SPEC_UNITS)
 
   return (
     <div className="space-y-10">
       <section className="grid gap-8 lg:grid-cols-2">
         <div>
-          <div className="bg-muted/30 overflow-hidden rounded-xl border">
+          <div className="overflow-hidden rounded-lg border border-border-subtle bg-surface-2">
             <ProductImage
               src={selectedImage ?? product.image}
               alt={product.title}
-              className="h-[450px] w-full object-contain"
+              className="h-112 w-full object-contain"
             />
           </div>
           {gallery.length > 1 && (
@@ -148,8 +157,8 @@ export default function ProductOverview() {
                     aria-label={`View image ${i + 1}`}
                     aria-current={selectedImage === image}
                     className={cn(
-                      'overflow-hidden rounded-xl border-2 transition-colors',
-                      selectedImage === image ? 'border-primary' : 'border-transparent',
+                      'focus-ring overflow-hidden rounded-md border-2 duration-fast ease-standard transition-colors',
+                      selectedImage === image ? 'border-accent-default' : 'border-transparent',
                     )}
                   >
                     <ProductImage
@@ -165,17 +174,22 @@ export default function ProductOverview() {
         </div>
 
         <div>
-          <h1 className="text-primary mb-4 text-3xl leading-tight font-medium md:text-4xl">
+          <h1 className="mb-4 font-display text-3xl leading-tight font-semibold text-fg-primary md:text-4xl">
             {product.title}
           </h1>
 
-          <div className="text-muted-foreground mb-6 flex flex-wrap items-center gap-2 text-sm">
+          <div className="mb-6 flex flex-wrap items-center gap-2 text-sm text-fg-tertiary">
             <span>{product.brand}</span>
-            <span>· MPN {product.mpn}</span>
+            <span>
+              · MPN{' '}
+              <span className="numeric" data-numeric>
+                {product.mpn}
+              </span>
+            </span>
             {product.rating != null && (
               <span className="flex items-center gap-1">
                 ·
-                <Star className="size-4 fill-yellow-500 text-yellow-500" aria-hidden="true" />
+                <Star className="size-4 fill-warning-fg text-warning-fg" aria-hidden="true" />
                 {product.rating}
               </span>
             )}
@@ -183,12 +197,12 @@ export default function ProductOverview() {
             {product.orderCount != null && <span>· {product.orderCount} Orders</span>}
           </div>
 
-          <p className="text-primary mb-8 text-2xl font-semibold">{formatLKR(product.price)}</p>
+          <PriceDisplay value={product.price} size="xl" className="mb-8" />
 
           {product.colors?.length ? (
             <fieldset className="mb-6">
               <legend className="mb-2 font-medium">
-                Color: <span className="text-muted-foreground">{selectedColor}</span>
+                Color: <span className="text-fg-tertiary">{selectedColor}</span>
               </legend>
               <div className="flex flex-wrap gap-2">
                 {product.colors.map((color) => (
@@ -198,10 +212,10 @@ export default function ProductOverview() {
                     onClick={() => setSelectedColor(color)}
                     aria-pressed={selectedColor === color}
                     className={cn(
-                      'rounded-md border-2 px-3 py-1.5 text-sm transition-colors',
+                      'focus-ring rounded-md border px-3 py-1.5 text-sm duration-fast ease-standard transition-colors',
                       selectedColor === color
-                        ? 'border-primary text-primary'
-                        : 'border-input hover:border-primary/50',
+                        ? 'border-accent-default text-accent-default'
+                        : 'border-border-default text-fg-secondary hover:border-border-strong',
                     )}
                   >
                     {color}
@@ -214,7 +228,7 @@ export default function ProductOverview() {
           {product.sizes?.length ? (
             <fieldset className="mb-6">
               <legend className="mb-2 font-medium">
-                Size: <span className="text-muted-foreground">{selectedSize?.name}</span>
+                Size: <span className="text-fg-tertiary">{selectedSize?.name}</span>
               </legend>
               <div className="flex flex-wrap gap-2">
                 {product.sizes.map((size) => (
@@ -224,14 +238,14 @@ export default function ProductOverview() {
                     onClick={() => setSelectedSize(size)}
                     aria-pressed={selectedSize?.name === size.name}
                     className={cn(
-                      'flex max-w-56 flex-col rounded-md border-2 px-4 py-3 text-left transition-colors',
+                      'focus-ring flex max-w-56 flex-col rounded-md border px-4 py-3 text-left duration-fast ease-standard transition-colors',
                       selectedSize?.name === size.name
-                        ? 'border-primary'
-                        : 'border-input hover:border-primary/50',
+                        ? 'border-accent-default'
+                        : 'border-border-default hover:border-border-strong',
                     )}
                   >
                     <b>{size.name}</b>
-                    <span className="text-muted-foreground text-sm">{size.description}</span>
+                    <span className="text-fg-tertiary text-sm">{size.description}</span>
                   </button>
                 ))}
               </div>
@@ -257,7 +271,7 @@ export default function ProductOverview() {
                 value={quantity}
                 onChange={(event) => setQuantity(Math.max(1, Number(event.target.value) || 1))}
                 aria-label="Quantity"
-                className="h-9 border-0 text-center shadow-none focus-visible:ring-0"
+                className="h-8 border-0 bg-transparent text-center shadow-none"
               />
               <Button
                 variant="ghost"
@@ -291,7 +305,7 @@ export default function ProductOverview() {
               aria-pressed={isFavorite}
               aria-label={isFavorite ? 'Remove from favourites' : 'Add to favourites'}
             >
-              <Heart className={cn('size-5', isFavorite && 'fill-primary text-primary')} />
+              <Heart className={cn('size-5', isFavorite && 'fill-accent-default text-accent-default')} />
             </Button>
             <Button variant="ghost" size="icon" onClick={share} aria-label="Share product">
               <Share2 className="size-5" />
@@ -299,7 +313,7 @@ export default function ProductOverview() {
           </div>
 
           {product.description && (
-            <p className="text-muted-foreground">{product.description}</p>
+            <p className="text-fg-tertiary">{product.description}</p>
           )}
         </div>
       </section>
@@ -315,22 +329,15 @@ export default function ProductOverview() {
             </TabsList>
 
             <TabsContent value="specifications" className="pt-6">
-              {specEntries.length > 0 ? (
-                <dl className="space-y-3">
-                  {specEntries.map(([name, value]) => (
-                    <div key={name}>
-                      <dt className="font-semibold">{formatSpecName(name)}</dt>
-                      <dd className="text-muted-foreground">{formatSpecValue(value)}</dd>
-                    </div>
-                  ))}
-                </dl>
-              ) : (
-                <p className="text-muted-foreground">No specifications available.</p>
-              )}
+              <SpecTable
+                rows={specRows}
+                columns={[{ id: product.id, title: product.title, values: product.specs ?? {} }]}
+                caption={`${product.title} specifications`}
+              />
             </TabsContent>
 
             <TabsContent value="comments" className="pt-6">
-              <p className="text-muted-foreground">No comments yet.</p>
+              <p className="text-fg-tertiary">No comments yet.</p>
             </TabsContent>
 
             <TabsContent value="files" className="pt-6">
@@ -341,7 +348,7 @@ export default function ProductOverview() {
                       <a
                         href={file.url}
                         download
-                        className="text-primary hover:underline"
+                        className="focus-ring rounded-xs text-accent-default hover:underline"
                       >
                         {file.name}
                       </a>
@@ -349,7 +356,7 @@ export default function ProductOverview() {
                   ))}
                 </ul>
               ) : (
-                <p className="text-muted-foreground">No files available.</p>
+                <p className="text-fg-tertiary">No files available.</p>
               )}
             </TabsContent>
 
@@ -364,7 +371,7 @@ export default function ProductOverview() {
                   ))}
                 </Accordion>
               ) : (
-                <p className="text-muted-foreground">No FAQs available.</p>
+                <p className="text-fg-tertiary">No FAQs available.</p>
               )}
             </TabsContent>
           </Tabs>

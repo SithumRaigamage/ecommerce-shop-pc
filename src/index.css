@@ -1,85 +1,586 @@
+/* =============================================================================
+   PC Shop — design tokens
+   Dark-first technical instrument. See DESIGN.md for art direction, the full
+   token table, the contrast audit and the "do not" list.
+
+   Layer order:
+     1. primitives  (@theme)            ramps, type, space, radius, motion
+     2. semantics   (:root / .dark)     what primitives *mean*
+     3. bridge      (@theme inline)     semantics -> Tailwind utilities
+     4. base        (@layer base)       element defaults
+   Components reference semantics only. Never a ramp step, never a raw number.
+   ========================================================================== */
+
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
+/* Self-hosted, no runtime network call. Roman only — no italic files shipped.
+   Geist            UI / body        neo-grotesque, engineered for screen density
+   Instrument Sans  display          more character; tight tracking at large sizes
+   JetBrains Mono   numerals / specs tabular by construction, unambiguous 0/O 1/l */
+@import '@fontsource-variable/geist/wght.css';
+@import '@fontsource-variable/instrument-sans/standard.css';
+@import '@fontsource-variable/jetbrains-mono/wght.css';
+
 @custom-variant dark (&:is(.dark *));
 
-@theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
+/* =============================================================================
+   1. PRIMITIVES
+   ========================================================================== */
+
+/* `static` matters: Tailwind v4 tree-shakes theme values no utility references,
+   which silently dropped 18 of the 55 ramp steps, every --spacing-* alias and
+   --ease-spring from the build. A token foundation has to be present before the
+   components that will use it exist, so the whole primitive layer is pinned. */
+@theme static {
+  /* ---------------------------------------------------------------- colour
+     Five 11-step ramps in OKLCH. Hex in comments is the sRGB rendering.
+     Every step verified inside the sRGB gamut — no browser clipping.
+
+     NEUTRAL — hue 258 (cool cast). Lightness steps are deliberately NOT
+     perceptually even. The profile is a "dumbbell": tight where surfaces live,
+     loose through the middle where only text and icons sit.
+
+       dark end   950->900->800->700   dL .048 .048 .056   <- four dark surfaces
+       mid        600..300             dL .102 .110 .115 .117
+       light end  200->100->50         dL .106 .076 .046   <- three light surfaces
+
+     A linear ramp over the same span would step .082 everywhere: too coarse at
+     the dark end (elevation levels collapse into each other or jump) and
+     needlessly fine in the middle. The mid range is where a wide step costs
+     nothing, so that is where the slack was put. */
+
+  /* --- neutral --- */
+  --color-neutral-50: oklch(0.99 0.004 258); /* #fafcfe */
+  --color-neutral-100: oklch(0.944 0.007 258); /* #eaedf1 */
+  --color-neutral-200: oklch(0.868 0.01 258); /* #d0d4da */
+  --color-neutral-300: oklch(0.762 0.012 258); /* #adb2b9 */
+  --color-neutral-400: oklch(0.645 0.014 258); /* #888e96 */
+  --color-neutral-500: oklch(0.53 0.015 258); /* #666c75 */
+  --color-neutral-600: oklch(0.42 0.016 258); /* #484d56 */
+  --color-neutral-700: oklch(0.318 0.017 258); /* #2d333b */
+  --color-neutral-800: oklch(0.262 0.016 258); /* #20252c */
+  --color-neutral-900: oklch(0.214 0.015 258); /* #151a20 */
+  --color-neutral-950: oklch(0.166 0.013 258); /* #0b0f14 */
+
+  /* --- accent — hue 196 ---
+     Deliberately between Tailwind's teal (185) and cyan (215), so it reads as
+     neither. 196 is the hue of instrument backlighting and signal traces:
+     cool enough to sit quietly against a cool neutral, saturated enough to be
+     the single thing on screen that says "you can act here". A warm accent
+     would fight the neutral's cast; a blue would read as generic SaaS and is
+     ruled out by the brief. Accent marks interactive affordances ONLY. */
+  --color-accent-50: oklch(0.976 0.016 196); /* #ecfbfb */
+  --color-accent-100: oklch(0.94 0.036 196); /* #d1f3f3 */
+  --color-accent-200: oklch(0.89 0.062 196); /* #abe8e8 */
+  --color-accent-300: oklch(0.826 0.088 196); /* #7cd8d9 */
+  --color-accent-400: oklch(0.76 0.106 196); /* #4ec6c7 */
+  --color-accent-500: oklch(0.696 0.114 196); /* #1db3b4 */
+  --color-accent-600: oklch(0.612 0.1 196); /* #179697 */
+  --color-accent-700: oklch(0.505 0.086 196); /* #007375 */
+  --color-accent-800: oklch(0.418 0.07 196); /* #045859 */
+  --color-accent-900: oklch(0.336 0.056 196); /* #034040 */
+  --color-accent-950: oklch(0.252 0.04 196); /* #032828 */
+
+  /* --- success — hue 155 (offset from Tailwind green 150 / emerald 160) --- */
+  --color-success-50: oklch(0.972 0.018 155); /* #edfaf1 */
+  --color-success-100: oklch(0.936 0.04 155); /* #d6f2de */
+  --color-success-200: oklch(0.884 0.07 155); /* #b5e7c5 */
+  --color-success-300: oklch(0.818 0.098 155); /* #8fd7a8 */
+  --color-success-400: oklch(0.75 0.118 155); /* #6bc48d */
+  --color-success-500: oklch(0.684 0.126 155); /* #4fb077 */
+  --color-success-600: oklch(0.606 0.116 155); /* #3e9663 */
+  --color-success-700: oklch(0.516 0.098 155); /* #31784e */
+  --color-success-800: oklch(0.424 0.078 155); /* #255b3b */
+  --color-success-900: oklch(0.334 0.058 155); /* #1a3f29 */
+  --color-success-950: oklch(0.244 0.04 155); /* #0f2618 */
+
+  /* --- warning — hue 82 (between Tailwind amber 75 / yellow 95) --- */
+  --color-warning-50: oklch(0.982 0.016 82); /* #fff8ed */
+  --color-warning-100: oklch(0.952 0.044 82); /* #feedcf */
+  --color-warning-200: oklch(0.906 0.088 82); /* #fddb9c */
+  --color-warning-300: oklch(0.856 0.124 82); /* #f8c86b */
+  --color-warning-400: oklch(0.806 0.146 82); /* #eeb53d */
+  --color-warning-500: oklch(0.752 0.15 82); /* #dda319 */
+  --color-warning-600: oklch(0.664 0.129 82); /* #ba8a1d */
+  --color-warning-700: oklch(0.528 0.106 82); /* #896409 */
+  --color-warning-800: oklch(0.458 0.09 82); /* #70520a */
+  --color-warning-900: oklch(0.36 0.068 82); /* #4f3909 */
+  --color-warning-950: oklch(0.262 0.046 82); /* #302207 */
+
+  /* --- danger — hue 22 (between Tailwind rose 15 / red 27) --- */
+  --color-danger-50: oklch(0.97 0.014 22); /* #fff2f1 */
+  --color-danger-100: oklch(0.94 0.029 22); /* #fee4e2 */
+  --color-danger-200: oklch(0.894 0.053 22); /* #fecfcc */
+  --color-danger-300: oklch(0.83 0.09 22); /* #fdb0ad */
+  --color-danger-400: oklch(0.752 0.144 22); /* #fd8785 */
+  --color-danger-500: oklch(0.664 0.192 22); /* #f2565b */
+  --color-danger-600: oklch(0.59 0.196 22); /* #d93944 */
+  --color-danger-700: oklch(0.508 0.172 22); /* #b32b35 */
+  --color-danger-800: oklch(0.424 0.142 22); /* #8b2028 */
+  --color-danger-900: oklch(0.348 0.11 22); /* #681a1e */
+  --color-danger-950: oklch(0.256 0.076 22); /* #400f11 */
+
+  /* ------------------------------------------------------------ typography */
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Instrument Sans Variable', 'Geist Variable', ui-sans-serif, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, 'SF Mono', monospace;
+
+  /* Type scale — optical, not a fixed ratio. Steps are chosen for the job they
+     do, then tracking is corrected by eye: negative on display sizes (which set
+     too loose by default), neutral at body, positive at the smallest sizes
+     (which set too tight and lose legibility at 11-12px). */
+  --text-xs: 0.6875rem; /* 11px — micro labels, table meta, badges */
+  --text-xs--line-height: 1rem; /* 16px */
+  --text-xs--letter-spacing: 0.01em;
+
+  --text-sm: 0.75rem; /* 12px — secondary UI text, captions, helper text */
+  --text-sm--line-height: 1.125rem; /* 18px */
+  --text-sm--letter-spacing: 0.006em;
+
+  --text-base: 0.875rem; /* 14px — UI default. Dense, per the art direction. */
+  --text-base--line-height: 1.25rem; /* 20px */
+  --text-base--letter-spacing: 0em;
+
+  --text-lg: 1rem; /* 16px — long-form body, product description */
+  --text-lg--line-height: 1.5rem; /* 24px */
+  --text-lg--letter-spacing: -0.005em;
+
+  --text-xl: 1.125rem; /* 18px — card titles */
+  --text-xl--line-height: 1.625rem; /* 26px */
+  --text-xl--letter-spacing: -0.01em;
+
+  --text-2xl: 1.375rem; /* 22px — section subheads */
+  --text-2xl--line-height: 1.75rem; /* 28px */
+  --text-2xl--letter-spacing: -0.015em;
+
+  --text-3xl: 1.75rem; /* 28px — section heads */
+  --text-3xl--line-height: 2.125rem; /* 34px */
+  --text-3xl--letter-spacing: -0.02em;
+
+  --text-4xl: 2.25rem; /* 36px — page titles */
+  --text-4xl--line-height: 2.5rem; /* 40px */
+  --text-4xl--letter-spacing: -0.025em;
+
+  --text-5xl: 3rem; /* 48px — hero display, one per page at most */
+  --text-5xl--line-height: 3.125rem; /* 50px */
+  --text-5xl--letter-spacing: -0.03em;
+
+  /* --------------------------------------------------------------- spacing
+     4px base. Tailwind derives its numeric scale from --spacing, so p-1 = 4px,
+     p-2 = 8px and so on. Semantic aliases below are what components use. */
+  --spacing: 0.25rem;
+
+  --spacing-stack-tight: 0.5rem; /* 8px  — label above control, icon + text */
+  --spacing-stack: 0.75rem; /* 12px — between related blocks in a card */
+  --spacing-card-padding: 1rem; /* 16px — inner padding of a surface */
+  --spacing-gutter: 1.5rem; /* 24px — page edge, column gap */
+  --spacing-section: 4rem; /* 64px — between major page sections */
+  /* Sticky sidebar: viewport minus the header and its top offset. A named token
+     rather than an inline calc, so components need no arbitrary value. */
+  --spacing-sidebar: calc(100dvh - 6.5rem);
+
+  /* ---------------------------------------------------------------- radius
+     Nested radii must satisfy inner = outer - inset, or the curves run
+     non-concentric and the nesting reads as a mistake. Pairs that work:
+       card      lg 12  inset stack-tight  8 -> inner xs  4
+       modal     xl 16  inset stack       12 -> inner xs  4
+       segmented md  8  inset             2 -> inner sm  6
+       input+chip md  8  inset             4 -> inner xs  4 */
+  --radius-xs: 0.25rem; /* 4px  — chips, tags, inner elements */
+  --radius-sm: 0.375rem; /* 6px  — inside a segmented control */
+  --radius-md: 0.5rem; /* 8px  — buttons, inputs, selects */
+  --radius-lg: 0.75rem; /* 12px — cards, panels */
+  --radius-xl: 1rem; /* 16px — modals, sheets, popovers */
+  --radius-2xl: 1.25rem; /* 20px — full-bleed feature panels */
+  --radius-full: 9999px; /* pills, avatars, the cart badge */
+
+  /* ---------------------------------------------------------------- motion
+     Durations are deliberately short. Motion economy: an interface that feels
+     like an instrument acknowledges input immediately and never makes you
+     wait for a transition to finish before the next action.
+
+     --ease-standard is a custom curve, not ease-in-out. It leaves immediately
+     (0 initial slope on x, so there is no dead time at the start) and settles
+     slowly, which reads as responsive rather than sluggish. */
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-entrance: cubic-bezier(0.05, 0.7, 0.1, 1);
+  --ease-exit: cubic-bezier(0.3, 0, 0.8, 0.15);
+  /* Slight overshoot. ONLY for things that change size or position. Never for
+     colour or opacity — an overshooting colour reads as a bug. */
+  --ease-spring: cubic-bezier(0.34, 1.35, 0.64, 1);
+
+  /* ------------------------------------------------------------- elevation
+     Dark UI gets depth from surface lightness and a 1px top highlight, not
+     from drop shadows. A shadow needs light behind the object to be legible;
+     on a near-black background there is none, so a dark shadow is invisible
+     and a soft black blur just muddies the surface below it.
+
+     What actually reads as "closer to the viewer" on dark is: a lighter
+     surface, plus a hairline along the top edge simulating a light source
+     above. Shadow is used only from level 2 upward, and only to separate an
+     element that genuinely floats over content (popover, modal). */
+  --shadow-e0: none;
+  --shadow-e1: none;
+  --shadow-e2: 0 4px 12px -2px oklch(0 0 0 / 0.32);
+  --shadow-e3: 0 16px 40px -8px oklch(0 0 0 / 0.48);
 }
 
+/* =============================================================================
+   2. SEMANTICS
+
+   Both blocks are complete and independently audited — neither derives from
+   the other by inversion. Ratios in comments are computed, not estimated
+   (OKLCH -> sRGB -> WCAG 2.1 relative luminance). See DESIGN.md for method.
+
+   Authoring note: dark is the DESIGNED default (index.html sets `.dark`
+   before first paint and falls back to dark). It is written second here only
+   because `.dark` and `:root` have equal specificity, so `.dark` must come
+   later in source order to win.
+   ========================================================================== */
+
+/* ------------------------------------------------------------ LIGHT (port) */
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  /* Brand blue carried over from the Angular app (blue-600 / indigo-700 accents) */
-  --primary: oklch(0.546 0.245 262.881);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.546 0.245 262.881);
+  color-scheme: light;
+
+  --bg: var(--color-neutral-50);
+  --surface-1: var(--color-neutral-100);
+  --surface-2: var(--color-neutral-200);
+  --surface-3: var(--color-neutral-300);
+
+  --border-subtle: var(--color-neutral-200);
+  --border-default: var(--color-neutral-300);
+  --border-strong: var(--color-neutral-500); /* 5.13:1 on bg — meets AA 3.0 for controls */
+
+  --fg-primary: var(--color-neutral-950); /* 18.70:1 on bg  AAA */
+  --fg-secondary: var(--color-neutral-700); /* 12.41:1 on bg  AAA */
+  --fg-tertiary: var(--color-neutral-600); /*  8.22:1 on bg  AAA */
+  --fg-disabled: var(--color-neutral-400); /*  3.20:1 — WCAG 1.4.3 exempts inactive controls */
+
+  --accent-default: var(--color-accent-700); /*  5.47:1 on bg, 4.78:1 on surface-1  AA */
+  --accent-hover: var(--color-accent-800); /*  8.01:1 on bg  AAA */
+  --accent-active: var(--color-accent-900); /* 11.32:1 on bg  AAA */
+  --accent-subtle-bg: var(--color-accent-50); /* accent on it: 5.28:1  AA */
+  --on-accent: var(--color-neutral-50); /*  5.47:1 on accent-default  AA */
+
+  --success-fg: var(--color-success-700); /*  4.96:1 on success-bg  AA */
+  --success-bg: var(--color-success-50);
+  --success-border: var(--color-success-200);
+
+  --warning-fg: var(--color-warning-700); /*  5.11:1 on warning-bg  AA */
+  --warning-bg: var(--color-warning-50);
+  --warning-border: var(--color-warning-200);
+
+  --danger-fg: var(--color-danger-700); /*  5.79:1 on danger-bg  AA */
+  --danger-bg: var(--color-danger-50);
+  --danger-border: var(--color-danger-200);
+
+  /* Elevation triples. Light mode inverts the dark logic: surfaces get
+     *lighter* toward the viewer and shadows are legible, so they carry the
+     depth instead of a top highlight. */
+  --elevation-1-bg: var(--surface-1);
+  --elevation-1-border: var(--border-subtle);
+  --elevation-2-bg: var(--color-neutral-50);
+  --elevation-2-border: var(--border-default);
+  --elevation-3-bg: var(--color-neutral-50);
+  --elevation-3-border: var(--border-default);
+  --highlight-top: transparent; /* no simulated top light in light mode */
+  --shadow-2: 0 4px 12px -2px oklch(0 0 0 / 0.1);
+  --shadow-3: 0 16px 40px -8px oklch(0 0 0 / 0.16);
+
+  --scrim: oklch(0.166 0.013 258 / 0.4);
 }
 
+/* ------------------------------------------------------- DARK (the design) */
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.707 0.165 254.624);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
+  color-scheme: dark;
+
+  --bg: var(--color-neutral-950); /* #0b0f14 */
+  --surface-1: var(--color-neutral-900); /* #151a20 */
+  --surface-2: var(--color-neutral-800); /* #20252c */
+  --surface-3: var(--color-neutral-700); /* #2d333b */
+
+  --border-subtle: var(--color-neutral-800);
+  --border-default: var(--color-neutral-700);
+  --border-strong: var(--color-neutral-500); /* 3.65:1 on bg — meets AA 3.0 for controls */
+
+  --fg-primary: var(--color-neutral-50); /* 18.70:1 on bg  AAA */
+  --fg-secondary: var(--color-neutral-300); /*  9.03:1 on bg  AAA */
+  --fg-tertiary: var(--color-neutral-400); /*  5.84:1 on bg, 4.68:1 on surface-2  AA */
+  --fg-disabled: var(--color-neutral-600); /*  2.28:1 — WCAG 1.4.3 exempts inactive controls */
+
+  --accent-default: var(--color-accent-400); /*  9.36:1 on bg  AAA */
+  --accent-hover: var(--color-accent-300); /* 11.63:1 on bg  AAA */
+  --accent-active: var(--color-accent-500); /*  7.45:1 on bg  AAA */
+  --accent-subtle-bg: var(--color-accent-950); /* accent on it: 7.63:1  AAA */
+  --on-accent: var(--color-neutral-950); /*  9.36:1 on accent-default  AAA */
+
+  --success-fg: var(--color-success-400); /*  7.58:1 on success-bg  AAA */
+  --success-bg: var(--color-success-950);
+  --success-border: var(--color-success-800);
+
+  --warning-fg: var(--color-warning-400); /*  8.36:1 on warning-bg  AAA */
+  --warning-bg: var(--color-warning-950);
+  --warning-border: var(--color-warning-800);
+
+  --danger-fg: var(--color-danger-400); /*  6.87:1 on danger-bg  AA */
+  --danger-bg: var(--color-danger-950);
+  --danger-border: var(--color-danger-800);
+
+  --elevation-1-bg: var(--surface-1);
+  --elevation-1-border: var(--border-subtle);
+  --elevation-2-bg: var(--surface-2);
+  --elevation-2-border: var(--border-default);
+  --elevation-3-bg: var(--surface-3);
+  --elevation-3-border: var(--border-default);
+  /* The 1px top highlight that does the work a drop shadow cannot do here. */
+  --highlight-top: oklch(1 0 0 / 0.06);
+  --shadow-2: var(--shadow-e2);
+  --shadow-3: var(--shadow-e3);
+
+  --scrim: oklch(0.166 0.013 258 / 0.72);
 }
+
+/* =============================================================================
+   3. BRIDGE — semantics to Tailwind utilities
+
+   `inline` so the generated utility resolves var(--bg) at use time and
+   therefore follows the light/dark swap above.
+
+   The second half maps shadcn/ui's token vocabulary onto this system so the
+   existing components keep working untouched. Stage 2 migrates components onto
+   the semantic names and these aliases go away.
+
+   Name collision worth knowing: shadcn's `accent` is a NEUTRAL hover surface,
+   not a brand colour. It is preserved with that meaning. The brand accent is
+   exposed as `accent-default` / `accent-hover` / `accent-active` / etc.
+   ========================================================================== */
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+
+  --color-border-subtle: var(--border-subtle);
+  --color-border-default: var(--border-default);
+  --color-border-strong: var(--border-strong);
+
+  --color-fg-primary: var(--fg-primary);
+  --color-fg-secondary: var(--fg-secondary);
+  --color-fg-tertiary: var(--fg-tertiary);
+  --color-fg-disabled: var(--fg-disabled);
+
+  --color-accent-default: var(--accent-default);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-active: var(--accent-active);
+  --color-accent-subtle: var(--accent-subtle-bg);
+  --color-on-accent: var(--on-accent);
+
+  --color-success-fg: var(--success-fg);
+  --color-success-bg: var(--success-bg);
+  --color-success-border: var(--success-border);
+  --color-warning-fg: var(--warning-fg);
+  --color-warning-bg: var(--warning-bg);
+  --color-warning-border: var(--warning-border);
+  --color-danger-fg: var(--danger-fg);
+  --color-danger-bg: var(--danger-bg);
+  --color-danger-border: var(--danger-border);
+
+  --color-scrim: var(--scrim);
+
+  /* Elevation, as utilities: bg-elevation-2 + border-elevation-2 + shadow-e2. */
+  --color-elevation-1: var(--elevation-1-bg);
+  --color-elevation-2: var(--elevation-2-bg);
+  --color-elevation-3: var(--elevation-3-bg);
+  --color-elevation-1-border: var(--elevation-1-border);
+  --color-elevation-2-border: var(--elevation-2-border);
+  --color-elevation-3-border: var(--elevation-3-border);
+  --shadow-e2: var(--shadow-2);
+  --shadow-e3: var(--shadow-3);
+
+  /* ---- shadcn/ui compatibility aliases (temporary — see note above) ---- */
+  --color-background: var(--bg);
+  --color-foreground: var(--fg-primary);
+  --color-card: var(--elevation-1-bg);
+  --color-card-foreground: var(--fg-primary);
+  --color-popover: var(--elevation-2-bg);
+  --color-popover-foreground: var(--fg-primary);
+  --color-primary: var(--accent-default);
+  --color-primary-foreground: var(--on-accent);
+  --color-secondary: var(--surface-2);
+  --color-secondary-foreground: var(--fg-primary);
+  --color-muted: var(--surface-2);
+  --color-muted-foreground: var(--fg-tertiary);
+  --color-accent: var(--surface-2); /* neutral hover surface, per shadcn */
+  --color-accent-foreground: var(--fg-primary);
+  --color-destructive: var(--danger-fg);
+  --color-destructive-foreground: var(--on-accent);
+  --color-border: var(--border-default);
+  --color-input: var(--border-default);
+  --color-ring: var(--accent-default);
+}
+
+/* =============================================================================
+   4. BASE
+   ========================================================================== */
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    border-color: var(--border-default);
   }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--bg);
+    color: var(--fg-primary);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
+    /* Grade-2 stem darkening off; on dark backgrounds the browser default
+       thickens type until it smears. */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Proportional figures in prose; `tnum` is switched on per-context below. */
+    font-variant-numeric: proportional-nums;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+
+  /* Every price, spec value, SKU, dimension and count.
+     `tnum` fixes digit advance width so figures align in a column;
+     `cv01` disambiguates the single-storey `1` from `l` and `I`.
+     `zero` slashes the zero, which matters on part numbers. */
+  code,
+  kbd,
+  samp,
+  pre,
+  [data-numeric] {
+    font-family: var(--font-mono);
+    font-feature-settings:
+      'tnum' 1,
+      'cv01' 1,
+      'zero' 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Focus is an affordance, so it is the one other place accent appears. */
+  :focus-visible {
+    outline: 2px solid var(--accent-default);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background-color: var(--accent-subtle-bg);
+    color: var(--fg-primary);
+  }
+}
+
+/* Honour the OS setting. Motion is removed rather than merely shortened, and
+   the tokens themselves are collapsed so anything referencing them complies
+   without each component having to remember. */
+@media (prefers-reduced-motion: reduce) {
+  :root,
+  .dark {
+    --duration-instant: 1ms;
+    --duration-fast: 1ms;
+    --duration-base: 1ms;
+    --duration-slow: 1ms;
+    --ease-standard: linear;
+    --ease-entrance: linear;
+    --ease-exit: linear;
+    --ease-spring: linear;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Duration tokens live outside @theme: Tailwind has no `--duration-*` theme
+   namespace. The @utility rules below expose them as real utilities so
+   components never need an arbitrary value like duration-[var(--duration-fast)]. */
+:root {
+  --duration-instant: 100ms; /* state flips that must feel like no delay */
+  --duration-fast: 150ms; /* hover, focus, small colour changes */
+  --duration-base: 250ms; /* popovers, dropdowns, tab panels */
+  --duration-slow: 400ms; /* sheets, modals, anything crossing the viewport */
+}
+
+/* =============================================================================
+   5. UTILITIES
+
+   Everything a component needs that is not expressible as a plain theme value.
+   Without these, components would have to reach for arbitrary values, which the
+   component layer forbids.
+   ========================================================================== */
+
+@utility duration-instant {
+  transition-duration: var(--duration-instant);
+}
+@utility duration-fast {
+  transition-duration: var(--duration-fast);
+}
+@utility duration-base {
+  transition-duration: var(--duration-base);
+}
+@utility duration-slow {
+  transition-duration: var(--duration-slow);
+}
+
+/* The elevation triples from DESIGN.md as single utilities: surface + border +
+   1px top highlight (+ shadow from level 2). One class, so a component cannot
+   accidentally take the background of one level and the border of another. */
+@utility elevation-1 {
+  background-color: var(--elevation-1-bg);
+  border-color: var(--elevation-1-border);
+  box-shadow: inset 0 1px 0 0 var(--highlight-top);
+}
+@utility elevation-2 {
+  background-color: var(--elevation-2-bg);
+  border-color: var(--elevation-2-border);
+  box-shadow:
+    inset 0 1px 0 0 var(--highlight-top),
+    var(--shadow-2);
+}
+@utility elevation-3 {
+  background-color: var(--elevation-3-bg);
+  border-color: var(--elevation-3-border);
+  box-shadow:
+    inset 0 1px 0 0 var(--highlight-top),
+    var(--shadow-3);
+}
+
+/* Every price, spec value, SKU, dimension and count. Mirrors the [data-numeric]
+   base rule so it can also be applied as a class. */
+@utility numeric {
+  font-family: var(--font-mono);
+  font-feature-settings:
+    'tnum' 1,
+    'cv01' 1,
+    'zero' 1;
+  font-variant-numeric: tabular-nums;
+}
+
+/* The one focus treatment. 2px accent, 2px offset, never suppressed.
+   Applied via `focus-ring` on any control that needs it explicitly; the
+   :focus-visible rule in @layer base covers everything else. */
+@utility focus-ring {
+  &:focus-visible {
+    outline: 2px solid var(--accent-default);
+    outline-offset: 2px;
   }
 }

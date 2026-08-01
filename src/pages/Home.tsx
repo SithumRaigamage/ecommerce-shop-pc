@@ -6,7 +6,8 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Skeleton } from '@/components/ui/skeleton'
 import { ProductImage } from '@/components/ProductImage'
-import { LoadError } from '@/components/LoadError'
+import { ErrorState } from '@/components/ErrorState'
+import { PriceDisplay } from '@/components/PriceDisplay'
 import { getBanners, getCategories, getFeaturedProducts } from '@/lib/api'
 import { formatLKR } from '@/lib/format'
 import { iconFromFaClass } from '@/lib/icons'
@@ -16,22 +17,22 @@ import { cn } from '@/lib/utils'
 const AUTO_SCROLL_MS = 5000
 
 /**
- * banner.json / featuredProducts.json ship Tailwind class strings. Tailwind only
- * emits classes it can see in source, so map the data values onto literal classes.
+ * `banner.json` ships a Tailwind gradient class per slide and
+ * `featuredProducts.json` ships a badge colour. Both are raw palette strings
+ * chosen for decoration, which the design system does not allow: gradients are
+ * ruled out entirely and colour has to carry meaning.
+ *
+ * The gradient is dropped — it sat behind a full-bleed photo and was never
+ * visible. The badge colour is ignored in favour of a tone derived from the
+ * badge's own text, so "Sale" reads as a status and everything else stays
+ * neutral. See DESIGN.md §8.
  */
-const BANNER_GRADIENTS: Record<string, string> = {
-  'bg-gradient-to-r from-purple-900 to-indigo-800': 'bg-linear-to-r from-purple-900 to-indigo-800',
-  'bg-gradient-to-r from-green-900 to-emerald-800': 'bg-linear-to-r from-green-900 to-emerald-800',
-  'bg-gradient-to-r from-blue-900 to-cyan-800': 'bg-linear-to-r from-blue-900 to-cyan-800',
-  'bg-gradient-to-r from-red-900 to-orange-800': 'bg-linear-to-r from-red-900 to-orange-800',
-  'bg-gradient-to-r from-yellow-900 to-amber-800': 'bg-linear-to-r from-yellow-900 to-amber-800',
-}
-
-const BADGE_COLORS: Record<string, string> = {
-  'bg-red-500': 'bg-red-500',
-  'bg-green-500': 'bg-green-500',
-  'bg-purple-500': 'bg-purple-500',
-  'bg-yellow-500': 'bg-yellow-500',
+function badgeTone(text: string): string {
+  const normalized = text.trim().toLowerCase()
+  if (normalized === 'sale') {
+    return 'border-success-border bg-success-bg text-success-fg'
+  }
+  return 'border-border-subtle bg-surface-2 text-fg-secondary'
 }
 
 const WHY_CHOOSE_US = [
@@ -61,10 +62,10 @@ function HeroBanner() {
   }, [paused, banners.length, next])
 
   if (error) {
-    return <LoadError message="Promotions could not be loaded." onRetry={retry} />
+    return <ErrorState size="sm" description="Promotions could not be loaded." onRetry={retry} />
   }
   if (loading) {
-    return <Skeleton className="h-[60vh] w-full rounded-xl" />
+    return <Skeleton className="h-125 w-full rounded-lg" />
   }
   if (banners.length === 0) return null
 
@@ -74,22 +75,17 @@ function HeroBanner() {
     <section
       aria-roledescription="carousel"
       aria-label="Featured promotions"
-      className="bg-card relative overflow-hidden rounded-xl border"
+      className="relative overflow-hidden rounded-lg border border-border-subtle bg-surface-1"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <div className="flex flex-col lg:h-[60vh] lg:min-h-[420px] lg:flex-row">
-        <div
-          className={cn(
-            'relative h-64 w-full overflow-hidden lg:h-auto lg:w-3/5',
-            BANNER_GRADIENTS[current.backgroundColor] ?? 'bg-muted',
-          )}
-        >
+      <div className="flex flex-col lg:h-125 lg:flex-row">
+        <div className="relative h-64 w-full overflow-hidden bg-surface-2 lg:h-auto lg:w-3/5">
           <img
             key={current.image}
             src={current.image}
             alt=""
-            className="size-full object-cover transition-transform duration-700 hover:scale-105"
+            className="size-full object-cover duration-slow ease-standard transition-transform hover:scale-105"
           />
           <Button
             variant="secondary"
@@ -113,10 +109,10 @@ function HeroBanner() {
 
         <div className="flex w-full flex-col justify-center gap-4 p-8 text-center lg:w-2/5 lg:p-12 lg:text-left">
           {current.title && (
-            <h2 className="text-4xl leading-tight font-bold lg:text-5xl">{current.title}</h2>
+            <h2 className="font-display text-4xl leading-tight font-semibold text-fg-primary lg:text-5xl">{current.title}</h2>
           )}
           {current.subtitle && (
-            <p className="text-muted-foreground text-lg lg:text-xl">{current.subtitle}</p>
+            <p className="text-fg-tertiary text-lg lg:text-xl">{current.subtitle}</p>
           )}
           {current.buttonLink && (
             <div>
@@ -142,8 +138,8 @@ function HeroBanner() {
                 aria-label={`Go to slide ${i + 1}`}
                 aria-current={i === index}
                 className={cn(
-                  'border-primary size-3 rounded-full border-2 transition-colors',
-                  i === index ? 'bg-primary' : 'bg-transparent',
+                  'focus-ring size-3 rounded-full border-2 border-border-strong duration-fast ease-standard transition-colors',
+                  i === index ? 'border-accent-default bg-accent-default' : 'bg-transparent',
                 )}
               />
             ))}
@@ -159,12 +155,14 @@ function CategoriesOverview() {
 
   return (
     <section className="py-16">
-      <h2 className="mb-8 text-center text-3xl font-bold">Shop by Featured Categories</h2>
-      {error && <LoadError message="Categories could not be loaded." onRetry={retry} />}
+      <h2 className="mb-8 text-center font-display text-3xl font-semibold text-fg-primary">Shop by Featured Categories</h2>
+      {error && (
+        <ErrorState size="sm" description="Categories could not be loaded." onRetry={retry} />
+      )}
       {loading && (
         <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4">
           {Array.from({ length: 8 }).map((_, i) => (
-            <Skeleton key={i} className="h-32 rounded-xl" />
+            <Skeleton key={i} className="h-32 rounded-lg" />
           ))}
         </div>
       )}
@@ -173,11 +171,11 @@ function CategoriesOverview() {
           const Icon = iconFromFaClass(category.icon)
           return (
             <Link key={category.id} to={`/product-grid?category=${encodeURIComponent(category.slug)}`}>
-              <Card className="h-full text-center transition-shadow hover:shadow-xl">
+              <Card interactive className="h-full text-center">
                 <CardContent className="flex flex-col items-center gap-2">
-                  <Icon className="text-primary size-9" aria-hidden="true" />
-                  <h3 className="text-lg font-semibold">{category.name}</h3>
-                  <span className="text-muted-foreground text-sm">
+                  <Icon className="size-9 text-fg-tertiary" aria-hidden="true" />
+                  <h3 className="text-lg font-semibold text-fg-primary">{category.name}</h3>
+                  <span className="text-fg-tertiary text-sm">
                     Starting from {formatLKR(category.startingPrice)}
                   </span>
                 </CardContent>
@@ -195,12 +193,14 @@ function FeaturedProducts() {
 
   return (
     <section className="py-16">
-      <h2 className="mb-8 text-3xl font-bold">Featured Products</h2>
-      {error && <LoadError message="Featured products could not be loaded." onRetry={retry} />}
+      <h2 className="mb-8 font-display text-3xl font-semibold text-fg-primary">Featured Products</h2>
+      {error && (
+        <ErrorState size="sm" description="Featured products could not be loaded." onRetry={retry} />
+      )}
       {loading && (
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {Array.from({ length: 3 }).map((_, i) => (
-            <Skeleton key={i} className="h-96 rounded-xl" />
+            <Skeleton key={i} className="h-96 rounded-lg" />
           ))}
         </div>
       )}
@@ -216,8 +216,8 @@ function FeaturedProducts() {
               {product.badge && (
                 <span
                   className={cn(
-                    'absolute top-4 right-4 rounded px-2 py-1 text-sm font-medium text-white',
-                    BADGE_COLORS[product.badge.color] ?? 'bg-primary',
+                    'absolute top-4 right-4 rounded-xs border px-2 py-0.5 text-xs font-medium',
+                    badgeTone(product.badge.text),
                   )}
                 >
                   {product.badge.text}
@@ -225,18 +225,13 @@ function FeaturedProducts() {
               )}
             </div>
             <CardContent>
-              <h3 className="group-hover:text-primary mb-2 line-clamp-2 text-xl font-semibold transition-colors">
+              <h3 className="mb-2 line-clamp-2 text-xl font-semibold text-fg-primary duration-fast ease-standard transition-colors group-hover:text-accent-default">
                 {product.name}
               </h3>
-              <p className="text-muted-foreground mb-4 line-clamp-2">{product.description}</p>
+              <p className="text-fg-tertiary mb-4 line-clamp-2">{product.description}</p>
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div>
-                  <span className="text-primary text-2xl font-bold">{formatLKR(product.price)}</span>
-                  {product.oldPrice && (
-                    <span className="text-muted-foreground ml-2 text-sm line-through">
-                      {formatLKR(product.oldPrice)}
-                    </span>
-                  )}
+                  <PriceDisplay value={product.price} compareAt={product.oldPrice} showDelta />
                 </div>
                 <Button asChild>
                   <Link to={`/product-overview/${product.productId}`}>Learn More</Link>
@@ -258,23 +253,23 @@ export default function Home() {
       <FeaturedProducts />
 
       <section className="py-16">
-        <h2 className="mb-12 text-center text-3xl font-bold">Why Choose Us</h2>
+        <h2 className="mb-12 text-center font-display text-3xl font-semibold text-fg-primary">Why Choose Us</h2>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           {WHY_CHOOSE_US.map(({ icon: Icon, title, copy }) => (
             <div key={title} className="text-center">
-              <div className="bg-primary/10 mb-4 inline-flex rounded-full p-4">
-                <Icon className="text-primary size-8" aria-hidden="true" />
+              <div className="mb-4 inline-flex rounded-full border border-border-subtle bg-surface-2 p-4">
+                <Icon className="size-8 text-fg-tertiary" aria-hidden="true" />
               </div>
               <h3 className="mb-2 text-xl font-semibold">{title}</h3>
-              <p className="text-muted-foreground">{copy}</p>
+              <p className="text-fg-tertiary">{copy}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="bg-primary text-primary-foreground rounded-xl px-4 py-16 text-center">
-        <h2 className="mb-4 text-3xl font-bold">Stay Updated</h2>
-        <p className="mb-8 opacity-90">
+      <section className="rounded-lg border border-border-subtle bg-surface-1 px-4 py-16 text-center">
+        <h2 className="mb-4 font-display text-3xl font-semibold text-fg-primary">Stay Updated</h2>
+        <p className="mb-8 text-fg-tertiary">
           Subscribe to our newsletter for the latest products and exclusive offers
         </p>
         <form
@@ -286,11 +281,9 @@ export default function Home() {
             required
             placeholder="Enter your email"
             aria-label="Email address"
-            className="bg-background text-foreground flex-1"
+            className="flex-1"
           />
-          <Button type="submit" variant="secondary">
-            Subscribe
-          </Button>
+          <Button type="submit">Subscribe</Button>
         </form>
       </section>
     </div>

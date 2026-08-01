@@ -23,6 +23,8 @@ export const ROUTE_PATHS = [
   '/shipping',
   '/returns',
   '/track-order',
+  /** Component reference; not linked from the app. */
+  '/styleguide',
   /** Legacy alias kept alive for old links; redirects to /product-grid. */
   '/category/:slug',
 ] as const

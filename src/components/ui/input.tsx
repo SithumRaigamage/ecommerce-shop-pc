@@ -1,20 +1,47 @@
-import * as React from "react"
+import * as React from 'react'
+import { Spinner } from '@/components/ui/spinner'
+import { cn } from '@/lib/utils'
 
-import { cn } from "@/lib/utils"
+interface InputProps extends React.ComponentProps<'input'> {
+  loading?: boolean
+}
 
-function Input({ className, type, ...props }: React.ComponentProps<"input">) {
-  return (
+/**
+ * States: default / hover (border lifts) / active i.e. focused / focus-visible
+ * (2px accent outline) / disabled / loading (disabled + trailing Spinner).
+ * Invalid is driven by aria-invalid, which react-hook-form sets via Field.
+ */
+function Input({ className, type, loading = false, disabled, ...props }: InputProps) {
+  const input = (
     <input
       type={type}
       data-slot="input"
+      disabled={disabled ?? loading}
+      aria-busy={loading || undefined}
       className={cn(
-        "h-9 w-full min-w-0 rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none selection:bg-primary selection:text-primary-foreground file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-input/30",
-        "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
-        "aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40",
-        className
+        'focus-ring h-8 w-full min-w-0 rounded-md border border-border-default bg-surface-1 px-3 text-sm',
+        'text-fg-primary placeholder:text-fg-tertiary',
+        'duration-fast ease-standard transition-colors',
+        'hover:border-border-strong',
+        'aria-invalid:border-danger-fg',
+        'disabled:cursor-not-allowed disabled:border-border-subtle disabled:bg-surface-2 disabled:text-fg-disabled disabled:placeholder:text-fg-disabled',
+        // File inputs render their own button; keep it on-token.
+        'file:mr-3 file:h-full file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-fg-secondary',
+        'selection:bg-accent-subtle selection:text-fg-primary',
+        loading && 'pr-9',
+        className,
       )}
       {...props}
     />
+  )
+
+  if (!loading) return input
+
+  return (
+    <div className="relative w-full">
+      {input}
+      <Spinner className="pointer-events-none absolute top-1/2 right-3 -translate-y-1/2 text-fg-tertiary" />
+    </div>
   )
 }
 

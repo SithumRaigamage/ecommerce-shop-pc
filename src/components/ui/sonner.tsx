@@ -1,16 +1,13 @@
-import {
-  CircleCheckIcon,
-  InfoIcon,
-  Loader2Icon,
-  OctagonXIcon,
-  TriangleAlertIcon,
-} from "lucide-react"
-import { Toaster as Sonner, type ToasterProps } from "sonner"
+import { CircleCheckIcon, InfoIcon, Loader2Icon, OctagonXIcon, TriangleAlertIcon } from 'lucide-react'
+import { Toaster as Sonner, type ToasterProps } from 'sonner'
 
+/**
+ * Sonner draws from CSS variables rather than classes, so the token bridge is
+ * done here. Status colours come from the semantic layer, not sonner's defaults.
+ */
 const Toaster = ({ ...props }: ToasterProps) => {
   return (
     <Sonner
-      theme="system"
       className="toaster group"
       position="bottom-right"
       icons={{
@@ -22,10 +19,19 @@ const Toaster = ({ ...props }: ToasterProps) => {
       }}
       style={
         {
-          "--normal-bg": "var(--popover)",
-          "--normal-text": "var(--popover-foreground)",
-          "--normal-border": "var(--border)",
-          "--border-radius": "var(--radius)",
+          '--normal-bg': 'var(--elevation-2-bg)',
+          '--normal-text': 'var(--fg-primary)',
+          '--normal-border': 'var(--elevation-2-border)',
+          '--success-bg': 'var(--success-bg)',
+          '--success-text': 'var(--success-fg)',
+          '--success-border': 'var(--success-border)',
+          '--warning-bg': 'var(--warning-bg)',
+          '--warning-text': 'var(--warning-fg)',
+          '--warning-border': 'var(--warning-border)',
+          '--error-bg': 'var(--danger-bg)',
+          '--error-text': 'var(--danger-fg)',
+          '--error-border': 'var(--danger-border)',
+          '--border-radius': 'var(--radius-lg)',
         } as React.CSSProperties
       }
       {...props}

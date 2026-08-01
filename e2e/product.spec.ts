@@ -29,10 +29,13 @@ test.describe('product discovery', () => {
     await expect(page.getByRole('tab', { name: 'Specifications' })).toBeVisible()
 
     // Every CPU must carry socket/cores/threads/tdp — see catalogue-schema.ts.
+    // SpecTable renders a <table>, so spec names are row headers.
+    const specs = page.locator('[data-slot="spec-table"]')
+    await expect(specs).toBeVisible()
     for (const label of ['Socket', 'Cores', 'Threads', 'Tdp']) {
-      await expect(page.getByRole('term').filter({ hasText: label })).toBeVisible()
+      await expect(specs.getByRole('rowheader', { name: label })).toBeVisible()
     }
-    await expect(page.getByText('AM5')).toBeVisible()
+    await expect(specs.getByText('AM5')).toBeVisible()
 
     // The seed carries no FAQs yet; the tab must say so rather than render blank.
     await page.getByRole('tab', { name: 'FAQ' }).click()

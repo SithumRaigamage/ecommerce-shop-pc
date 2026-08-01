@@ -10,6 +10,8 @@ import {
   SheetTitle,
 } from '@/components/ui/sheet'
 import { ProductImage } from '@/components/ProductImage'
+import { EmptyState } from '@/components/EmptyState'
+import { PriceDisplay } from '@/components/PriceDisplay'
 import { formatLKR } from '@/lib/format'
 import { shippingFeeOf, subtotalOf, taxOf, totalOf, useCartStore } from '@/store/cart'
 
@@ -40,16 +42,18 @@ export function CartSheet({ open, onOpenChange }: CartSheetProps) {
 
         <div className="flex-1 overflow-y-auto px-4">
           {items.length === 0 ? (
-            <div className="text-muted-foreground flex h-full flex-col items-center justify-center gap-3 py-16">
-              <ShoppingCart className="size-10" aria-hidden="true" />
-              <p>Your cart is empty.</p>
-            </div>
+            <EmptyState
+              icon={ShoppingCart}
+              size="sm"
+              title="Your cart is empty."
+              description="Products you add will appear here."
+            />
           ) : (
             <ul className="space-y-4">
               {items.map((item) => (
                 <li
                   key={item.product.id}
-                  className="bg-muted/40 relative flex gap-4 rounded-xl border p-3"
+                  className="relative flex gap-4 rounded-lg border border-border-subtle bg-surface-2 p-3"
                 >
                   <ProductImage
                     src={item.product.image}
@@ -57,8 +61,8 @@ export function CartSheet({ open, onOpenChange }: CartSheetProps) {
                     className="size-20 shrink-0 rounded-lg object-contain"
                   />
                   <div className="min-w-0 flex-1">
-                    <p className="line-clamp-2 pr-8 text-sm font-medium">{item.product.title}</p>
-                    <p className="text-primary mt-1 font-bold">{formatLKR(item.product.price)}</p>
+                    <p className="line-clamp-2 pr-8 text-sm font-medium text-fg-primary">{item.product.title}</p>
+                    <PriceDisplay value={item.product.price} size="sm" className="mt-1" />
                     <div className="mt-2 flex w-fit items-center rounded-full border">
                       <Button
                         variant="ghost"
@@ -87,7 +91,7 @@ export function CartSheet({ open, onOpenChange }: CartSheetProps) {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="text-muted-foreground hover:text-destructive absolute top-2 right-2 size-8"
+                    className="absolute top-2 right-2 size-8 text-fg-tertiary hover:text-danger-fg"
                     onClick={() => removeFromCart(item.product.id)}
                     aria-label={`Remove ${item.product.title} from cart`}
                   >
@@ -100,27 +104,27 @@ export function CartSheet({ open, onOpenChange }: CartSheetProps) {
         </div>
 
         <SheetFooter className="border-t">
-          <div className="bg-muted/40 rounded-xl p-4">
-            <h5 className="mb-3 text-lg font-medium">Order Summary</h5>
+          <div className="rounded-lg border border-border-subtle bg-surface-2 p-4">
+            <h3 className="mb-3 text-base font-medium text-fg-primary">Order Summary</h3>
             <dl className="space-y-2 text-sm">
               <div className="flex items-center justify-between">
                 <dt>Shipping Fee</dt>
-                <dd className="font-semibold">{formatLKR(shippingFeeOf(items))}</dd>
+                <dd className="numeric font-semibold text-fg-primary" data-numeric>{formatLKR(shippingFeeOf(items))}</dd>
               </div>
               <Separator />
               <div className="flex items-center justify-between">
                 <dt>Sub total</dt>
-                <dd className="font-semibold">{formatLKR(subtotalOf(items))}</dd>
+                <dd className="numeric font-semibold text-fg-primary" data-numeric>{formatLKR(subtotalOf(items))}</dd>
               </div>
               <Separator />
               <div className="flex items-center justify-between">
                 <dt>Tax</dt>
-                <dd className="font-semibold">{formatLKR(taxOf(items))}</dd>
+                <dd className="numeric font-semibold text-fg-primary" data-numeric>{formatLKR(taxOf(items))}</dd>
               </div>
               <Separator />
               <div className="flex items-center justify-between text-base">
                 <dt className="font-bold">Total</dt>
-                <dd className="font-bold">{formatLKR(totalOf(items))}</dd>
+                <dd className="numeric font-bold text-fg-primary" data-numeric>{formatLKR(totalOf(items))}</dd>
               </div>
             </dl>
           </div>

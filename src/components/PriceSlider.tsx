@@ -1,4 +1,5 @@
 import { Slider as SliderPrimitive } from 'radix-ui'
+import { Skeleton } from '@/components/ui/skeleton'
 import { cn } from '@/lib/utils'
 
 interface PriceSliderProps {
@@ -10,16 +11,16 @@ interface PriceSliderProps {
   onValueChange: (value: number) => void
   /**
    * Accessible name. Radix puts `role="slider"` on the *thumb*, and props passed
-   * to the Root stay on the Root — so a label given to shadcn's `<Slider>`
-   * never reaches the element that carries the role. This component composes the
-   * Radix primitives directly to place the label where assistive tech reads it.
-   *
-   * Deliberately not a patch to `components/ui/slider.tsx`: that file is
-   * generated, and `shadcn add slider --overwrite` would silently drop it.
+   * to the Root stay on the Root — so a label given to a wrapper never reaches
+   * the element that carries the role. This component composes the Radix
+   * primitives directly to place the label where assistive tech reads it.
    */
   label: string
   /** Human-readable current value, announced instead of the raw number. */
   valueText?: string
+  disabled?: boolean
+  /** Renders a skeleton track: a spinner on a slider communicates nothing. */
+  loading?: boolean
   className?: string
 }
 
@@ -32,8 +33,23 @@ export function PriceSlider({
   onValueChange,
   label,
   valueText,
+  disabled,
+  loading = false,
   className,
 }: PriceSliderProps) {
+  if (loading) {
+    return (
+      <div className={cn('flex w-full items-center', className)}>
+        <Skeleton
+          role="status"
+          aria-label={`${label} loading`}
+          aria-hidden={undefined}
+          className="h-1.5 w-full rounded-full"
+        />
+      </div>
+    )
+  }
+
   return (
     <SliderPrimitive.Root
       data-slot="slider"
@@ -42,23 +58,33 @@ export function PriceSlider({
       max={max}
       step={step}
       value={[value]}
+      disabled={disabled}
       onValueChange={([next]) => onValueChange(next)}
       className={cn(
-        'relative flex w-full touch-none items-center select-none data-[disabled]:opacity-50',
+        'group/slider relative flex w-full touch-none items-center select-none',
+        'data-[disabled]:cursor-not-allowed',
         className,
       )}
     >
       <SliderPrimitive.Track
         data-slot="slider-track"
-        className="bg-muted relative h-1.5 w-full grow overflow-hidden rounded-full"
+        className="relative h-1.5 w-full grow overflow-hidden rounded-full bg-surface-3 group-data-[disabled]/slider:bg-surface-2"
       >
-        <SliderPrimitive.Range data-slot="slider-range" className="bg-primary absolute h-full" />
+        <SliderPrimitive.Range
+          data-slot="slider-range"
+          className="absolute h-full bg-accent-default group-data-[disabled]/slider:bg-fg-disabled"
+        />
       </SliderPrimitive.Track>
       <SliderPrimitive.Thumb
         data-slot="slider-thumb"
         aria-label={label}
         aria-valuetext={valueText}
-        className="border-primary ring-ring/50 block size-4 shrink-0 rounded-full border bg-white shadow-sm transition-[color,box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50"
+        className={cn(
+          'focus-ring block size-4 shrink-0 rounded-full border-2 border-accent-default bg-bg',
+          'duration-fast ease-standard transition',
+          'hover:border-accent-hover active:scale-95 active:border-accent-active',
+          'disabled:cursor-not-allowed disabled:border-fg-disabled disabled:bg-surface-2',
+        )}
       />
     </SliderPrimitive.Root>
   )

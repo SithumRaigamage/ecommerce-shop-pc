@@ -15,7 +15,7 @@ interface ErrorBoundaryState {
 /**
  * Catches render-time errors so one broken route shows a recoverable message
  * instead of unmounting the whole app to a blank page. Async rejections are not
- * caught here — those surface through `useAsync`'s `error` and `LoadError`.
+ * caught here — those surface through `useAsync`'s `error` and `ErrorState`.
  *
  * Must be a class: React exposes no hook equivalent of componentDidCatch.
  */
@@ -45,10 +45,10 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
     return (
       <div
         role="alert"
-        className="text-muted-foreground flex flex-col items-center gap-3 py-24 text-center"
+        className="text-fg-tertiary flex flex-col items-center gap-3 py-24 text-center"
       >
-        <AlertTriangle className="text-destructive size-10" aria-hidden="true" />
-        <h1 className="text-foreground text-2xl font-bold">Something went wrong</h1>
+        <AlertTriangle className="text-danger-fg size-10" aria-hidden="true" />
+        <h1 className="text-fg-primary text-2xl font-bold">Something went wrong</h1>
         <p className="max-w-prose">
           This page failed to render. You can try again, or navigate elsewhere.
         </p>
