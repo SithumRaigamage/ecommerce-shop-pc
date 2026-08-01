@@ -68,27 +68,23 @@ test.describe('navigation and content', () => {
     await expect(page.getByRole('heading', { name: 'Page not found' })).toBeVisible()
   })
 
-  test('every sidebar category returns at least one product', async ({ page, isMobile }) => {
-    test.skip(isMobile, 'sidebar is collapsed into a sheet on mobile')
-    await page.goto('/')
+  test('every category facet returns at least one product', async ({ page, isMobile }) => {
+    test.skip(isMobile, 'the rail is inline from lg; the sheet variant is covered elsewhere')
 
-    const categoryButtons = page
-      .getByRole('navigation', { name: 'Product categories' })
-      .getByRole('button')
-    await expect(categoryButtons.first()).toBeVisible()
-    const total = await categoryButtons.count()
+    // The rail carries the category as a facet with live counts, so the count
+    // beside each option is itself the assertion: none of them may read zero.
+    await page.goto('/product-grid')
+    const rail = page.getByRole('region', { name: 'Filters' })
+    await expect(rail).toBeVisible()
+
+    const group = rail.locator('fieldset').filter({ hasText: 'Category' })
+    const rows = group.locator('div').filter({ has: page.getByRole('checkbox') })
+    const total = await rows.count()
     expect(total).toBeGreaterThan(0)
 
     for (let i = 0; i < total; i++) {
-      await page.goto('/')
-      const label = (await categoryButtons.nth(i).textContent())?.trim()
-      await categoryButtons.nth(i).click()
-      await page.waitForURL('**/product-grid**')
-
-      await expect(
-        page.getByRole('link', { name: 'View Details' }).first(),
-        `"${label}" has no products`,
-      ).toBeVisible()
+      const text = await rows.nth(i).textContent()
+      expect(text, `a category facet shows a zero count: ${text}`).not.toMatch(/\b0$/)
     }
   })
 })

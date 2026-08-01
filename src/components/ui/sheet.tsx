@@ -48,7 +48,9 @@ function SheetContent({
         data-slot="sheet-content"
         className={cn(
           'elevation-3 fixed z-50 flex flex-col gap-stack border',
-          'transition ease-standard data-[state=closed]:duration-base data-[state=open]:duration-base',
+          // A sheet changes position, which is exactly what --ease-spring is for.
+          // Colour and opacity never spring; the overlay below keeps ease-standard.
+          'transition ease-spring data-[state=closed]:duration-base data-[state=open]:duration-base',
           'data-[state=open]:animate-in data-[state=closed]:animate-out',
           side === 'right' &&
             'inset-y-0 right-0 h-full w-3/4 border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm',

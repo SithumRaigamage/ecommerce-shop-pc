@@ -1,8 +1,8 @@
 import { expect, test } from '@playwright/test'
-import { failOnPageErrors } from './helpers'
+import { closeFilters, failOnPageErrors, openFilters } from './helpers'
 
 test.describe('product discovery', () => {
-  test('filters the grid by maximum price', async ({ page }) => {
+  test('filters the grid by maximum price', async ({ page, isMobile }) => {
     await page.goto('/product-grid?category=processor')
 
     const cards = page.getByRole('link', { name: 'View Details' })
@@ -10,14 +10,17 @@ test.describe('product discovery', () => {
     const before = await cards.count()
     expect(before).toBeGreaterThan(0)
 
+    await openFilters(page, isMobile)
     const slider = page.getByRole('slider', { name: 'Maximum price' })
     await slider.focus()
     await slider.press('Home')
 
-    await expect(cards).toHaveCount(0)
-    await expect(page.getByText(/No products found/)).toBeVisible()
+    await closeFilters(page, isMobile)
+    await expect(page.getByText(/No products match these filters/)).toBeVisible()
 
+    await openFilters(page, isMobile)
     await slider.press('End')
+    await closeFilters(page, isMobile)
     await expect(cards).toHaveCount(before)
   })
 
@@ -80,12 +83,7 @@ test.describe('product discovery', () => {
     await expect(page).toHaveURL(/\/product-grid/)
   })
 
-  test('every category in the sidebar returns products with a working detail page', async ({
-    page,
-    isMobile,
-  }) => {
-    test.skip(isMobile, 'sidebar is collapsed into a sheet on mobile')
-
+  test('a category returns products with a working detail page', async ({ page }) => {
     await page.goto('/product-grid?category=graphics')
     const first = page.getByRole('link', { name: 'View Details' }).first()
     await expect(first).toBeVisible()
@@ -98,8 +96,9 @@ test.describe('product discovery', () => {
 })
 
 test.describe('filter state in the URL', () => {
-  test('writes the price filter to the query string', async ({ page }) => {
+  test('writes the price filter to the query string', async ({ page, isMobile }) => {
     await page.goto('/product-grid?category=processor')
+    await openFilters(page, isMobile)
 
     const slider = page.getByRole('slider', { name: 'Maximum price' })
     await slider.focus()

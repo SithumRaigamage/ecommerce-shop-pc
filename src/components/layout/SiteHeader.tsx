@@ -68,7 +68,13 @@ export function SiteHeader({ onCartClick }: SiteHeaderProps) {
             <ShoppingCart />
             <span className="hidden sm:inline">Cart</span>
             {cartItemCount > 0 && (
-              <span className="bg-danger-fg text-on-accent absolute -top-1 -right-1 flex size-5 items-center justify-center rounded-full text-xs font-medium">
+              // Keyed on the count so the pop replays on every change. This is
+              // the entire add-to-cart feedback — no overlay, no confetti.
+              <span
+                key={cartItemCount}
+                className="animate-badge-pop numeric absolute -top-1 -right-1 flex size-5 items-center justify-center rounded-full bg-danger-fg text-xs font-medium text-on-accent"
+                data-numeric
+              >
                 {cartItemCount}
               </span>
             )}

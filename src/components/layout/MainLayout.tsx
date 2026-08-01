@@ -2,7 +2,6 @@ import { Suspense, useEffect, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { CartSheet } from '@/components/CartSheet'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
-import { SideNav } from '@/components/layout/SideNav'
 import { SiteFooter } from '@/components/layout/SiteFooter'
 import { SiteHeader } from '@/components/layout/SiteHeader'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -18,14 +17,10 @@ function RouteFallback() {
   )
 }
 
-/** Routes that took over the full width in the Angular layout. */
-const FULL_WIDTH_ROUTES = ['/checkout', '/billing', '/thankyou', '/login', '/logout', '/settings']
 
 export function MainLayout() {
   const [cartOpen, setCartOpen] = useState(false)
   const { pathname } = useLocation()
-
-  const showSidebar = !FULL_WIDTH_ROUTES.some((route) => pathname.startsWith(route))
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -35,18 +30,29 @@ export function MainLayout() {
     <div className="flex min-h-screen flex-col">
       <SiteHeader onCartClick={() => setCartOpen(true)} />
 
-      <div className="flex flex-1 items-start gap-6 px-5 py-6 lg:px-8">
-        {showSidebar && (
-          <SideNav className="sticky top-22 hidden max-h-sidebar w-44 shrink-0 overflow-y-auto lg:block" />
-        )}
-        <main className="min-w-0 flex-1">
+      {/*
+        No global rail. It used to render category navigation on every page at
+        176px wide — too narrow to be a real filter panel and irrelevant on
+        checkout. On a facet-driven catalogue the rail is primary UI, so the
+        page that needs one owns it (see ProductGrid); everything else gets the
+        full measure. Category browsing lives in the header and its mobile sheet.
+      */}
+      <main className="min-w-0 flex-1 px-gutter py-gutter">
+        {/*
+          Route change is a crossfade and nothing else. A slide would claim the
+          pages sit beside each other in space, which is false for a header-and-
+          footer shell whose chrome never moves. Keyed on pathname so the fade
+          replays per navigation; 150ms, below the threshold where a transition
+          starts to feel like waiting.
+        */}
+        <div key={pathname} className="animate-fade-in">
           <ErrorBoundary resetKey={pathname}>
             <Suspense fallback={<RouteFallback />}>
               <Outlet />
             </Suspense>
           </ErrorBoundary>
-        </main>
-      </div>
+        </div>
+      </main>
 
       <SiteFooter />
       <CartSheet open={cartOpen} onOpenChange={setCartOpen} />

@@ -338,7 +338,66 @@ rendering bug.
 
 Under `prefers-reduced-motion: reduce` the tokens themselves collapse to `1ms` /
 `linear`, so anything referencing them complies without each component
-remembering to, and a global rule clamps animation and transition durations.
+remembering to, and a global rule clamps animation and transition durations —
+**and delays**, including `--stagger-step`, which drops to `0ms`. The
+distinction matters: a staggered reveal with 1ms animations but a 25ms step is
+still a wait. The setting asks for an instant state change, not a fast one.
+
+### Staggering
+
+| Token | Value | Use for |
+|---|---|---|
+| `--stagger-step` | 25ms | Gap between siblings in a staggered group |
+| `--motion-offset` | 0ms | Delay before a whole group starts; only a container sets it |
+
+Two utilities consume them. `motion-stagger` gives an element
+`--motion-offset + --row-index × --stagger-step`; `motion-stagger-late` adds one
+`--duration-fast` on top, for something that must arrive one beat behind its
+row. Exactly one interaction on the site uses either.
+
+### The signature moment
+
+The compare diff, and nothing else. When two or more products are in the tray
+and the sheet opens, the SpecTable resolves row by row: each row rises 3px and
+fades in over 150ms, 25ms after the one above it. Rows whose values agree hold
+full contrast for that 150ms and then recede to `--fg-tertiary` over the
+following 100ms; rows that differ stay at `--fg-primary`. One beat later again,
+a `▲`/`▼` marks the better value where "better" is defined.
+
+Four decisions are load-bearing:
+
+1. **The rows wait for the sheet.** `--motion-offset: var(--duration-fast)` on
+   the table's container. Measured: the sheet settles at ~141ms, so a 150ms
+   offset hands off in 17ms — the panel stops, the comparison starts, one
+   gesture, everything resolved by 441ms. Without the offset, rows one to three
+   resolved while the panel was still travelling and mid-overshoot and the two
+   motions read as a smear. A `--duration-base` offset was measured too: a 115ms
+   hole in the middle, which reads as a hitch rather than a beat, and a 543ms
+   finish.
+2. **The muted end state is a class, not an animation fill.** `diff-mute`
+   animates to exactly the value the row already carries statically, so the
+   table reads correctly with motion off, after a re-render, and in a
+   single-column table — and the handoff at the end of the keyframe is invisible.
+3. **It rises 3px, it does not slide.** Enough to read as arrival, not enough to
+   imply the row came from somewhere.
+4. **The marker is weight and a glyph, never colour.** Accent is reserved for
+   affordances and status hues are never used for emphasis, so the winner is
+   `font-semibold` plus a caret, and the caret's direction states which way
+   "better" ran for that spec.
+
+The rest of the site's motion is deliberately quiet so this reads as intentional:
+
+| Where | What | Duration |
+|---|---|---|
+| Route change | Crossfade, no slide | 150ms |
+| Filter application | Results fade; the count updates in an `aria-live` region | 100ms |
+| Skeleton to content | The same crossfade; skeleton geometry matches the card exactly, so nothing pops | 100ms |
+| Sheets | Radix defaults retuned to `--ease-spring` | 250ms |
+| Add to cart | The cart badge pops. That is the entire feedback — no overlay, no confetti | 100ms |
+
+The skeleton pulse is the one animation over 400ms (2s, looping). It is not a
+transition between two states, it is an indicator that work is ongoing, and the
+ceiling governs motion you wait through.
 
 ---
 
@@ -364,6 +423,10 @@ remembering to, and a global rule clamps animation and transition durations.
   sit within 0.2 of the AA threshold.
 - **Do not animate for longer than `--duration-slow`,** and do not animate
   `width`, `height`, `top` or `left` where a transform will do.
+- **Do not add a second staggered reveal.** The compare diff is the signature
+  moment; a site with two of them has none.
+- **Do not treat reduced motion as a speed setting.** Delays go to zero, not
+  down.
 
 ---
 

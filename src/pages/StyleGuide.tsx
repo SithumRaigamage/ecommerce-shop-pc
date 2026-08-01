@@ -59,6 +59,7 @@ import { SpecTable } from '@/components/SpecTable'
 import { StatBadge } from '@/components/StatBadge'
 import { StockIndicator, type StockState } from '@/components/StockIndicator'
 import { useTheme } from '@/hooks/useTheme'
+import { BETTER_DIRECTION } from '@/lib/catalogue'
 import { cn } from '@/lib/utils'
 
 /* ------------------------------------------------------------------ layout */
@@ -131,6 +132,9 @@ const COLUMN_C = {
   values: { socket: 'AM5', cores: 6, threads: 12, tdp: 65, boost: 5.1 },
 }
 
+/** Boost clock is styleguide-only, so its direction is declared here. */
+const SG_DIRECTION = { ...BETTER_DIRECTION, boost: 'higher' } as const
+
 const STOCK_STATES: StockState[] = ['in-stock', 'low-stock', 'out-of-stock', 'discontinued']
 
 /* ------------------------------------------------------------------ page */
@@ -142,6 +146,8 @@ export default function StyleGuide() {
   const [checked, setChecked] = useState<boolean | 'indeterminate'>(true)
   const [chips, setChips] = useState(['AM5', 'ASUS', 'Under LKR 200,000'])
   const [diffOnly, setDiffOnly] = useState(false)
+  // The signature moment is the one thing on the site worth watching twice.
+  const [reveal, setReveal] = useState(0)
 
   const widthClass =
     width === 'sm' ? 'max-w-sm' : width === 'md' ? 'max-w-2xl' : 'max-w-none'
@@ -648,7 +654,7 @@ export default function StyleGuide() {
         <Section
           id="spectable"
           title="SpecTable"
-          note="The core component. Values are monospace with units in their own aligned column, so a column of figures scans vertically."
+          note="The core component. Values are monospace with units in their own aligned column, so a column of figures scans vertically. In diff mode it carries the site's one piece of signature motion: rows resolve 25ms apart, agreeing rows recede to muted, and the better value is marked once its row is readable."
         >
           <Specimen label="Single product" className="flex-col items-stretch">
             <SpecTable rows={SPEC_ROWS} columns={[COLUMN_A]} caption="Specifications" />
@@ -662,12 +668,17 @@ export default function StyleGuide() {
                 onCheckedChange={(v) => setDiffOnly(v === true)}
               />
               <Label htmlFor="sg-diffonly">Show differences only</Label>
+              <Button variant="outline" size="sm" onClick={() => setReveal((n) => n + 1)}>
+                Replay reveal
+              </Button>
             </div>
             <SpecTable
               rows={SPEC_ROWS}
               columns={[COLUMN_A, COLUMN_B, COLUMN_C]}
               diff
               diffOnly={diffOnly}
+              betterDirection={SG_DIRECTION}
+              revealKey={`sg-${reveal}-${diffOnly}`}
               caption="Processor comparison"
             />
           </Specimen>

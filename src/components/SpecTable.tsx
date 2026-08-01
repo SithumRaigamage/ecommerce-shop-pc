@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { cn } from '@/lib/utils'
+import { bestIndices, type BetterDirection } from '@/lib/catalogue'
 
 export type SpecValue = string | number | string[] | null | undefined
 
@@ -28,6 +29,18 @@ interface SpecTableProps {
   diff?: boolean
   /** With `diff`, hide rows where every column agrees. */
   diffOnly?: boolean
+  /**
+   * Which direction wins per row key. Rows absent from the map are never marked
+   * — see BETTER_DIRECTION for why guessing is worse than staying silent.
+   */
+  betterDirection?: Record<string, BetterDirection>
+  /**
+   * Replay the staggered resolve whenever this changes. Pass the identity of the
+   * compared set; the animation is the point at which a comparison becomes
+   * readable, so it should re-run when the set does — and never on a re-render
+   * that changed nothing.
+   */
+  revealKey?: string
   caption?: string
   className?: string
 }
@@ -49,25 +62,30 @@ function rowDiffers(row: SpecRowDef, columns: SpecColumnDef[]): boolean {
  * The core component of the site: label/value specification rows, with a diff
  * mode for comparing products.
  *
- * Two decisions do the work here:
+ * Three decisions do the work:
  *
  * 1. Values are monospace with tabular figures, and the unit sits in its own
- *    aligned column. Numbers right-align on a common edge and units all start at
- *    the same x, so a column of "120 W / 65 W / 170 W" scans vertically. This is
- *    the single reason the design uses a mono at all.
+ *    aligned column, so a column of "120 W / 65 W / 170 W" scans vertically.
  * 2. Differing rows are marked by a surface change AND a marker glyph AND an
  *    accessible label — never by colour alone.
+ * 3. With `revealKey`, rows resolve in a fast stagger: everything arrives at
+ *    full contrast, then agreeing rows recede to muted while differing rows
+ *    stay bright and the better value is marked. The motion is only ordering
+ *    the reading; the information is what is worth remembering.
  */
 export function SpecTable({
   rows,
   columns,
   diff = false,
   diffOnly = false,
+  betterDirection,
+  revealKey,
   caption,
   className,
 }: SpecTableProps) {
   const comparing = columns.length > 1
   const showDiff = diff && comparing
+  const animate = revealKey !== undefined && comparing
 
   const visibleRows = React.useMemo(() => {
     if (!showDiff || !diffOnly) return rows
@@ -118,18 +136,43 @@ export function SpecTable({
           </thead>
         )}
 
-        <tbody>
-          {visibleRows.map((row) => {
+        {/* Keyed on revealKey so a new comparison remounts the rows and the
+            stagger replays. Without the key, CSS animations do not re-run. */}
+        <tbody key={revealKey}>
+          {visibleRows.map((row, index) => {
             const differs = showDiff && rowDiffers(row, columns)
+            const direction = betterDirection?.[row.key]
+            const winners = differs
+              ? new Set(
+                  bestIndices(
+                    columns.map((column) => column.values[row.key]),
+                    direction,
+                  ).map((i) => columns[i].id),
+                )
+              : new Set<string>()
 
             return (
               <tr
                 key={row.key}
                 data-differs={differs || undefined}
+                style={
+                  animate
+                    ? ({ '--row-index': index } as React.CSSProperties)
+                    : undefined
+                }
                 className={cn(
                   'border-b border-border-subtle last:border-b-0',
                   'duration-fast ease-standard transition-colors',
-                  differs && 'bg-surface-2',
+                  // The settled state is a class, not an animation fill: the
+                  // table has to read correctly with motion off, on a re-render
+                  // after the animation is gone, and in a single-column table.
+                  // diff-mute animates to exactly this value, so the handoff at
+                  // the end of the keyframe is invisible.
+                  differs ? 'bg-surface-2' : 'text-fg-tertiary',
+                  // Both variants rise and fade in; only the agreeing rows also
+                  // settle from full contrast down to muted.
+                  animate && (differs ? 'animate-diff-row' : 'animate-diff-mute'),
+                  animate && 'motion-stagger',
                 )}
               >
                 <th
@@ -150,22 +193,53 @@ export function SpecTable({
                   </span>
                 </th>
 
-                {columns.map((column) => (
-                  <td
-                    key={column.id}
-                    className="py-2 pr-4 align-baseline text-fg-primary last:pr-0"
-                  >
-                    <span className="flex items-baseline">
-                      <span className="numeric flex-1 text-right" data-numeric>
-                        {formatValue(column.values[row.key])}
+                {columns.map((column) => {
+                  const isWinner = winners.has(column.id)
+                  return (
+                    <td
+                      key={column.id}
+                      data-winner={isWinner || undefined}
+                      className={cn(
+                        'py-2 pr-4 align-baseline last:pr-0',
+                        differs ? 'text-fg-primary' : 'text-inherit',
+                      )}
+                    >
+                      <span className="flex items-baseline">
+                        <span
+                          className={cn('numeric flex-1 text-right', isWinner && 'font-semibold')}
+                          data-numeric
+                        >
+                          {isWinner && (
+                            // Weight plus a glyph, never colour: accent is
+                            // reserved for affordances and status hues are not
+                            // used for emphasis. The caret states which way
+                            // "better" ran for this spec. It fades in one beat
+                            // behind its row — the verdict follows the values.
+                            <span
+                              aria-hidden="true"
+                              className={cn(
+                                'mr-1 text-xs text-fg-tertiary',
+                                animate && 'animate-fade-in motion-stagger-late',
+                              )}
+                            >
+                              {direction === 'lower' ? '▼' : '▲'}
+                            </span>
+                          )}
+                          {formatValue(column.values[row.key])}
+                        </span>
+                        {/* Fixed-width unit column: this is what makes units align. */}
+                        <span className="w-12 shrink-0 pl-1 text-left text-fg-tertiary">
+                          {row.unit ?? ''}
+                        </span>
                       </span>
-                      {/* Fixed-width unit column: this is what makes units align. */}
-                      <span className="w-12 shrink-0 pl-1 text-left text-fg-tertiary">
-                        {row.unit ?? ''}
-                      </span>
-                    </span>
-                  </td>
-                ))}
+                      {isWinner && (
+                        <span className="sr-only">
+                          Best value for {row.label} among the compared products
+                        </span>
+                      )}
+                    </td>
+                  )
+                })}
               </tr>
             )
           })}

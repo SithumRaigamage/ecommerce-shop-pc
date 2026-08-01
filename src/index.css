@@ -176,9 +176,18 @@
   --spacing-card-padding: 1rem; /* 16px — inner padding of a surface */
   --spacing-gutter: 1.5rem; /* 24px — page edge, column gap */
   --spacing-section: 4rem; /* 64px — between major page sections */
-  /* Sticky sidebar: viewport minus the header and its top offset. A named token
+  /* Sticky rail: viewport minus the header and its top offset. A named token
      rather than an inline calc, so components need no arbitrary value. */
   --spacing-sidebar: calc(100dvh - 6.5rem);
+
+  /* --------------------------------------------------------------- layout
+     Max width is chosen per content type, not one global wrapper. Reading
+     measure caps far below a catalogue grid, and a catalogue grid should use
+     a 27" display instead of stranding 600px of gutter on each side. */
+  --container-form: 34rem; /* 544px — a single column of inputs */
+  --container-reading: 68ch; /* long-form copy, capped by measure not pixels */
+  --container-content: 82rem; /* 1312px — default page content */
+  --container-catalogue: 108rem; /* 1728px — result grids, used from 2xl up */
 
   /* ---------------------------------------------------------------- radius
      Nested radii must satisfy inner = outer - inset, or the curves run
@@ -209,6 +218,75 @@
   /* Slight overshoot. ONLY for things that change size or position. Never for
      colour or opacity — an overshooting colour reads as a bug. */
   --ease-spring: cubic-bezier(0.34, 1.35, 0.64, 1);
+
+  /* Offset before a staggered group starts, for a group that arrives inside a
+     container which is itself still moving. Default 0: only a container sets it. */
+  --motion-offset: 0ms;
+
+  /* Gap between staggered siblings. Small enough that a 12-row table finishes
+     inside 450ms, large enough that the eye reads an order rather than a flash.
+     Only the compare diff uses it — see DESIGN.md §7. */
+  --stagger-step: 25ms;
+
+  /* --------------------------------------------------------------- animation
+     Named animations so components never hand-roll a keyframe. */
+  --animate-fade-in: fade-in var(--duration-fast) var(--ease-standard) both;
+  /* Re-filtering is not navigation: results swap at 100ms, fast enough that the
+     fade reads as the list settling rather than as a transition you wait out. */
+  --animate-fade-quick: fade-in var(--duration-instant) var(--ease-standard) both;
+  --animate-badge-pop: badge-pop var(--duration-instant) var(--ease-spring) both;
+  --animate-diff-row: diff-row var(--duration-fast) var(--ease-standard) both;
+  /* Two animations on one element: the row arrives (150ms) and, only once it
+     has arrived, recedes. The hold in the keyframe below is what sequences
+     them, so a single animation-delay from motion-stagger still drives both. */
+  --animate-diff-mute: diff-row var(--duration-fast) var(--ease-standard) both,
+    diff-mute var(--duration-base) var(--ease-standard) both;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* The signature moment. A 3px rise, not a slide: enough to read as arrival
+     without implying the row came from somewhere. */
+  @keyframes diff-row {
+    from {
+      opacity: 0;
+      transform: translateY(3px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Rows whose values agree resolve at full contrast, then recede — so the eye
+     is pulled to what differs by what stays bright, not by what moves.
+     0–60% of 250ms is 150ms: exactly the arrival window, so the row is fully
+     legible before it starts giving way. Receding takes the remaining 100ms,
+     slower than a hover and therefore read as settling, not as a flicker. */
+  @keyframes diff-mute {
+    0%,
+    60% {
+      color: var(--fg-primary);
+    }
+    100% {
+      color: var(--fg-tertiary);
+    }
+  }
+
+  @keyframes badge-pop {
+    from {
+      transform: scale(0.7);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
 
   /* ------------------------------------------------------------- elevation
      Dark UI gets depth from surface lightness and a 1px top highlight, not
@@ -500,12 +578,22 @@
     --ease-spring: linear;
   }
 
+  :root,
+  .dark {
+    --stagger-step: 0ms;
+  }
+
   *,
   *::before,
   *::after {
     animation-duration: 1ms !important;
     animation-iteration-count: 1 !important;
+    /* Delay matters as much as duration here: a staggered reveal with 1ms
+       animations but a 25ms step is still a wait, which is what the setting
+       asks us not to do. The result must be an instant state change. */
+    animation-delay: 0ms !important;
     transition-duration: 1ms !important;
+    transition-delay: 0ms !important;
     scroll-behavior: auto !important;
   }
 }
@@ -573,6 +661,22 @@
     'cv01' 1,
     'zero' 1;
   font-variant-numeric: tabular-nums;
+}
+
+/**
+ * Staggered reveal. The row supplies `--row-index` inline; the step is a token,
+ * so reduced-motion collapses it to 0ms and every row lands at once.
+ */
+@utility motion-stagger {
+  animation-delay: calc(var(--motion-offset, 0ms) + var(--row-index, 0) * var(--stagger-step));
+}
+
+/* One arrival later than its row: the verdict marker lands after its values are
+   readable, never at the same time as them. */
+@utility motion-stagger-late {
+  animation-delay: calc(
+    var(--motion-offset, 0ms) + var(--row-index, 0) * var(--stagger-step) + var(--duration-fast)
+  );
 }
 
 /* The one focus treatment. 2px accent, 2px offset, never suppressed.

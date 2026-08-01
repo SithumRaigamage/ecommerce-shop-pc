@@ -49,3 +49,25 @@ export async function openCart(page: Page) {
   return page.getByRole('dialog')
 }
 
+
+/**
+ * The filter rail is inline from lg and inside a sheet below it. Opens the
+ * sheet when needed so a test can drive facets at any viewport.
+ */
+export async function openFilters(page: Page, isMobile: boolean | undefined) {
+  if (!isMobile) return
+  await page.getByRole('button', { name: /Filters/ }).click()
+  await expect(page.getByRole('dialog')).toBeVisible()
+}
+
+/** The rail is a labelled region inline, and lives inside the sheet on mobile. */
+export function filterScope(page: Page, isMobile: boolean | undefined) {
+  return isMobile ? page.getByRole('dialog') : page.getByRole('region', { name: 'Filters' })
+}
+
+/** Dismisses the filter sheet so the results behind it can be asserted. */
+export async function closeFilters(page: Page, isMobile: boolean | undefined) {
+  if (!isMobile) return
+  await page.keyboard.press('Escape')
+  await expect(page.getByRole('dialog')).toBeHidden()
+}

@@ -53,13 +53,52 @@ export type FacetValues<S extends Record<string, FacetCodec<unknown>>> = {
 }
 
 /**
- * The catalogue's facets. `brand`, `socket` and `sort` are the expected next
- * additions — adding them here is the whole change.
+ * The catalogue's facets.
+ *
+ * Spec facets (`socket`…`panel`) are declared once here and *rendered* only for
+ * the categories that define them — see `SPEC_FACETS` in `lib/catalogue.ts`.
+ * `compare` lives in the URL too, so a comparison is a shareable link rather
+ * than throwaway local state.
  */
 export const CATALOGUE_FACETS = {
   category: stringFacet('category'),
   maxPrice: numberFacet('maxPrice'),
+  brand: stringListFacet('brand'),
+
+  // Category-specific spec facets.
+  socket: stringListFacet('socket'),
+  chipset: stringListFacet('chipset'),
+  form_factor: stringListFacet('form_factor'),
+  type: stringListFacet('type'),
+  efficiency: stringListFacet('efficiency'),
+  modular: stringListFacet('modular'),
+  interface: stringListFacet('interface'),
+  panel: stringListFacet('panel'),
+  resolution: stringListFacet('resolution'),
+
+  // View state. In the URL so a shared link reproduces what the sender saw.
+  sort: stringFacet('sort', 'relevance'),
+  density: stringFacet('density', 'comfortable'),
+  compare: stringListFacet('compare'),
 } as const
+
+export type CatalogueFacetValues = FacetValues<typeof CATALOGUE_FACETS>
+
+/** Facet keys that actually narrow results, in the order the rail shows them. */
+export const FILTER_FACET_KEYS = [
+  'category',
+  'brand',
+  'socket',
+  'chipset',
+  'form_factor',
+  'type',
+  'efficiency',
+  'modular',
+  'interface',
+  'panel',
+  'resolution',
+  'maxPrice',
+] as const
 
 export function readFacets<S extends Record<string, FacetCodec<unknown>>>(
   schema: S,
