@@ -17,7 +17,6 @@ function make(overrides: Partial<Product> = {}): Product {
     mpn: 'MPN-X',
     price: 100,
     category: 'processor',
-    image: null,
     specs: { socket: 'AM5', cores: 8, threads: 16, tdp: 120 },
     ...overrides,
   }
@@ -58,8 +57,8 @@ describe('validateCatalogue', () => {
     expect(issues.some((i) => i.problem === 'duplicate id')).toBe(true)
   })
 
-  it('accepts a null image', () => {
-    expect(validateCatalogue([make({ image: null })])).toEqual([])
+  it('accepts a product with no gallery keys', () => {
+    expect(validateCatalogue([make({ images: undefined })])).toEqual([])
   })
 
   it('treats an empty array spec as missing', () => {

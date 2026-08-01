@@ -11,7 +11,7 @@ const raw: Product[] = JSON.parse(
 const catalogue = normalizeCatalogue(raw)
 
 function product(id: string, category: string, title = id): Product {
-  return { id, title, brand: 'ACME', mpn: `MPN-${id}`, price: 1, image: null, category, specs: {} }
+  return { id, title, brand: 'ACME', mpn: `MPN-${id}`, price: 1, category, specs: {} }
 }
 
 describe('dedupeProductIds', () => {
@@ -55,8 +55,8 @@ describe('isSellable', () => {
     expect(isSellable({ ...product('a', 'processor'), price: -5 })).toBe(false)
   })
 
-  it('accepts a product whose image is null, since imagery is not sourced yet', () => {
-    expect(isSellable({ ...product('a', 'processor'), price: 100, image: null })).toBe(true)
+  it('accepts a product with no built imagery, which is the catalogue default', () => {
+    expect(isSellable({ ...product('a', 'processor'), price: 100 })).toBe(true)
   })
 
   it('keeps every product in the curated catalogue', () => {

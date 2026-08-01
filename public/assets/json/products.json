@@ -6,8 +6,12 @@
     "mpn": "100-100001084WOF",
     "price": 197000,
     "category": "processor",
-    "image": null,
-    "specs": { "socket": "AM5", "cores": 8, "threads": 16, "tdp": 120 }
+    "specs": {
+      "socket": "AM5",
+      "cores": 8,
+      "threads": 16,
+      "tdp": 120
+    }
   },
   {
     "id": "amd-ryzen-9-7900x",
@@ -16,8 +20,12 @@
     "mpn": "100-100000589WOF",
     "price": 125000,
     "category": "processor",
-    "image": null,
-    "specs": { "socket": "AM5", "cores": 12, "threads": 24, "tdp": 170 }
+    "specs": {
+      "socket": "AM5",
+      "cores": 12,
+      "threads": 24,
+      "tdp": 170
+    }
   },
   {
     "id": "amd-ryzen-5-7600",
@@ -26,8 +34,12 @@
     "mpn": "100-100001015BOX",
     "price": 78000,
     "category": "processor",
-    "image": null,
-    "specs": { "socket": "AM5", "cores": 6, "threads": 12, "tdp": 65 }
+    "specs": {
+      "socket": "AM5",
+      "cores": 6,
+      "threads": 12,
+      "tdp": 65
+    }
   },
   {
     "id": "intel-core-i9-14900k",
@@ -36,8 +48,12 @@
     "mpn": "BX8071514900K",
     "price": 215000,
     "category": "processor",
-    "image": null,
-    "specs": { "socket": "LGA1700", "cores": 24, "threads": 32, "tdp": 125 }
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 24,
+      "threads": 32,
+      "tdp": 125
+    }
   },
   {
     "id": "intel-core-i7-14700k",
@@ -46,8 +62,12 @@
     "mpn": "BX8071514700K",
     "price": 168000,
     "category": "processor",
-    "image": null,
-    "specs": { "socket": "LGA1700", "cores": 20, "threads": 28, "tdp": 125 }
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 20,
+      "threads": 28,
+      "tdp": 125
+    }
   },
   {
     "id": "intel-core-i5-14600k",
@@ -56,8 +76,12 @@
     "mpn": "BX8071514600K",
     "price": 118000,
     "category": "processor",
-    "image": null,
-    "specs": { "socket": "LGA1700", "cores": 14, "threads": 20, "tdp": 125 }
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 14,
+      "threads": 20,
+      "tdp": 125
+    }
   },
   {
     "id": "asus-rog-astral-rtx-5090-32gb",
@@ -66,8 +90,11 @@
     "mpn": "ROG-ASTRAL-RTX5090-O32G-GAMING",
     "price": 1499000,
     "category": "graphics",
-    "image": null,
-    "specs": { "vram_gb": 32, "tdp": 575, "length_mm": 358 }
+    "specs": {
+      "vram_gb": 32,
+      "tdp": 575,
+      "length_mm": 358
+    }
   },
   {
     "id": "msi-rtx-5080-ventus-3x-16gb",
@@ -76,8 +103,11 @@
     "mpn": "RTX-5080-VENTUS-3X-OC",
     "price": 685000,
     "category": "graphics",
-    "image": null,
-    "specs": { "vram_gb": 16, "tdp": 360, "length_mm": 336 }
+    "specs": {
+      "vram_gb": 16,
+      "tdp": 360,
+      "length_mm": 336
+    }
   },
   {
     "id": "gigabyte-rtx-5070-ti-eagle-16gb",
@@ -86,8 +116,11 @@
     "mpn": "GV-N507TEAGLE-OC-16GD",
     "price": 425000,
     "category": "graphics",
-    "image": null,
-    "specs": { "vram_gb": 16, "tdp": 300, "length_mm": 300 }
+    "specs": {
+      "vram_gb": 16,
+      "tdp": 300,
+      "length_mm": 300
+    }
   },
   {
     "id": "zotac-rtx-4060-twin-edge-8gb",
@@ -96,8 +129,11 @@
     "mpn": "ZT-D40600E-10M",
     "price": 128000,
     "category": "graphics",
-    "image": null,
-    "specs": { "vram_gb": 8, "tdp": 115, "length_mm": 224 }
+    "specs": {
+      "vram_gb": 8,
+      "tdp": 115,
+      "length_mm": 224
+    }
   },
   {
     "id": "sapphire-pulse-rx-7900-gre-16gb",
@@ -106,8 +142,11 @@
     "mpn": "11325-02-20G",
     "price": 295000,
     "category": "graphics",
-    "image": null,
-    "specs": { "vram_gb": 16, "tdp": 260, "length_mm": 280 }
+    "specs": {
+      "vram_gb": 16,
+      "tdp": 260,
+      "length_mm": 280
+    }
   },
   {
     "id": "powercolor-hellhound-rx-7800-xt-16gb",
@@ -116,8 +155,11 @@
     "mpn": "RX7800XT-16GBD6-L-OC",
     "price": 235000,
     "category": "graphics",
-    "image": null,
-    "specs": { "vram_gb": 16, "tdp": 263, "length_mm": 320 }
+    "specs": {
+      "vram_gb": 16,
+      "tdp": 263,
+      "length_mm": 320
+    }
   },
   {
     "id": "asus-rog-strix-x670e-a-gaming-wifi",
@@ -126,8 +168,12 @@
     "mpn": "ROG-STRIX-X670E-A-GAMING-WIFI",
     "price": 129000,
     "category": "motherboards",
-    "image": null,
-    "specs": { "socket": "AM5", "chipset": "X670E", "form_factor": "ATX", "ram_slots": 4 }
+    "specs": {
+      "socket": "AM5",
+      "chipset": "X670E",
+      "form_factor": "ATX",
+      "ram_slots": 4
+    }
   },
   {
     "id": "msi-mag-b650-tomahawk-wifi",
@@ -136,8 +182,12 @@
     "mpn": "MAG-B650-TOMAHAWK-WIFI",
     "price": 82000,
     "category": "motherboards",
-    "image": null,
-    "specs": { "socket": "AM5", "chipset": "B650", "form_factor": "ATX", "ram_slots": 4 }
+    "specs": {
+      "socket": "AM5",
+      "chipset": "B650",
+      "form_factor": "ATX",
+      "ram_slots": 4
+    }
   },
   {
     "id": "gigabyte-b650m-ds3h",
@@ -146,8 +196,12 @@
     "mpn": "B650M-DS3H",
     "price": 52000,
     "category": "motherboards",
-    "image": null,
-    "specs": { "socket": "AM5", "chipset": "B650", "form_factor": "Micro-ATX", "ram_slots": 4 }
+    "specs": {
+      "socket": "AM5",
+      "chipset": "B650",
+      "form_factor": "Micro-ATX",
+      "ram_slots": 4
+    }
   },
   {
     "id": "asus-rog-maximus-z790-hero",
@@ -156,8 +210,12 @@
     "mpn": "ROG-MAXIMUS-Z790-HERO",
     "price": 245000,
     "category": "motherboards",
-    "image": null,
-    "specs": { "socket": "LGA1700", "chipset": "Z790", "form_factor": "ATX", "ram_slots": 4 }
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "Z790",
+      "form_factor": "ATX",
+      "ram_slots": 4
+    }
   },
   {
     "id": "msi-pro-z790-p-wifi",
@@ -166,8 +224,12 @@
     "mpn": "PRO-Z790-P-WIFI",
     "price": 96000,
     "category": "motherboards",
-    "image": null,
-    "specs": { "socket": "LGA1700", "chipset": "Z790", "form_factor": "ATX", "ram_slots": 4 }
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "Z790",
+      "form_factor": "ATX",
+      "ram_slots": 4
+    }
   },
   {
     "id": "asrock-b760m-pro-rs",
@@ -176,8 +238,12 @@
     "mpn": "B760M-PRO-RS",
     "price": 46000,
     "category": "motherboards",
-    "image": null,
-    "specs": { "socket": "LGA1700", "chipset": "B760", "form_factor": "Micro-ATX", "ram_slots": 4 }
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "B760",
+      "form_factor": "Micro-ATX",
+      "ram_slots": 4
+    }
   },
   {
     "id": "corsair-dominator-titanium-rgb-32gb-6400",
@@ -186,8 +252,12 @@
     "mpn": "CMP32GX5M2B6400C32",
     "price": 108000,
     "category": "memory",
-    "image": null,
-    "specs": { "type": "DDR5", "speed": 6400, "cas": 32, "capacity": "32GB (2x16GB)" }
+    "specs": {
+      "type": "DDR5",
+      "speed": 6400,
+      "cas": 32,
+      "capacity": "32GB (2x16GB)"
+    }
   },
   {
     "id": "gskill-trident-z5-rgb-32gb-6000",
@@ -196,8 +266,12 @@
     "mpn": "F5-6000J3038F16GX2-TZ5RK",
     "price": 74000,
     "category": "memory",
-    "image": null,
-    "specs": { "type": "DDR5", "speed": 6000, "cas": 30, "capacity": "32GB (2x16GB)" }
+    "specs": {
+      "type": "DDR5",
+      "speed": 6000,
+      "cas": 30,
+      "capacity": "32GB (2x16GB)"
+    }
   },
   {
     "id": "kingston-fury-beast-32gb-5600",
@@ -206,8 +280,12 @@
     "mpn": "KF556C36BBEK2-32",
     "price": 58000,
     "category": "memory",
-    "image": null,
-    "specs": { "type": "DDR5", "speed": 5600, "cas": 36, "capacity": "32GB (2x16GB)" }
+    "specs": {
+      "type": "DDR5",
+      "speed": 5600,
+      "cas": 36,
+      "capacity": "32GB (2x16GB)"
+    }
   },
   {
     "id": "kingston-fury-beast-64gb-6000",
@@ -216,8 +294,12 @@
     "mpn": "KF560C36BBEK2-64",
     "price": 132000,
     "category": "memory",
-    "image": null,
-    "specs": { "type": "DDR5", "speed": 6000, "cas": 36, "capacity": "64GB (2x32GB)" }
+    "specs": {
+      "type": "DDR5",
+      "speed": 6000,
+      "cas": 36,
+      "capacity": "64GB (2x32GB)"
+    }
   },
   {
     "id": "teamgroup-tforce-vulcan-16gb-5200",
@@ -226,8 +308,12 @@
     "mpn": "FLBD516G5200HC40CDC01",
     "price": 29000,
     "category": "memory",
-    "image": null,
-    "specs": { "type": "DDR5", "speed": 5200, "cas": 40, "capacity": "16GB (2x8GB)" }
+    "specs": {
+      "type": "DDR5",
+      "speed": 5200,
+      "cas": 40,
+      "capacity": "16GB (2x8GB)"
+    }
   },
   {
     "id": "corsair-vengeance-lpx-16gb-3200",
@@ -236,8 +322,12 @@
     "mpn": "CMK16GX4M2E3200C16",
     "price": 21000,
     "category": "memory",
-    "image": null,
-    "specs": { "type": "DDR4", "speed": 3200, "cas": 16, "capacity": "16GB (2x8GB)" }
+    "specs": {
+      "type": "DDR4",
+      "speed": 3200,
+      "cas": 16,
+      "capacity": "16GB (2x8GB)"
+    }
   },
   {
     "id": "asus-rog-strix-1000w-platinum",
@@ -246,8 +336,11 @@
     "mpn": "ROG-STRIX-1000G",
     "price": 85500,
     "category": "power",
-    "image": null,
-    "specs": { "wattage": 1000, "efficiency": "80+ Platinum", "modular": "Full" }
+    "specs": {
+      "wattage": 1000,
+      "efficiency": "80+ Platinum",
+      "modular": "Full"
+    }
   },
   {
     "id": "corsair-rm850e-850w-gold",
@@ -256,8 +349,11 @@
     "mpn": "CP-9020263-NA",
     "price": 52000,
     "category": "power",
-    "image": null,
-    "specs": { "wattage": 850, "efficiency": "80+ Gold", "modular": "Full" }
+    "specs": {
+      "wattage": 850,
+      "efficiency": "80+ Gold",
+      "modular": "Full"
+    }
   },
   {
     "id": "seasonic-focus-gx-650-gold",
@@ -266,8 +362,11 @@
     "mpn": "FOCUS-GX-650",
     "price": 41000,
     "category": "power",
-    "image": null,
-    "specs": { "wattage": 650, "efficiency": "80+ Gold", "modular": "Full" }
+    "specs": {
+      "wattage": 650,
+      "efficiency": "80+ Gold",
+      "modular": "Full"
+    }
   },
   {
     "id": "msi-mag-a750bn-750w-bronze",
@@ -276,8 +375,11 @@
     "mpn": "MAG-A750BN",
     "price": 28000,
     "category": "power",
-    "image": null,
-    "specs": { "wattage": 750, "efficiency": "80+ Bronze", "modular": "Non-modular" }
+    "specs": {
+      "wattage": 750,
+      "efficiency": "80+ Bronze",
+      "modular": "Non-modular"
+    }
   },
   {
     "id": "coolermaster-mwe-550-white",
@@ -286,8 +388,11 @@
     "mpn": "MPE-5501-ACAAW",
     "price": 19500,
     "category": "power",
-    "image": null,
-    "specs": { "wattage": 550, "efficiency": "80+ White", "modular": "Non-modular" }
+    "specs": {
+      "wattage": 550,
+      "efficiency": "80+ White",
+      "modular": "Non-modular"
+    }
   },
   {
     "id": "bequiet-straight-power-12-1200w",
@@ -296,8 +401,11 @@
     "mpn": "BN338",
     "price": 118000,
     "category": "power",
-    "image": null,
-    "specs": { "wattage": 1200, "efficiency": "80+ Platinum", "modular": "Full" }
+    "specs": {
+      "wattage": 1200,
+      "efficiency": "80+ Platinum",
+      "modular": "Full"
+    }
   },
   {
     "id": "corsair-3500x-argb",
@@ -306,11 +414,15 @@
     "mpn": "CC-9011272-WW",
     "price": 34500,
     "category": "cases",
-    "image": null,
     "specs": {
       "max_gpu_mm": 400,
       "max_cooler_mm": 170,
-      "form_factors": ["E-ATX", "ATX", "Micro-ATX", "Mini-ITX"]
+      "form_factors": [
+        "E-ATX",
+        "ATX",
+        "Micro-ATX",
+        "Mini-ITX"
+      ]
     }
   },
   {
@@ -320,11 +432,15 @@
     "mpn": "O11DEXL-X",
     "price": 98000,
     "category": "cases",
-    "image": null,
     "specs": {
       "max_gpu_mm": 460,
       "max_cooler_mm": 167,
-      "form_factors": ["E-ATX", "ATX", "Micro-ATX", "Mini-ITX"]
+      "form_factors": [
+        "E-ATX",
+        "ATX",
+        "Micro-ATX",
+        "Mini-ITX"
+      ]
     }
   },
   {
@@ -334,11 +450,14 @@
     "mpn": "CC-H51FW-01",
     "price": 42000,
     "category": "cases",
-    "image": null,
     "specs": {
       "max_gpu_mm": 365,
       "max_cooler_mm": 165,
-      "form_factors": ["ATX", "Micro-ATX", "Mini-ITX"]
+      "form_factors": [
+        "ATX",
+        "Micro-ATX",
+        "Mini-ITX"
+      ]
     }
   },
   {
@@ -348,11 +467,14 @@
     "mpn": "FD-C-NOR1C-01",
     "price": 56000,
     "category": "cases",
-    "image": null,
     "specs": {
       "max_gpu_mm": 355,
       "max_cooler_mm": 170,
-      "form_factors": ["ATX", "Micro-ATX", "Mini-ITX"]
+      "form_factors": [
+        "ATX",
+        "Micro-ATX",
+        "Mini-ITX"
+      ]
     }
   },
   {
@@ -362,11 +484,13 @@
     "mpn": "MCB-Q300L-KANN-S00",
     "price": 16500,
     "category": "cases",
-    "image": null,
     "specs": {
       "max_gpu_mm": 360,
       "max_cooler_mm": 159,
-      "form_factors": ["Micro-ATX", "Mini-ITX"]
+      "form_factors": [
+        "Micro-ATX",
+        "Mini-ITX"
+      ]
     }
   },
   {
@@ -376,11 +500,14 @@
     "mpn": "C5-ARGB-BLACK",
     "price": 27000,
     "category": "cases",
-    "image": null,
     "specs": {
       "max_gpu_mm": 380,
       "max_cooler_mm": 170,
-      "form_factors": ["ATX", "Micro-ATX", "Mini-ITX"]
+      "form_factors": [
+        "ATX",
+        "Micro-ATX",
+        "Mini-ITX"
+      ]
     }
   },
   {
@@ -390,8 +517,11 @@
     "mpn": "MZ-V9P2T0BW",
     "price": 78000,
     "category": "storage",
-    "image": null,
-    "specs": { "interface": "PCIe 4.0 x4 NVMe", "capacity": "2TB", "read_mbs": 7450 }
+    "specs": {
+      "interface": "PCIe 4.0 x4 NVMe",
+      "capacity": "2TB",
+      "read_mbs": 7450
+    }
   },
   {
     "id": "wd-black-sn850x-1tb",
@@ -400,8 +530,11 @@
     "mpn": "WDS100T2X0E",
     "price": 42000,
     "category": "storage",
-    "image": null,
-    "specs": { "interface": "PCIe 4.0 x4 NVMe", "capacity": "1TB", "read_mbs": 7300 }
+    "specs": {
+      "interface": "PCIe 4.0 x4 NVMe",
+      "capacity": "1TB",
+      "read_mbs": 7300
+    }
   },
   {
     "id": "crucial-p3-plus-1tb",
@@ -410,8 +543,11 @@
     "mpn": "CT1000P3PSSD8",
     "price": 27000,
     "category": "storage",
-    "image": null,
-    "specs": { "interface": "PCIe 4.0 x4 NVMe", "capacity": "1TB", "read_mbs": 5000 }
+    "specs": {
+      "interface": "PCIe 4.0 x4 NVMe",
+      "capacity": "1TB",
+      "read_mbs": 5000
+    }
   },
   {
     "id": "teamgroup-vulcan-z-1tb-sata",
@@ -420,8 +556,11 @@
     "mpn": "T253TZ001T0C101",
     "price": 22000,
     "category": "storage",
-    "image": null,
-    "specs": { "interface": "SATA III", "capacity": "1TB", "read_mbs": 550 }
+    "specs": {
+      "interface": "SATA III",
+      "capacity": "1TB",
+      "read_mbs": 550
+    }
   },
   {
     "id": "seagate-barracuda-2tb-hdd",
@@ -430,8 +569,11 @@
     "mpn": "ST2000DM008",
     "price": 19000,
     "category": "storage",
-    "image": null,
-    "specs": { "interface": "SATA III", "capacity": "2TB", "read_mbs": 220 }
+    "specs": {
+      "interface": "SATA III",
+      "capacity": "2TB",
+      "read_mbs": 220
+    }
   },
   {
     "id": "samsung-t7-shield-2tb",
@@ -440,8 +582,11 @@
     "mpn": "MU-PE2T0S/AM",
     "price": 58000,
     "category": "storage",
-    "image": null,
-    "specs": { "interface": "USB 3.2 Gen 2", "capacity": "2TB", "read_mbs": 1050 }
+    "specs": {
+      "interface": "USB 3.2 Gen 2",
+      "capacity": "2TB",
+      "read_mbs": 1050
+    }
   },
   {
     "id": "msi-mag-27cq6f",
@@ -450,8 +595,12 @@
     "mpn": "MAG-27CQ6F",
     "price": 85000,
     "category": "monitors",
-    "image": null,
-    "specs": { "size": 27, "resolution": "2560x1440", "refresh": 180, "panel": "VA" }
+    "specs": {
+      "size": 27,
+      "resolution": "2560x1440",
+      "refresh": 180,
+      "panel": "VA"
+    }
   },
   {
     "id": "asus-rog-strix-xg49wcr",
@@ -460,8 +609,12 @@
     "mpn": "XG49WCR",
     "price": 429000,
     "category": "monitors",
-    "image": null,
-    "specs": { "size": 49, "resolution": "5120x1440", "refresh": 165, "panel": "VA" }
+    "specs": {
+      "size": 49,
+      "resolution": "5120x1440",
+      "refresh": 165,
+      "panel": "VA"
+    }
   },
   {
     "id": "lg-ultragear-27gp850-b",
@@ -470,8 +623,12 @@
     "mpn": "27GP850-B",
     "price": 132000,
     "category": "monitors",
-    "image": null,
-    "specs": { "size": 27, "resolution": "2560x1440", "refresh": 180, "panel": "Nano IPS" }
+    "specs": {
+      "size": 27,
+      "resolution": "2560x1440",
+      "refresh": 180,
+      "panel": "Nano IPS"
+    }
   },
   {
     "id": "dell-ultrasharp-u2723qe",
@@ -480,8 +637,12 @@
     "mpn": "U2723QE",
     "price": 168000,
     "category": "monitors",
-    "image": null,
-    "specs": { "size": 27, "resolution": "3840x2160", "refresh": 60, "panel": "IPS Black" }
+    "specs": {
+      "size": 27,
+      "resolution": "3840x2160",
+      "refresh": 60,
+      "panel": "IPS Black"
+    }
   },
   {
     "id": "samsung-odyssey-g5-32",
@@ -490,8 +651,12 @@
     "mpn": "LC32G55TQWWXXL",
     "price": 96000,
     "category": "monitors",
-    "image": null,
-    "specs": { "size": 32, "resolution": "2560x1440", "refresh": 165, "panel": "VA" }
+    "specs": {
+      "size": 32,
+      "resolution": "2560x1440",
+      "refresh": 165,
+      "panel": "VA"
+    }
   },
   {
     "id": "gigabyte-m27q-x",
@@ -500,7 +665,11 @@
     "mpn": "M27Q-X",
     "price": 118000,
     "category": "monitors",
-    "image": null,
-    "specs": { "size": 27, "resolution": "2560x1440", "refresh": 240, "panel": "IPS" }
+    "specs": {
+      "size": 27,
+      "resolution": "2560x1440",
+      "refresh": 240,
+      "panel": "IPS"
+    }
   }
 ]

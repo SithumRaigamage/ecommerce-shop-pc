@@ -14,6 +14,7 @@ import { Input } from '@/components/ui/input'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { ProductImage } from '@/components/ProductImage'
+import { SIZES } from '@/lib/media'
 import { ErrorState } from '@/components/ErrorState'
 import { EmptyState } from '@/components/EmptyState'
 import { PriceDisplay } from '@/components/PriceDisplay'
@@ -55,7 +56,8 @@ export default function ProductOverview() {
   // Seed the selections from the product once it resolves, as ngOnInit did.
   useEffect(() => {
     if (!product) return
-    setSelectedImage(product.image)
+    // Null means the product's own asset key; a thumbnail sets a gallery key.
+    setSelectedImage(null)
     setSelectedColor(product.colors?.[0])
     setSelectedSize(product.sizes?.[0])
     setQuantity(1)
@@ -124,7 +126,8 @@ export default function ProductOverview() {
         id: product.id,
         title: product.title,
         price: product.price,
-        image: product.image,
+        category: product.category,
+        mpn: product.mpn,
       },
       color: selectedColor ?? '',
       size: selectedSize ?? { name: '', description: '' },
@@ -142,9 +145,13 @@ export default function ProductOverview() {
         <div>
           <div className="overflow-hidden rounded-lg border border-border-subtle bg-surface-2">
             <ProductImage
-              src={selectedImage ?? product.image}
+              assetId={selectedImage ?? product.id}
               alt={product.title}
-              className="h-112 w-full object-contain"
+              category={product.category}
+              mpn={product.mpn}
+              sizes={SIZES.detail}
+              priority
+              className="h-112 w-full"
             />
           </div>
           {gallery.length > 1 && (
@@ -162,9 +169,12 @@ export default function ProductOverview() {
                     )}
                   >
                     <ProductImage
-                      src={image}
+                      assetId={image}
                       alt={`${product.title} thumbnail ${i + 1}`}
-                      className="size-24 object-contain"
+                      category={product.category}
+                      mpn={product.mpn}
+                      sizes={SIZES.thumbnail}
+                      className="size-24"
                     />
                   </button>
                 </li>

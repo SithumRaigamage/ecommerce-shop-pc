@@ -15,7 +15,7 @@ import type { CartItem } from '@/types'
 
 function makeItem(id: string, price: number, quantity = 1): CartItem {
   return {
-    product: { id, title: `Product ${id}`, price, image: `assets/products/${id}.png` },
+    product: { id, title: `Product ${id}`, price, category: 'processor', mpn: `MPN-${id}` },
     color: 'Black',
     size: { name: 'Standard', description: '' },
     quantity,

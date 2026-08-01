@@ -55,11 +55,13 @@ import { ErrorState } from '@/components/ErrorState'
 import { FilterChip } from '@/components/FilterChip'
 import { PriceDelta, PriceDisplay } from '@/components/PriceDisplay'
 import { PriceSlider } from '@/components/PriceSlider'
+import { ProductPlaceholder } from '@/components/ProductPlaceholder'
 import { SpecTable } from '@/components/SpecTable'
 import { StatBadge } from '@/components/StatBadge'
 import { StockIndicator, type StockState } from '@/components/StockIndicator'
 import { useTheme } from '@/hooks/useTheme'
 import { BETTER_DIRECTION } from '@/lib/catalogue'
+import { CATEGORIES } from '@/lib/categories'
 import { cn } from '@/lib/utils'
 
 /* ------------------------------------------------------------------ layout */
@@ -648,6 +650,33 @@ export default function StyleGuide() {
             {STOCK_STATES.map((s) => (
               <StockIndicator key={s} state={s} size="sm" variant="pill" quantity={2} />
             ))}
+          </Specimen>
+        </Section>
+
+        <Section
+          id="imagery"
+          title="Product imagery"
+          note="Every product image is normalised to a square canvas with 8% padding and served as AVIF with a WebP fallback at three widths. A product with no cleared photography renders the designed placeholder — which is the catalogue's current state for all 48 products."
+        >
+          <Specimen label="Designed placeholder, by category">
+            {CATEGORIES.slice(0, 4).map((category) => (
+              <ProductPlaceholder
+                key={category.slug}
+                category={category.slug}
+                mpn={`${category.slug.slice(0, 3).toUpperCase()}-0000`}
+                alt={`${category.label} placeholder`}
+                className="size-40 rounded-lg border border-border-subtle"
+              />
+            ))}
+          </Specimen>
+
+          <Specimen label="Unknown category, and no part number">
+            <ProductPlaceholder alt="Unknown product" className="size-40 rounded-lg border border-border-subtle" />
+            <ProductPlaceholder
+              category="graphics"
+              alt="Graphics card, part number unknown"
+              className="size-40 rounded-lg border border-border-subtle"
+            />
           </Specimen>
         </Section>
 

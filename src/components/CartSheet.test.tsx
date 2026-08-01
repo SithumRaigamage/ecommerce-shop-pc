@@ -3,21 +3,26 @@ import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 import { CartSheet } from './CartSheet'
+import { ThemeProvider } from './ThemeProvider'
 import { useCartStore } from '@/store/cart'
 import type { CartItem } from '@/types'
 
 const item: CartItem = {
-  product: { id: '1', title: 'PlayStation 5', price: 180000, image: 'assets/products/ps5.png' },
+  product: { id: '1', title: 'PlayStation 5', price: 180000, category: 'cases', mpn: 'CFI-2000' },
   color: 'White',
   size: { name: 'SLIM', description: 'Small size for comfort' },
   quantity: 1,
 }
 
 function renderCart() {
+  // ThemeProvider because a cart line renders product imagery, and imagery
+  // built from an opaque source has one asset per theme.
   return render(
-    <MemoryRouter>
-      <CartSheet open onOpenChange={() => {}} />
-    </MemoryRouter>,
+    <ThemeProvider>
+      <MemoryRouter>
+        <CartSheet open onOpenChange={() => {}} />
+      </MemoryRouter>
+    </ThemeProvider>,
   )
 }
 

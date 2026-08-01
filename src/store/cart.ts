@@ -118,7 +118,24 @@ export const useCartStore = create<CartState>()(
     }),
     {
       name: CART_STORAGE_KEY,
-      version: 1,
+      // 2: cart lines dropped `image` and gained `category` and `mpn`, so that
+      // imagery resolves from the manifest by id rather than from a path frozen
+      // at the moment the item was added.
+      version: 2,
+      migrate: (persisted, from) => {
+        const state = persisted as { items?: CartItem[]; checkoutItems?: CartItem[] }
+        if (from >= 2) return state
+        // A v1 line has no category or mpn and there is no catalogue to hand
+        // here, so the placeholder degrades to its neutral glyph. It self-heals
+        // the next time the item is added.
+        const strip = (items: CartItem[] | undefined) =>
+          (items ?? []).map((item) => {
+            const product = { ...item.product } as CartItem['product'] & { image?: unknown }
+            delete product.image
+            return { ...item, product }
+          })
+        return { ...state, items: strip(state.items), checkoutItems: strip(state.checkoutItems) }
+      },
       storage: createJSONStorage(() => localStorage),
       // Only data is persisted; the actions come from the store definition.
       partialize: (state) => ({

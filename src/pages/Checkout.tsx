@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input'
 import { Separator } from '@/components/ui/separator'
 import { CheckoutSteps } from '@/components/CheckoutSteps'
 import { ProductImage } from '@/components/ProductImage'
+import { SIZES } from '@/lib/media'
 import { EmptyState } from '@/components/EmptyState'
 import { PriceDisplay } from '@/components/PriceDisplay'
 import { formatLKR } from '@/lib/format'
@@ -59,9 +60,12 @@ export default function Checkout() {
                 <Card>
                   <CardContent className="flex flex-col gap-gutter sm:flex-row">
                     <ProductImage
-                      src={item.product.image}
+                      assetId={item.product.id}
                       alt={item.product.title}
-                      className="h-36 w-full shrink-0 rounded-md object-contain sm:w-38"
+                      category={item.product.category}
+                      mpn={item.product.mpn}
+                      sizes={SIZES.checkoutLine}
+                      className="h-36 w-full shrink-0 rounded-md sm:w-38"
                     />
                     <div className="flex flex-col justify-center gap-1">
                       <h2 className="text-lg font-medium">{item.product.title}</h2>

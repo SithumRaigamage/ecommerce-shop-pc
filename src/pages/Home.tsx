@@ -6,6 +6,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Skeleton } from '@/components/ui/skeleton'
 import { ProductImage } from '@/components/ProductImage'
+import { SIZES } from '@/lib/media'
 import { ErrorState } from '@/components/ErrorState'
 import { PriceDisplay } from '@/components/PriceDisplay'
 import { getBanners, getCategories, getFeaturedProducts } from '@/lib/api'
@@ -209,9 +210,11 @@ function FeaturedProducts() {
           <Card key={product.id} className="group overflow-hidden pt-0 transition-shadow hover:shadow-xl">
             <div className="relative overflow-hidden">
               <ProductImage
-                src={product.image}
+                assetId={product.productId}
                 alt={product.name}
-                className="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                category={product.category}
+                sizes={SIZES.featured}
+                className="h-64 w-full duration-base ease-standard transition-transform group-hover:scale-105"
               />
               {product.badge && (
                 <span

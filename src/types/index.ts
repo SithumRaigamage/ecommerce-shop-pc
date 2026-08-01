@@ -55,9 +55,12 @@ export interface Product {
   mpn: string
   price: number
   category: string
-  /** null until imagery is sourced; `ProductImage` renders a placeholder. */
-  image: string | null
   specs: ProductSpecs
+  /**
+   * Extra gallery asset keys, resolved through the media manifest exactly as the
+   * product id is. Never a URL or a path: imagery lives in the manifest so that
+   * nothing in the catalogue can point at a file, or a host, that is not ours.
+   */
   images?: string[]
   colors?: string[]
   sizes?: Size[]
@@ -78,7 +81,13 @@ export interface FilterOptions {
 }
 
 export interface CartItem {
-  product: Pick<Product, 'id' | 'title' | 'price' | 'image'>
+  /**
+   * `image` is deliberately absent: imagery is resolved from the media manifest
+   * by product id, so a cart line cannot hold a stale path. `category` and `mpn`
+   * are carried because the designed placeholder needs them and the cart has no
+   * access to the catalogue.
+   */
+  product: Pick<Product, 'id' | 'title' | 'price' | 'category' | 'mpn'>
   color: string
   size: Size
   quantity: number

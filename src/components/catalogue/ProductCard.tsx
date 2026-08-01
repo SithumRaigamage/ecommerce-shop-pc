@@ -6,6 +6,7 @@ import { Label } from '@/components/ui/label'
 import { Skeleton } from '@/components/ui/skeleton'
 import { PriceDisplay } from '@/components/PriceDisplay'
 import { ProductImage } from '@/components/ProductImage'
+import { SIZES } from '@/lib/media'
 import { StatBadge } from '@/components/StatBadge'
 import { Cluster, Stack } from '@/components/layout/primitives'
 import { HEADLINE_SPECS, SPEC_UNITS, specLabel } from '@/lib/catalogue'
@@ -57,9 +58,12 @@ export function ProductCard({
     <Card className="group flex h-full flex-col overflow-hidden pt-0">
       <div className={`relative overflow-hidden bg-surface-2 ${GEOMETRY.media}`}>
         <ProductImage
-          src={product.image}
+          assetId={product.id}
           alt={product.title}
-          className="size-full object-contain duration-base ease-standard transition-transform group-hover:scale-105"
+          category={product.category}
+          mpn={product.mpn}
+          sizes={SIZES.card}
+          className="size-full duration-base ease-standard transition-transform group-hover:scale-105"
         />
         {/* Compare lives on the card so a comparison can be built while scanning,
             without opening each product first. */}

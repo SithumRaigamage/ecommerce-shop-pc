@@ -10,6 +10,7 @@ import {
   SheetTitle,
 } from '@/components/ui/sheet'
 import { ProductImage } from '@/components/ProductImage'
+import { SIZES } from '@/lib/media'
 import { EmptyState } from '@/components/EmptyState'
 import { PriceDisplay } from '@/components/PriceDisplay'
 import { formatLKR } from '@/lib/format'
@@ -56,9 +57,12 @@ export function CartSheet({ open, onOpenChange }: CartSheetProps) {
                   className="relative flex gap-4 rounded-lg border border-border-subtle bg-surface-2 p-3"
                 >
                   <ProductImage
-                    src={item.product.image}
+                    assetId={item.product.id}
                     alt={item.product.title}
-                    className="size-20 shrink-0 rounded-lg object-contain"
+                    category={item.product.category}
+                    mpn={item.product.mpn}
+                    sizes={SIZES.cartLine}
+                    className="size-20 shrink-0 rounded-lg"
                   />
                   <div className="min-w-0 flex-1">
                     <p className="line-clamp-2 pr-8 text-sm font-medium text-fg-primary">{item.product.title}</p>
