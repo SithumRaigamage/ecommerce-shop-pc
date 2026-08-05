@@ -1,0 +1,81 @@
+[
+  {
+    "id": 1,
+    "productId": "asus-rog-astral-rtx-5090-32gb",
+    "name": "ASUS ROG Astral GeForce RTX 5090 32GB GDDR7",
+    "description": "Flagship 32GB GDDR7 for 4K ray-traced gaming",
+    "price": 1499000,
+    "image": null,
+    "category": "graphics",
+    "badge": {
+      "text": "New",
+      "color": "bg-red-500"
+    }
+  },
+  {
+    "id": 2,
+    "productId": "amd-ryzen-7-9800x3d",
+    "name": "AMD Ryzen 7 9800X3D",
+    "description": "Eight 3D V-Cache cores tuned for the highest frame rates",
+    "price": 197000,
+    "image": null,
+    "category": "processor",
+    "badge": {
+      "text": "Best Seller",
+      "color": "bg-yellow-500"
+    }
+  },
+  {
+    "id": 3,
+    "productId": "msi-mag-27cq6f",
+    "name": "MSI MAG 27CQ6F 27\" WQHD 180Hz Curved Gaming Monitor",
+    "description": "Immersive visuals on a 180Hz curved WQHD panel",
+    "price": 85000,
+    "image": null,
+    "category": "monitors",
+    "badge": {
+      "text": "Popular",
+      "color": "bg-purple-500"
+    }
+  },
+  {
+    "id": 4,
+    "productId": "samsung-990-pro-2tb",
+    "name": "Samsung 990 PRO 2TB NVMe SSD",
+    "description": "7,450 MB/s sequential reads for near-instant load times",
+    "price": 78000,
+    "image": null,
+    "category": "storage",
+    "badge": {
+      "text": "New",
+      "color": "bg-red-500"
+    }
+  },
+  {
+    "id": 5,
+    "productId": "corsair-3500x-argb",
+    "name": "CORSAIR 3500X ARGB Mid-Tower Case",
+    "description": "Airflow-first mid tower with room for 400mm cards",
+    "price": 34500,
+    "image": null,
+    "category": "cases",
+    "badge": {
+      "text": "Popular",
+      "color": "bg-purple-500"
+    }
+  },
+  {
+    "id": 6,
+    "productId": "corsair-rm850e-850w-gold",
+    "name": "Corsair RM850e 850W 80+ Gold",
+    "description": "Fully modular 80+ Gold power with quiet operation",
+    "price": 52000,
+    "image": null,
+    "category": "power",
+    "badge": {
+      "text": "Sale",
+      "color": "bg-green-500"
+    },
+    "oldPrice": 58000
+  }
+]

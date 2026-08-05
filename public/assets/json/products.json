@@ -1,0 +1,675 @@
+[
+  {
+    "id": "amd-ryzen-7-9800x3d",
+    "title": "AMD Ryzen 7 9800X3D",
+    "brand": "AMD",
+    "mpn": "100-100001084WOF",
+    "price": 197000,
+    "category": "processor",
+    "specs": {
+      "socket": "AM5",
+      "cores": 8,
+      "threads": 16,
+      "tdp": 120
+    }
+  },
+  {
+    "id": "amd-ryzen-9-7900x",
+    "title": "AMD Ryzen 9 7900X",
+    "brand": "AMD",
+    "mpn": "100-100000589WOF",
+    "price": 125000,
+    "category": "processor",
+    "specs": {
+      "socket": "AM5",
+      "cores": 12,
+      "threads": 24,
+      "tdp": 170
+    }
+  },
+  {
+    "id": "amd-ryzen-5-7600",
+    "title": "AMD Ryzen 5 7600",
+    "brand": "AMD",
+    "mpn": "100-100001015BOX",
+    "price": 78000,
+    "category": "processor",
+    "specs": {
+      "socket": "AM5",
+      "cores": 6,
+      "threads": 12,
+      "tdp": 65
+    }
+  },
+  {
+    "id": "intel-core-i9-14900k",
+    "title": "Intel Core i9-14900K",
+    "brand": "Intel",
+    "mpn": "BX8071514900K",
+    "price": 215000,
+    "category": "processor",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 24,
+      "threads": 32,
+      "tdp": 125
+    }
+  },
+  {
+    "id": "intel-core-i7-14700k",
+    "title": "Intel Core i7-14700K",
+    "brand": "Intel",
+    "mpn": "BX8071514700K",
+    "price": 168000,
+    "category": "processor",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 20,
+      "threads": 28,
+      "tdp": 125
+    }
+  },
+  {
+    "id": "intel-core-i5-14600k",
+    "title": "Intel Core i5-14600K",
+    "brand": "Intel",
+    "mpn": "BX8071514600K",
+    "price": 118000,
+    "category": "processor",
+    "specs": {
+      "socket": "LGA1700",
+      "cores": 14,
+      "threads": 20,
+      "tdp": 125
+    }
+  },
+  {
+    "id": "asus-rog-astral-rtx-5090-32gb",
+    "title": "ASUS ROG Astral GeForce RTX 5090 32GB GDDR7",
+    "brand": "ASUS",
+    "mpn": "ROG-ASTRAL-RTX5090-O32G-GAMING",
+    "price": 1499000,
+    "category": "graphics",
+    "specs": {
+      "vram_gb": 32,
+      "tdp": 575,
+      "length_mm": 358
+    }
+  },
+  {
+    "id": "msi-rtx-5080-ventus-3x-16gb",
+    "title": "MSI GeForce RTX 5080 Ventus 3X OC 16GB",
+    "brand": "MSI",
+    "mpn": "RTX-5080-VENTUS-3X-OC",
+    "price": 685000,
+    "category": "graphics",
+    "specs": {
+      "vram_gb": 16,
+      "tdp": 360,
+      "length_mm": 336
+    }
+  },
+  {
+    "id": "gigabyte-rtx-5070-ti-eagle-16gb",
+    "title": "Gigabyte GeForce RTX 5070 Ti EAGLE OC 16GB",
+    "brand": "Gigabyte",
+    "mpn": "GV-N507TEAGLE-OC-16GD",
+    "price": 425000,
+    "category": "graphics",
+    "specs": {
+      "vram_gb": 16,
+      "tdp": 300,
+      "length_mm": 300
+    }
+  },
+  {
+    "id": "zotac-rtx-4060-twin-edge-8gb",
+    "title": "ZOTAC GAMING GeForce RTX 4060 Twin Edge 8GB",
+    "brand": "ZOTAC",
+    "mpn": "ZT-D40600E-10M",
+    "price": 128000,
+    "category": "graphics",
+    "specs": {
+      "vram_gb": 8,
+      "tdp": 115,
+      "length_mm": 224
+    }
+  },
+  {
+    "id": "sapphire-pulse-rx-7900-gre-16gb",
+    "title": "Sapphire PULSE Radeon RX 7900 GRE 16GB",
+    "brand": "Sapphire",
+    "mpn": "11325-02-20G",
+    "price": 295000,
+    "category": "graphics",
+    "specs": {
+      "vram_gb": 16,
+      "tdp": 260,
+      "length_mm": 280
+    }
+  },
+  {
+    "id": "powercolor-hellhound-rx-7800-xt-16gb",
+    "title": "PowerColor Hellhound Radeon RX 7800 XT 16GB",
+    "brand": "PowerColor",
+    "mpn": "RX7800XT-16GBD6-L-OC",
+    "price": 235000,
+    "category": "graphics",
+    "specs": {
+      "vram_gb": 16,
+      "tdp": 263,
+      "length_mm": 320
+    }
+  },
+  {
+    "id": "asus-rog-strix-x670e-a-gaming-wifi",
+    "title": "ASUS ROG STRIX X670E-A GAMING WIFI",
+    "brand": "ASUS",
+    "mpn": "ROG-STRIX-X670E-A-GAMING-WIFI",
+    "price": 129000,
+    "category": "motherboards",
+    "specs": {
+      "socket": "AM5",
+      "chipset": "X670E",
+      "form_factor": "ATX",
+      "ram_slots": 4
+    }
+  },
+  {
+    "id": "msi-mag-b650-tomahawk-wifi",
+    "title": "MSI MAG B650 TOMAHAWK WIFI",
+    "brand": "MSI",
+    "mpn": "MAG-B650-TOMAHAWK-WIFI",
+    "price": 82000,
+    "category": "motherboards",
+    "specs": {
+      "socket": "AM5",
+      "chipset": "B650",
+      "form_factor": "ATX",
+      "ram_slots": 4
+    }
+  },
+  {
+    "id": "gigabyte-b650m-ds3h",
+    "title": "Gigabyte B650M DS3H",
+    "brand": "Gigabyte",
+    "mpn": "B650M-DS3H",
+    "price": 52000,
+    "category": "motherboards",
+    "specs": {
+      "socket": "AM5",
+      "chipset": "B650",
+      "form_factor": "Micro-ATX",
+      "ram_slots": 4
+    }
+  },
+  {
+    "id": "asus-rog-maximus-z790-hero",
+    "title": "ASUS ROG MAXIMUS Z790 HERO",
+    "brand": "ASUS",
+    "mpn": "ROG-MAXIMUS-Z790-HERO",
+    "price": 245000,
+    "category": "motherboards",
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "Z790",
+      "form_factor": "ATX",
+      "ram_slots": 4
+    }
+  },
+  {
+    "id": "msi-pro-z790-p-wifi",
+    "title": "MSI PRO Z790-P WIFI",
+    "brand": "MSI",
+    "mpn": "PRO-Z790-P-WIFI",
+    "price": 96000,
+    "category": "motherboards",
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "Z790",
+      "form_factor": "ATX",
+      "ram_slots": 4
+    }
+  },
+  {
+    "id": "asrock-b760m-pro-rs",
+    "title": "ASRock B760M PRO RS",
+    "brand": "ASRock",
+    "mpn": "B760M-PRO-RS",
+    "price": 46000,
+    "category": "motherboards",
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "B760",
+      "form_factor": "Micro-ATX",
+      "ram_slots": 4
+    }
+  },
+  {
+    "id": "corsair-dominator-titanium-rgb-32gb-6400",
+    "title": "CORSAIR DOMINATOR TITANIUM RGB 32GB (2x16GB) DDR5-6400",
+    "brand": "Corsair",
+    "mpn": "CMP32GX5M2B6400C32",
+    "price": 108000,
+    "category": "memory",
+    "specs": {
+      "type": "DDR5",
+      "speed": 6400,
+      "cas": 32,
+      "capacity": "32GB (2x16GB)"
+    }
+  },
+  {
+    "id": "gskill-trident-z5-rgb-32gb-6000",
+    "title": "G.SKILL Trident Z5 RGB 32GB (2x16GB) DDR5-6000",
+    "brand": "G.SKILL",
+    "mpn": "F5-6000J3038F16GX2-TZ5RK",
+    "price": 74000,
+    "category": "memory",
+    "specs": {
+      "type": "DDR5",
+      "speed": 6000,
+      "cas": 30,
+      "capacity": "32GB (2x16GB)"
+    }
+  },
+  {
+    "id": "kingston-fury-beast-32gb-5600",
+    "title": "Kingston FURY Beast 32GB (2x16GB) DDR5-5600",
+    "brand": "Kingston",
+    "mpn": "KF556C36BBEK2-32",
+    "price": 58000,
+    "category": "memory",
+    "specs": {
+      "type": "DDR5",
+      "speed": 5600,
+      "cas": 36,
+      "capacity": "32GB (2x16GB)"
+    }
+  },
+  {
+    "id": "kingston-fury-beast-64gb-6000",
+    "title": "Kingston FURY Beast 64GB (2x32GB) DDR5-6000",
+    "brand": "Kingston",
+    "mpn": "KF560C36BBEK2-64",
+    "price": 132000,
+    "category": "memory",
+    "specs": {
+      "type": "DDR5",
+      "speed": 6000,
+      "cas": 36,
+      "capacity": "64GB (2x32GB)"
+    }
+  },
+  {
+    "id": "teamgroup-tforce-vulcan-16gb-5200",
+    "title": "TEAMGROUP T-Force Vulcan 16GB (2x8GB) DDR5-5200",
+    "brand": "TEAMGROUP",
+    "mpn": "FLBD516G5200HC40CDC01",
+    "price": 29000,
+    "category": "memory",
+    "specs": {
+      "type": "DDR5",
+      "speed": 5200,
+      "cas": 40,
+      "capacity": "16GB (2x8GB)"
+    }
+  },
+  {
+    "id": "corsair-vengeance-lpx-16gb-3200",
+    "title": "CORSAIR VENGEANCE LPX 16GB (2x8GB) DDR4-3200",
+    "brand": "Corsair",
+    "mpn": "CMK16GX4M2E3200C16",
+    "price": 21000,
+    "category": "memory",
+    "specs": {
+      "type": "DDR4",
+      "speed": 3200,
+      "cas": 16,
+      "capacity": "16GB (2x8GB)"
+    }
+  },
+  {
+    "id": "asus-rog-strix-1000w-platinum",
+    "title": "ASUS ROG STRIX 1000W 80+ Platinum",
+    "brand": "ASUS",
+    "mpn": "ROG-STRIX-1000G",
+    "price": 85500,
+    "category": "power",
+    "specs": {
+      "wattage": 1000,
+      "efficiency": "80+ Platinum",
+      "modular": "Full"
+    }
+  },
+  {
+    "id": "corsair-rm850e-850w-gold",
+    "title": "Corsair RM850e 850W 80+ Gold",
+    "brand": "Corsair",
+    "mpn": "CP-9020263-NA",
+    "price": 52000,
+    "category": "power",
+    "specs": {
+      "wattage": 850,
+      "efficiency": "80+ Gold",
+      "modular": "Full"
+    }
+  },
+  {
+    "id": "seasonic-focus-gx-650-gold",
+    "title": "Seasonic FOCUS GX-650 650W 80+ Gold",
+    "brand": "Seasonic",
+    "mpn": "FOCUS-GX-650",
+    "price": 41000,
+    "category": "power",
+    "specs": {
+      "wattage": 650,
+      "efficiency": "80+ Gold",
+      "modular": "Full"
+    }
+  },
+  {
+    "id": "msi-mag-a750bn-750w-bronze",
+    "title": "MSI MAG A750BN 750W 80+ Bronze",
+    "brand": "MSI",
+    "mpn": "MAG-A750BN",
+    "price": 28000,
+    "category": "power",
+    "specs": {
+      "wattage": 750,
+      "efficiency": "80+ Bronze",
+      "modular": "Non-modular"
+    }
+  },
+  {
+    "id": "coolermaster-mwe-550-white",
+    "title": "Cooler Master MWE 550 White V2 550W",
+    "brand": "Cooler Master",
+    "mpn": "MPE-5501-ACAAW",
+    "price": 19500,
+    "category": "power",
+    "specs": {
+      "wattage": 550,
+      "efficiency": "80+ White",
+      "modular": "Non-modular"
+    }
+  },
+  {
+    "id": "bequiet-straight-power-12-1200w",
+    "title": "be quiet! Straight Power 12 1200W 80+ Platinum",
+    "brand": "be quiet!",
+    "mpn": "BN338",
+    "price": 118000,
+    "category": "power",
+    "specs": {
+      "wattage": 1200,
+      "efficiency": "80+ Platinum",
+      "modular": "Full"
+    }
+  },
+  {
+    "id": "corsair-3500x-argb",
+    "title": "CORSAIR 3500X ARGB Mid-Tower Case",
+    "brand": "Corsair",
+    "mpn": "CC-9011272-WW",
+    "price": 34500,
+    "category": "cases",
+    "specs": {
+      "max_gpu_mm": 400,
+      "max_cooler_mm": 170,
+      "form_factors": [
+        "E-ATX",
+        "ATX",
+        "Micro-ATX",
+        "Mini-ITX"
+      ]
+    }
+  },
+  {
+    "id": "lian-li-o11-dynamic-evo-xl",
+    "title": "Lian Li O11 Dynamic EVO XL",
+    "brand": "Lian Li",
+    "mpn": "O11DEXL-X",
+    "price": 98000,
+    "category": "cases",
+    "specs": {
+      "max_gpu_mm": 460,
+      "max_cooler_mm": 167,
+      "form_factors": [
+        "E-ATX",
+        "ATX",
+        "Micro-ATX",
+        "Mini-ITX"
+      ]
+    }
+  },
+  {
+    "id": "nzxt-h5-flow",
+    "title": "NZXT H5 Flow Mid-Tower Case",
+    "brand": "NZXT",
+    "mpn": "CC-H51FW-01",
+    "price": 42000,
+    "category": "cases",
+    "specs": {
+      "max_gpu_mm": 365,
+      "max_cooler_mm": 165,
+      "form_factors": [
+        "ATX",
+        "Micro-ATX",
+        "Mini-ITX"
+      ]
+    }
+  },
+  {
+    "id": "fractal-design-north",
+    "title": "Fractal Design North Mid-Tower Case",
+    "brand": "Fractal Design",
+    "mpn": "FD-C-NOR1C-01",
+    "price": 56000,
+    "category": "cases",
+    "specs": {
+      "max_gpu_mm": 355,
+      "max_cooler_mm": 170,
+      "form_factors": [
+        "ATX",
+        "Micro-ATX",
+        "Mini-ITX"
+      ]
+    }
+  },
+  {
+    "id": "coolermaster-masterbox-q300l",
+    "title": "Cooler Master MasterBox Q300L",
+    "brand": "Cooler Master",
+    "mpn": "MCB-Q300L-KANN-S00",
+    "price": 16500,
+    "category": "cases",
+    "specs": {
+      "max_gpu_mm": 360,
+      "max_cooler_mm": 159,
+      "form_factors": [
+        "Micro-ATX",
+        "Mini-ITX"
+      ]
+    }
+  },
+  {
+    "id": "antec-c5-argb",
+    "title": "ANTEC C5 ARGB Mid-Tower Case",
+    "brand": "Antec",
+    "mpn": "C5-ARGB-BLACK",
+    "price": 27000,
+    "category": "cases",
+    "specs": {
+      "max_gpu_mm": 380,
+      "max_cooler_mm": 170,
+      "form_factors": [
+        "ATX",
+        "Micro-ATX",
+        "Mini-ITX"
+      ]
+    }
+  },
+  {
+    "id": "samsung-990-pro-2tb",
+    "title": "Samsung 990 PRO 2TB NVMe SSD",
+    "brand": "Samsung",
+    "mpn": "MZ-V9P2T0BW",
+    "price": 78000,
+    "category": "storage",
+    "specs": {
+      "interface": "PCIe 4.0 x4 NVMe",
+      "capacity": "2TB",
+      "read_mbs": 7450
+    }
+  },
+  {
+    "id": "wd-black-sn850x-1tb",
+    "title": "WD_BLACK SN850X 1TB NVMe SSD",
+    "brand": "Western Digital",
+    "mpn": "WDS100T2X0E",
+    "price": 42000,
+    "category": "storage",
+    "specs": {
+      "interface": "PCIe 4.0 x4 NVMe",
+      "capacity": "1TB",
+      "read_mbs": 7300
+    }
+  },
+  {
+    "id": "crucial-p3-plus-1tb",
+    "title": "Crucial P3 Plus 1TB NVMe SSD",
+    "brand": "Crucial",
+    "mpn": "CT1000P3PSSD8",
+    "price": 27000,
+    "category": "storage",
+    "specs": {
+      "interface": "PCIe 4.0 x4 NVMe",
+      "capacity": "1TB",
+      "read_mbs": 5000
+    }
+  },
+  {
+    "id": "teamgroup-vulcan-z-1tb-sata",
+    "title": "TEAMGROUP T-FORCE VULCAN Z 1TB SATA SSD",
+    "brand": "TEAMGROUP",
+    "mpn": "T253TZ001T0C101",
+    "price": 22000,
+    "category": "storage",
+    "specs": {
+      "interface": "SATA III",
+      "capacity": "1TB",
+      "read_mbs": 550
+    }
+  },
+  {
+    "id": "seagate-barracuda-2tb-hdd",
+    "title": "Seagate BarraCuda 2TB 7200RPM HDD",
+    "brand": "Seagate",
+    "mpn": "ST2000DM008",
+    "price": 19000,
+    "category": "storage",
+    "specs": {
+      "interface": "SATA III",
+      "capacity": "2TB",
+      "read_mbs": 220
+    }
+  },
+  {
+    "id": "samsung-t7-shield-2tb",
+    "title": "Samsung T7 Shield 2TB Portable SSD",
+    "brand": "Samsung",
+    "mpn": "MU-PE2T0S/AM",
+    "price": 58000,
+    "category": "storage",
+    "specs": {
+      "interface": "USB 3.2 Gen 2",
+      "capacity": "2TB",
+      "read_mbs": 1050
+    }
+  },
+  {
+    "id": "msi-mag-27cq6f",
+    "title": "MSI MAG 27CQ6F 27\" WQHD 180Hz Curved Gaming Monitor",
+    "brand": "MSI",
+    "mpn": "MAG-27CQ6F",
+    "price": 85000,
+    "category": "monitors",
+    "specs": {
+      "size": 27,
+      "resolution": "2560x1440",
+      "refresh": 180,
+      "panel": "VA"
+    }
+  },
+  {
+    "id": "asus-rog-strix-xg49wcr",
+    "title": "ASUS ROG Strix XG49WCR 49\" Double QHD 165Hz",
+    "brand": "ASUS",
+    "mpn": "XG49WCR",
+    "price": 429000,
+    "category": "monitors",
+    "specs": {
+      "size": 49,
+      "resolution": "5120x1440",
+      "refresh": 165,
+      "panel": "VA"
+    }
+  },
+  {
+    "id": "lg-ultragear-27gp850-b",
+    "title": "LG UltraGear 27GP850-B 27\" QHD 180Hz Nano IPS",
+    "brand": "LG",
+    "mpn": "27GP850-B",
+    "price": 132000,
+    "category": "monitors",
+    "specs": {
+      "size": 27,
+      "resolution": "2560x1440",
+      "refresh": 180,
+      "panel": "Nano IPS"
+    }
+  },
+  {
+    "id": "dell-ultrasharp-u2723qe",
+    "title": "Dell UltraSharp U2723QE 27\" 4K USB-C Hub Monitor",
+    "brand": "Dell",
+    "mpn": "U2723QE",
+    "price": 168000,
+    "category": "monitors",
+    "specs": {
+      "size": 27,
+      "resolution": "3840x2160",
+      "refresh": 60,
+      "panel": "IPS Black"
+    }
+  },
+  {
+    "id": "samsung-odyssey-g5-32",
+    "title": "Samsung Odyssey G5 32\" WQHD 165Hz Curved",
+    "brand": "Samsung",
+    "mpn": "LC32G55TQWWXXL",
+    "price": 96000,
+    "category": "monitors",
+    "specs": {
+      "size": 32,
+      "resolution": "2560x1440",
+      "refresh": 165,
+      "panel": "VA"
+    }
+  },
+  {
+    "id": "gigabyte-m27q-x",
+    "title": "Gigabyte M27Q X 27\" QHD 240Hz IPS",
+    "brand": "Gigabyte",
+    "mpn": "M27Q-X",
+    "price": 118000,
+    "category": "monitors",
+    "specs": {
+      "size": 27,
+      "resolution": "2560x1440",
+      "refresh": 240,
+      "panel": "IPS"
+    }
+  }
+]

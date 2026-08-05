@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "title": "Build Your Dream Gaming PC",
+    "subtitle": "Customize your perfect gaming rig with our premium components",
+    "buttonText": "Start Building",
+    "buttonLink": "/build",
+    "category": "",
+    "image": null,
+    "backgroundColor": "bg-gradient-to-r from-purple-900 to-indigo-800"
+  },
+  {
+    "id": 2,
+    "title": "Latest RTX 50 Series",
+    "subtitle": "Experience next-gen gaming with NVIDIA's most powerful GPUs",
+    "buttonText": "Shop GPUs",
+    "buttonLink": "/product-grid",
+    "category": "graphics",
+    "image": null,
+    "backgroundColor": "bg-gradient-to-r from-green-900 to-emerald-800"
+  },
+  {
+    "id": 3,
+    "title": "Build In Style",
+    "subtitle": "Airflow-first chassis with room for the longest graphics cards",
+    "buttonText": "Shop Cases",
+    "buttonLink": "/product-grid",
+    "category": "cases",
+    "image": null,
+    "backgroundColor": "bg-gradient-to-r from-blue-900 to-cyan-800"
+  },
+  {
+    "id": 4,
+    "title": "Summer Gaming Sale",
+    "subtitle": "Save up to 30% on selected gaming peripherals",
+    "buttonText": "View Deals",
+    "buttonLink": "/deals",
+    "category": "",
+    "image": null,
+    "backgroundColor": "bg-gradient-to-r from-red-900 to-orange-800"
+  },
+  {
+    "id": 5,
+    "title": "New Arrivals",
+    "subtitle": "Discover the latest products from top brands",
+    "buttonText": "Shop Now",
+    "buttonLink": "/product-grid",
+    "category": "",
+    "image": null,
+    "backgroundColor": "bg-gradient-to-r from-yellow-900 to-amber-800"
+  },
+  {
+    "id": 6,
+    "title": "Upgrade Your CPU",
+    "subtitle": "AM5 and LGA1700 processors for every budget",
+    "buttonText": "Shop Processors",
+    "buttonLink": "/product-grid",
+    "category": "processor",
+    "image": null,
+    "backgroundColor": "bg-gradient-to-r from-blue-900 to-cyan-800"
+  },
+  {
+    "id": 7,
+    "title": "Faster Memory",
+    "subtitle": "DDR5 kits up to 6400 MT/s, plus value DDR4",
+    "buttonText": "Shop Memory",
+    "buttonLink": "/product-grid",
+    "category": "memory",
+    "image": null,
+    "backgroundColor": "bg-gradient-to-r from-purple-900 to-indigo-800"
+  },
+  {
+    "id": 8,
+    "title": "High-Refresh Displays",
+    "subtitle": "Up to 240Hz for competitive gaming and 4K for creators",
+    "buttonText": "Shop Monitors",
+    "buttonLink": "/product-grid",
+    "category": "monitors",
+    "image": null,
+    "backgroundColor": "bg-gradient-to-r from-blue-900 to-cyan-800"
+  }
+]
